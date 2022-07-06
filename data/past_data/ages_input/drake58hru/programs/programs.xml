@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<programs>
+	<program name="surface">
+		<block parallel="true">
+			<block parallel="false">
+				<block parallel="true">
+					<block parallel="false">
+						<adapter class="io.ArrayGrabberAdapter"/>
+						<adapter class="radiation.CalcDailySolarRadiationAdapter"/>
+					</block>
+					<adapter class="climate.CalcRelativeHumidityAdapter"/>
+				</block>
+				<adapter class="radiation.CalcDailyNetRadiationAdapter"/>
+				<adapter class="potet.PenmanMonteithAdapter"/>
+			</block>
+			<adapter class="snow.RainSnowPartitioningAdapter"/>
+			<adapter class="irrigation.ProcessIrrigationAdapter"/>
+		</block>
+		<adapter class="interception.ProcessInterceptionAdapter"/>
+		<adapter class="snow.ProcessSnowAdapter"/>
+	</program>
+	<program name="subsurface">
+		<block parallel="true">
+			<adapter class="routing.ProcessHorizonMultiFlowRoutingAdapter"/>
+			<adapter class="routing.MultiRoutingMusleAdapter"/>
+			<adapter class="routing.MultiRoutingLayerNAdapter"/>
+		</block>
+		<adapter class="soil.SParamAdapter"/>
+		<adapter class="soilWater.ProcessSoilWaterLayerAdapter"/>
+		<adapter class="tiledrain.ProcessTileDrainageAdapter"/>
+		<adapter class="crop.DormancyAdapter"/>
+		<adapter class="potet.EvapoTransAdapter"/>
+		<adapter class="management.CropExistenceAdapter"/>
+		<adapter class="management.ProcessFertilizationAdapter"/>
+		<adapter class="upgm.UpgmAdapter"/>
+		<adapter class="crop.PotentialCropGrowthAdapter"/>
+		<adapter class="soilTemp.SoilTemperatureLayerAdapter"/>
+		<adapter class="nitrogen.SoilWaterLayerNAdapter"/>
+		<adapter class="groundwater.ProcessGroundwaterAdapter"/>
+		<adapter class="erosion.MusleAdapter"/>
+		<adapter class="groundwater.GroundwaterNAdapter"/>
+		<adapter class="crop.PlantGrowthStressAdapter"/>
+		<adapter class="soilWater.WaterBalanceCalculatorAdapter"/>
+	</program>
+	<program name="reach-routing">
+		<block parallel="true">
+			<block name="musle-routing" parallel="false">
+				<block name="musle-input" parallel="true">
+					<adapter class="routing.ProcessHRUReachRoutingMusleAdapter"/>
+					<adapter class="routing.ProcessReachRoutingInputMusleAdapter"/>
+				</block>
+				<adapter class="routing.ProcessReachRoutingMusleAdapter"/>
+			</block>
+			<block name="reach-routingN" parallel="false">
+				<block name="reach-inputN" parallel="true">
+					<block name="reach-routing" parallel="false">
+						<block name="reach-input" parallel="true">
+							<adapter class="routing.ProcessHRUReachRoutingAdapter"/>
+							<adapter class="routing.ProcessReachRoutingInputAdapter"/>
+						</block>
+						<adapter class="routing.ProcessReachRoutingAdapter"/>
+					</block>
+					<adapter class="routing.ProcessHRUReachRoutingNAdapter"/>
+					<adapter class="routing.ProcessReachRoutingInputNAdapter"/>
+				</block>
+				<adapter class="routing.ProcessReachRoutingNAdapter"/>
+			</block>
+		</block>
+	</program>
+</programs>

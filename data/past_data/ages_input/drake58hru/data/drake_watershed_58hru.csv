@@ -1,0 +1,311 @@
+@S,Parameter description,Drake 58HRU Data Set
+,,
+# Initialization,,
+,,
+@P,initMPS,1
+type,double,
+,,
+@P,initLPS,0
+type,double,
+,,
+@P,FCAdaptation,1
+type,double,
+,,
+@P,ACAdaptation,1
+type,double,
+,,
+# Snow,,
+,,
+# RainSnowPartitioning; ProcessSnow,,
+,,
+@P,baseTemp,2
+type,double,
+,,
+@P,t_factor,0.7
+type,double,
+,,
+@P,r_factor,1.2
+type,double,
+,,
+@P,g_factor,0.3
+type,double,
+,,
+@P,snowCritDens,0.4
+type,double,
+,,
+@P,ccf_factor,0.002
+type,double,
+,,
+@P,snow_trans,2
+type,double,
+,,
+@P,snow_trs,2
+type,double,
+,,
+# Optional Snow equation,,
+,,
+@P,snowFactorA,0.0002228
+type,double,
+,,
+@P,snowFactorB,0.008775
+type,double,
+,,
+@P,snowFactorC,0.2742
+type,double,
+,,
+@P,snowDensConst,0.192705
+type,double,
+,,
+# Soil Nitrogen,,
+,,
+@P,delayNitrification,0.2
+type,double,
+,,
+@P,denitrificationSoilSaturationThreshold,0.6
+type,double,
+,,
+@P,denitrificationRateCoefficient,1.4
+type,double,
+,,
+@P,nitrificationSurfaceTemperatureThreshold,5
+type,double,
+,,
+@P,nitrificationSoilTemperatureThreshold,5
+type,double,
+,,
+# SoilWaterLayerN,,
+,,
+@P,piadin,0
+type,int,
+,,
+@P,Beta_min,0.002
+type,double,
+,,
+@P,Beta_trans,0.00001
+type,double,
+,,
+@P,Beta_rsd,0.03
+type,double,
+,,
+@P,deposition_factor,0.04
+type,double,
+,,
+# Radiation,,
+,,
+# CalcExtraterrRadiation ,,
+,,
+@P,longTZ,105
+type,double,
+,,
+@P,locGrw,w
+type,string,
+,,
+@P,tempRes,d
+type,string,
+,,
+# CalcDailySolarRadiation,,
+,,
+@P,angstrom_a,0.25
+type,double,
+,,
+@P,angstrom_b,0.5
+type,double,
+,,
+# Interception,,
+,,
+# ProcessInterception,,
+,,
+@P,a_rain,0.2
+type,double,
+,,
+@P,a_snow,0.5
+type,double,
+,,
+# Soil Water,,
+,,
+# PrecessSoilWaterLayer  ,,
+,,
+@P,soilMaxDPS,2.359376629
+type,double,
+,,
+@P,soilPolRed,1.479276112
+type,double,
+,,
+@P,soilLinRed,0
+type,double,
+,,
+@P,soilMaxInfSummer,19.73309581
+type,double,
+,,
+@P,soilMaxInfWinter,23.78823763
+type,double,
+,,
+@P,soilMaxInfSnow,0.710617776
+type,double,
+,,
+@P,soilImpGT80,0.25
+type,double,
+,,
+@P,soilImpLT80,0.6
+type,double,
+,,
+@P,soilDistMPSLPS,3.404936394
+type,double,
+,,
+@P,soilDiffMPSLPS,3.999831849
+type,double,
+,,
+@P,soilOutLPS,9.965388574
+type,double,
+,,
+@P,soilLatVertLPS,1.7348347
+type,double,
+,,
+@P,soilMaxPerc,1
+type,double,
+,,
+@P,geoMaxPerc,0
+ type,double,
+,,
+@P,lagSurfaceRunoff,1
+type,double,
+,,
+@P,lagInterflow,1
+type,double,
+,,
+@P,kdiff_layer,0.172240887
+type,double,
+,,
+@P,BetaW,23.79720486
+type,double,
+,,
+# Groundwater,,
+,,
+# ProcessGroundwater,,
+,,
+@P,initRG1,0
+type,double,
+,,
+@P,initRG2,0
+type,double,
+,,
+@P,gwRG1RG2dist,0.6
+type,double,
+,,
+@P,gwRG1Fact,1.2
+type,double,
+,,
+@P,gwRG2Fact,1.7
+type,double,
+,,
+@P,gwCapRise,0
+type,double,
+,,
+# Groundwater Nitrogen,,
+,,
+# GroundwaterN,,
+,,
+@P,N_delay_RG1,5
+type,double,
+,,
+@P,N_delay_RG2,5
+type,double,
+,,
+@P,N_concRG1,5
+type,double,
+,,
+@P,N_concRG2,5
+type,double,
+,,
+# Flow Routing,,
+,,
+# ProcessReachRoutingN,,
+,,
+@P,flowRouteTA,1.00E+06
+type,double,
+,,
+@P,Ksink,0
+type,double,
+,,
+# Tile Drainage,,
+,,
+# @P,calib_clat_fact,1
+type,double,
+,,
+# ProcessTileDrainage,,
+,,
+# @P,drspac,1000
+type,double,
+,,
+@P,drrad,15
+type,double,
+,,
+# @P,clat,4.2
+type,double,
+,,
+# Soil Erosion,,
+,,
+# @P,musi_co1,1.17
+type,double,
+,,
+# @P,musi_co2,0.559
+type,double,
+,,
+# @P,musi_co3,0.395
+type,double,
+,,
+# @P,musi_co4,0.214
+type,double,
+,,
+# Crop and Temperature,,
+,,
+# PotentialCropGrowth,,
+,,
+@P,LExCoef,-0.65
+type,double,
+,,
+@P,rootfactor,1
+type,double,
+,,
+@P,temp_lag,0.8
+type,double,
+,,
+# SCS Curve Number,,
+,,
+# @P,cn_froz,0.000862
+type,double,
+,,
+# @P,cnn,70
+type,double,
+,,
+# @P,icn,0
+type,int,
+,,
+# @P,r2adj,1
+type,double,
+,,
+# @P,fcimp,1
+type,double,
+,,
+# Additional Miscellaneous,,
+,,
+@P,sceno,1
+type,double,
+,,
+@P,opti,1
+type,int,
+,,
+@P,fmt_date,yyyy-MM-dd
+type,string,
+,,
+@P,fmt_double,%.3f
+type,string,
+,,
+@P,defaultCO2,380
+type,double,
+,,
+# Not Used,,
+,,
+# @P,skipRegression,FALSE
+# @P,halflife_RG1,0
+# @P,halflife_RG2,0

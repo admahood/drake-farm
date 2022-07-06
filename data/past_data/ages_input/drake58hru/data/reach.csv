@@ -1,0 +1,11 @@
+@T,reaches,,,,,
+name,reach.csv,,,,,
+descr,reach input parameters,,,,,
+,,,,,,
+@H,ID,length,slope,rough,width,deepsink
+min,0,0,0,0,0,0
+max,99999999,99999999,9999,99999999,1,1
+unit,n/a,m,n/a,m,n/a,n/a
+,-3,648,1.943,30,0.4,0
+,-2,193,3.277,30,0.3,0
+,-1,327,1.561,30,0.3,0

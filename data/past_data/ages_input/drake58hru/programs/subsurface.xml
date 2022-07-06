@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<program>
+	<block parallel="true">
+		<adapter class="routing.ProcessHorizonMultiFlowRoutingAdapter" />
+		<adapter class="routing.MultiRoutingMusleAdapter" />
+		<adapter class="routing.MultiRoutingLayerNAdapter" />
+	</block>
+	<adapter class="soil.SParamAdapter" />
+	<adapter class="soilWater.ProcessSoilWaterLayerAdapter" />
+	<adapter class="tiledrain.ProcessTileDrainageAdapter" />
+	<adapter class="crop.DormancyAdapter" />
+	<adapter class="potet.EvapoTransAdapter" />
+	<adapter class="management.CropExistenceAdapter" />
+	<adapter class="management.ProcessFertilizationAdapter" />
+	<adapter class="upgm.UpgmAdapter" />
+	<adapter class="crop.PotentialCropGrowthAdapter" />
+	<adapter class="soilTemp.SoilTemperatureLayerAdapter" />
+	<adapter class="nitrogen.SoilWaterLayerNAdapter" />
+	<adapter class="groundwater.ProcessGroundwaterAdapter" />
+	<adapter class="erosion.MusleAdapter" />
+	<adapter class="groundwater.GroundwaterNAdapter" />
+	<adapter class="crop.PlantGrowthStressAdapter" />
+	<adapter class="soilWater.WaterBalanceCalculatorAdapter" />
+</program>

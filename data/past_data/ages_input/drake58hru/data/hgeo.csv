@@ -1,0 +1,9 @@
+@T,hgeo,,,,,,
+name,hgeo.csv,,,,,,
+descr,hydrogeology input parameters,,,,,,
+,,,,,,,
+@H,GID,RG1_max,RG2_max,RG1_k,RG2_k,RG1_active,Kf_geo
+min,1,0,0,0,0,0,0
+max,-9999,-9999,-9999,-9999,-9999,1,-9999
+unit,n/a,mm,mm,d,d,n/a,cm/d
+,1,22000,2200,8,130,1,86.4

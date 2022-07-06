@@ -1,0 +1,15 @@
+parameter {
+	flagParallel         "layer"
+	flagRegionalization  "true"
+	flagHRURouting       "true"
+	flagReachRouting     "true"
+	flagSort             "true"
+	flagSplit            "true"
+	flagInfiltration     "eagleson"
+	flagTillage          "false"
+	flagTileDrain        "false"
+	flagUPGM             "false"
+	flagSaveState        "false"
+	flagLoadState        "false"
+	parallelismThreads	"5"
+}

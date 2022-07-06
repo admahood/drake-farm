@@ -1,0 +1,128 @@
+@T, management ,,,,,,,,,
+desc, management.csv ,,,,,,,,,
+# landuse management,,,,,,,,,,
+# ID crop-ID referred to crop.csv,,,,,,,,,,
+# Date when operation starts,,,,,,,,,,
+# Till-id according to till.csv,,,,,,,,,,
+# Fert-id according to fert.csv,,,,,,,,,,
+# FAmount amount of fertilizer application [kg/ha] absolut,,,,,,,,,,
+# Plant (1) assumes that planting operation; - no planting,,,,,,,,,,
+# Harvest (1-4)assumes that plant is harvested; - no harvest,,,,,,,,,,
+# for harvesting 4 codes are implemented:,,,,,,,,,,
+# (1) assumes harvesting with Haupt- & Nebenfrucht, Nebenfrucht leaves the field, plant growth stopped,,,,,,,,
+# (2) assumes harvesting with Hauptfrucht, Nebenfrucht remains on the field, plant growth stopped,,,,,,,,
+# (3) assumes harvesting with Haupt- & Nebenfrucht, plant growth continues (may not be suitable for meadows) ,,,,,,,,,
+# (4) assumes harvesting with Hauptfrucht, plant growth continues ,,,,,,,,,
+# FracHarv is the fraction of the target biomass which will be removed by the harvest (according to harvest code),,,,,,,,,,
+ ,,,,,,,,,,
+@H,MID,CID,Date,TID,FID,FAmount,PLANT,HARVEST,FRACHARV,Desc
+,12,28, 09-30,-,-,-,1,-,-,MID12:09-30-2002=Plant-Winter-Wheat=Drake-East-Mgt
+,12,28, 06-13,-,-,-,-,1,1,MID12:06-13-2003=Harvest-Winter-Wheat-actual-wheat-failed-plowed-under-06-14-2003=Drake-East-Mgt
+,12,28, 06-14,79,-,-,-,-,-,MID12:06-14-2003=wheat-failed-plowed-under=Drake-East-Mgt
+,12,34, 06-21,-,-,-,1,-,-,MID12:06-21-2003=Plant-Proso-Millet=Drake-East-Mgt
+,12,34, 10-08,-,-,-,-,1,0.9,MID12:10-08-2003=Harvest-Proso-Millet=Drake-East-Mgt
+,12,28, 05-15,79,-,-,-,-,-,MID12:05-15-2004=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 06-15,79,-,-,-,-,-,MID12:06-15-2004=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 07-15,79,-,-,-,-,-,MID12:07-15-2004=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 08-15,79,-,-,-,-,-,MID12:08-15-2004=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 09-15,79,-,-,-,-,-,MID12:09-15-2004=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 09-25,-,-,-,1,-,-,MID12:09-25-2004=Plant-Winter-Wheat=Drake-East-Mgt
+,12,28, 07-12,-,-,-,-,1,0.9,MID12:07-12-2005=Harvest-Winter-Wheat=Drake-East-Mgt
+,12,28, 05-15,79,-,-,-,-,-,MID12:05-15-2006=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 06-15,79,-,-,-,-,-,MID12:06-15-2006=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 07-15,79,-,-,-,-,-,MID12:07-15-2006=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 08-15,79,-,-,-,-,-,MID12:08-15-2006=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 09-15,79,-,-,-,-,-,MID12:09-15-2006=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 10-15,79,-,-,-,-,-,MID12:10-15-2006=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 11-03,-,-,-,1,-,-,MID12:11-03-2006=Plant-Winter-Wheat=Drake-East-Mgt
+,12,28, 07-23,-,-,-,-,1,0.9,MID12:07-23-2007=Harvest-Winter-Wheat=Drake-East-Mgt
+,12,28, 08-28,79,-,-,-,-,-,MID12:08-28-2007=blade-undercutting-of-wheat-stubble-depth?=Drake-East-Mgt
+,12,28, 09-20,79,-,-,-,-,-,MID12:09-20-2007=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 09-27,-,55,45,-,-,-,MID12:09-27-2007=Sludge-injected-45kg-ha-N=Drake-East-Mgt
+,12,28, 05-15,79,-,-,-,-,-,MID12:05-15-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 06-15,79,-,-,-,-,-,MID12:06-15-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 07-15,79,-,-,-,-,-,MID12:07-15-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 08-15,79,-,-,-,-,-,MID12:08-15-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 08-31,79,-,-,-,-,-,MID12:08-31-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 10-15,79,-,-,-,-,-,MID12:10-15-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,12,28, 10-17,-,-,-,1,-,-,MID12:10-17-2008=Plant-Winter-Wheat=Drake-East-Mgt
+,12,28, 05-11,-,-,-,-,1,1,MID12:05-11-2009=Harvest-Winter-Wheat-actual-wheat-failed=Drake-East-Mgt
+,13,28, 05-12,79,-,-,-,-,-,MID13:05-12-2009=wheat-failed-tilled-under=Drake-East-Mgt-2-Eastern-Strips
+,13,31, 05-18,-,-,-,1,-,-,MID13:05-18-2009=Plant-Barley=Drake-East-Mgt-2-Eastern-Strips
+,13,31, 08-13,-,-,-,-,1,0.9,MID13:08-13-2009=Harvest-Barley=Drake-East-Mgt-2-Eastern-Strips
+,14,19, 05-18,-,-,-,1,-,-,MID14:05-18-2009=Plant-Corn=Drake-East-Mgt-4-Western-Strips
+,14,19, 11-11,-,-,-,-,1,0.9,MID14:11-11-2009=Harvest-Corn=Drake-East-Mgt-4-Western-Strips
+,14,19, 02-14,-,48,45,-,-,-,MID14:02-14-2010=Sheep-grazing-in-corn-stubble-45kg-ha-N?=Drake-East-Mgt-4-Western-Strips
+,15,28, 03-30,-,55,45,-,-,-,MID15:03-30-2010=Sludge-injected-45kg-ha-N=Drake-East-Mgt
+,15,28, 04-15,79,-,-,-,-,-,MID15:04-15-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 05-15,79,-,-,-,-,-,MID15:05-15-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 06-15,79,-,-,-,-,-,MID15:06-15-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 07-15,79,-,-,-,-,-,MID15:07-15-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 08-15,79,-,-,-,-,-,MID15:08-15-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 09-15,79,-,-,-,-,-,MID15:09-15-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 10-08,79,-,-,-,-,-,MID15:10-08-2010=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 10-15,-,-,-,1,-,-,MID15:10-15-2010=Plant-Winter-Wheat=Drake-East-Mgt
+,15,28, 08-05,-,-,-,-,1,0.9,MID15:08-05-2011=Harvest-Winter-Wheat=Drake-East-Mgt
+,15,28, 09-16,-,55,45,-,-,-,MID15:09-16-2011=Sludge-injected-45kg-ha-N=Drake-East-Mgt
+,15,28, 05-15,79,-,-,-,-,-,MID15:05-15-2012=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 06-15,79,-,-,-,-,-,MID15:06-15-2012=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 07-15,79,-,-,-,-,-,MID15:07-15-2012=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 08-15,79,-,-,-,-,-,MID15:08-15-2012=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 09-15,79,-,-,-,-,-,MID15:09-15-2012=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-East-Mgt
+,15,28, 10-05,-,-,-,1,-,-,MID15:10-05-2012=Plant-Winter-Wheat-never-harvested=Drake-East-Mgt
+,15,28, 10-04,-,55,0,-,-,-,MID15:10-04-2013=null-fertilizer-treatment--to-get-crop-to-end-of-simulation=Drake-East-Mgt
+,15,28, 04-30,-,-,-,-,1,0,MID15:04-30-2014=False-harvest-winter-wheat-to-switch-to-CRP==Drake-East-Mgt
+,15,200, 05-01,-,-,-,1,-,-,MID15:05-01-2014=Plant-CRP=Drake-East-Mgt
+,15,200, 04-28,-,55,0,-,-,-,MID15:04-28-2015=null-fertilizer-treatment-to-keep-CRP-growing=Drake-East-Mgt
+,15,200, 04-28,-,55,0,-,-,-,MID15:04-28-2016=null-fertilizer-treatment-to-keep-CRP-growing=Drake-East-Mgt
+,15,200, 04-28,-,55,0,-,-,-,MID15:04-28-2017=null-fertilizer-treatment-to-keep-CRP-growing=Drake-East-Mgt
+,15,200, 04-28,-,55,0,-,-,-,MID15:04-28-2018=null-fertilizer-treatment-to-keep-CRP-growing=Drake-East-Mgt
+,15,200, 04-28,-,55,0,-,-,-,MID15:04-28-2019=null-fertilizer-treatment-to-keep-CRP-growing=Drake-East-Mgt
+,15,200, 01-31,-,-,-,-,1,0,MID15:01-31-2020=last-day-of-simulation-false-harvest=Drake-East-Mgt
+,16,28, 09-30,-,-,-,-,1,0.9,MID36:09-30-2002=Harvest-Winter-Wheat-actual-harvest-07-29-2002-but-set-to-simulation-start-date=Drake-West-Mgt
+,16,28, 05-15,79,-,-,-,-,-,MID16:05-15-2003=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 06-15,79,-,-,-,-,-,MID16:06-15-2003=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 07-15,79,-,-,-,-,-,MID16:07-15-2003=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 08-15,79,-,-,-,-,-,MID16:08-15-2003=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 09-15,79,-,-,-,-,-,MID16:09-15-2003=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 10-01,-,-,-,1,-,-,MID16:10-01-2003=Plant-Winter-Wheat=Drake-West-Mgt
+,16,28, 07-19,-,-,-,-,1,0.9,MID16:07-19-2004=Harvest-Winter-Wheat=Drake-West-Mgt
+,16,28, 05-15,79,-,-,-,-,-,MID16:05-15-2005=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 06-15,79,-,-,-,-,-,MID16:06-15-2005=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 07-15,79,-,-,-,-,-,MID16:07-15-2005=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 08-15,79,-,-,-,-,-,MID16:08-15-2005=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 09-15,79,-,-,-,-,-,MID16:09-15-2005=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 10-01,-,-,-,1,-,-,MID16:10-01-2005=Plant-Winter-Wheat=Drake-West-Mgt
+,16,28, 07-19,-,-,-,-,1,0.9,MID16:07-19-2006=Harvest-Winter-Wheat=Drake-West-Mgt
+,16,28, 05-15,79,-,-,-,-,-,MID16:05-15-2007=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 06-15,79,-,-,-,-,-,MID16:06-15-2007=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 07-15,79,-,-,-,-,-,MID16:07-15-2007=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 08-15,79,-,-,-,-,-,MID16:08-15-2007=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 09-10,-,-,-,1,-,-,MID16:09-10-2007=Plant-Winter-Wheat=Drake-West-Mgt
+,16,28, 08-25,-,-,-,-,1,0.9,MID16:08-25-2008=Harvest-Winter-Wheat=Drake-West-Mgt
+,16,28, 08-31,79,-,-,-,-,-,MID16:08-31-2008=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 05-12,79,-,-,-,-,-,MID16:05-12-2009=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 06-15,79,-,-,-,-,-,MID16:06-15-2009=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 07-15,79,-,-,-,-,-,MID16:07-15-2009=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 08-15,79,-,-,-,-,-,MID16:08-15-2009=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 09-15,79,-,-,-,-,-,MID16:09-15-2009=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 09-19,-,-,-,1,-,-,MID16:09-19-2009=Plant-Winter-Wheat=Drake-West-Mgt
+,16,28, 07-22,-,-,-,-,1,0.9,MID16:07-22-2010=Harvest-Winter-Wheat=Drake-West-Mgt
+,16,28, 04-11,1,-,-,-,-,-,MID16:04-11-2011=deep-tillage-disking-15cm-effective-depth=Drake-West-Mgt
+,16,28, 05-03,79,-,-,-,-,-,MID16:05-03-2011=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 06-16,79,-,-,-,-,-,MID16:06-16-2011=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 07-15,79,-,-,-,-,-,MID16:07-15-2011=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 08-15,79,-,-,-,-,-,MID16:08-15-2011=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 09-15,79,-,-,-,-,-,MID16:09-15-2011=RZWQM-v-blade-sweep-7cm-effective-depth-0.2-till-intensity=Drake-West-Mgt
+,16,28, 10-03,-,-,-,1,-,-,MID16:10-03-2011=Plant-Winter-Wheat=Drake-West-Mgt
+,16,28, 07-05,-,-,-,-,1,0.1,MID16:07-05-2012=Harvest-Winter-Wheat=Drake-West-Mgt
+,16,28, 04-28,-,55,0,-,-,-,MID16:04-28-2013=null-fertilizer-treatment-to-keep-alfalfa-from-growing-before-planting=Drake-West-Mgt
+,16,200, 04-29,-,-,-,1,-,-,MID16:04-29-2013=Plant-CRP=Drake-West-Mgt
+,16,200, 04-28,-,55,0,-,-,-,MID16:04-28-2014=null-fertilizer-treatment-to-keep-CRP-growing=Drake-West-Mgt
+,16,200, 04-28,-,55,0,-,-,-,MID16:04-28-2015=null-fertilizer-treatment-to-keep-CRP-growing=Drake-West-Mgt
+,16,200, 04-28,-,55,0,-,-,-,MID16:04-28-2016=null-fertilizer-treatment-to-keep-CRP-growing=Drake-West-Mgt
+,16,200, 04-28,-,55,0,-,-,-,MID16:04-28-2017=null-fertilizer-treatment-to-keep-CRP-growing=Drake-West-Mgt
+,16,200, 04-28,-,55,0,-,-,-,MID16:04-28-2018=null-fertilizer-treatment-to-keep-CRP-growing=Drake-West-Mgt
+,16,200, 04-28,-,55,0,-,-,-,MID16:04-28-2019=null-fertilizer-treatment-to-keep-CRP-growing=Drake-West-Mgt
+,16,200, 01-31,-,-,-,-,1,0,MID16:01-31-2020=last-day-of-simulation-false-harvest=Drake-West-Mgt
+,17,200, 09-30,-,-,-,1,-,-,MID17:CRP-Grasses

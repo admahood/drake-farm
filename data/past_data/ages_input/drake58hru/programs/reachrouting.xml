@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<program name="reach-routing">
+	<block parallel="true">
+		<block name="musle-routing" parallel="false">
+			<block name="musle-input" parallel="true">
+				<adapter class="routing.ProcessHRUReachRoutingMusleAdapter"/>
+				<adapter class="routing.ProcessReachRoutingInputMusleAdapter"/>
+			</block>
+			<adapter class="routing.ProcessReachRoutingMusleAdapter"/>
+		</block>
+		<block name="reach-routingN" parallel="false">
+			<block name="reach-inputN" parallel="true">
+				<block name="reach-routing" parallel="false">
+					<block name="reach-input" parallel="true">
+						<adapter class="routing.ProcessHRUReachRoutingAdapter"/>
+						<adapter class="routing.ProcessReachRoutingInputAdapter"/>
+					</block>
+					<adapter class="routing.ProcessReachRoutingAdapter"/>
+				</block>
+				<adapter class="routing.ProcessHRUReachRoutingNAdapter"/>
+				<adapter class="routing.ProcessReachRoutingInputNAdapter"/>
+			</block>
+			<adapter class="routing.ProcessReachRoutingNAdapter"/>
+		</block>
+	</block>
+</program>

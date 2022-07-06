@@ -1,0 +1,66 @@
+@S,Parameter description,Regionalization Data Set
+,,
+# Regionalization,,
+,,
+@P,projection,UTM13N
+@P,regThres,0.75
+,,
+# IDW Weighting,,
+,,
+@P,equalWeights,FALSE
+,,
+# Tmin,,
+,,
+@P,nidwTmin,8
+@P,pidwTmin,2
+@P,rsqThresholdTmin,0.75
+@P,elevationCorrectionTmin,0
+,,
+# Tmean,,
+,,
+@P,nidwTmean,8
+@P,pidwTmean,2
+@P,rsqThresholdTmean,0.75
+@P,elevationCorrectionTmean,0
+,,
+# Tmax,,
+,,
+@P,nidwTmax,8
+@P,pidwTmax,2
+@P,rsqThresholdTmax,0.75
+@P,elevationCorrectionTmax,0
+,,
+# Humidity,,
+,,
+@P,nidwHum,8
+@P,pidwHum,2
+@P,rsqThresholdHum,0.75
+@P,elevationCorrectionHum,0
+,,
+# Solar Radiation,,
+,,
+@P,nidwSol,8
+@P,pidwSol,2
+@P,rsqThresholdSol,0.75
+@P,elevationCorrectionSol,0
+,,
+# Windspeed,,
+,,
+@P,nidwWind,8
+@P,pidwWind,2
+@P,rsqThresholdWind,0.75
+@P,elevationCorrectionWind,0
+,,
+# Precipitation,,
+,,
+@P,nidwPrecip,8
+@P,pidwPrecip,2
+@P,rsqThresholdPrecip,0.75
+@P,elevationCorrectionPrecip,0
+,,
+# Rainfall Correction,,
+,,
+@P,windNIDW,2
+@P,precipCorrectMethod,0
+@P,tempNIDW,1
+@P,pIDW,2

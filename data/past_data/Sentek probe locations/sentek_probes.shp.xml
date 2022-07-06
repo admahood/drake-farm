@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata xml:lang="en"><Esri><CreaDate>20191022</CreaDate><CreaTime>14243100</CreaTime><ArcGISFormat>1.0</ArcGISFormat><SyncOnce>TRUE</SyncOnce><DataProperties><lineage><Process ToolSource="c:\program files (x86)\arcgis\desktop10.5\ArcToolbox\Toolboxes\Data Management Tools.tbx\FeatureToPoint" Date="20191022" Time="142431">FeatureToPoint "sentek_probes.csv Events" C:\Drake\GISdata\sentek_probes.shp CENTROID</Process></lineage></DataProperties></Esri></metadata>

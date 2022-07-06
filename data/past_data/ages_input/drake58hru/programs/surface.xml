@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<program>
+	<block parallel="true">
+		<block>
+			<block parallel="true">
+				<block>
+					<adapter class="io.ArrayGrabberAdapter" />
+					<adapter class="radiation.CalcDailySolarRadiationAdapter" />
+				</block>
+				<adapter class="climate.CalcRelativeHumidityAdapter" />
+			</block>
+			<adapter class="radiation.CalcDailyNetRadiationAdapter" />
+			<adapter class="potet.PenmanMonteithAdapter" />
+		</block>
+		<adapter class="snow.RainSnowPartitioningAdapter" />
+		<adapter class="irrigation.ProcessIrrigationAdapter" />
+	</block>
+	<adapter class="interception.ProcessInterceptionAdapter" />
+	<adapter class="snow.ProcessSnowAdapter" />
+</program>

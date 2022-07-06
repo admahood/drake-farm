@@ -1,0 +1,21 @@
+@T,Yield,
+descr,hru 63 final yield at harvest measured by yield monitor,
+unit,kg per ha,
+,,
+missing_val,-9999,
+date_start,28.07.2002,
+date_end,04.07.2012,
+date_format,dd.MM.yyyy,
+,,
+@H,date,yield[0]
+name,,Drake
+ID,,1
+elevation,,1584
+x,,513530
+y,,4494921
+,28.07.2002,1389.49
+,18.07.2004,2270.35
+,18.07.2006,2197.11
+,24.08.2008,1296.1
+,21.07.2010,3771.37
+,04.07.2012,3314.48
