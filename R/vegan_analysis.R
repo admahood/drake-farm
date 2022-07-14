@@ -3,6 +3,7 @@ library(tidyverse)
 library(vegan)
 library(ggrepel)
 library(ggpubr)
+library(Hmsc)
 
 # data ingest ==================================================================
 raw <- read_csv("data/drake_veg_data_2022 - cover_2022(1).csv")
@@ -13,7 +14,10 @@ surface_cover <- raw %>%
 
 plant_cover <- raw %>%
   filter(str_sub(species_code,1,1)!="_") %>%
-  mutate(strip_type = str_sub(plot, 7,10))
+  mutate(strip_type = str_sub(plot, 7,10)) %>%
+  group_by(plot) %>%
+  mutate(n_subplots = length(unique(subplot)),
+         n_subplots = if_else(n_subplots > 6 , 8, 4))
 
 # unique(plant_cover$species_code) %>% sort
 
@@ -27,10 +31,6 @@ ggplot(plant_cover, aes(x=species_code, y=height_cm, fill=strip_type)) +
 # nmds =========================================================================
 
 dv<-plant_cover %>%
-  # filter(subplot <5 ) %>%
-  group_by(plot) %>%
-  mutate(n_subplots = length(unique(subplot))) %>% #crude, for initial analysis only
-  ungroup() %>%
   group_by(plot, species_code) %>%
   summarise(cover = (sum(cover_pct)/n_subplots)) %>%
   ungroup() %>%
@@ -44,10 +44,8 @@ nmds<- dv %>%
   wisconsin() %>%
   vegan::metaMDS(trymax=10000)
 
-sp_scores <- as.data.frame(scores(nmds)$species)%>%
-  as_tibble(rownames = "species") 
 
-site_scores <- as.data.frame(scores(nmds)$sites) %>%
+site_scores <- as.data.frame(vegan::scores(nmds)) %>%
   as_tibble(rownames = "plot") %>%
   mutate(strip_type = str_sub(plot, 7,10),
          strip_number = str_sub(plot, 12,13))
@@ -76,10 +74,10 @@ nmds_pa<- dv %>%
   vegan::decostand(method = "pa") %>%
   vegan::metaMDS(trymax=10000)
 
-sp_scores_pa <- as.data.frame(scores(nmds_pa)$species)%>%
-  as_tibble(rownames = "species") 
+# sp_scores_pa <- as.data.frame(scores(nmds_pa)$species)%>%
+#   as_tibble(rownames = "species") 
 
-site_scores_pa <- as.data.frame(scores(nmds_pa)$sites) %>%
+site_scores_pa <- as.data.frame(vegan::scores(nmds_pa)) %>%
   as_tibble(rownames = "plot") %>%
   mutate(strip_type = str_sub(plot, 7,10),
          strip_number = str_sub(plot, 12,13))
