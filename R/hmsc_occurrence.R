@@ -105,7 +105,7 @@ mod = Hmsc(Y = Y, XData = XData, XFormula = XFormula, distr="probit",
 
 
 nChains = 4
-test.run = TRUE
+test.run = FALSE
 if (test.run){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -159,6 +159,7 @@ psrf.beta <- gelman.diag(mpost$Beta, multivariate=FALSE)$psrf%>%
   dplyr::mutate(variable = "Gelman Diagnostic")
 
 
+
 diag_all<-bind_rows(ess.beta, psrf.beta) %>%
   ggplot(aes(x=value)) +
   geom_histogram() +
@@ -171,7 +172,7 @@ diag_all<-bind_rows(ess.beta, psrf.beta) %>%
 
 
 
-ggsave(diag_all,filename = paste0("figs/gelman_ess_",which_model,".pdf"), 
+ggsave(diag_all,filename = paste0("figs/gelman_ess.pdf"), 
        width = 5.5, height=3.5, bg="white")
 MF$TjurR2%>% mean(na.rm=T)
 # explanatory power
