@@ -1,0 +1,2539 @@
+plot,date_yyyymmdd,observed_by,subplot,species_code,cover_pct,height_cm,entered_by
+d_011_herb_01,20220628,Adam,1,_litter,96,,Adam
+d_011_herb_01,20220628,Adam,1,_bare,4,,Adam
+d_011_herb_01,20220628,Adam,1,coar,0.5,1,Adam
+d_011_herb_01,20220628,Adam,1,satr,0.5,12,Adam
+d_011_herb_01,20220628,Adam,1,bocu,60,27,Adam
+d_011_herb_01,20220628,Adam,2,_litter,95,,Adam
+d_011_herb_01,20220628,Adam,2,_bare,5,,Adam
+d_011_herb_01,20220628,Adam,2,satr,1,18,Adam
+d_011_herb_01,20220628,Adam,2,sphe,2,41,Adam
+d_011_herb_01,20220628,Adam,2,upg4,4,25,Adam
+d_011_herb_01,20220628,Adam,2,brte,7,14,Adam
+d_011_herb_01,20220628,Adam,3,_litter,13,,Adam
+d_011_herb_01,20220628,Adam,3,_bare,87,,Adam
+d_011_herb_01,20220628,Adam,3,coar,8,6,Adam
+d_011_herb_01,20220628,Adam,3,satr,3,8,Adam
+d_011_herb_01,20220628,Adam,3,bocu,3,27,Adam
+d_011_herb_01,20220628,Adam,3,brte,1,30,Adam
+d_011_herb_01,20220628,Adam,4,_litter,90,,Adam
+d_011_herb_01,20220628,Adam,4,_bare,10,,Adam
+d_011_herb_01,20220628,Adam,4,coar,6,9,Adam
+d_011_herb_01,20220628,Adam,4,satr,2,10,Adam
+d_011_herb_01,20220628,Adam,999,kosc,0.5,,Adam
+d_011_herb_01,20220628,Adam,999,navi,0.5,,Adam
+d_011_herb_01,20220628,Adam,999,sial,0.5,,Adam
+d_012_herb_01,20220628,Adam,1,_litter,80,,Adam
+d_012_herb_01,20220628,Adam,1,_bare,20,,Adam
+d_012_herb_01,20220628,Adam,1,brte,4,19,Adam
+d_012_herb_01,20220628,Adam,1,satr,2,8,Adam
+d_012_herb_01,20220628,Adam,1,coar,13,7,Adam
+d_012_herb_01,20220628,Adam,1,kosc,7,7,Adam
+d_012_herb_01,20220628,Adam,2,_litter,100,,Adam
+d_012_herb_01,20220628,Adam,2,_bare,0,,Adam
+d_012_herb_01,20220628,Adam,2,brte,4,19,Adam
+d_012_herb_01,20220628,Adam,2,satr,0.5,8,Adam
+d_012_herb_01,20220628,Adam,2,coar,15,14,Adam
+d_012_herb_01,20220628,Adam,2,kosc,9,5,Adam
+d_012_herb_01,20220628,Adam,3,_litter,100,,Adam
+d_012_herb_01,20220628,Adam,3,_bare,0,,Adam
+d_012_herb_01,20220628,Adam,3,brte,6,20,Adam
+d_012_herb_01,20220628,Adam,3,satr,0.5,3,Adam
+d_012_herb_01,20220628,Adam,3,coar,4,6,Adam
+d_012_herb_01,20220628,Adam,3,kosc,4,3,Adam
+d_012_herb_01,20220628,Adam,4,_litter,100,,Adam
+d_012_herb_01,20220628,Adam,4,_bare,0,,Adam
+d_012_herb_01,20220628,Adam,4,brte,13,29,Adam
+d_012_herb_01,20220628,Adam,4,coar,3,21,Adam
+d_012_herb_01,20220628,Adam,4,kosc,2,7,Adam
+d_012_herb_01,20220628,Adam,4,sphe,0.5,74,Adam
+d_012_herb_01,20220628,Adam,999,mesa,0.5,,Adam
+d_012_herb_01,20220628,Adam,999,upf_12,0.5,,Adam
+d_012_herb_01,20220628,Adam,999,sial,0.5,,Adam
+d_013_herb_01,20220628,Adam,1,_litter,60,,Adam
+d_013_herb_01,20220628,Adam,1,_bare,40,,Adam
+d_013_herb_01,20220628,Adam,1,brte,10,34,Adam
+d_013_herb_01,20220628,Adam,1,satr,5,16,Adam
+d_013_herb_01,20220628,Adam,2,_litter,100,,Adam
+d_013_herb_01,20220628,Adam,2,_bare,0,,Adam
+d_013_herb_01,20220628,Adam,2,brte,28,26,Adam
+d_013_herb_01,20220628,Adam,2,elre,3,15,Adam
+d_013_herb_01,20220628,Adam,3,_litter,100,,Adam
+d_013_herb_01,20220628,Adam,3,_bare,0,,Adam
+d_013_herb_01,20220628,Adam,3,brte,7,23,Adam
+d_013_herb_01,20220628,Adam,3,satr,1,13,Adam
+d_013_herb_01,20220628,Adam,3,elre,4,60,Adam
+d_013_herb_01,20220628,Adam,3,kosc,2,19,Adam
+d_013_herb_01,20220628,Adam,4,_litter,100,,Adam
+d_013_herb_01,20220628,Adam,4,_bare,0,,Adam
+d_013_herb_01,20220628,Adam,4,brte,14,20,Adam
+d_013_herb_01,20220628,Adam,4,elre,13,27,Adam
+d_013_herb_01,20220628,Adam,4,kosc,0.5,6,Adam
+d_013_herb_01,20220628,Adam,999,sial,0.5,,Adam
+d_013_herb_01,20220628,Adam,999,coar,0.5,,Adam
+d_013_herb_01,20220628,Adam,999,navi,0.5,,Adam
+d_199_shru_12,20220628,Adam,1,_litter,100,,Adam
+d_199_shru_12,20220628,Adam,1,_bare,0,,Adam
+d_199_shru_12,20220628,Adam,1,brte,7,25,Adam
+d_199_shru_12,20220628,Adam,1,kosc,1,20,Adam
+d_199_shru_12,20220628,Adam,1,satr,0.5,20,Adam
+d_199_shru_12,20220628,Adam,1,elre,10,44,Adam
+d_199_shru_12,20220628,Adam,1,atca,40,135,Adam
+d_199_shru_12,20220628,Adam,2,_litter,100,,Adam
+d_199_shru_12,20220628,Adam,2,_bare,0,,Adam
+d_199_shru_12,20220628,Adam,2,brte,10,20,Adam
+d_199_shru_12,20220628,Adam,2,kosc,3,29,Adam
+d_199_shru_12,20220628,Adam,2,satr,1,19,Adam
+d_199_shru_12,20220628,Adam,2,atca,70,152,Adam
+d_199_shru_12,20220628,Adam,3,_litter,95,,Adam
+d_199_shru_12,20220628,Adam,3,_bare,5,,Adam
+d_199_shru_12,20220628,Adam,3,brte,1,12,Adam
+d_199_shru_12,20220628,Adam,3,kosc,1,9,Adam
+d_199_shru_12,20220628,Adam,3,satr,1,9,Adam
+d_199_shru_12,20220628,Adam,3,elre,12,32,Adam
+d_199_shru_12,20220628,Adam,3,atca,0.5,95,Adam
+d_199_shru_12,20220628,Adam,4,_litter,98,,Adam
+d_199_shru_12,20220628,Adam,4,_bare,2,,Adam
+d_199_shru_12,20220628,Adam,4,brte,0.5,15,Adam
+d_199_shru_12,20220628,Adam,4,kosc,0.5,6,Adam
+d_199_shru_12,20220628,Adam,4,satr,1,10,Adam
+d_199_shru_12,20220628,Adam,4,elre,2,24,Adam
+d_199_shru_12,20220628,Adam,4,mesa,0.5,31,Adam
+d_199_shru_12,20220628,Adam,999,pola,0.5,,Adam
+d_199_shru_12,20220628,Adam,999,sece,0.5,,Adam
+d_199_shru_12,20220628,Adam,999,sial,0.5,,Adam
+d_200_shru_12,20220628,Adam,1,_litter,98,,Adam
+d_200_shru_12,20220628,Adam,1,_bare,2,,Adam
+d_200_shru_12,20220628,Adam,1,brte,8,20,Adam
+d_200_shru_12,20220628,Adam,1,kosc,2,10,Adam
+d_200_shru_12,20220628,Adam,1,satr,10,9,Adam
+d_200_shru_12,20220628,Adam,2,_litter,100,,Adam
+d_200_shru_12,20220628,Adam,2,_bare,0,,Adam
+d_200_shru_12,20220628,Adam,2,brte,11,32,Adam
+d_200_shru_12,20220628,Adam,2,kosc,14,11,Adam
+d_200_shru_12,20220628,Adam,2,satr,3,4,Adam
+d_200_shru_12,20220628,Adam,2,elre,3,27,Adam
+d_200_shru_12,20220628,Adam,2,atca,45,121,Adam
+d_200_shru_12,20220628,Adam,3,_litter,100,,Adam
+d_200_shru_12,20220628,Adam,3,_bare,0,,Adam
+d_200_shru_12,20220628,Adam,3,brte,8,21,Adam
+d_200_shru_12,20220628,Adam,3,kosc,7,17,Adam
+d_200_shru_12,20220628,Adam,3,satr,2,19,Adam
+d_200_shru_12,20220628,Adam,3,elre,1,25,Adam
+d_200_shru_12,20220628,Adam,3,atca,30,130,Adam
+d_200_shru_12,20220628,Adam,4,_litter,96,,Adam
+d_200_shru_12,20220628,Adam,4,_bare,4,,Adam
+d_200_shru_12,20220628,Adam,4,brte,8,34,Adam
+d_200_shru_12,20220628,Adam,4,kosc,3,22,Adam
+d_200_shru_12,20220628,Adam,4,satr,3,15,Adam
+d_200_shru_12,20220628,Adam,4,elre,5,17,Adam
+d_200_shru_12,20220628,Adam,999,deso,0.5,,Adam
+d_200_shru_12,20220628,Adam,999,sial,0.5,,Adam
+d_200_shru_12,20220628,Adam,999,sece,0.5,,Adam
+d_201_shru_12,20220628,Adam,1,_litter,85,,Adam
+d_201_shru_12,20220628,Adam,1,_bare,15,,Adam
+d_201_shru_12,20220628,Adam,1,kosc,3,10,Adam
+d_201_shru_12,20220628,Adam,1,satr,16,7,Adam
+d_201_shru_12,20220628,Adam,1,elre,5,9,Adam
+d_201_shru_12,20220628,Adam,2,_litter,95,,Adam
+d_201_shru_12,20220628,Adam,2,_bare,5,,Adam
+d_201_shru_12,20220628,Adam,2,kosc,1,9,Adam
+d_201_shru_12,20220628,Adam,2,satr,3,7,Adam
+d_201_shru_12,20220628,Adam,2,elre,8,30,Adam
+d_201_shru_12,20220628,Adam,2,brte,4,36,Adam
+d_201_shru_12,20220628,Adam,3,_litter,25,,Adam
+d_201_shru_12,20220628,Adam,3,_bare,75,,Adam
+d_201_shru_12,20220628,Adam,3,kosc,3,20,Adam
+d_201_shru_12,20220628,Adam,3,satr,6,11,Adam
+d_201_shru_12,20220628,Adam,3,brte,0.5,20,Adam
+d_201_shru_12,20220628,Adam,3,mesa,3,37,Adam
+d_201_shru_12,20220628,Adam,4,_litter,85,,Adam
+d_201_shru_12,20220628,Adam,4,_bare,15,,Adam
+d_201_shru_12,20220628,Adam,4,kosc,1,12,Adam
+d_201_shru_12,20220628,Adam,4,satr,7,9,Adam
+d_201_shru_12,20220628,Adam,4,elre,3,16,Adam
+d_201_shru_12,20220628,Adam,4,brte,3,26,Adam
+d_201_shru_12,20220628,Adam,999,atca,0.5,,Adam
+d_201_shru_12,20220628,Adam,999,deso,0.5,,Adam
+d_201_shru_12,20220628,Adam,999,bocu,0.5,,Adam
+d_175_herb_11,20220628,Adam,1,_litter,100,,Adam
+d_175_herb_11,20220628,Adam,1,_bare,0,,Adam
+d_175_herb_11,20220628,Adam,1,brte,7,23,Adam
+d_175_herb_11,20220628,Adam,1,kosc,3,12,Adam
+d_175_herb_11,20220628,Adam,1,satr,0.5,5,Adam
+d_175_herb_11,20220628,Adam,1,elre,1,21,Adam
+d_175_herb_11,20220628,Adam,2,_litter,100,,Adam
+d_175_herb_11,20220628,Adam,2,_bare,0,,Adam
+d_175_herb_11,20220628,Adam,2,brte,9,15,Adam
+d_175_herb_11,20220628,Adam,2,kosc,8,12,Adam
+d_175_herb_11,20220628,Adam,2,satr,5,11,Adam
+d_175_herb_11,20220628,Adam,2,sece,1,34,Adam
+d_175_herb_11,20220628,Adam,2,sial,0.5,24,Adam
+d_175_herb_11,20220628,Adam,3,_litter,100,,Adam
+d_175_herb_11,20220628,Adam,3,_bare,0,,Adam
+d_175_herb_11,20220628,Adam,3,brte,11,17,Adam
+d_175_herb_11,20220628,Adam,3,kosc,10,9,Adam
+d_175_herb_11,20220628,Adam,3,satr,0.5,6,Adam
+d_175_herb_11,20220628,Adam,3,bogr,3,8,Adam
+d_175_herb_11,20220628,Adam,4,_litter,95,,Adam
+d_175_herb_11,20220628,Adam,4,_bare,5,,Adam
+d_175_herb_11,20220628,Adam,4,brte,9,21,Adam
+d_175_herb_11,20220628,Adam,4,kosc,3,10,Adam
+d_175_herb_11,20220628,Adam,4,satr,2,14,Adam
+d_175_herb_11,20220628,Adam,4,elre,1,20,Adam
+d_175_herb_11,20220628,Adam,999,mesa,0.5,,Adam
+d_175_herb_11,20220628,Adam,999,upg4,0.5,,Adam
+d_175_herb_11,20220628,Adam,999,bocu,0.5,,Adam
+d_175_herb_11,20220628,Adam,999,deso,0.5,,Adam
+d_175_herb_11,20220628,Adam,999,coar,0.5,,Adam
+d_174_herb_11,20220628,Adam,1,_litter,100,,Adam
+d_174_herb_11,20220628,Adam,1,_bare,0,,Adam
+d_174_herb_11,20220628,Adam,1,brte,2,15,Adam
+d_174_herb_11,20220628,Adam,1,kosc,4,12,Adam
+d_174_herb_11,20220628,Adam,1,satr,2,4,Adam
+d_174_herb_11,20220628,Adam,1,sece,0.5,37,Adam
+d_174_herb_11,20220628,Adam,2,_litter,92,,Adam
+d_174_herb_11,20220628,Adam,2,_bare,8,,Adam
+d_174_herb_11,20220628,Adam,2,kosc,2,15,Adam
+d_174_herb_11,20220628,Adam,2,satr,4,19,Adam
+d_174_herb_11,20220628,Adam,2,elre,3,26,Adam
+d_174_herb_11,20220628,Adam,3,_litter,85,,Adam
+d_174_herb_11,20220628,Adam,3,_bare,15,,Adam
+d_174_herb_11,20220628,Adam,3,brte,2,10,Adam
+d_174_herb_11,20220628,Adam,3,kosc,11,12,Adam
+d_174_herb_11,20220628,Adam,3,satr,2,12,Adam
+d_174_herb_11,20220628,Adam,3,elre,3,30,Adam
+d_174_herb_11,20220628,Adam,4,_litter,80,,Adam
+d_174_herb_11,20220628,Adam,4,_bare,20,,Adam
+d_174_herb_11,20220628,Adam,4,brte,4,21,Adam
+d_174_herb_11,20220628,Adam,4,kosc,3,8,Adam
+d_174_herb_11,20220628,Adam,4,satr,5,8,Adam
+d_174_herb_11,20220628,Adam,4,elre,4,39,Adam
+d_174_herb_11,20220628,Adam,999,bogr,0.5,,Adam
+d_174_herb_11,20220628,Adam,999,bocu,0.5,,Adam
+d_174_herb_11,20220628,Adam,999,navi,0.5,,Adam
+d_174_herb_11,20220628,Adam,999,mesa,0.5,,Adam
+d_173_herb_11,20220628,Adam,1,_litter,95,,Adam
+d_173_herb_11,20220628,Adam,1,_bare,5,,Adam
+d_173_herb_11,20220628,Adam,1,brte,1,16,Adam
+d_173_herb_11,20220628,Adam,1,kosc,7,8,Adam
+d_173_herb_11,20220628,Adam,1,satr,5,8,Adam
+d_173_herb_11,20220628,Adam,1,bogr,7,56,Adam
+d_173_herb_11,20220628,Adam,2,_litter,100,,Adam
+d_173_herb_11,20220628,Adam,2,_bare,0,,Adam
+d_173_herb_11,20220628,Adam,2,brte,1,10,Adam
+d_173_herb_11,20220628,Adam,2,kosc,1,5,Adam
+d_173_herb_11,20220628,Adam,2,satr,3,6,Adam
+d_173_herb_11,20220628,Adam,2,bocu,20,84,Adam
+d_173_herb_11,20220628,Adam,3,_litter,92,,Adam
+d_173_herb_11,20220628,Adam,3,_bare,8,,Adam
+d_173_herb_11,20220628,Adam,3,kosc,1,4,Adam
+d_173_herb_11,20220628,Adam,3,satr,6,12,Adam
+d_173_herb_11,20220628,Adam,3,bogr,19,37,Adam
+d_173_herb_11,20220628,Adam,4,_litter,10,,Adam
+d_173_herb_11,20220628,Adam,4,_bare,90,,Adam
+d_173_herb_11,20220628,Adam,4,kosc,1,11,Adam
+d_173_herb_11,20220628,Adam,4,satr,10,9,Adam
+d_173_herb_11,20220628,Adam,4,elre,1,25,Adam
+d_173_herb_11,20220628,Adam,999,sece,0.5,,Adam
+d_173_herb_11,20220628,Adam,999,upg4,0.5,,Adam
+d_173_herb_11,20220628,Adam,999,sphe,0.5,,Adam
+d_173_herb_11,20220628,Adam,999,navi,0.5,,Adam
+d_173_herb_11,20220628,Adam,999,sial,0.5,,Adam
+d_173_herb_11,20220628,Adam,999,mesa,0.5,,Adam
+d_173_herb_11,20220628,Adam,999,coar,0.5,,Adam
+d_172_herb_11,20220628,Adam,1,_litter,98,,Adam
+d_172_herb_11,20220628,Adam,1,_bare,2,,Adam
+d_172_herb_11,20220628,Adam,1,satr,1,6,Adam
+d_172_herb_11,20220628,Adam,1,bocu,17,32,Adam
+d_172_herb_11,20220628,Adam,2,_litter,94,,Adam
+d_172_herb_11,20220628,Adam,2,_bare,6,,Adam
+d_172_herb_11,20220628,Adam,2,satr,4,19,Adam
+d_172_herb_11,20220628,Adam,2,bocu,14,29,Adam
+d_172_herb_11,20220628,Adam,2,brte,1,22,Adam
+d_172_herb_11,20220628,Adam,3,_litter,40,,Adam
+d_172_herb_11,20220628,Adam,3,_bare,60,,Adam
+d_172_herb_11,20220628,Adam,3,satr,2,7,Adam
+d_172_herb_11,20220628,Adam,3,brte,2,18,Adam
+d_172_herb_11,20220628,Adam,3,kosc,8,12,Adam
+d_172_herb_11,20220628,Adam,4,_litter,100,,Adam
+d_172_herb_11,20220628,Adam,4,_bare,0,,Adam
+d_172_herb_11,20220628,Adam,4,satr,5,12,Adam
+d_172_herb_11,20220628,Adam,4,brte,6,21,Adam
+d_172_herb_11,20220628,Adam,4,mesa,0.5,46,Adam
+d_172_herb_11,20220628,Adam,4,elre,1,24,Adam
+d_172_herb_11,20220628,Adam,999,navi,0.5,,Adam
+d_172_herb_11,20220628,Adam,999,sial,0.5,,Adam
+d_172_herb_11,20220628,Adam,999,brin,0.5,,Adam
+d_172_herb_11,20220628,Adam,999,sphe,0.5,,Adam
+d_176_herb_11,20220627,Adam,1,_litter,99,,Adam
+d_176_herb_11,20220627,Adam,1,_bare,1,,Adam
+d_176_herb_11,20220627,Adam,1,brte,3,29,Adam
+d_176_herb_11,20220627,Adam,1,kosc,20,10,Adam
+d_176_herb_11,20220627,Adam,1,satr,0.5,8,Adam
+d_176_herb_11,20220627,Adam,1,coar,2,9,Adam
+d_176_herb_11,20220627,Adam,2,_litter,80,,Adam
+d_176_herb_11,20220627,Adam,2,_bare,20,,Adam
+d_176_herb_11,20220627,Adam,2,brte,6,36,Adam
+d_176_herb_11,20220627,Adam,2,kosc,11,8,Adam
+d_176_herb_11,20220627,Adam,2,satr,0.5,9,Adam
+d_176_herb_11,20220627,Adam,2,coar,2,9,Adam
+d_176_herb_11,20220627,Adam,3,_litter,100,,Adam
+d_176_herb_11,20220627,Adam,3,_bare,0,,Adam
+d_176_herb_11,20220627,Adam,3,brte,3,16,Adam
+d_176_herb_11,20220627,Adam,3,kosc,13,9,Adam
+d_176_herb_11,20220627,Adam,3,satr,0.5,11,Adam
+d_176_herb_11,20220627,Adam,3,coar,3,13,Adam
+d_176_herb_11,20220627,Adam,4,_litter,85,,Adam
+d_176_herb_11,20220627,Adam,4,_bare,15,,Adam
+d_176_herb_11,20220627,Adam,4,brte,4,11,Adam
+d_176_herb_11,20220627,Adam,4,kosc,11,8,Adam
+d_176_herb_11,20220627,Adam,4,satr,1,8,Adam
+d_176_herb_11,20220627,Adam,4,coar,2,8,Adam
+d_176_herb_11,20220627,Adam,4,navi,0.5,30,Adam
+d_176_herb_11,20220627,Adam,999,sece,0.5,,Adam
+d_176_herb_11,20220627,Adam,999,bocu,0.5,,Adam
+d_176_herb_11,20220627,Adam,999,elre,0.5,,Adam
+d_176_herb_11,20220627,Adam,999,sial,0.5,,Adam
+d_176_herb_11,20220627,Adam,999,mesa,0.5,,Adam
+d_177_herb_11,20220627,Adam,1,_litter,85,,Adam
+d_177_herb_11,20220627,Adam,1,_bare,5,,Adam
+d_177_herb_11,20220627,Adam,1,satr,3,10,Adam
+d_177_herb_11,20220627,Adam,1,kosc,8,20,Adam
+d_177_herb_11,20220627,Adam,1,bocu,16,82,Adam
+d_177_herb_11,20220627,Adam,1,sial,0.5,8,Adam
+d_177_herb_11,20220627,Adam,2,_litter,93,,Adam
+d_177_herb_11,20220627,Adam,2,_bare,7,,Adam
+d_177_herb_11,20220627,Adam,2,satr,4,20,Adam
+d_177_herb_11,20220627,Adam,2,kosc,12,20,Adam
+d_177_herb_11,20220627,Adam,2,bocu,1,85,Adam
+d_177_herb_11,20220627,Adam,2,mesa,1,23,Adam
+d_177_herb_11,20220627,Adam,3,_litter,100,,Adam
+d_177_herb_11,20220627,Adam,3,_bare,0,,Adam
+d_177_herb_11,20220627,Adam,3,satr,5,20,Adam
+d_177_herb_11,20220627,Adam,3,bocu,7,83,Adam
+d_177_herb_11,20220627,Adam,3,mesa,3,53,Adam
+d_177_herb_11,20220627,Adam,3,elre,4,37,Adam
+d_177_herb_11,20220627,Adam,4,_litter,98,,Adam
+d_177_herb_11,20220627,Adam,4,_bare,2,,Adam
+d_177_herb_11,20220627,Adam,4,satr,1,21,Adam
+d_177_herb_11,20220627,Adam,4,kosc,1,20,Adam
+d_177_herb_11,20220627,Adam,4,bocu,7,49,Adam
+d_177_herb_11,20220627,Adam,4,mesa,13,40,Adam
+d_177_herb_11,20220627,Adam,4,elre,0.5,21,Adam
+d_177_herb_11,20220627,Adam,4,brte,1,20,Adam
+d_177_herb_11,20220627,Adam,999,sphe,0.5,,Adam
+d_177_herb_11,20220627,Adam,999,navi,0.5,,Adam
+d_177_herb_11,20220627,Adam,999,upg4,0.5,,Adam
+d_178_herb_11,20220627,Adam,1,_litter,100,,Adam
+d_178_herb_11,20220627,Adam,1,_bare,0,,Adam
+d_178_herb_11,20220627,Adam,1,brte,4,22,Adam
+d_178_herb_11,20220627,Adam,1,elre,14,35,Adam
+d_178_herb_11,20220627,Adam,1,kosc,4,11,Adam
+d_178_herb_11,20220627,Adam,1,satr,1,3,Adam
+d_178_herb_11,20220627,Adam,1,mesa,6,58,Adam
+d_178_herb_11,20220627,Adam,2,_litter,85,,Adam
+d_178_herb_11,20220627,Adam,2,_bare,15,,Adam
+d_178_herb_11,20220627,Adam,2,brte,8,24,Adam
+d_178_herb_11,20220627,Adam,2,kosc,9,20,Adam
+d_178_herb_11,20220627,Adam,2,satr,2,7,Adam
+d_178_herb_11,20220627,Adam,3,_litter,96,,Adam
+d_178_herb_11,20220627,Adam,3,_bare,4,,Adam
+d_178_herb_11,20220627,Adam,3,brte,4,24,Adam
+d_178_herb_11,20220627,Adam,3,elre,3,34,Adam
+d_178_herb_11,20220627,Adam,3,kosc,4,9,Adam
+d_178_herb_11,20220627,Adam,3,satr,1,6,Adam
+d_178_herb_11,20220627,Adam,4,_litter,60,,Adam
+d_178_herb_11,20220627,Adam,4,_bare,40,,Adam
+d_178_herb_11,20220627,Adam,4,brte,0.5,25,Adam
+d_178_herb_11,20220627,Adam,4,elre,7,22,Adam
+d_178_herb_11,20220627,Adam,4,kosc,2,17,Adam
+d_178_herb_11,20220627,Adam,4,satr,2,11,Adam
+d_178_herb_11,20220627,Adam,999,bocu,0.5,,Adam
+d_178_herb_11,20220627,Adam,999,sece,0.5,,Adam
+d_178_herb_11,20220627,Adam,999,brin,0.5,,Adam
+d_179_herb_11,20220627,Adam,1,_litter,95,,Adam
+d_179_herb_11,20220627,Adam,1,_bare,5,,Adam
+d_179_herb_11,20220627,Adam,1,brte,7,20,Adam
+d_179_herb_11,20220627,Adam,1,satr,3,13,Adam
+d_179_herb_11,20220627,Adam,1,bocu,20,30,Adam
+d_179_herb_11,20220627,Adam,2,_litter,25,,Adam
+d_179_herb_11,20220627,Adam,2,_bare,75,,Adam
+d_179_herb_11,20220627,Adam,2,satr,4,11,Adam
+d_179_herb_11,20220627,Adam,2,elre,4,41,Adam
+d_179_herb_11,20220627,Adam,2,kosc,0.5,6,Adam
+d_179_herb_11,20220627,Adam,3,_litter,99,,Adam
+d_179_herb_11,20220627,Adam,3,_bare,1,,Adam
+d_179_herb_11,20220627,Adam,3,satr,0.5,9,Adam
+d_179_herb_11,20220627,Adam,3,mesa,2,12,Adam
+d_179_herb_11,20220627,Adam,3,elre,24,38,Adam
+d_179_herb_11,20220627,Adam,4,_litter,85,,Adam
+d_179_herb_11,20220627,Adam,4,_bare,15,,Adam
+d_179_herb_11,20220627,Adam,4,brte,11,19,Adam
+d_179_herb_11,20220627,Adam,4,satr,7,10,Adam
+d_179_herb_11,20220627,Adam,4,kosc,0.5,9,Adam
+d_179_herb_11,20220627,Adam,999,sece,0.5,,Adam
+d_179_herb_11,20220627,Adam,999,erna,0.5,,Adam
+d_179_herb_11,20220627,Adam,999,sial,0.5,,Adam
+d_179_herb_11,20220627,Adam,999,upg4,0.5,,Adam
+d_179_herb_11,20220627,Adam,999,navi,0.5,,Adam
+d_163_shru_10,20220627,Adam,1,_litter,50,,Adam
+d_163_shru_10,20220627,Adam,1,_bare,50,,Adam
+d_163_shru_10,20220627,Adam,1,elre,5,18,Adam
+d_163_shru_10,20220627,Adam,1,kosc,2,14,Adam
+d_163_shru_10,20220627,Adam,1,satr,5,12,Adam
+d_163_shru_10,20220627,Adam,2,_litter,100,,Adam
+d_163_shru_10,20220627,Adam,2,_bare,0,,Adam
+d_163_shru_10,20220627,Adam,2,elre,10,20,Adam
+d_163_shru_10,20220627,Adam,2,kosc,5,11,Adam
+d_163_shru_10,20220627,Adam,2,satr,3,15,Adam
+d_163_shru_10,20220627,Adam,2,brte,3,37,Adam
+d_163_shru_10,20220627,Adam,2,bocu,10,15,Adam
+d_163_shru_10,20220627,Adam,2,sece,0,43,Adam
+d_163_shru_10,20220627,Adam,3,_litter,100,,Adam
+d_163_shru_10,20220627,Adam,3,_bare,0,,Adam
+d_163_shru_10,20220627,Adam,3,elre,16,24,Adam
+d_163_shru_10,20220627,Adam,3,kosc,2,12,Adam
+d_163_shru_10,20220627,Adam,3,satr,2,10,Adam
+d_163_shru_10,20220627,Adam,3,brte,1,23,Adam
+d_163_shru_10,20220627,Adam,3,sece,0.5,42,Adam
+d_163_shru_10,20220627,Adam,4,_litter,100,,Adam
+d_163_shru_10,20220627,Adam,4,_bare,0,,Adam
+d_163_shru_10,20220627,Adam,4,elre,1,19,Adam
+d_163_shru_10,20220627,Adam,4,kosc,0.5,7,Adam
+d_163_shru_10,20220627,Adam,4,satr,7,9,Adam
+d_163_shru_10,20220627,Adam,4,brte,6,17,Adam
+d_163_shru_10,20220627,Adam,4,sece,0.5,39,Adam
+d_163_shru_10,20220627,Adam,999,atca,0.5,,Adam
+d_163_shru_10,20220627,Adam,999,mesa,0.5,,Adam
+d_164_shru_10,20220627,Adam,1,_litter,90,,Adam
+d_164_shru_10,20220627,Adam,1,_bare,10,,Adam
+d_164_shru_10,20220627,Adam,1,elre,25,30,Adam
+d_164_shru_10,20220627,Adam,1,kosc,2,7,Adam
+d_164_shru_10,20220627,Adam,1,satr,2,9,Adam
+d_164_shru_10,20220627,Adam,1,atca,13,142,Adam
+d_164_shru_10,20220627,Adam,1,sece,0.5,35,Adam
+d_164_shru_10,20220627,Adam,2,_litter,45,,Adam
+d_164_shru_10,20220627,Adam,2,_bare,55,,Adam
+d_164_shru_10,20220627,Adam,2,elre,1,35,Adam
+d_164_shru_10,20220627,Adam,2,kosc,0.5,5,Adam
+d_164_shru_10,20220627,Adam,2,satr,6,13,Adam
+d_164_shru_10,20220627,Adam,3,_litter,95,,Adam
+d_164_shru_10,20220627,Adam,3,_bare,5,,Adam
+d_164_shru_10,20220627,Adam,3,elre,12,28,Adam
+d_164_shru_10,20220627,Adam,3,kosc,5,15,Adam
+d_164_shru_10,20220627,Adam,3,satr,8,10,Adam
+d_164_shru_10,20220627,Adam,4,_litter,50,,Adam
+d_164_shru_10,20220627,Adam,4,_bare,50,,Adam
+d_164_shru_10,20220627,Adam,4,elre,3,17,Adam
+d_164_shru_10,20220627,Adam,4,kosc,4,11,Adam
+d_164_shru_10,20220627,Adam,4,satr,6,7,Adam
+d_164_shru_10,20220627,Adam,999,sial,0.5,,Adam
+d_164_shru_10,20220627,Adam,999,deso,0.5,,Adam
+d_164_shru_10,20220627,Adam,999,chbe,0.5,,Adam
+d_165_shru_10,20220627,Adam,1,_litter,35,,Adam
+d_165_shru_10,20220627,Adam,1,_bare,65,,Adam
+d_165_shru_10,20220627,Adam,1,elre,4,17,Adam
+d_165_shru_10,20220627,Adam,1,satr,6,17,Adam
+d_165_shru_10,20220627,Adam,1,kosc,3,19,Adam
+d_165_shru_10,20220627,Adam,2,_litter,10,,Adam
+d_165_shru_10,20220627,Adam,2,_bare,90,,Adam
+d_165_shru_10,20220627,Adam,2,elre,1,14,Adam
+d_165_shru_10,20220627,Adam,2,satr,3,15,Adam
+d_165_shru_10,20220627,Adam,2,kosc,4,11,Adam
+d_165_shru_10,20220627,Adam,2,atca,0.5,125,Adam
+d_165_shru_10,20220627,Adam,3,_litter,80,,Adam
+d_165_shru_10,20220627,Adam,3,_bare,20,,Adam
+d_165_shru_10,20220627,Adam,3,elre,9,17,Adam
+d_165_shru_10,20220627,Adam,3,satr,7,8,Adam
+d_165_shru_10,20220627,Adam,3,kosc,8,11,Adam
+d_165_shru_10,20220627,Adam,4,_litter,75,,Adam
+d_165_shru_10,20220627,Adam,4,_bare,25,,Adam
+d_165_shru_10,20220627,Adam,4,elre,7,21,Adam
+d_165_shru_10,20220627,Adam,4,satr,2,11,Adam
+d_165_shru_10,20220627,Adam,4,kosc,3,12,Adam
+d_165_shru_10,20220627,Adam,999,mesa,0.5,,Adam
+d_165_shru_10,20220627,Adam,999,brte,0.5,,Adam
+d_165_shru_10,20220627,Adam,999,sece,0.5,,Adam
+d_165_shru_10,20220627,Adam,999,deso,0.5,,Adam
+d_165_shru_10,20220627,Adam,999,sphe,0.5,,Adam
+d_166_shru_10,20220627,Adam,1,_litter,95,,Adam
+d_166_shru_10,20220627,Adam,1,_bare,5,,Adam
+d_166_shru_10,20220627,Adam,1,elre,30,34,Adam
+d_166_shru_10,20220627,Adam,1,satr,1,12,Adam
+d_166_shru_10,20220627,Adam,1,sece,0.5,20,Adam
+d_166_shru_10,20220627,Adam,1,kosc,1,7,Adam
+d_166_shru_10,20220627,Adam,2,_litter,65,,Adam
+d_166_shru_10,20220627,Adam,2,_bare,35,,Adam
+d_166_shru_10,20220627,Adam,2,elre,8,31,Adam
+d_166_shru_10,20220627,Adam,2,satr,5,11,Adam
+d_166_shru_10,20220627,Adam,2,kosc,3,15,Adam
+d_166_shru_10,20220627,Adam,3,_litter,70,,Adam
+d_166_shru_10,20220627,Adam,3,_bare,30,,Adam
+d_166_shru_10,20220627,Adam,3,satr,7,8,Adam
+d_166_shru_10,20220627,Adam,3,sece,1,13,Adam
+d_166_shru_10,20220627,Adam,3,kosc,5,10,Adam
+d_166_shru_10,20220627,Adam,4,_litter,100,,Adam
+d_166_shru_10,20220627,Adam,4,_bare,0,,Adam
+d_166_shru_10,20220627,Adam,4,elre,6,21,Adam
+d_166_shru_10,20220627,Adam,4,kosc,10,10,Adam
+d_166_shru_10,20220627,Adam,4,mesa,6,23,Adam
+d_166_shru_10,20220627,Adam,999,brte,0.5,,Adam
+d_166_shru_10,20220627,Adam,999,atca,0.5,,Adam
+d_167_shru_10,20220627,Adam,1,_litter,93,,Adam
+d_167_shru_10,20220627,Adam,1,_bare,7,,Adam
+d_167_shru_10,20220627,Adam,1,elre,3,21,Adam
+d_167_shru_10,20220627,Adam,1,satr,0.5,4,Adam
+d_167_shru_10,20220627,Adam,1,kosc,13,17,Adam
+d_167_shru_10,20220627,Adam,2,_litter,100,,Adam
+d_167_shru_10,20220627,Adam,2,_bare,0,,Adam
+d_167_shru_10,20220627,Adam,2,elre,19,35,Adam
+d_167_shru_10,20220627,Adam,2,satr,0.5,8,Adam
+d_167_shru_10,20220627,Adam,2,kosc,5,16,Adam
+d_167_shru_10,20220627,Adam,2,mesa,15,65,Adam
+d_167_shru_10,20220627,Adam,3,_litter,65,,Adam
+d_167_shru_10,20220627,Adam,3,_bare,32,,Adam
+d_167_shru_10,20220627,Adam,3,elre,9,25,Adam
+d_167_shru_10,20220627,Adam,3,satr,7,12,Adam
+d_167_shru_10,20220627,Adam,3,kosc,7,22,Adam
+d_167_shru_10,20220627,Adam,3,_moss,3,,Adam
+d_167_shru_10,20220627,Adam,4,_litter,98,,Adam
+d_167_shru_10,20220627,Adam,4,_bare,2,,Adam
+d_167_shru_10,20220627,Adam,4,elre,3,33,Adam
+d_167_shru_10,20220627,Adam,4,satr,0.5,4,Adam
+d_167_shru_10,20220627,Adam,4,kosc,10,8,Adam
+d_167_shru_10,20220627,Adam,4,mesa,0.5,20,Adam
+d_167_shru_10,20220627,Adam,999,deso,0.5,,Adam
+d_167_shru_10,20220627,Adam,999,sial,0.5,,Adam
+d_167_shru_10,20220627,Adam,999,brte,0.5,,Adam
+d_168_shru_10,20220627,Adam,1,_litter,95,,Adam
+d_168_shru_10,20220627,Adam,1,_bare,5,,Adam
+d_168_shru_10,20220627,Adam,1,elre,7,31,Adam
+d_168_shru_10,20220627,Adam,1,kosc,10,5,Adam
+d_168_shru_10,20220627,Adam,1,satr,3,7,Adam
+d_168_shru_10,20220627,Adam,2,_litter,95,,Adam
+d_168_shru_10,20220627,Adam,2,_bare,5,,Adam
+d_168_shru_10,20220627,Adam,2,elre,2,16,Adam
+d_168_shru_10,20220627,Adam,2,kosc,1,11,Adam
+d_168_shru_10,20220627,Adam,2,satr,2,12,Adam
+d_168_shru_10,20220627,Adam,2,atca,7,120,Adam
+d_168_shru_10,20220627,Adam,3,_litter,98,,Adam
+d_168_shru_10,20220627,Adam,3,_bare,2,,Adam
+d_168_shru_10,20220627,Adam,3,elre,30,30,Adam
+d_168_shru_10,20220627,Adam,3,satr,1,8,Adam
+d_168_shru_10,20220627,Adam,3,mesa,15,65,Adam
+d_168_shru_10,20220627,Adam,4,_litter,100,,Adam
+d_168_shru_10,20220627,Adam,4,_bare,0,,Adam
+d_168_shru_10,20220627,Adam,4,elre,12,38,Adam
+d_168_shru_10,20220627,Adam,4,kosc,0.5,7,Adam
+d_168_shru_10,20220627,Adam,4,satr,1,9,Adam
+d_168_shru_10,20220627,Adam,4,mesa,3,65,Adam
+d_168_shru_10,20220627,Adam,999,sial,0.5,,Adam
+d_168_shru_10,20220627,Adam,999,deso,0.5,,Adam
+d_169_shru_10,20220627,Adam,1,_litter,80,,Adam
+d_169_shru_10,20220627,Adam,1,_bare,20,,Adam
+d_169_shru_10,20220627,Adam,1,satr,7,3,Adam
+d_169_shru_10,20220627,Adam,1,kosc,9,9,Adam
+d_169_shru_10,20220627,Adam,2,_litter,80,,Adam
+d_169_shru_10,20220627,Adam,2,_bare,20,,Adam
+d_169_shru_10,20220627,Adam,2,satr,7,6,Adam
+d_169_shru_10,20220627,Adam,2,kosc,9,9,Adam
+d_169_shru_10,20220627,Adam,3,_litter,100,,Adam
+d_169_shru_10,20220627,Adam,3,_bare,0,,Adam
+d_169_shru_10,20220627,Adam,3,satr,7,17,Adam
+d_169_shru_10,20220627,Adam,4,_litter,85,,Adam
+d_169_shru_10,20220627,Adam,4,_bare,15,,Adam
+d_169_shru_10,20220627,Adam,4,satr,9,6,Adam
+d_169_shru_10,20220627,Adam,4,kosc,1,7,Adam
+d_169_shru_10,20220627,Adam,4,mesa,0.5,36,Adam
+d_169_shru_10,20220627,Adam,4,elre,5,36,Adam
+d_169_shru_10,20220627,Adam,4,sece,0.5,44,Adam
+d_170_shru_10,20220627,Adam,1,_litter,96,,Adam
+d_170_shru_10,20220627,Adam,1,_bare,4,,Adam
+d_170_shru_10,20220627,Adam,1,brte,0.5,21,Adam
+d_170_shru_10,20220627,Adam,1,satr,9,17,Adam
+d_170_shru_10,20220627,Adam,1,elre,4,33,Adam
+d_170_shru_10,20220627,Adam,2,_litter,95,,Adam
+d_170_shru_10,20220627,Adam,2,_bare,5,,Adam
+d_170_shru_10,20220627,Adam,2,brte,0.5,42,Adam
+d_170_shru_10,20220627,Adam,2,satr,3,11,Adam
+d_170_shru_10,20220627,Adam,2,elre,10,31,Adam
+d_170_shru_10,20220627,Adam,2,kosc,2,12,Adam
+d_170_shru_10,20220627,Adam,3,_litter,93,,Adam
+d_170_shru_10,20220627,Adam,3,_bare,7,,Adam
+d_170_shru_10,20220627,Adam,3,satr,13,11,Adam
+d_170_shru_10,20220627,Adam,3,elre,18,53,Adam
+d_170_shru_10,20220627,Adam,3,kosc,1,9,Adam
+d_170_shru_10,20220627,Adam,4,_litter,100,,Adam
+d_170_shru_10,20220627,Adam,4,_bare,0,,Adam
+d_170_shru_10,20220627,Adam,4,brte,4,28,Adam
+d_170_shru_10,20220627,Adam,4,satr,14,17,Adam
+d_170_shru_10,20220627,Adam,4,elre,1,22,Adam
+d_170_shru_10,20220627,Adam,999,sece,0.5,,Adam
+d_170_shru_10,20220627,Adam,999,atca,0.5,,Adam
+d_170_shru_10,20220627,Adam,999,chbe,0.5,,Adam
+d_138_herb_09,20220627,Adam,1,_litter,95,,Adam
+d_138_herb_09,20220627,Adam,1,_bare,5,,Adam
+d_138_herb_09,20220627,Adam,1,brte,0.5,10,Adam
+d_138_herb_09,20220627,Adam,1,satr,2,7,Adam
+d_138_herb_09,20220627,Adam,1,kosc,1,13,Adam
+d_138_herb_09,20220627,Adam,1,navi,9,65,Adam
+d_138_herb_09,20220627,Adam,2,_litter,90,,Adam
+d_138_herb_09,20220627,Adam,2,_bare,10,,Adam
+d_138_herb_09,20220627,Adam,2,brte,3,19,Adam
+d_138_herb_09,20220627,Adam,2,satr,12,20,Adam
+d_138_herb_09,20220627,Adam,2,kosc,0.5,4,Adam
+d_138_herb_09,20220627,Adam,3,_litter,98,,Adam
+d_138_herb_09,20220627,Adam,3,_bare,2,,Adam
+d_138_herb_09,20220627,Adam,3,brte,4,22,Adam
+d_138_herb_09,20220627,Adam,3,satr,8,15,Adam
+d_138_herb_09,20220627,Adam,3,kosc,1,16,Adam
+d_138_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_138_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_138_herb_09,20220627,Adam,4,brte,11,31,Adam
+d_138_herb_09,20220627,Adam,4,satr,12,21,Adam
+d_138_herb_09,20220627,Adam,4,kosc,8,55,Adam
+d_138_herb_09,20220627,Adam,999,bocu,0.5,,Adam
+d_138_herb_09,20220627,Adam,999,upg4,0.5,,Adam
+d_138_herb_09,20220627,Adam,999,brin,0.5,,Adam
+d_139_herb_09,20220627,Adam,1,_litter,100,,Adam
+d_139_herb_09,20220627,Adam,1,_bare,0,,Adam
+d_139_herb_09,20220627,Adam,1,brte,4,28,Adam
+d_139_herb_09,20220627,Adam,1,satr,2,21,Adam
+d_139_herb_09,20220627,Adam,1,kosc,1,3,Adam
+d_139_herb_09,20220627,Adam,1,bocu,32,51,Adam
+d_139_herb_09,20220627,Adam,2,_litter,75,,Adam
+d_139_herb_09,20220627,Adam,2,_bare,25,,Adam
+d_139_herb_09,20220627,Adam,2,brte,5,20,Adam
+d_139_herb_09,20220627,Adam,2,satr,5,12,Adam
+d_139_herb_09,20220627,Adam,2,kosc,7,17,Adam
+d_139_herb_09,20220627,Adam,2,elre,1,26,Adam
+d_139_herb_09,20220627,Adam,3,_litter,100,,Adam
+d_139_herb_09,20220627,Adam,3,_bare,0,,Adam
+d_139_herb_09,20220627,Adam,3,brte,42,19,Adam
+d_139_herb_09,20220627,Adam,3,satr,3,14,Adam
+d_139_herb_09,20220627,Adam,3,kosc,1,4,Adam
+d_139_herb_09,20220627,Adam,3,sece,4,60,Adam
+d_139_herb_09,20220627,Adam,4,_litter,95,,Adam
+d_139_herb_09,20220627,Adam,4,_bare,5,,Adam
+d_139_herb_09,20220627,Adam,4,brte,5,30,Adam
+d_139_herb_09,20220627,Adam,4,satr,5,12,Adam
+d_139_herb_09,20220627,Adam,4,kosc,3,14,Adam
+d_139_herb_09,20220627,Adam,999,navi,0.5,,Adam
+d_140_herb_09,20220627,Adam,1,_litter,100,,Adam
+d_140_herb_09,20220627,Adam,1,_bare,0,,Adam
+d_140_herb_09,20220627,Adam,1,brte,16,25,Adam
+d_140_herb_09,20220627,Adam,1,kosc,4,30,Adam
+d_140_herb_09,20220627,Adam,2,_litter,95,,Adam
+d_140_herb_09,20220627,Adam,2,_bare,5,,Adam
+d_140_herb_09,20220627,Adam,2,brte,8,21,Adam
+d_140_herb_09,20220627,Adam,2,kosc,7,15,Adam
+d_140_herb_09,20220627,Adam,2,satr,0.5,4,Adam
+d_140_herb_09,20220627,Adam,2,elre,0.5,7,Adam
+d_140_herb_09,20220627,Adam,3,_litter,99,,Adam
+d_140_herb_09,20220627,Adam,3,_bare,1,,Adam
+d_140_herb_09,20220627,Adam,3,brte,8,17,Adam
+d_140_herb_09,20220627,Adam,3,kosc,3,22,Adam
+d_140_herb_09,20220627,Adam,3,satr,1,10,Adam
+d_140_herb_09,20220627,Adam,3,bocu,18,22,Adam
+d_140_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_140_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_140_herb_09,20220627,Adam,4,brte,20,19,Adam
+d_140_herb_09,20220627,Adam,4,kosc,1,9,Adam
+d_140_herb_09,20220627,Adam,4,sece,1,36,Adam
+d_141_herb_09,20220627,Adam,1,_litter,30,,Adam
+d_141_herb_09,20220627,Adam,1,_bare,70,,Adam
+d_141_herb_09,20220627,Adam,1,brte,7,15,Adam
+d_141_herb_09,20220627,Adam,1,satr,3,12,Adam
+d_141_herb_09,20220627,Adam,1,kosc,4,13,Adam
+d_141_herb_09,20220627,Adam,1,elre,6,21,Adam
+d_141_herb_09,20220627,Adam,1,upg4,3,23,Adam
+d_141_herb_09,20220627,Adam,2,_litter,80,,Adam
+d_141_herb_09,20220627,Adam,2,_bare,20,,Adam
+d_141_herb_09,20220627,Adam,2,satr,2,17,Adam
+d_141_herb_09,20220627,Adam,2,kosc,0.5,12,Adam
+d_141_herb_09,20220627,Adam,2,elre,2,14,Adam
+d_141_herb_09,20220627,Adam,2,upg4,40,25,Adam
+d_141_herb_09,20220627,Adam,3,_litter,10,,Adam
+d_141_herb_09,20220627,Adam,3,_bare,90,,Adam
+d_141_herb_09,20220627,Adam,3,brte,1,23,Adam
+d_141_herb_09,20220627,Adam,3,satr,2,6,Adam
+d_141_herb_09,20220627,Adam,3,kosc,3,20,Adam
+d_141_herb_09,20220627,Adam,3,elre,1,22,Adam
+d_141_herb_09,20220627,Adam,3,bocu,1,25,Adam
+d_141_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_141_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_141_herb_09,20220627,Adam,4,brte,4,15,Adam
+d_141_herb_09,20220627,Adam,4,satr,2,13,Adam
+d_141_herb_09,20220627,Adam,4,upg4,65,20,Adam
+d_141_herb_09,20220627,Adam,4,upfr,0.5,32,Adam
+d_141_herb_09,20220627,Adam,999,hevi,0.5,,Adam
+d_141_herb_09,20220627,Adam,999,brin,0.5,,Adam
+d_142_herb_09,20220627,Adam,1,_litter,80,,Adam
+d_142_herb_09,20220627,Adam,1,_bare,20,,Adam
+d_142_herb_09,20220627,Adam,1,brte,2,25,Adam
+d_142_herb_09,20220627,Adam,1,satr,8,19,Adam
+d_142_herb_09,20220627,Adam,1,kosc,1,8,Adam
+d_142_herb_09,20220627,Adam,1,bocu,8,41,Adam
+d_142_herb_09,20220627,Adam,1,elre,5,32,Adam
+d_142_herb_09,20220627,Adam,2,_litter,95,,Adam
+d_142_herb_09,20220627,Adam,2,_bare,5,,Adam
+d_142_herb_09,20220627,Adam,2,satr,2,23,Adam
+d_142_herb_09,20220627,Adam,2,kosc,1,20,Adam
+d_142_herb_09,20220627,Adam,2,elre,13,37,Adam
+d_142_herb_09,20220627,Adam,3,_litter,95,,Adam
+d_142_herb_09,20220627,Adam,3,_bare,5,,Adam
+d_142_herb_09,20220627,Adam,3,satr,1,15,Adam
+d_142_herb_09,20220627,Adam,3,kosc,1,11,Adam
+d_142_herb_09,20220627,Adam,3,bocu,38,21,Adam
+d_142_herb_09,20220627,Adam,3,elre,1,40,Adam
+d_142_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_142_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_142_herb_09,20220627,Adam,4,brte,1,17,Adam
+d_142_herb_09,20220627,Adam,4,satr,2,20,Adam
+d_142_herb_09,20220627,Adam,4,kosc,2,22,Adam
+d_142_herb_09,20220627,Adam,4,bocu,7,23,Adam
+d_142_herb_09,20220627,Adam,4,sphe,12,70,Adam
+d_142_herb_09,20220627,Adam,999,navi,0.5,,Adam
+d_142_herb_09,20220627,Adam,999,sial,0.5,,Adam
+d_142_herb_09,20220627,Adam,999,upg4,0.5,,Adam
+d_142_herb_09,20220627,Adam,999,mesa,0.5,,Adam
+d_142_herb_09,20220627,Adam,999,hean,0.5,,Adam
+d_143_herb_09,20220627,Adam,1,_litter,100,,Adam
+d_143_herb_09,20220627,Adam,1,_bare,0,,Adam
+d_143_herb_09,20220627,Adam,1,brte,8,20,Adam
+d_143_herb_09,20220627,Adam,1,kosc,16,5,Adam
+d_143_herb_09,20220627,Adam,1,satr,0.5,9,Adam
+d_143_herb_09,20220627,Adam,2,_litter,100,,Adam
+d_143_herb_09,20220627,Adam,2,_bare,0,,Adam
+d_143_herb_09,20220627,Adam,2,brte,33,40,Adam
+d_143_herb_09,20220627,Adam,2,kosc,4,16,Adam
+d_143_herb_09,20220627,Adam,2,satr,1,8,Adam
+d_143_herb_09,20220627,Adam,3,_litter,100,,Adam
+d_143_herb_09,20220627,Adam,3,_bare,0,,Adam
+d_143_herb_09,20220627,Adam,3,brte,8,17,Adam
+d_143_herb_09,20220627,Adam,3,kosc,13,10,Adam
+d_143_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_143_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_143_herb_09,20220627,Adam,4,brte,7,18,Adam
+d_143_herb_09,20220627,Adam,4,kosc,3,17,Adam
+d_143_herb_09,20220627,Adam,4,satr,11,13,Adam
+d_143_herb_09,20220627,Adam,999,bocu,0.5,,Adam
+d_143_herb_09,20220627,Adam,999,sphe,0.5,,Adam
+d_143_herb_09,20220627,Adam,999,navi,0.5,,Adam
+d_144_herb_09,20220627,Adam,1,_litter,100,,Adam
+d_144_herb_09,20220627,Adam,1,_bare,0,,Adam
+d_144_herb_09,20220627,Adam,1,bocu,90,25,Adam
+d_144_herb_09,20220627,Adam,2,_litter,100,,Adam
+d_144_herb_09,20220627,Adam,2,_bare,0,,Adam
+d_144_herb_09,20220627,Adam,2,mesa,23,41,Adam
+d_144_herb_09,20220627,Adam,2,satr,4,30,Adam
+d_144_herb_09,20220627,Adam,2,elre,5,17,Adam
+d_144_herb_09,20220627,Adam,2,brte,2,18,Adam
+d_144_herb_09,20220627,Adam,3,_litter,80,,Adam
+d_144_herb_09,20220627,Adam,3,_bare,20,,Adam
+d_144_herb_09,20220627,Adam,3,bocu,19,23,Adam
+d_144_herb_09,20220627,Adam,3,satr,3,17,Adam
+d_144_herb_09,20220627,Adam,3,brte,2,18,Adam
+d_144_herb_09,20220627,Adam,3,kosc,0.5,4,Adam
+d_144_herb_09,20220627,Adam,3,brse,1,10,Adam
+d_144_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_144_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_144_herb_09,20220627,Adam,4,bocu,32,29,Adam
+d_144_herb_09,20220627,Adam,4,satr,1,7,Adam
+d_144_herb_09,20220627,Adam,4,kosc,1,5,Adam
+d_144_herb_09,20220627,Adam,4,stpa,0.5,23,Adam
+d_144_herb_09,20220627,Adam,999,sphe,0.5,,Adam
+d_144_herb_09,20220627,Adam,999,hevi,0.5,,Adam
+d_145_herb_09,20220627,Adam,1,_litter,100,,Adam
+d_145_herb_09,20220627,Adam,1,_bare,0,,Adam
+d_145_herb_09,20220627,Adam,1,brte,8,40,Adam
+d_145_herb_09,20220627,Adam,1,kosc,3,9,Adam
+d_145_herb_09,20220627,Adam,1,mesa,1,15,Adam
+d_145_herb_09,20220627,Adam,2,_litter,100,,Adam
+d_145_herb_09,20220627,Adam,2,_bare,0,,Adam
+d_145_herb_09,20220627,Adam,2,brte,18,21,Adam
+d_145_herb_09,20220627,Adam,2,kosc,3,21,Adam
+d_145_herb_09,20220627,Adam,2,bocu,0.5,13,Adam
+d_145_herb_09,20220627,Adam,2,satr,0.5,6,Adam
+d_145_herb_09,20220627,Adam,3,_litter,100,,Adam
+d_145_herb_09,20220627,Adam,3,_bare,0,,Adam
+d_145_herb_09,20220627,Adam,3,brte,9,19,Adam
+d_145_herb_09,20220627,Adam,3,kosc,14,13,Adam
+d_145_herb_09,20220627,Adam,3,bocu,0.5,21,Adam
+d_145_herb_09,20220627,Adam,4,_litter,100,,Adam
+d_145_herb_09,20220627,Adam,4,_bare,0,,Adam
+d_145_herb_09,20220627,Adam,4,brte,6,39,Adam
+d_145_herb_09,20220627,Adam,4,kosc,3,9,Adam
+d_145_herb_09,20220627,Adam,4,mesa,13,25,Adam
+d_145_herb_09,20220627,Adam,4,satr,2,9,Adam
+d_145_herb_09,20220627,Adam,4,navi,7,28,Adam
+d_145_herb_09,20220627,Adam,999,sphe,0.5,,Adam
+d_145_herb_09,20220627,Adam,999,upg4,0.5,,Adam
+d_112_herb_07,20220627,Adam,1,_litter,100,,Adam
+d_112_herb_07,20220627,Adam,1,_bare,0,,Adam
+d_112_herb_07,20220627,Adam,1,brte,24,27,Adam
+d_112_herb_07,20220627,Adam,1,mesa,0.5,46,Adam
+d_112_herb_07,20220627,Adam,1,sece,0.5,33,Adam
+d_112_herb_07,20220627,Adam,2,_litter,100,,Adam
+d_112_herb_07,20220627,Adam,2,_bare,0,,Adam
+d_112_herb_07,20220627,Adam,2,brte,12,42,Adam
+d_112_herb_07,20220627,Adam,2,satr,9,15,Adam
+d_112_herb_07,20220627,Adam,2,kosc,1,13,Adam
+d_112_herb_07,20220627,Adam,2,elre,1,11,Adam
+d_112_herb_07,20220627,Adam,3,_litter,60,,Adam
+d_112_herb_07,20220627,Adam,3,_bare,40,,Adam
+d_112_herb_07,20220627,Adam,3,brte,3,21,Adam
+d_112_herb_07,20220627,Adam,3,satr,8,14,Adam
+d_112_herb_07,20220627,Adam,4,_litter,100,,Adam
+d_112_herb_07,20220627,Adam,4,_bare,0,,Adam
+d_112_herb_07,20220627,Adam,4,brte,8,46,Adam
+d_112_herb_07,20220627,Adam,4,satr,18,19,Adam
+d_112_herb_07,20220627,Adam,999,bogr,0.5,,Adam
+d_112_herb_07,20220627,Adam,999,sphe,0.5,,Adam
+d_129_shru_08,20220627,Adam,1,_litter,100,,Adam
+d_129_shru_08,20220627,Adam,1,_bare,0,,Adam
+d_129_shru_08,20220627,Adam,1,brte,40,48,Adam
+d_129_shru_08,20220627,Adam,1,satr,5,21,Adam
+d_129_shru_08,20220627,Adam,2,_litter,100,,Adam
+d_129_shru_08,20220627,Adam,2,_bare,0,,Adam
+d_129_shru_08,20220627,Adam,2,brte,48,52,Adam
+d_129_shru_08,20220627,Adam,2,kosc,21,32,Adam
+d_129_shru_08,20220627,Adam,3,_litter,100,,Adam
+d_129_shru_08,20220627,Adam,3,_bare,0,,Adam
+d_129_shru_08,20220627,Adam,3,brte,70,41,Adam
+d_129_shru_08,20220627,Adam,3,kosc,1,44,Adam
+d_129_shru_08,20220627,Adam,4,_litter,700,,Adam
+d_129_shru_08,20220627,Adam,4,_bare,0,,Adam
+d_129_shru_08,20220627,Adam,4,brte,43,20,Adam
+d_129_shru_08,20220627,Adam,4,kosc,30,39,Adam
+d_129_shru_08,20220627,Adam,999,sece,0.5,,Adam
+d_129_shru_08,20220627,Adam,999,mesa,0.5,,Adam
+d_130_shru_08,20220627,Adam,1,_litter,95,,Adam
+d_130_shru_08,20220627,Adam,1,_bare,5,,Adam
+d_130_shru_08,20220627,Adam,1,brte,0.5,21,Adam
+d_130_shru_08,20220627,Adam,1,satr,3,10,Adam
+d_130_shru_08,20220627,Adam,1,kosc,1,13,Adam
+d_130_shru_08,20220627,Adam,1,mesa,8,46,Adam
+d_130_shru_08,20220627,Adam,1,elre,2,30,Adam
+d_130_shru_08,20220627,Adam,2,_litter,40,,Adam
+d_130_shru_08,20220627,Adam,2,_bare,60,,Adam
+d_130_shru_08,20220627,Adam,2,satr,3,8,Adam
+d_130_shru_08,20220627,Adam,2,kosc,4,16,Adam
+d_130_shru_08,20220627,Adam,2,mesa,7,28,Adam
+d_130_shru_08,20220627,Adam,3,_litter,98,,Adam
+d_130_shru_08,20220627,Adam,3,_bare,2,,Adam
+d_130_shru_08,20220627,Adam,3,brte,1,45,Adam
+d_130_shru_08,20220627,Adam,3,satr,4,10,Adam
+d_130_shru_08,20220627,Adam,3,kosc,0.5,2,Adam
+d_130_shru_08,20220627,Adam,3,mesa,16,26,Adam
+d_130_shru_08,20220627,Adam,4,_litter,100,,Adam
+d_130_shru_08,20220627,Adam,4,_bare,0,,Adam
+d_130_shru_08,20220627,Adam,4,satr,1,13,Adam
+d_130_shru_08,20220627,Adam,4,mesa,1,4,Adam
+d_130_shru_08,20220627,Adam,4,brin,7,41,Adam
+d_130_shru_08,20220627,Adam,999,sial,0.5,,Adam
+d_131_shru_08,20220627,Adam,1,_litter,99,,Adam
+d_131_shru_08,20220627,Adam,1,_bare,0,,Adam
+d_131_shru_08,20220627,Adam,1,kosc,17,8,Adam
+d_131_shru_08,20220627,Adam,1,elre,4,28,Adam
+d_131_shru_08,20220627,Adam,1,atca,2,106,Adam
+d_131_shru_08,20220627,Adam,1,satr,2,6,Adam
+d_131_shru_08,20220627,Adam,1,_moss,1,,Adam
+d_131_shru_08,20220627,Adam,2,_litter,95,,Adam
+d_131_shru_08,20220627,Adam,2,_bare,5,,Adam
+d_131_shru_08,20220627,Adam,2,kosc,4,7,Adam
+d_131_shru_08,20220627,Adam,2,elre,18,22,Adam
+d_131_shru_08,20220627,Adam,2,satr,2,7,Adam
+d_131_shru_08,20220627,Adam,3,_litter,95,,Adam
+d_131_shru_08,20220627,Adam,3,_bare,5,,Adam
+d_131_shru_08,20220627,Adam,3,kosc,20,7,Adam
+d_131_shru_08,20220627,Adam,3,satr,2,6,Adam
+d_131_shru_08,20220627,Adam,4,_litter,70,,Adam
+d_131_shru_08,20220627,Adam,4,_bare,30,,Adam
+d_131_shru_08,20220627,Adam,4,kosc,11,9,Adam
+d_131_shru_08,20220627,Adam,4,elre,2,13,Adam
+d_131_shru_08,20220627,Adam,4,satr,3,9,Adam
+d_131_shru_08,20220627,Adam,999,brte,0.5,,Adam
+d_132_shru_08,20220627,Adam,1,_litter,40,,Adam
+d_132_shru_08,20220627,Adam,1,_bare,60,,Adam
+d_132_shru_08,20220627,Adam,1,kosc,10,16,Adam
+d_132_shru_08,20220627,Adam,1,satr,14,13,Adam
+d_132_shru_08,20220627,Adam,2,_litter,70,,Adam
+d_132_shru_08,20220627,Adam,2,_bare,30,,Adam
+d_132_shru_08,20220627,Adam,2,kosc,11,17,Adam
+d_132_shru_08,20220627,Adam,2,satr,2,13,Adam
+d_132_shru_08,20220627,Adam,3,_litter,70,,Adam
+d_132_shru_08,20220627,Adam,3,_bare,30,,Adam
+d_132_shru_08,20220627,Adam,3,kosc,13,25,Adam
+d_132_shru_08,20220627,Adam,3,satr,6,9,Adam
+d_132_shru_08,20220627,Adam,4,_litter,100,,Adam
+d_132_shru_08,20220627,Adam,4,_bare,0,,Adam
+d_132_shru_08,20220627,Adam,4,atca,90,107,Adam
+d_132_shru_08,20220627,Adam,999,brte,0.5,,Adam
+d_132_shru_08,20220627,Adam,999,sial,0.5,,Adam
+d_132_shru_08,20220627,Adam,999,elre,0.5,,Adam
+d_132_shru_08,20220627,Adam,999,bocu,0.5,,Adam
+d_132_shru_08,20220627,Adam,999,deso,0.5,,Adam
+d_133_shru_08,20220627,Adam,1,_litter,30,,Adam
+d_133_shru_08,20220627,Adam,1,_bare,70,,Adam
+d_133_shru_08,20220627,Adam,1,satr,25,10,Adam
+d_133_shru_08,20220627,Adam,1,kosc,4,8,Adam
+d_133_shru_08,20220627,Adam,2,_litter,60,,Adam
+d_133_shru_08,20220627,Adam,2,_bare,40,,Adam
+d_133_shru_08,20220627,Adam,2,satr,25,7,Adam
+d_133_shru_08,20220627,Adam,2,kosc,9,10,Adam
+d_133_shru_08,20220627,Adam,2,brte,1,16,Adam
+d_133_shru_08,20220627,Adam,3,_litter,70,,Adam
+d_133_shru_08,20220627,Adam,3,_bare,30,,Adam
+d_133_shru_08,20220627,Adam,3,satr,9,9,Adam
+d_133_shru_08,20220627,Adam,3,kosc,14,24,Adam
+d_133_shru_08,20220627,Adam,4,_litter,90,,Adam
+d_133_shru_08,20220627,Adam,4,_bare,10,,Adam
+d_133_shru_08,20220627,Adam,4,satr,5,30,Adam
+d_133_shru_08,20220627,Adam,4,kosc,5,18,Adam
+d_133_shru_08,20220627,Adam,4,brte,2,29,Adam
+d_133_shru_08,20220627,Adam,4,atca,90,78,Adam
+d_133_shru_08,20220627,Adam,999,bogr,0.5,,Adam
+d_133_shru_08,20220627,Adam,999,sial,0.5,,Adam
+d_133_shru_08,20220627,Adam,999,chbe,0.5,,Adam
+d_134_shru_08,20220627,Adam,1,_litter,100,,Adam
+d_134_shru_08,20220627,Adam,1,_bare,0,,Adam
+d_134_shru_08,20220627,Adam,1,brte,2,20,Adam
+d_134_shru_08,20220627,Adam,1,satr,4,11,Adam
+d_134_shru_08,20220627,Adam,1,kosc,2,28,Adam
+d_134_shru_08,20220627,Adam,1,mesa,20,28,Adam
+d_134_shru_08,20220627,Adam,1,elre,3,18,Adam
+d_134_shru_08,20220627,Adam,2,_litter,100,,Adam
+d_134_shru_08,20220627,Adam,2,_bare,0,,Adam
+d_134_shru_08,20220627,Adam,2,brte,2,19,Adam
+d_134_shru_08,20220627,Adam,2,satr,18,7,Adam
+d_134_shru_08,20220627,Adam,2,kosc,1,15,Adam
+d_134_shru_08,20220627,Adam,2,sece,0.5,92,Adam
+d_134_shru_08,20220627,Adam,3,_litter,95,,Adam
+d_134_shru_08,20220627,Adam,3,_bare,5,,Adam
+d_134_shru_08,20220627,Adam,3,brte,3,28,Adam
+d_134_shru_08,20220627,Adam,3,satr,6,14,Adam
+d_134_shru_08,20220627,Adam,3,kosc,6,21,Adam
+d_134_shru_08,20220627,Adam,3,elre,4,23,Adam
+d_134_shru_08,20220627,Adam,3,sece,2,60,Adam
+d_134_shru_08,20220627,Adam,4,_litter,70,,Adam
+d_134_shru_08,20220627,Adam,4,_bare,30,,Adam
+d_134_shru_08,20220627,Adam,4,brte,2,24,Adam
+d_134_shru_08,20220627,Adam,4,satr,5,25,Adam
+d_134_shru_08,20220627,Adam,4,kosc,2,24,Adam
+d_134_shru_08,20220627,Adam,4,elre,3,33,Adam
+d_134_shru_08,20220627,Adam,4,sece,1,61,Adam
+d_134_shru_08,20220627,Adam,999,deso,0.5,,Adam
+d_134_shru_08,20220627,Adam,999,chbe,0.5,,Adam
+d_135_shru_08,20220627,Adam,1,_litter,100,,Adam
+d_135_shru_08,20220627,Adam,1,_bare,0,,Adam
+d_135_shru_08,20220627,Adam,1,satr,3,17,Adam
+d_135_shru_08,20220627,Adam,1,elre,10,28,Adam
+d_135_shru_08,20220627,Adam,1,sece,22,43,Adam
+d_135_shru_08,20220627,Adam,2,_litter,100,,Adam
+d_135_shru_08,20220627,Adam,2,_bare,0,,Adam
+d_135_shru_08,20220627,Adam,2,satr,3,25,Adam
+d_135_shru_08,20220627,Adam,2,sece,15,120,Adam
+d_135_shru_08,20220627,Adam,2,kosc,3,57,Adam
+d_135_shru_08,20220627,Adam,3,_litter,100,,Adam
+d_135_shru_08,20220627,Adam,3,_bare,0,,Adam
+d_135_shru_08,20220627,Adam,3,satr,5,18,Adam
+d_135_shru_08,20220627,Adam,3,sece,4,74,Adam
+d_135_shru_08,20220627,Adam,3,mesa,23,51,Adam
+d_135_shru_08,20220627,Adam,4,_litter,100,,Adam
+d_135_shru_08,20220627,Adam,4,_bare,0,,Adam
+d_135_shru_08,20220627,Adam,4,satr,8,12,Adam
+d_135_shru_08,20220627,Adam,4,elre,3,12,Adam
+d_135_shru_08,20220627,Adam,4,sece,1,19,Adam
+d_135_shru_08,20220627,Adam,4,kosc,1,11,Adam
+d_135_shru_08,20220627,Adam,4,sial,1,12,Adam
+d_135_shru_08,20220627,Adam,999,hean,0.5,,Adam
+d_135_shru_08,20220627,Adam,999,bocu,0.5,,Adam
+d_135_shru_08,20220627,Adam,999,atca,0.5,,Adam
+d_087_shru_06,20220624,Adam & Jacob,1,_litter,20,,Adam
+d_087_shru_06,20220624,Adam & Jacob,1,_bare,80,,Adam
+d_087_shru_06,20220624,Adam & Jacob,1,satr,4,6,Adam
+d_087_shru_06,20220624,Adam & Jacob,1,kosc,5,8,Adam
+d_087_shru_06,20220624,Adam & Jacob,1,elre,2,45,Adam
+d_087_shru_06,20220624,Adam & Jacob,2,_litter,95,,Adam
+d_087_shru_06,20220624,Adam & Jacob,2,_bare,5,,Adam
+d_087_shru_06,20220624,Adam & Jacob,2,satr,2,9,Adam
+d_087_shru_06,20220624,Adam & Jacob,2,kosc,1,6,Adam
+d_087_shru_06,20220624,Adam & Jacob,2,elre,9,25,Adam
+d_087_shru_06,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_087_shru_06,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_087_shru_06,20220624,Adam & Jacob,3,satr,15,13,Adam
+d_087_shru_06,20220624,Adam & Jacob,3,kosc,6,15,Adam
+d_087_shru_06,20220624,Adam & Jacob,3,atca,18,115,Adam
+d_087_shru_06,20220624,Adam & Jacob,3,deso,1,28,Adam
+d_087_shru_06,20220624,Adam & Jacob,4,_litter,90,,Adam
+d_087_shru_06,20220624,Adam & Jacob,4,_bare,10,,Adam
+d_087_shru_06,20220624,Adam & Jacob,4,satr,0.5,7,Adam
+d_087_shru_06,20220624,Adam & Jacob,4,kosc,17,7,Adam
+d_087_shru_06,20220624,Adam & Jacob,4,elre,2,15,Adam
+d_087_shru_06,20220624,Adam & Jacob,999,hean,0.5,,Adam
+d_087_shru_06,20220624,Adam & Jacob,999,sial,0.5,,Adam
+d_087_shru_06,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_087_shru_06,20220624,Adam & Jacob,999,brte,0.5,,Adam
+d_088_shru_06,20220624,Adam & Jacob,1,_litter,60,,Adam
+d_088_shru_06,20220624,Adam & Jacob,1,_bare,40,,Adam
+d_088_shru_06,20220624,Adam & Jacob,1,kosc,14,11,Adam
+d_088_shru_06,20220624,Adam & Jacob,1,satr,1,11,Adam
+d_088_shru_06,20220624,Adam & Jacob,1,elre,3,15,Adam
+d_088_shru_06,20220624,Adam & Jacob,1,bogr,13,14,Adam
+d_088_shru_06,20220624,Adam & Jacob,2,_litter,1,,Adam
+d_088_shru_06,20220624,Adam & Jacob,2,_bare,99,,Adam
+d_088_shru_06,20220624,Adam & Jacob,2,kosc,9,15,Adam
+d_088_shru_06,20220624,Adam & Jacob,2,satr,1,7,Adam
+d_088_shru_06,20220624,Adam & Jacob,2,elre,6,16,Adam
+d_088_shru_06,20220624,Adam & Jacob,3,_litter,3,,Adam
+d_088_shru_06,20220624,Adam & Jacob,3,_bare,97,,Adam
+d_088_shru_06,20220624,Adam & Jacob,3,kosc,8,14,Adam
+d_088_shru_06,20220624,Adam & Jacob,3,satr,2,10,Adam
+d_088_shru_06,20220624,Adam & Jacob,3,elre,0.5,15,Adam
+d_088_shru_06,20220624,Adam & Jacob,4,_litter,95,,Adam
+d_088_shru_06,20220624,Adam & Jacob,4,_bare,5,,Adam
+d_088_shru_06,20220624,Adam & Jacob,4,kosc,21,5,Adam
+d_088_shru_06,20220624,Adam & Jacob,4,satr,1,4,Adam
+d_088_shru_06,20220624,Adam & Jacob,4,elre,2,12,Adam
+d_088_shru_06,20220624,Adam & Jacob,999,brte,0.5,,Adam
+d_088_shru_06,20220624,Adam & Jacob,999,sece,0.5,,Adam
+d_088_shru_06,20220624,Adam & Jacob,999,chbe,0.5,,Adam
+d_088_shru_06,20220624,Adam & Jacob,999,sial,0.5,,Adam
+d_088_shru_06,20220624,Adam & Jacob,999,erna,0.5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,1,_litter,80,,Adam
+d_089_shru_06,20220624,Adam & Jacob,1,_bare,20,,Adam
+d_089_shru_06,20220624,Adam & Jacob,1,satr,5,9,Adam
+d_089_shru_06,20220624,Adam & Jacob,1,kosc,4,10,Adam
+d_089_shru_06,20220624,Adam & Jacob,1,elre,0.5,18,Adam
+d_089_shru_06,20220624,Adam & Jacob,1,bocu,1,33,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,_litter,90,,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,_bare,10,,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,satr,12,11,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,kosc,1,10,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,elre,1,12,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,bocu,2,10,Adam
+d_089_shru_06,20220624,Adam & Jacob,2,atca,20,105,Adam
+d_089_shru_06,20220624,Adam & Jacob,3,_litter,5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,3,_bare,95,,Adam
+d_089_shru_06,20220624,Adam & Jacob,3,satr,11,10,Adam
+d_089_shru_06,20220624,Adam & Jacob,3,kosc,2,9,Adam
+d_089_shru_06,20220624,Adam & Jacob,3,elre,0.5,13,Adam
+d_089_shru_06,20220624,Adam & Jacob,3,sial,0.5,17,Adam
+d_089_shru_06,20220624,Adam & Jacob,4,_litter,5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,4,_bare,95,,Adam
+d_089_shru_06,20220624,Adam & Jacob,4,satr,6,12,Adam
+d_089_shru_06,20220624,Adam & Jacob,4,kosc,4,12,Adam
+d_089_shru_06,20220624,Adam & Jacob,4,elre,1,14,Adam
+d_089_shru_06,20220624,Adam & Jacob,4,coar,2,6,Adam
+d_089_shru_06,20220624,Adam & Jacob,999,deso,0.5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,999,chbe,0.5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,999,sece,0.5,,Adam
+d_089_shru_06,20220624,Adam & Jacob,999,meof,0.5,,Adam
+d_090_shru_06,20220624,Adam & Jacob,1,_litter,65,,Adam
+d_090_shru_06,20220624,Adam & Jacob,1,_bare,35,,Adam
+d_090_shru_06,20220624,Adam & Jacob,1,satr,1,9,Adam
+d_090_shru_06,20220624,Adam & Jacob,1,kosc,0.5,7,Adam
+d_090_shru_06,20220624,Adam & Jacob,1,sial,1,21,Adam
+d_090_shru_06,20220624,Adam & Jacob,1,elre,15,23,Adam
+d_090_shru_06,20220624,Adam & Jacob,2,_litter,70,,Adam
+d_090_shru_06,20220624,Adam & Jacob,2,_bare,30,,Adam
+d_090_shru_06,20220624,Adam & Jacob,2,satr,2,10,Adam
+d_090_shru_06,20220624,Adam & Jacob,2,kosc,1,8,Adam
+d_090_shru_06,20220624,Adam & Jacob,2,elre,9,26,Adam
+d_090_shru_06,20220624,Adam & Jacob,2,coar,2,8,Adam
+d_090_shru_06,20220624,Adam & Jacob,3,_litter,95,,Adam
+d_090_shru_06,20220624,Adam & Jacob,3,_bare,5,,Adam
+d_090_shru_06,20220624,Adam & Jacob,3,satr,9,12,Adam
+d_090_shru_06,20220624,Adam & Jacob,3,kosc,0.5,4,Adam
+d_090_shru_06,20220624,Adam & Jacob,3,elre,1,16,Adam
+d_090_shru_06,20220624,Adam & Jacob,3,mesa,0.5,7,Adam
+d_090_shru_06,20220624,Adam & Jacob,4,_litter,98,,Adam
+d_090_shru_06,20220624,Adam & Jacob,4,_bare,2,,Adam
+d_090_shru_06,20220624,Adam & Jacob,4,satr,3,13,Adam
+d_090_shru_06,20220624,Adam & Jacob,4,kosc,2,13,Adam
+d_090_shru_06,20220624,Adam & Jacob,4,elre,27,23,Adam
+d_090_shru_06,20220624,Adam & Jacob,999,hean,0.5,,Adam
+d_090_shru_06,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,1,_litter,30,,Adam
+d_091_shru_06,20220624,Adam & Jacob,1,_bare,70,,Adam
+d_091_shru_06,20220624,Adam & Jacob,1,satr,10,12,Adam
+d_091_shru_06,20220624,Adam & Jacob,1,elre,3,18,Adam
+d_091_shru_06,20220624,Adam & Jacob,2,_litter,90,,Adam
+d_091_shru_06,20220624,Adam & Jacob,2,_bare,10,,Adam
+d_091_shru_06,20220624,Adam & Jacob,2,satr,5,14,Adam
+d_091_shru_06,20220624,Adam & Jacob,2,elre,7,22,Adam
+d_091_shru_06,20220624,Adam & Jacob,2,kosc,1,10,Adam
+d_091_shru_06,20220624,Adam & Jacob,3,_litter,99,,Adam
+d_091_shru_06,20220624,Adam & Jacob,3,_bare,1,,Adam
+d_091_shru_06,20220624,Adam & Jacob,3,satr,2,12,Adam
+d_091_shru_06,20220624,Adam & Jacob,3,elre,40,17,Adam
+d_091_shru_06,20220624,Adam & Jacob,3,kosc,2,10,Adam
+d_091_shru_06,20220624,Adam & Jacob,4,_litter,20,,Adam
+d_091_shru_06,20220624,Adam & Jacob,4,_bare,80,,Adam
+d_091_shru_06,20220624,Adam & Jacob,4,satr,2,11,Adam
+d_091_shru_06,20220624,Adam & Jacob,4,elre,5,16,Adam
+d_091_shru_06,20220624,Adam & Jacob,4,kosc,1,17,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,deso,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,atca,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,brin,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,sial,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,coar,0.5,,Adam
+d_091_shru_06,20220624,Adam & Jacob,999,chbe,0.5,,Adam
+d_092_shru_06,20220624,Adam & Jacob,1,_litter,60,,Adam
+d_092_shru_06,20220624,Adam & Jacob,1,_bare,40,,Adam
+d_092_shru_06,20220624,Adam & Jacob,1,satr,2,7,Adam
+d_092_shru_06,20220624,Adam & Jacob,1,elre,7,24,Adam
+d_092_shru_06,20220624,Adam & Jacob,1,kosc,1,12,Adam
+d_092_shru_06,20220624,Adam & Jacob,2,_litter,40,,Adam
+d_092_shru_06,20220624,Adam & Jacob,2,_bare,60,,Adam
+d_092_shru_06,20220624,Adam & Jacob,2,satr,0.5,5,Adam
+d_092_shru_06,20220624,Adam & Jacob,2,elre,6,18,Adam
+d_092_shru_06,20220624,Adam & Jacob,2,kosc,1,9,Adam
+d_092_shru_06,20220624,Adam & Jacob,3,_litter,95,,Adam
+d_092_shru_06,20220624,Adam & Jacob,3,_bare,5,,Adam
+d_092_shru_06,20220624,Adam & Jacob,3,satr,0.5,6,Adam
+d_092_shru_06,20220624,Adam & Jacob,3,elre,45,22,Adam
+d_092_shru_06,20220624,Adam & Jacob,3,kosc,0.5,2,Adam
+d_092_shru_06,20220624,Adam & Jacob,3,mesa,1,12,Adam
+d_092_shru_06,20220624,Adam & Jacob,4,_litter,50,,Adam
+d_092_shru_06,20220624,Adam & Jacob,4,_bare,50,,Adam
+d_092_shru_06,20220624,Adam & Jacob,4,satr,2,11,Adam
+d_092_shru_06,20220624,Adam & Jacob,4,elre,14,24,Adam
+d_092_shru_06,20220624,Adam & Jacob,4,kosc,0.5,5,Adam
+d_092_shru_06,20220624,Adam & Jacob,999,chbe,0.5,,Adam
+d_092_shru_06,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_092_shru_06,20220624,Adam & Jacob,999,erna,0.5,,Adam
+d_092_shru_06,20220624,Adam & Jacob,999,atca,0.5,,Adam
+d_093_shru_06,20220624,Adam & Jacob,1,_litter,90,,Adam
+d_093_shru_06,20220624,Adam & Jacob,1,_bare,10,,Adam
+d_093_shru_06,20220624,Adam & Jacob,1,brte,3,10,Adam
+d_093_shru_06,20220624,Adam & Jacob,1,satr,2,12,Adam
+d_093_shru_06,20220624,Adam & Jacob,1,kosc,3,15,Adam
+d_093_shru_06,20220624,Adam & Jacob,1,sece,2,25,Adam
+d_093_shru_06,20220624,Adam & Jacob,2,_litter,85,,Adam
+d_093_shru_06,20220624,Adam & Jacob,2,_bare,15,,Adam
+d_093_shru_06,20220624,Adam & Jacob,2,brte,7,18,Adam
+d_093_shru_06,20220624,Adam & Jacob,2,satr,2,11,Adam
+d_093_shru_06,20220624,Adam & Jacob,2,elre,1,13,Adam
+d_093_shru_06,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_093_shru_06,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_093_shru_06,20220624,Adam & Jacob,3,brte,9,24,Adam
+d_093_shru_06,20220624,Adam & Jacob,3,satr,3,12,Adam
+d_093_shru_06,20220624,Adam & Jacob,4,_litter,95,,Adam
+d_093_shru_06,20220624,Adam & Jacob,4,_bare,5,,Adam
+d_093_shru_06,20220624,Adam & Jacob,4,brte,8,25,Adam
+d_093_shru_06,20220624,Adam & Jacob,4,satr,1,16,Adam
+d_093_shru_06,20220624,Adam & Jacob,4,sece,6,63,Adam
+d_093_shru_06,20220624,Adam & Jacob,4,elre,1,20,Adam
+d_093_shru_06,20220624,Adam & Jacob,999,atca,0.5,,Adam
+d_093_shru_06,20220624,Adam & Jacob,999,deso,0.5,,Adam
+d_077_herb_05,20220624,Adam & Jacob,1,_litter,100,,Adam
+d_077_herb_05,20220624,Adam & Jacob,1,_bare,0,,Adam
+d_077_herb_05,20220624,Adam & Jacob,1,brte,1,24,Adam
+d_077_herb_05,20220624,Adam & Jacob,1,navi,17,45,Adam
+d_077_herb_05,20220624,Adam & Jacob,1,bocu,60,26,Adam
+d_077_herb_05,20220624,Adam & Jacob,2,_litter,100,,Adam
+d_077_herb_05,20220624,Adam & Jacob,2,_bare,0,,Adam
+d_077_herb_05,20220624,Adam & Jacob,2,brte,35,32,Adam
+d_077_herb_05,20220624,Adam & Jacob,2,sphe,0.5,46,Adam
+d_077_herb_05,20220624,Adam & Jacob,2,satr,1,15,Adam
+d_077_herb_05,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_077_herb_05,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_077_herb_05,20220624,Adam & Jacob,3,brte,22,25,Adam
+d_077_herb_05,20220624,Adam & Jacob,3,satr,1,14,Adam
+d_077_herb_05,20220624,Adam & Jacob,4,_litter,100,,Adam
+d_077_herb_05,20220624,Adam & Jacob,4,_bare,0,,Adam
+d_077_herb_05,20220624,Adam & Jacob,4,brte,35,27,Adam
+d_077_herb_05,20220624,Adam & Jacob,4, bocu,0.5,13,Adam
+d_077_herb_05,20220624,Adam & Jacob,4,sphe,1,45,Adam
+d_077_herb_05,20220624,Adam & Jacob,4,satr,0.5,4,Adam
+d_077_herb_05,20220624,Adam & Jacob,999,erna,0.5,,Adam
+d_077_herb_05,20220624,Adam & Jacob,999,taof,0.5,,Adam
+d_077_herb_05,20220624,Adam & Jacob,999,upg4,0.5,,Adam
+d_078_herb_05,20220624,Adam & Jacob,1,_litter,80,,Adam
+d_078_herb_05,20220624,Adam & Jacob,1,_bare,20,,Adam
+d_078_herb_05,20220624,Adam & Jacob,1,brte,20,25,Adam
+d_078_herb_05,20220624,Adam & Jacob,1,satr,1,15,Adam
+d_078_herb_05,20220624,Adam & Jacob,1,kosc,1,15,Adam
+d_078_herb_05,20220624,Adam & Jacob,2,_litter,100,,Adam
+d_078_herb_05,20220624,Adam & Jacob,2,_bare,0,,Adam
+d_078_herb_05,20220624,Adam & Jacob,2,brte,51,17,Adam
+d_078_herb_05,20220624,Adam & Jacob,2,satr,1,6,Adam
+d_078_herb_05,20220624,Adam & Jacob,2,kosc,1,7,Adam
+d_078_herb_05,20220624,Adam & Jacob,2,sece,3,44,Adam
+d_078_herb_05,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_078_herb_05,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_078_herb_05,20220624,Adam & Jacob,3,brte,19,30,Adam
+d_078_herb_05,20220624,Adam & Jacob,3,satr,1,8,Adam
+d_078_herb_05,20220624,Adam & Jacob,3,kosc,1,26,Adam
+d_078_herb_05,20220624,Adam & Jacob,3,sphe,30,26,Adam
+d_078_herb_05,20220624,Adam & Jacob,4,_litter,90,,Adam
+d_078_herb_05,20220624,Adam & Jacob,4,_bare,20,,Adam
+d_078_herb_05,20220624,Adam & Jacob,4,brte,17,19,Adam
+d_078_herb_05,20220624,Adam & Jacob,4,satr,0.5,8,Adam
+d_078_herb_05,20220624,Adam & Jacob,4,kosc,7,13,Adam
+d_078_herb_05,20220624,Adam & Jacob,4,elre,1,13,Adam
+d_078_herb_05,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_078_herb_05,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_078_herb_05,20220624,Adam & Jacob,999,navi,0.5,,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,_litter,95,,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,_bare,5,,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,brte,2,16,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,kosc,11,11,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,elre,3,12,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,ciar,2,12,Adam
+d_079_herb_05,20220624,Adam & Jacob,1,satr,1,6,Adam
+d_079_herb_05,20220624,Adam & Jacob,2,_litter,60,,Adam
+d_079_herb_05,20220624,Adam & Jacob,2,_bare,40,,Adam
+d_079_herb_05,20220624,Adam & Jacob,2,brte,1,4,Adam
+d_079_herb_05,20220624,Adam & Jacob,2,kosc,20,9,Adam
+d_079_herb_05,20220624,Adam & Jacob,2,ciar,1,6,Adam
+d_079_herb_05,20220624,Adam & Jacob,2,satr,0.5,3,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,brte,1,18,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,kosc,7,13,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,elre,1,18,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,ciar,1,11,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,satr,0.5,10,Adam
+d_079_herb_05,20220624,Adam & Jacob,3,sece,2,35,Adam
+d_079_herb_05,20220624,Adam & Jacob,4,_litter,60,,Adam
+d_079_herb_05,20220624,Adam & Jacob,4,_bare,40,,Adam
+d_079_herb_05,20220624,Adam & Jacob,4,brte,2,14,Adam
+d_079_herb_05,20220624,Adam & Jacob,4,kosc,8,14,Adam
+d_079_herb_05,20220624,Adam & Jacob,4,ciar,2,13,Adam
+d_079_herb_05,20220624,Adam & Jacob,4,satr,1,4,Adam
+d_079_herb_05,20220624,Adam & Jacob,999,deso,0.5,,Adam
+d_079_herb_05,20220624,Adam & Jacob,999,coar,0.5,,Adam
+d_079_herb_05,20220624,Adam & Jacob,999,sial,0.5,,Adam
+d_079_herb_05,20220624,Adam & Jacob,999,sphe,0.5,,Adam
+d_080_herb_05,20220624,Adam & Jacob,1,_bare,0,,Adam
+d_080_herb_05,20220624,Adam & Jacob,1,_litter,100,,Adam
+d_080_herb_05,20220624,Adam & Jacob,1,brte,11,32,Adam
+d_080_herb_05,20220624,Adam & Jacob,1,satr,3,9,Adam
+d_080_herb_05,20220624,Adam & Jacob,1,kosc,3,10,Adam
+d_080_herb_05,20220624,Adam & Jacob,1,elre,1,29,Adam
+d_080_herb_05,20220624,Adam & Jacob,2,_bare,10,,Adam
+d_080_herb_05,20220624,Adam & Jacob,2,_litter,90,,Adam
+d_080_herb_05,20220624,Adam & Jacob,2,brte,7,10,Adam
+d_080_herb_05,20220624,Adam & Jacob,2,kosc,17,9,Adam
+d_080_herb_05,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_080_herb_05,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_080_herb_05,20220624,Adam & Jacob,3,brte,35,17,Adam
+d_080_herb_05,20220624,Adam & Jacob,3,satr,1,8,Adam
+d_080_herb_05,20220624,Adam & Jacob,3,kosc,7,18,Adam
+d_080_herb_05,20220624,Adam & Jacob,3,elre,1,15,Adam
+d_080_herb_05,20220624,Adam & Jacob,4,_bare,98,,Adam
+d_080_herb_05,20220624,Adam & Jacob,4,_litter,2,,Adam
+d_080_herb_05,20220624,Adam & Jacob,4,brte,8,15,Adam
+d_080_herb_05,20220624,Adam & Jacob,4,satr,1,4,Adam
+d_080_herb_05,20220624,Adam & Jacob,4,kosc,6,17,Adam
+d_080_herb_05,20220624,Adam & Jacob,4,elre,50,12,Adam
+d_080_herb_05,20220624,Adam & Jacob,999,deso,0.5,,Adam
+d_080_herb_05,20220624,Adam & Jacob,999,upg4,0.5,,Adam
+d_080_herb_05,20220624,Adam & Jacob,999,coar,0.5,,Adam
+d_080_herb_05,20220624,Adam & Jacob,999,navi,0.5,,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,_litter,80,,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,_bare,20,,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,brte,6,19,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,satr,2,16,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,kosc,1,18,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,elre,26,20,Adam
+d_081_herb_05,20220624,Adam & Jacob,1,coar,4,9,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,_litter,99,,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,_bare,1,,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,brte,0.5,10,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,satr,1,7,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,kosc,0.5,5,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,elre,65,27,Adam
+d_081_herb_05,20220624,Adam & Jacob,2,upg4,10,10,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,_litter,90,,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,_bare,10,,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,brte,2,12,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,satr,2,9,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,kosc,10,15,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,elre,6,31,Adam
+d_081_herb_05,20220624,Adam & Jacob,3,upg4,1,15,Adam
+d_081_herb_05,20220624,Adam & Jacob,4,_litter,80,,Adam
+d_081_herb_05,20220624,Adam & Jacob,4,_bare,20,,Adam
+d_081_herb_05,20220624,Adam & Jacob,4,brte,4,22,Adam
+d_081_herb_05,20220624,Adam & Jacob,4,satr,3,16,Adam
+d_081_herb_05,20220624,Adam & Jacob,4,kosc,0.5,13,Adam
+d_081_herb_05,20220624,Adam & Jacob,4,elre,6,23,Adam
+d_081_herb_05,20220624,Adam & Jacob,999,navi,0.5,,Adam
+d_081_herb_05,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_081_herb_05,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_081_herb_05,20220624,Adam & Jacob,999,assp,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,1,_litter,90,,Adam
+d_082_herb_05,20220624,Adam & Jacob,1,_bare,10,,Adam
+d_082_herb_05,20220624,Adam & Jacob,1,brte,9,21,Adam
+d_082_herb_05,20220624,Adam & Jacob,1,satr,2,9,Adam
+d_082_herb_05,20220624,Adam & Jacob,1,kosc,1,8,Adam
+d_082_herb_05,20220624,Adam & Jacob,1,elre,4,29,Adam
+d_082_herb_05,20220624,Adam & Jacob,2,_litter,100,,Adam
+d_082_herb_05,20220624,Adam & Jacob,2,_bare,0,,Adam
+d_082_herb_05,20220624,Adam & Jacob,2,brte,31,22,Adam
+d_082_herb_05,20220624,Adam & Jacob,2,satr,1,18,Adam
+d_082_herb_05,20220624,Adam & Jacob,2,kosc,3,25,Adam
+d_082_herb_05,20220624,Adam & Jacob,3,_litter,95,,Adam
+d_082_herb_05,20220624,Adam & Jacob,3,_bare,5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,3,brte,26,18,Adam
+d_082_herb_05,20220624,Adam & Jacob,3,satr,3,13,Adam
+d_082_herb_05,20220624,Adam & Jacob,3,kosc,4,13,Adam
+d_082_herb_05,20220624,Adam & Jacob,3,upg4,1,16,Adam
+d_082_herb_05,20220624,Adam & Jacob,4,_litter,100,,Adam
+d_082_herb_05,20220624,Adam & Jacob,4,_bare,0,,Adam
+d_082_herb_05,20220624,Adam & Jacob,4,brte,41,30,Adam
+d_082_herb_05,20220624,Adam & Jacob,4,satr,1,17,Adam
+d_082_herb_05,20220624,Adam & Jacob,4,kosc,14,25,Adam
+d_082_herb_05,20220624,Adam & Jacob,4,elre,6,23,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,ciar,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,sphe,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,navi,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,sial,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_082_herb_05,20220624,Adam & Jacob,999,sece,0.5,,Adam
+d_083_herb_05,20220624,Adam & Jacob,1,_litter,30,,Adam
+d_083_herb_05,20220624,Adam & Jacob,1,_bare,70,,Adam
+d_083_herb_05,20220624,Adam & Jacob,1,kosc,21,10,Adam
+d_083_herb_05,20220624,Adam & Jacob,1,brte,1,15,Adam
+d_083_herb_05,20220624,Adam & Jacob,1,satr,2,15,Adam
+d_083_herb_05,20220624,Adam & Jacob,1,bocu,0.5,39,Adam
+d_083_herb_05,20220624,Adam & Jacob,2,_litter,95,,Adam
+d_083_herb_05,20220624,Adam & Jacob,2,_bare,5,,Adam
+d_083_herb_05,20220624,Adam & Jacob,2,kosc,10,12,Adam
+d_083_herb_05,20220624,Adam & Jacob,2,brte,1,11,Adam
+d_083_herb_05,20220624,Adam & Jacob,2,satr,3,6,Adam
+d_083_herb_05,20220624,Adam & Jacob,2,mesa,1,48,Adam
+d_083_herb_05,20220624,Adam & Jacob,3,_litter,30,,Adam
+d_083_herb_05,20220624,Adam & Jacob,3,_bare,70,,Adam
+d_083_herb_05,20220624,Adam & Jacob,3,kosc,8,13,Adam
+d_083_herb_05,20220624,Adam & Jacob,3,brte,0.5,6,Adam
+d_083_herb_05,20220624,Adam & Jacob,3,satr,5,11,Adam
+d_083_herb_05,20220624,Adam & Jacob,3,elre,1,13,Adam
+d_083_herb_05,20220624,Adam & Jacob,4,_litter,50,,Adam
+d_083_herb_05,20220624,Adam & Jacob,4,_bare,50,,Adam
+d_083_herb_05,20220624,Adam & Jacob,4,kosc,18,11,Adam
+d_083_herb_05,20220624,Adam & Jacob,4,satr,2,4,Adam
+d_083_herb_05,20220624,Adam & Jacob,4,elre,1,20,Adam
+d_083_herb_05,20220624,Adam & Jacob,999,deso,0.5,,Adam
+d_083_herb_05,20220624,Adam & Jacob,999,upg4,0.5,,Adam
+d_083_herb_05,20220624,Adam & Jacob,999,navi,0.5,,Adam
+d_083_herb_05,20220624,Adam & Jacob,999,elel,0.5,,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,_litter,99,,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,_bare,1,,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,brte,11,22,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,kosc,8,10,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,satr,0.5,7,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,navi,0.5,38,Adam
+d_084_herb_05,20220624,Adam & Jacob,1,coar,0.5,8,Adam
+d_084_herb_05,20220624,Adam & Jacob,2,_litter,98,,Adam
+d_084_herb_05,20220624,Adam & Jacob,2,_bare,2,,Adam
+d_084_herb_05,20220624,Adam & Jacob,2,brte,14,18,Adam
+d_084_herb_05,20220624,Adam & Jacob,2,kosc,15,9,Adam
+d_084_herb_05,20220624,Adam & Jacob,2,satr,0.5,4,Adam
+d_084_herb_05,20220624,Adam & Jacob,2,coar,1,11,Adam
+d_084_herb_05,20220624,Adam & Jacob,3,_litter,98,,Adam
+d_084_herb_05,20220624,Adam & Jacob,3,_bare,2,,Adam
+d_084_herb_05,20220624,Adam & Jacob,3,brte,9,19,Adam
+d_084_herb_05,20220624,Adam & Jacob,3,kosc,10,12,Adam
+d_084_herb_05,20220624,Adam & Jacob,3,satr,1,7,Adam
+d_084_herb_05,20220624,Adam & Jacob,4,_litter,90,,Adam
+d_084_herb_05,20220624,Adam & Jacob,4,_bare,10,,Adam
+d_084_herb_05,20220624,Adam & Jacob,4,brte,9,23,Adam
+d_084_herb_05,20220624,Adam & Jacob,4,kosc,3,10,Adam
+d_084_herb_05,20220624,Adam & Jacob,4,satr,6,7,Adam
+d_084_herb_05,20220624,Adam & Jacob,4,coar,4,7,Adam
+d_084_herb_05,20220624,Adam & Jacob,999,elre,0.5,,Adam
+d_084_herb_05,20220624,Adam & Jacob,999,sece,0.5,,Adam
+d_084_herb_05,20220624,Adam & Jacob,999,sial,0.5,,Adam
+d_084_herb_05,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_114_herb_07,20220624,Adam & Jacob,1,_litter,70,,Adam
+d_114_herb_07,20220624,Adam & Jacob,1,_bare,30,,Adam
+d_114_herb_07,20220624,Adam & Jacob,1,brte,10,15,Adam
+d_114_herb_07,20220624,Adam & Jacob,1,satr,5,8,Adam
+d_114_herb_07,20220624,Adam & Jacob,1,kosc,1,7,Adam
+d_114_herb_07,20220624,Adam & Jacob,1,mesa,2,6,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,_litter,80,,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,_bare,20,,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,brte,4,11,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,satr,10,7,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,kosc,2,7,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,elre,2,19,Adam
+d_114_herb_07,20220624,Adam & Jacob,2,sial,0.5,13,Adam
+d_114_herb_07,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_114_herb_07,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_114_herb_07,20220624,Adam & Jacob,3,brte,5,16,Adam
+d_114_herb_07,20220624,Adam & Jacob,3,satr,5,7,Adam
+d_114_herb_07,20220624,Adam & Jacob,3,kosc,13,7,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,_litter,100,,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,_bare,0,,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,brte,5,16,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,satr,8,6,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,kosc,0.5,4,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,mesa,3,16,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,navi,0.5,31,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,bocu,3,18,Adam
+d_114_herb_07,20220624,Adam & Jacob,4,upg4,0.5,12,Adam
+d_114_herb_07,20220624,Adam & Jacob,999,bogr,0.5,,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,_litter,100,,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,_bare,0,,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,brte,4,12,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,satr,3,16,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,kosc,3,12,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,mesa,5,13,Adam
+d_115_herb_07,20220624,Adam & Jacob,1,sece,1,26,Adam
+d_115_herb_07,20220624,Adam & Jacob,2,_litter,97,,Adam
+d_115_herb_07,20220624,Adam & Jacob,2,_bare,3,,Adam
+d_115_herb_07,20220624,Adam & Jacob,2,brte,10,18,Adam
+d_115_herb_07,20220624,Adam & Jacob,2,satr,1,9,Adam
+d_115_herb_07,20220624,Adam & Jacob,2,kosc,14,9,Adam
+d_115_herb_07,20220624,Adam & Jacob,2,sece,1,38,Adam
+d_115_herb_07,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_115_herb_07,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_115_herb_07,20220624,Adam & Jacob,3,brte,3,12,Adam
+d_115_herb_07,20220624,Adam & Jacob,3,kosc,26,8,Adam
+d_115_herb_07,20220624,Adam & Jacob,3,sece,1,49,Adam
+d_115_herb_07,20220624,Adam & Jacob,4,_litter,100,,Adam
+d_115_herb_07,20220624,Adam & Jacob,4,_bare,0,,Adam
+d_115_herb_07,20220624,Adam & Jacob,4,brte,6,16,Adam
+d_115_herb_07,20220624,Adam & Jacob,4,satr,0.5,10,Adam
+d_115_herb_07,20220624,Adam & Jacob,4,kosc,17,7,Adam
+d_115_herb_07,20220624,Adam & Jacob,4,sece,1,17,Adam
+d_115_herb_07,20220624,Adam & Jacob,999,elre,0.5,,Adam
+d_115_herb_07,20220624,Adam & Jacob,999,bogr,0.5,,Adam
+d_115_herb_07,20220624,Adam & Jacob,999,navi,0.5,,Adam
+d_115_herb_07,20220624,Adam & Jacob,999,bocu,0.5,,Adam
+d_116_herb_07,20220624,Adam & Jacob,1,_litter,100,,Adam
+d_116_herb_07,20220624,Adam & Jacob,1,_bare,0,,Adam
+d_116_herb_07,20220624,Adam & Jacob,1,brte,11,15,Adam
+d_116_herb_07,20220624,Adam & Jacob,1,satr,0.5,8,Adam
+d_116_herb_07,20220624,Adam & Jacob,1,kosc,6,14,Adam
+d_116_herb_07,20220624,Adam & Jacob,1,elre,3,13,Adam
+d_116_herb_07,20220624,Adam & Jacob,2,_litter,100,,Adam
+d_116_herb_07,20220624,Adam & Jacob,2,_bare,0,,Adam
+d_116_herb_07,20220624,Adam & Jacob,2,brte,9,18,Adam
+d_116_herb_07,20220624,Adam & Jacob,2,satr,4,8,Adam
+d_116_herb_07,20220624,Adam & Jacob,2,kosc,5,14,Adam
+d_116_herb_07,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_116_herb_07,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_116_herb_07,20220624,Adam & Jacob,3,brte,40,18,Adam
+d_116_herb_07,20220624,Adam & Jacob,3,satr,1,10,Adam
+d_116_herb_07,20220624,Adam & Jacob,3,kosc,16,14,Adam
+d_116_herb_07,20220624,Adam & Jacob,4,_litter,100,,Adam
+d_116_herb_07,20220624,Adam & Jacob,4,_bare,0,,Adam
+d_116_herb_07,20220624,Adam & Jacob,4,brte,10,16,Adam
+d_116_herb_07,20220624,Adam & Jacob,4,satr,0.5,9,Adam
+d_116_herb_07,20220624,Adam & Jacob,4,kosc,16,13,Adam
+d_116_herb_07,20220624,Adam & Jacob,4,navi,0.5,25,Adam
+d_116_herb_07,20220624,Adam & Jacob,999,pola,0.5,,Adam
+d_117_herb_07,20220624,Adam & Jacob,1,_litter,99,,Adam
+d_117_herb_07,20220624,Adam & Jacob,1,_bare,1,,Adam
+d_117_herb_07,20220624,Adam & Jacob,1,brte,3,15,Adam
+d_117_herb_07,20220624,Adam & Jacob,1,kosc,8,9,Adam
+d_117_herb_07,20220624,Adam & Jacob,1,satr,1,7,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,_litter,97,,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,_bare,3,,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,brte,1,15,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,kosc,6,10,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,satr,1,17,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,elre,15,35,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,bocu,8,23,Adam
+d_117_herb_07,20220624,Adam & Jacob,2,sial,0.5,28,Adam
+d_117_herb_07,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_117_herb_07,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_117_herb_07,20220624,Adam & Jacob,3,brte,6,16,Adam
+d_117_herb_07,20220624,Adam & Jacob,3,kosc,1,9,Adam
+d_117_herb_07,20220624,Adam & Jacob,3,satr,6,9,Adam
+d_117_herb_07,20220624,Adam & Jacob,4,_litter,96,,Adam
+d_117_herb_07,20220624,Adam & Jacob,4,_bare,4,,Adam
+d_117_herb_07,20220624,Adam & Jacob,4,brte,5,17,Adam
+d_117_herb_07,20220624,Adam & Jacob,4,kosc,9,10,Adam
+d_117_herb_07,20220624,Adam & Jacob,4,satr,1,12,Adam
+d_117_herb_07,20220624,Adam & Jacob,4,sial,1,58,Adam
+d_117_herb_07,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_118_herb_07,20220624,Adam & Jacob,1,_litter,98,,Adam
+d_118_herb_07,20220624,Adam & Jacob,1,_bare,2,,Adam
+d_118_herb_07,20220624,Adam & Jacob,1,brte,0.5,8,Adam
+d_118_herb_07,20220624,Adam & Jacob,1,satr,2,14,Adam
+d_118_herb_07,20220624,Adam & Jacob,1,coar,3,9,Adam
+d_118_herb_07,20220624,Adam & Jacob,1,navi,32,52,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,_litter,85,,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,_bare,15,,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,brte,1,19,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,satr,0.5,9,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,coar,1,5,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,kosc,0.5,4,Adam
+d_118_herb_07,20220624,Adam & Jacob,2,mesa,25,27,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,_litter,100,,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,_bare,0,,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,brte,0.5,6,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,satr,2,18,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,coar,5,17,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,kosc,1,9,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,mesa,13,31,Adam
+d_118_herb_07,20220624,Adam & Jacob,3,elre,1,26,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,_litter,100,,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,_bare,0,,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,brte,1,20,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,satr,0.5,6,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,coar,3,6,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,kosc,0.5,6,Adam
+d_118_herb_07,20220624,Adam & Jacob,4,mesa,11,28,Adam
+d_118_herb_07,20220624,Adam & Jacob,999,sphe,0.5,0.5,Adam
+d_118_herb_07,20220624,Adam & Jacob,999,bocu,0.5,0.5,Adam
+d_118_herb_07,20220624,Adam & Jacob,999,sece,0.5,0.5,Adam
+d_118_herb_07,20220624,Adam & Jacob,999,upg4,0.5,0.5,Adam
+d_118_herb_07,20220624,Adam & Jacob,999,bogr,0.5,0.5,Adam
+d_119_herb_07,20220624,Adam & Jacob,1,_litter,99,,Adam
+d_119_herb_07,20220624,Adam & Jacob,1,_bare,1,,Adam
+d_119_herb_07,20220624,Adam & Jacob,1,brte,2,24,Adam
+d_119_herb_07,20220624,Adam & Jacob,1,satr,3,14,Adam
+d_119_herb_07,20220624,Adam & Jacob,1,kosc,0.5,6,Adam
+d_119_herb_07,20220624,Adam & Jacob,1,bocu,28,30,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,_litter,60,,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,_bare,40,,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,brte,3,36,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,satr,3,20,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,kosc,4,20,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,bocu,3,34,Adam
+d_119_herb_07,20220624,Adam & Jacob,2,sphe,5,52,Adam
+d_119_herb_07,20220624,Adam & Jacob,3,_litter,99,,Adam
+d_119_herb_07,20220624,Adam & Jacob,3,_bare,1,,Adam
+d_119_herb_07,20220624,Adam & Jacob,3,brte,2,21,Adam
+d_119_herb_07,20220624,Adam & Jacob,3,satr,1,13,Adam
+d_119_herb_07,20220624,Adam & Jacob,3,kosc,1,11,Adam
+d_119_herb_07,20220624,Adam & Jacob,3,navi,75,33,Adam
+d_119_herb_07,20220624,Adam & Jacob,4,_litter,98,,Adam
+d_119_herb_07,20220624,Adam & Jacob,4,_bare,2,,Adam
+d_119_herb_07,20220624,Adam & Jacob,4,brte,0.5,11,Adam
+d_119_herb_07,20220624,Adam & Jacob,4,satr,2,10,Adam
+d_119_herb_07,20220624,Adam & Jacob,4,kosc,1,9,Adam
+d_119_herb_07,20220624,Adam & Jacob,4,navi,42,50,Adam
+d_119_herb_07,20220624,Adam & Jacob,999,mesa,0.5,,Adam
+d_119_herb_07,20220624,Adam & Jacob,999,trdu,0.5,,Adam
+d_119_herb_07,20220624,Adam & Jacob,999,brin,0.5,,Adam
+d_119_herb_07,20220624,Adam & Jacob,999,elre,0.5,,Adam
+d_119_herb_07,20220624,Adam & Jacob,999,upg4,0.5,,Adam
+d_058_shru_04,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_058_shru_04,20220623,Adam & Jacob,1,_bare,0,,Adam
+d_058_shru_04,20220623,Adam & Jacob,1,kosc,1,11,Adam
+d_058_shru_04,20220623,Adam & Jacob,1,brte,20,18,Adam
+d_058_shru_04,20220623,Adam & Jacob,1,satr,2,10,Adam
+d_058_shru_04,20220623,Adam & Jacob,1,elre,6,18,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,_litter,98,,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,_bare,2,,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,kosc,12,11,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,brte,7,12,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,satr,2,9,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,elre,0.5,18,Adam
+d_058_shru_04,20220623,Adam & Jacob,2,deso,2,23,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,_litter,95,,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,_bare,5,,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,kosc,8,19,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,brte,7,15,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,satr,1,9,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,elre,0.5,16,Adam
+d_058_shru_04,20220623,Adam & Jacob,3,mesa,2,11,Adam
+d_058_shru_04,20220623,Adam & Jacob,4,_litter,80,,Adam
+d_058_shru_04,20220623,Adam & Jacob,4,_bare,20,,Adam
+d_058_shru_04,20220623,Adam & Jacob,4,kosc,6,14,Adam
+d_058_shru_04,20220623,Adam & Jacob,4,brte,5,18,Adam
+d_058_shru_04,20220623,Adam & Jacob,4,satr,5,9,Adam
+d_058_shru_04,20220623,Adam & Jacob,4,elre,1,15,Adam
+d_058_shru_04,20220623,Adam & Jacob,999,atca,0.5,,Adam
+d_058_shru_04,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_059_shru_04,20220623,Adam & Jacob,1,_litter,90,,Adam
+d_059_shru_04,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_059_shru_04,20220623,Adam & Jacob,1,satr,10,16,Adam
+d_059_shru_04,20220623,Adam & Jacob,1,brte,6,25,Adam
+d_059_shru_04,20220623,Adam & Jacob,1,elre,0.5,15,Adam
+d_059_shru_04,20220623,Adam & Jacob,2,_litter,100,,Adam
+d_059_shru_04,20220623,Adam & Jacob,2,_bare,0,,Adam
+d_059_shru_04,20220623,Adam & Jacob,2,satr,1,21,Adam
+d_059_shru_04,20220623,Adam & Jacob,2,brte,2,19,Adam
+d_059_shru_04,20220623,Adam & Jacob,2,atca,50,114,Adam
+d_059_shru_04,20220623,Adam & Jacob,3,_litter,100,,Adam
+d_059_shru_04,20220623,Adam & Jacob,3,_bare,0,,Adam
+d_059_shru_04,20220623,Adam & Jacob,3,satr,1,19,Adam
+d_059_shru_04,20220623,Adam & Jacob,3,brte,2,19,Adam
+d_059_shru_04,20220623,Adam & Jacob,3,elre,0.5,26,Adam
+d_059_shru_04,20220623,Adam & Jacob,3,atca,2,114,Adam
+d_059_shru_04,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_059_shru_04,20220623,Adam & Jacob,4,_bare,0,,Adam
+d_059_shru_04,20220623,Adam & Jacob,4,satr,1,9,Adam
+d_059_shru_04,20220623,Adam & Jacob,4,brte,21,12,Adam
+d_059_shru_04,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_059_shru_04,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_043_herb_03,20220623,Adam & Jacob,1,_litter,95,,Adam
+d_043_herb_03,20220623,Adam & Jacob,1,_bare,5,,Adam
+d_043_herb_03,20220623,Adam & Jacob,1,coar,5,6,Adam
+d_043_herb_03,20220623,Adam & Jacob,1,bocu,23,22,Adam
+d_043_herb_03,20220623,Adam & Jacob,1,satr,1,8,Adam
+d_043_herb_03,20220623,Adam & Jacob,1,brte,2,17,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,_litter,100,,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,_bare,0,,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,coar,2,8,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,bocu,8,10,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,satr,1,12,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,brte,7,17,Adam
+d_043_herb_03,20220623,Adam & Jacob,2,mesa,9,23,Adam
+d_043_herb_03,20220623,Adam & Jacob,3,_litter,99,,Adam
+d_043_herb_03,20220623,Adam & Jacob,3,_bare,1,,Adam
+d_043_herb_03,20220623,Adam & Jacob,3,coar,3,12,Adam
+d_043_herb_03,20220623,Adam & Jacob,3,satr,1,9,Adam
+d_043_herb_03,20220623,Adam & Jacob,3,brte,17,17,Adam
+d_043_herb_03,20220623,Adam & Jacob,3,mesa,11,18,Adam
+d_043_herb_03,20220623,Adam & Jacob,4,_litter,95,,Adam
+d_043_herb_03,20220623,Adam & Jacob,4,_bare,5,,Adam
+d_043_herb_03,20220623,Adam & Jacob,4,coar,11,9,Adam
+d_043_herb_03,20220623,Adam & Jacob,4,bocu,19,18,Adam
+d_043_herb_03,20220623,Adam & Jacob,4,satr,2,11,Adam
+d_043_herb_03,20220623,Adam & Jacob,4,brte,5,19,Adam
+d_043_herb_03,20220623,Adam & Jacob,999,navi,0.5,,Adam
+d_043_herb_03,20220623,Adam & Jacob,999,brin,0.5,,Adam
+d_043_herb_03,20220623,Adam & Jacob,999,sphe,0.5,,Adam
+d_044_herb_03,20220623,Adam & Jacob,1,_litter,99,,Adam
+d_044_herb_03,20220623,Adam & Jacob,1,_bare,1,,Adam
+d_044_herb_03,20220623,Adam & Jacob,1,kosc,1,11,Adam
+d_044_herb_03,20220623,Adam & Jacob,1,brte,50,23,Adam
+d_044_herb_03,20220623,Adam & Jacob,1,satr,3,14,Adam
+d_044_herb_03,20220623,Adam & Jacob,1,coar,6,9,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,_litter,99,,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,_bare,1,,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,brte,20,23,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,satr,0.5,12,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,coar,1,7,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,deso,4,44,Adam
+d_044_herb_03,20220623,Adam & Jacob,2,sphe,30,17,Adam
+d_044_herb_03,20220623,Adam & Jacob,3,_litter,100,,Adam
+d_044_herb_03,20220623,Adam & Jacob,3,_bare,0,,Adam
+d_044_herb_03,20220623,Adam & Jacob,3,brte,35,23,Adam
+d_044_herb_03,20220623,Adam & Jacob,3,satr,0.5,10,Adam
+d_044_herb_03,20220623,Adam & Jacob,3,coar,4,8,Adam
+d_044_herb_03,20220623,Adam & Jacob,4,_litter,90,,Adam
+d_044_herb_03,20220623,Adam & Jacob,4,_bare,10,,Adam
+d_044_herb_03,20220623,Adam & Jacob,4,brte,1,16,Adam
+d_044_herb_03,20220623,Adam & Jacob,4,satr,1,16,Adam
+d_044_herb_03,20220623,Adam & Jacob,4,coar,2,8,Adam
+d_044_herb_03,20220623,Adam & Jacob,4,elre,9,30,Adam
+d_044_herb_03,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_044_herb_03,20220623,Adam & Jacob,999,pola,0.5,,Adam
+d_044_herb_03,20220623,Adam & Jacob,999,navi,0.5,,Adam
+d_045_herb_03,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_045_herb_03,20220623,Adam & Jacob,1,_bare,0,,Adam
+d_045_herb_03,20220623,Adam & Jacob,1,kosc,15,10,Adam
+d_045_herb_03,20220623,Adam & Jacob,1,brte,10,19,Adam
+d_045_herb_03,20220623,Adam & Jacob,1,coar,5,19,Adam
+d_045_herb_03,20220623,Adam & Jacob,2,_litter,80,,Adam
+d_045_herb_03,20220623,Adam & Jacob,2,_bare,20,,Adam
+d_045_herb_03,20220623,Adam & Jacob,2,kosc,5,12,Adam
+d_045_herb_03,20220623,Adam & Jacob,2,brte,1,7,Adam
+d_045_herb_03,20220623,Adam & Jacob,2,navi,5,49,Adam
+d_045_herb_03,20220623,Adam & Jacob,2,satr,2,6,Adam
+d_045_herb_03,20220623,Adam & Jacob,3,_litter,80,,Adam
+d_045_herb_03,20220623,Adam & Jacob,3,_bare,20,,Adam
+d_045_herb_03,20220623,Adam & Jacob,3,kosc,6,9,Adam
+d_045_herb_03,20220623,Adam & Jacob,3,brte,5,23,Adam
+d_045_herb_03,20220623,Adam & Jacob,3,satr,0.5,10,Adam
+d_045_herb_03,20220623,Adam & Jacob,3,bocu,0.5,35,Adam
+d_045_herb_03,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_045_herb_03,20220623,Adam & Jacob,4,_bare,0,,Adam
+d_045_herb_03,20220623,Adam & Jacob,4,brte,30,30,Adam
+d_045_herb_03,20220623,Adam & Jacob,4,satr,2,12,Adam
+d_045_herb_03,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_045_herb_03,20220623,Adam & Jacob,999,upg4,0.5,,Adam
+d_045_herb_03,20220623,Adam & Jacob,999,taof,0.5,,Adam
+d_045_herb_03,20220623,Adam & Jacob,999,brin,0.5,,Adam
+d_045_herb_03,20220623,Adam & Jacob,999,sphe,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_046_herb_03,20220623,Adam & Jacob,1,_bare,0,,Adam
+d_046_herb_03,20220623,Adam & Jacob,1,kosc,10,17,Adam
+d_046_herb_03,20220623,Adam & Jacob,1,brte,7,19,Adam
+d_046_herb_03,20220623,Adam & Jacob,1,satr,1,8,Adam
+d_046_herb_03,20220623,Adam & Jacob,2,_litter,100,,Adam
+d_046_herb_03,20220623,Adam & Jacob,2,_bare,0,,Adam
+d_046_herb_03,20220623,Adam & Jacob,2,kosc,7,10,Adam
+d_046_herb_03,20220623,Adam & Jacob,2,brte,10,16,Adam
+d_046_herb_03,20220623,Adam & Jacob,3,_litter,100,,Adam
+d_046_herb_03,20220623,Adam & Jacob,3,_bare,0,,Adam
+d_046_herb_03,20220623,Adam & Jacob,3,kosc,4,9,Adam
+d_046_herb_03,20220623,Adam & Jacob,3,brte,62,15,Adam
+d_046_herb_03,20220623,Adam & Jacob,3,satr,0.5,9,Adam
+d_046_herb_03,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_046_herb_03,20220623,Adam & Jacob,4,_bare,0,,Adam
+d_046_herb_03,20220623,Adam & Jacob,4,kosc,10,17,Adam
+d_046_herb_03,20220623,Adam & Jacob,4,brte,7,21,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,hean,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,elre,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,navi,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,sphe,0.5,,Adam
+d_046_herb_03,20220623,Adam & Jacob,999,bocu,0.5,,Adam
+d_050_herb_03,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_050_herb_03,20220623,Adam & Jacob,1,kosc,12,8,Adam
+d_050_herb_03,20220623,Adam & Jacob,1,brte,35,20,Adam
+d_050_herb_03,20220623,Adam & Jacob,1,satr,0.5,4,Adam
+d_050_herb_03,20220623,Adam & Jacob,1,_bare,0,,
+d_050_herb_03,20220623,Adam & Jacob,2,_litter,95,,Adam
+d_050_herb_03,20220623,Adam & Jacob,2,kosc,5,6,Adam
+d_050_herb_03,20220623,Adam & Jacob,2,brte,12,17,Adam
+d_050_herb_03,20220623,Adam & Jacob,2,satr,1,6,Adam
+d_050_herb_03,20220623,Adam & Jacob,2,_bare,5,,Adam
+d_050_herb_03,20220623,Adam & Jacob,2,pola,5,15,Adam
+d_050_herb_03,20220623,Adam & Jacob,3,_litter,90,,Adam
+d_050_herb_03,20220623,Adam & Jacob,3,kosc,8,11,Adam
+d_050_herb_03,20220623,Adam & Jacob,3,brte,8,21,Adam
+d_050_herb_03,20220623,Adam & Jacob,3,satr,1,4,Adam
+d_050_herb_03,20220623,Adam & Jacob,3,_bare,10,,Adam
+d_050_herb_03,20220623,Adam & Jacob,4,_litter,99,,Adam
+d_050_herb_03,20220623,Adam & Jacob,4,kosc,4,6,Adam
+d_050_herb_03,20220623,Adam & Jacob,4,brte,15,18,Adam
+d_050_herb_03,20220623,Adam & Jacob,4,_bare,1,,Adam
+d_050_herb_03,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_050_herb_03,20220623,Adam & Jacob,999,elre,0.5,,Adam
+d_050_herb_03,20220623,Adam & Jacob,999,navi,0.5,,Adam
+d_047_herb_03,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_047_herb_03,20220623,Adam & Jacob,1,_bare,0,,Adam
+d_047_herb_03,20220623,Adam & Jacob,1,kosc,12,10,Adam
+d_047_herb_03,20220623,Adam & Jacob,1,elre,12,20,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,_litter,97,,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,_bare,3,,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,kosc,8,11,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,bocu,1,17,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,brte,6,18,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,upg4,0.5,14,Adam
+d_047_herb_03,20220623,Adam & Jacob,2,satr,0.5,7,Adam
+d_047_herb_03,20220623,Adam & Jacob,3,_litter,95,,Adam
+d_047_herb_03,20220623,Adam & Jacob,3,_bare,5,,Adam
+d_047_herb_03,20220623,Adam & Jacob,3,kosc,7,9,Adam
+d_047_herb_03,20220623,Adam & Jacob,3,brte,35,25,Adam
+d_047_herb_03,20220623,Adam & Jacob,3,satr,0.5,8,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,_bare,0,,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,kosc,11,10,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,elre,3,25,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,brte,6,35,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,satr,0.5,7,Adam
+d_047_herb_03,20220623,Adam & Jacob,4,navi,0.5,65,Adam
+d_047_herb_03,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_047_herb_03,20220623,Adam & Jacob,999,taof,0.5,,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,_litter,89,,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,kosc,3,14,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,satr,2,9,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,elre,4,29,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,brte,0.5,14,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,pola,5,16,Adam
+d_048_herb_03,20220623,Adam & Jacob,1,_moss,1,,Adam
+d_048_herb_03,20220623,Adam & Jacob,2,_litter,85,,Adam
+d_048_herb_03,20220623,Adam & Jacob,2,_bare,15,,Adam
+d_048_herb_03,20220623,Adam & Jacob,2,kosc,2,5,Adam
+d_048_herb_03,20220623,Adam & Jacob,2,satr,10,14,Adam
+d_048_herb_03,20220623,Adam & Jacob,2,brte,1,17,Adam
+d_048_herb_03,20220623,Adam & Jacob,2,navi,3,34,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,_litter,90,,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,_bare,10,,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,kosc,0.5,6,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,satr,7,14,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,elre,0.5,13,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,brte,1,21,Adam
+d_048_herb_03,20220623,Adam & Jacob,3,brin,6,25,Adam
+d_048_herb_03,20220623,Adam & Jacob,4,_litter,99,,Adam
+d_048_herb_03,20220623,Adam & Jacob,4,_bare,1,,Adam
+d_048_herb_03,20220623,Adam & Jacob,4,kosc,0.5,8,Adam
+d_048_herb_03,20220623,Adam & Jacob,4,satr,6,14,Adam
+d_048_herb_03,20220623,Adam & Jacob,4,elre,5,25,Adam
+d_048_herb_03,20220623,Adam & Jacob,4,brte,7,19,Adam
+d_048_herb_03,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_048_herb_03,20220623,Adam & Jacob,999,taof,0.5,,Adam
+d_048_herb_03,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_048_herb_03,20220623,Adam & Jacob,999,bocu,0.5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,1,_litter,99,,Adam
+d_049_herb_03,20220623,Adam & Jacob,1,_bare,1,,Adam
+d_049_herb_03,20220623,Adam & Jacob,1,kosc,20,3,Adam
+d_049_herb_03,20220623,Adam & Jacob,1,brte,7,36,Adam
+d_049_herb_03,20220623,Adam & Jacob,1,mesa,1,15,Adam
+d_049_herb_03,20220623,Adam & Jacob,2,_litter,95,,Adam
+d_049_herb_03,20220623,Adam & Jacob,2,_bare,5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,2,kosc,2,8,Adam
+d_049_herb_03,20220623,Adam & Jacob,2,brte,5,19,Adam
+d_049_herb_03,20220623,Adam & Jacob,2,navi,32,54,Adam
+d_049_herb_03,20220623,Adam & Jacob,2,satr,1,15,Adam
+d_049_herb_03,20220623,Adam & Jacob,3,_litter,95,,Adam
+d_049_herb_03,20220623,Adam & Jacob,3,_bare,5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,3,kosc,7,8,Adam
+d_049_herb_03,20220623,Adam & Jacob,3,brte,9,15,Adam
+d_049_herb_03,20220623,Adam & Jacob,3,satr,1,11,Adam
+d_049_herb_03,20220623,Adam & Jacob,4,_litter,90,,Adam
+d_049_herb_03,20220623,Adam & Jacob,4,_bare,10,,Adam
+d_049_herb_03,20220623,Adam & Jacob,4,kosc,7,7,Adam
+d_049_herb_03,20220623,Adam & Jacob,4,brte,2,13,Adam
+d_049_herb_03,20220623,Adam & Jacob,4,satr,0.5,5,Adam
+d_049_herb_03,20220623,Adam & Jacob,4,elre,8,19,Adam
+d_049_herb_03,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,999,navi,0.5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,999,upg4,0.5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,999,bocu,0.5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_049_herb_03,20220623,Adam & Jacob,999,sphe,0.5,,Adam
+d_024_shru_02,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_024_shru_02,20220623,Adam & Jacob,1,_bare,0,,Adam
+d_024_shru_02,20220623,Adam & Jacob,1,satr,0.5,10,Adam
+d_024_shru_02,20220623,Adam & Jacob,1,brte,10,31,Adam
+d_024_shru_02,20220623,Adam & Jacob,1,elre,8,29,Adam
+d_024_shru_02,20220623,Adam & Jacob,1,atca,60,160,Adam
+d_024_shru_02,20220623,Adam & Jacob,2,_litter,95,,Adam
+d_024_shru_02,20220623,Adam & Jacob,2,_bare,5,,Adam
+d_024_shru_02,20220623,Adam & Jacob,2,satr,0.5,6,Adam
+d_024_shru_02,20220623,Adam & Jacob,2,brte,7,15,Adam
+d_024_shru_02,20220623,Adam & Jacob,2,elre,10,18,Adam
+d_024_shru_02,20220623,Adam & Jacob,2,kosc,0.5,2,Adam
+d_024_shru_02,20220623,Adam & Jacob,3,_litter,99,,Adam
+d_024_shru_02,20220623,Adam & Jacob,3,_bare,1,,Adam
+d_024_shru_02,20220623,Adam & Jacob,3,atca,95,160,Adam
+d_024_shru_02,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_024_shru_02,20220623,Adam & Jacob,4,_bare,0,,Adam
+d_024_shru_02,20220623,Adam & Jacob,4,satr,0.5,9,Adam
+d_024_shru_02,20220623,Adam & Jacob,4,brte,10,21,Adam
+d_024_shru_02,20220623,Adam & Jacob,4,elre,3,17,Adam
+d_024_shru_02,20220623,Adam & Jacob,4,atca,15,150,Adam
+d_024_shru_02,20220623,Adam & Jacob,5,_litter,99,,Adam
+d_024_shru_02,20220623,Adam & Jacob,5,_bare,1,,Adam
+d_024_shru_02,20220623,Adam & Jacob,5,satr,4,12,Adam
+d_024_shru_02,20220623,Adam & Jacob,5,brte,0.5,10,Adam
+d_024_shru_02,20220623,Adam & Jacob,5,elre,2,16,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,_litter,90,,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,_bare,10,,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,satr,3,11,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,brte,3,17,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,elre,3,16,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,kosc,0.5,2,Adam
+d_024_shru_02,20220623,Adam & Jacob,6,sial,0.5,9,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,_litter,90,,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,_bare,10,,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,satr,5,13,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,brte,1,13,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,elre,1,25,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,kosc,2,12,Adam
+d_024_shru_02,20220623,Adam & Jacob,7,sial,2,17,Adam
+d_024_shru_02,20220623,Adam & Jacob,8,_litter,95,,Adam
+d_024_shru_02,20220623,Adam & Jacob,8,_bare,5,,Adam
+d_024_shru_02,20220623,Adam & Jacob,8,satr,1,8,Adam
+d_024_shru_02,20220623,Adam & Jacob,8,brte,10,19,Adam
+d_024_shru_02,20220623,Adam & Jacob,8,elre,1,10,Adam
+d_024_shru_02,20220623,Adam & Jacob,8,sial,0.5,4,Adam
+d_024_shru_02,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_024_shru_02,20220623,Adam & Jacob,999,bocu,0.5,,Adam
+d_024_shru_02,20220623,Adam & Jacob,999,sphe,0.5,,Adam
+d_022_shru_02,20220623,Adam & Jacob,1,_litter,90,,Adam
+d_022_shru_02,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_022_shru_02,20220623,Adam & Jacob,1,satr,0.5,6,Adam
+d_022_shru_02,20220623,Adam & Jacob,1,elre,30,30,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,_litter,40,,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,_bare,60,,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,satr,10,8,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,elre,0.5,28,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,bogr,5,25,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,sial,2,10,Adam
+d_022_shru_02,20220623,Adam & Jacob,2,kosc,1,6,Adam
+d_022_shru_02,20220623,Adam & Jacob,3,_litter,70,,Adam
+d_022_shru_02,20220623,Adam & Jacob,3,_bare,30,,Adam
+d_022_shru_02,20220623,Adam & Jacob,3,satr,4,11,Adam
+d_022_shru_02,20220623,Adam & Jacob,3,elre,3,19,Adam
+d_022_shru_02,20220623,Adam & Jacob,3,kosc,1,12,Adam
+d_022_shru_02,20220623,Adam & Jacob,4,_litter,5,,Adam
+d_022_shru_02,20220623,Adam & Jacob,4,_bare,95,,Adam
+d_022_shru_02,20220623,Adam & Jacob,4,satr,3,7,Adam
+d_022_shru_02,20220623,Adam & Jacob,4,sial,3,6,Adam
+d_022_shru_02,20220623,Adam & Jacob,4,kosc,6,12,Adam
+d_022_shru_02,20220623,Adam & Jacob,4,chbe,0.5,1,Adam
+d_022_shru_02,20220623,Adam & Jacob,5,_litter,10,,Adam
+d_022_shru_02,20220623,Adam & Jacob,5,_bare,90,,Adam
+d_022_shru_02,20220623,Adam & Jacob,5,satr,30,14,Adam
+d_022_shru_02,20220623,Adam & Jacob,5,kosc,2,10,Adam
+d_022_shru_02,20220623,Adam & Jacob,6,_litter,85,,Adam
+d_022_shru_02,20220623,Adam & Jacob,6,_bare,15,,Adam
+d_022_shru_02,20220623,Adam & Jacob,6,satr,45,9,Adam
+d_022_shru_02,20220623,Adam & Jacob,6,elre,1,5,Adam
+d_022_shru_02,20220623,Adam & Jacob,6,sial,0.5,1,Adam
+d_022_shru_02,20220623,Adam & Jacob,6,kosc,0.5,3,Adam
+d_022_shru_02,20220623,Adam & Jacob,7,_litter,99,,Adam
+d_022_shru_02,20220623,Adam & Jacob,7,_bare,1,,Adam
+d_022_shru_02,20220623,Adam & Jacob,7,satr,50,7,Adam
+d_022_shru_02,20220623,Adam & Jacob,7,elre,3,17,Adam
+d_022_shru_02,20220623,Adam & Jacob,7,kosc,0.5,5,Adam
+d_022_shru_02,20220623,Adam & Jacob,7,brte,0.5,34,Adam
+d_022_shru_02,20220623,Adam & Jacob,8,_litter,1,,Adam
+d_022_shru_02,20220623,Adam & Jacob,8,_bare,99,,Adam
+d_022_shru_02,20220623,Adam & Jacob,8,satr,11,8,Adam
+d_022_shru_02,20220623,Adam & Jacob,8,sial,2,25,Adam
+d_022_shru_02,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_022_shru_02,20220623,Adam & Jacob,999,lase,0.5,,Adam
+d_022_shru_02,20220623,Adam & Jacob,999,atca,0.5,,Adam
+d_023_shru_02,20220623,Adam & Jacob,1,_litter,90,,Adam
+d_023_shru_02,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_023_shru_02,20220623,Adam & Jacob,1,satr,6,14,Adam
+d_023_shru_02,20220623,Adam & Jacob,1,brte,3,17,Adam
+d_023_shru_02,20220623,Adam & Jacob,1,kosc,0.5,6,Adam
+d_023_shru_02,20220623,Adam & Jacob,1,bogr,18,12,Adam
+d_023_shru_02,20220623,Adam & Jacob,2,_litter,80,,Adam
+d_023_shru_02,20220623,Adam & Jacob,2,_bare,20,,Adam
+d_023_shru_02,20220623,Adam & Jacob,2,satr,8,8,Adam
+d_023_shru_02,20220623,Adam & Jacob,2,brte,3,13,Adam
+d_023_shru_02,20220623,Adam & Jacob,2,mesa,0.5,3,Adam
+d_023_shru_02,20220623,Adam & Jacob,2,sial,0.5,6,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,_litter,90,,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,_bare,10,,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,satr,8,14,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,brte,1,5,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,bogr,2,24,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,sphe,4,34,Adam
+d_023_shru_02,20220623,Adam & Jacob,3,chbe,0.5,2,Adam
+d_023_shru_02,20220623,Adam & Jacob,4,_litter,85,,Adam
+d_023_shru_02,20220623,Adam & Jacob,4,_bare,15,,Adam
+d_023_shru_02,20220623,Adam & Jacob,4,satr,10,17,Adam
+d_023_shru_02,20220623,Adam & Jacob,4,brte,1,4,Adam
+d_023_shru_02,20220623,Adam & Jacob,4,sial,2,22,Adam
+d_023_shru_02,20220623,Adam & Jacob,5,_litter,98,,Adam
+d_023_shru_02,20220623,Adam & Jacob,5,_bare,2,,Adam
+d_023_shru_02,20220623,Adam & Jacob,5,satr,15,17,Adam
+d_023_shru_02,20220623,Adam & Jacob,5,brte,1,2,Adam
+d_023_shru_02,20220623,Adam & Jacob,5,elre,3,20,Adam
+d_023_shru_02,20220623,Adam & Jacob,6,_litter,90,,Adam
+d_023_shru_02,20220623,Adam & Jacob,6,_bare,10,,Adam
+d_023_shru_02,20220623,Adam & Jacob,6,satr,6,15,Adam
+d_023_shru_02,20220623,Adam & Jacob,6,sial,6,8,Adam
+d_023_shru_02,20220623,Adam & Jacob,6,sphe,0.5,10,Adam
+d_023_shru_02,20220623,Adam & Jacob,6,elre,10,25,Adam
+d_023_shru_02,20220623,Adam & Jacob,7,_litter,98,,Adam
+d_023_shru_02,20220623,Adam & Jacob,7,_bare,2,,Adam
+d_023_shru_02,20220623,Adam & Jacob,7,satr,20,27,Adam
+d_023_shru_02,20220623,Adam & Jacob,7,brte,1,10,Adam
+d_023_shru_02,20220623,Adam & Jacob,7,sphe,10,28,Adam
+d_023_shru_02,20220623,Adam & Jacob,8,_litter,100,,Adam
+d_023_shru_02,20220623,Adam & Jacob,8,_bare,0,,Adam
+d_023_shru_02,20220623,Adam & Jacob,8,satr,24,16,Adam
+d_023_shru_02,20220623,Adam & Jacob,8,sial,2,36,Adam
+d_023_shru_02,20220623,Adam & Jacob,8,trdu,3,13,Adam
+d_023_shru_02,20220623,Adam & Jacob,999,assp,0.5,,Adam
+d_023_shru_02,20220623,Adam & Jacob,999,upg4,0.5,,Adam
+d_023_shru_02,20220623,Adam & Jacob,999,trte,0.5,,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,_bare,0,,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,atca,90,105,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,satr,0.5,6,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,mesa,3,32,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,brte,2,27,Adam
+d_021_shru_02,20220623,Adam & Jacob,1,elre,3,37,Adam
+d_021_shru_02,20220623,Adam & Jacob,2,_litter,80,,Adam
+d_021_shru_02,20220623,Adam & Jacob,2,_bare,20,,Adam
+d_021_shru_02,20220623,Adam & Jacob,2,satr,6,11,Adam
+d_021_shru_02,20220623,Adam & Jacob,2,elre,3,18,Adam
+d_021_shru_02,20220623,Adam & Jacob,2,kosc,0,12,Adam
+d_021_shru_02,20220623,Adam & Jacob,3,_litter,80,,Adam
+d_021_shru_02,20220623,Adam & Jacob,3,_bare,20,,Adam
+d_021_shru_02,20220623,Adam & Jacob,3,satr,7,10,Adam
+d_021_shru_02,20220623,Adam & Jacob,3,elre,3,24,Adam
+d_021_shru_02,20220623,Adam & Jacob,3,kosc,7,10,Adam
+d_021_shru_02,20220623,Adam & Jacob,4,_litter,70,,Adam
+d_021_shru_02,20220623,Adam & Jacob,4,_bare,30,,Adam
+d_021_shru_02,20220623,Adam & Jacob,4,satr,8,11,Adam
+d_021_shru_02,20220623,Adam & Jacob,4,elre,10,10,Adam
+d_021_shru_02,20220623,Adam & Jacob,4,kosc,2,11,Adam
+d_021_shru_02,20220623,Adam & Jacob,5,_litter,100,,Adam
+d_021_shru_02,20220623,Adam & Jacob,5,_bare,0,,Adam
+d_021_shru_02,20220623,Adam & Jacob,5,satr,8,8,Adam
+d_021_shru_02,20220623,Adam & Jacob,5,mesa,25,32,Adam
+d_021_shru_02,20220623,Adam & Jacob,5,elre,2,14,Adam
+d_021_shru_02,20220623,Adam & Jacob,5,kosc,1,16,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,_litter,20,,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,_bare,78,,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,satr,8,8,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,elre,5,20,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,kosc,0.5,5,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,_moss,2,,Adam
+d_021_shru_02,20220623,Adam & Jacob,6,deso,1,30,Adam
+d_021_shru_02,20220623,Adam & Jacob,7,_litter,60,,Adam
+d_021_shru_02,20220623,Adam & Jacob,7,_bare,40,,Adam
+d_021_shru_02,20220623,Adam & Jacob,7,satr,9,6,Adam
+d_021_shru_02,20220623,Adam & Jacob,7,elre,1,16,Adam
+d_021_shru_02,20220623,Adam & Jacob,7,kosc,0.5,7,Adam
+d_021_shru_02,20220623,Adam & Jacob,8,_litter,99,,Adam
+d_021_shru_02,20220623,Adam & Jacob,8,_bare,1,,Adam
+d_021_shru_02,20220623,Adam & Jacob,8,satr,5,14,Adam
+d_021_shru_02,20220623,Adam & Jacob,8,mesa,1,28,Adam
+d_021_shru_02,20220623,Adam & Jacob,8,elre,4,15,Adam
+d_021_shru_02,20220623,Adam & Jacob,8,kosc,3,1,Adam
+d_021_shru_02,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,satr,3,12,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,kosc,5,14,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,brte,7,19,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,mesa,3,21,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,elre,0.5,19,Adam
+d_020_shru_02,20220623,Adam & Jacob,1,atca,18,105,Adam
+d_020_shru_02,20220623,Adam & Jacob,2,_litter,100,,Adam
+d_020_shru_02,20220623,Adam & Jacob,2,satr,4,6,Adam
+d_020_shru_02,20220623,Adam & Jacob,2,kosc,1,8,Adam
+d_020_shru_02,20220623,Adam & Jacob,2,brte,10,21,Adam
+d_020_shru_02,20220623,Adam & Jacob,2,elre,1,15,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,_litter,99,,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,satr,3,10,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,kosc,8,21,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,brte,5,14,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,mesa,2,18,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,elre,1,17,Adam
+d_020_shru_02,20220623,Adam & Jacob,3,_bare,1,,Adam
+d_020_shru_02,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_020_shru_02,20220623,Adam & Jacob,4,satr,3,12,Adam
+d_020_shru_02,20220623,Adam & Jacob,4,kosc,10,14,Adam
+d_020_shru_02,20220623,Adam & Jacob,4,brte,10,14,Adam
+d_020_shru_02,20220623,Adam & Jacob,5,_litter,100,,Adam
+d_020_shru_02,20220623,Adam & Jacob,5,satr,1,9,Adam
+d_020_shru_02,20220623,Adam & Jacob,5,kosc,9,10,Adam
+d_020_shru_02,20220623,Adam & Jacob,5,brte,8,12,Adam
+d_020_shru_02,20220623,Adam & Jacob,5,elre,0.5,15,Adam
+d_020_shru_02,20220623,Adam & Jacob,6,_litter,95,,Adam
+d_020_shru_02,20220623,Adam & Jacob,6,satr,1,5,Adam
+d_020_shru_02,20220623,Adam & Jacob,6,kosc,1,8,Adam
+d_020_shru_02,20220623,Adam & Jacob,6,brte,3,19,Adam
+d_020_shru_02,20220623,Adam & Jacob,6,elre,10,29,Adam
+d_020_shru_02,20220623,Adam & Jacob,6,_bare,5,,Adam
+d_020_shru_02,20220623,Adam & Jacob,7,_litter,99,,Adam
+d_020_shru_02,20220623,Adam & Jacob,7,satr,3,6,Adam
+d_020_shru_02,20220623,Adam & Jacob,7,kosc,2,11,Adam
+d_020_shru_02,20220623,Adam & Jacob,7,brte,8,19,Adam
+d_020_shru_02,20220623,Adam & Jacob,7,elre,5,20,Adam
+d_020_shru_02,20220623,Adam & Jacob,7,_bare,1,,Adam
+d_020_shru_02,20220623,Adam & Jacob,8,_litter,100,,Adam
+d_020_shru_02,20220623,Adam & Jacob,8,satr,2,9,Adam
+d_020_shru_02,20220623,Adam & Jacob,8,kosc,5,12,Adam
+d_020_shru_02,20220623,Adam & Jacob,8,brte,30,20,Adam
+d_020_shru_02,20220623,Adam & Jacob,8,elre,2,15,Adam
+d_020_shru_02,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_019_shru_02,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,1,satr,4,10,Adam
+d_019_shru_02,20220623,Adam & Jacob,1,kosc,1,12,Adam
+d_019_shru_02,20220623,Adam & Jacob,1,brte,3,17,Adam
+d_019_shru_02,20220623,Adam & Jacob,2,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,2,satr,0.5,9,Adam
+d_019_shru_02,20220623,Adam & Jacob,2,kosc,1,8,Adam
+d_019_shru_02,20220623,Adam & Jacob,2,brte,15,15,Adam
+d_019_shru_02,20220623,Adam & Jacob,2,elre,1,22,Adam
+d_019_shru_02,20220623,Adam & Jacob,3,_litter,20,,Adam
+d_019_shru_02,20220623,Adam & Jacob,3,satr,2,9,Adam
+d_019_shru_02,20220623,Adam & Jacob,3,kosc,5,9,Adam
+d_019_shru_02,20220623,Adam & Jacob,3,brte,2,5,Adam
+d_019_shru_02,20220623,Adam & Jacob,3,elre,1,13,Adam
+d_019_shru_02,20220623,Adam & Jacob,3,_bare,80,,Adam
+d_019_shru_02,20220623,Adam & Jacob,4,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,4,satr,2,10,Adam
+d_019_shru_02,20220623,Adam & Jacob,4,kosc,2,16,Adam
+d_019_shru_02,20220623,Adam & Jacob,4,brte,4,13,Adam
+d_019_shru_02,20220623,Adam & Jacob,4,atca,25,115,Adam
+d_019_shru_02,20220623,Adam & Jacob,5,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,5,satr,1,10,Adam
+d_019_shru_02,20220623,Adam & Jacob,5,kosc,12,18,Adam
+d_019_shru_02,20220623,Adam & Jacob,5,brte,15,31,Adam
+d_019_shru_02,20220623,Adam & Jacob,6,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,6,satr,5,10,Adam
+d_019_shru_02,20220623,Adam & Jacob,6,kosc,3,13,Adam
+d_019_shru_02,20220623,Adam & Jacob,6,brte,10,23,Adam
+d_019_shru_02,20220623,Adam & Jacob,6,elre,1,17,Adam
+d_019_shru_02,20220623,Adam & Jacob,7,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,7,satr,7,8,Adam
+d_019_shru_02,20220623,Adam & Jacob,7,brte,30,18,Adam
+d_019_shru_02,20220623,Adam & Jacob,8,_litter,100,,Adam
+d_019_shru_02,20220623,Adam & Jacob,8,satr,3,9,Adam
+d_019_shru_02,20220623,Adam & Jacob,8,kosc,5,15,Adam
+d_019_shru_02,20220623,Adam & Jacob,8,brte,25,17,Adam
+d_018_shru_02,20220623,Adam & Jacob,1,_litter,100,,Adam
+d_018_shru_02,20220623,Adam & Jacob,1,kosc,6,12,Adam
+d_018_shru_02,20220623,Adam & Jacob,1,brte,4,19,Adam
+d_018_shru_02,20220623,Adam & Jacob,2,_litter,100,,Adam
+d_018_shru_02,20220623,Adam & Jacob,2,kosc,7,15,Adam
+d_018_shru_02,20220623,Adam & Jacob,2,satr,1,12,Adam
+d_018_shru_02,20220623,Adam & Jacob,3,_litter,100,,Adam
+d_018_shru_02,20220623,Adam & Jacob,3,kosc,25,14,Adam
+d_018_shru_02,20220623,Adam & Jacob,3,brte,4,15,Adam
+d_018_shru_02,20220623,Adam & Jacob,3,satr,1,7,Adam
+d_018_shru_02,20220623,Adam & Jacob,4,_litter,90,,Adam
+d_018_shru_02,20220623,Adam & Jacob,4,kosc,5,16,Adam
+d_018_shru_02,20220623,Adam & Jacob,4,brte,5,16,Adam
+d_018_shru_02,20220623,Adam & Jacob,4,satr,1,9,Adam
+d_018_shru_02,20220623,Adam & Jacob,4,_bare,10,,Adam
+d_018_shru_02,20220623,Adam & Jacob,4,mesa,2,22,Adam
+d_018_shru_02,20220623,Adam & Jacob,5,_litter,100,,Adam
+d_018_shru_02,20220623,Adam & Jacob,5,kosc,7,19,Adam
+d_018_shru_02,20220623,Adam & Jacob,5,satr,2,7,Adam
+d_018_shru_02,20220623,Adam & Jacob,6,_litter,100,,Adam
+d_018_shru_02,20220623,Adam & Jacob,6,kosc,25,11,Adam
+d_018_shru_02,20220623,Adam & Jacob,6,brte,3,14,Adam
+d_018_shru_02,20220623,Adam & Jacob,6,satr,1,6,Adam
+d_018_shru_02,20220623,Adam & Jacob,7,_litter,100,,Adam
+d_018_shru_02,20220623,Adam & Jacob,7,kosc,20,11,Adam
+d_018_shru_02,20220623,Adam & Jacob,7,satr,2,12,Adam
+d_018_shru_02,20220623,Adam & Jacob,7,mesa,1,13,Adam
+d_018_shru_02,20220623,Adam & Jacob,7,deso,0.5,23,Adam
+d_018_shru_02,20220623,Adam & Jacob,8,_litter,99,,Adam
+d_018_shru_02,20220623,Adam & Jacob,8,kosc,5,13,Adam
+d_018_shru_02,20220623,Adam & Jacob,8,brte,1,16,Adam
+d_018_shru_02,20220623,Adam & Jacob,8,satr,5,10,Adam
+d_018_shru_02,20220623,Adam & Jacob,8,_bare,1,,Adam
+d_053_shru_04,20220623,Adam & Jacob,1,_litter,75,,Adam
+d_053_shru_04,20220623,Adam & Jacob,1,_bare,25,,Adam
+d_053_shru_04,20220623,Adam & Jacob,1,satr,3,6,Adam
+d_053_shru_04,20220623,Adam & Jacob,1,kosc,10,14,Adam
+d_053_shru_04,20220623,Adam & Jacob,1,brte,0.5,17,Adam
+d_053_shru_04,20220623,Adam & Jacob,1,elre,4,20,Adam
+d_053_shru_04,20220623,Adam & Jacob,2,_litter,30,,Adam
+d_053_shru_04,20220623,Adam & Jacob,2,_bare,70,,Adam
+d_053_shru_04,20220623,Adam & Jacob,2,satr,1,5,Adam
+d_053_shru_04,20220623,Adam & Jacob,2,kosc,3,15,Adam
+d_053_shru_04,20220623,Adam & Jacob,2,brte,5,17,Adam
+d_053_shru_04,20220623,Adam & Jacob,2,elre,1,15,Adam
+d_053_shru_04,20220623,Adam & Jacob,3,_litter,90,,Adam
+d_053_shru_04,20220623,Adam & Jacob,3,_bare,10,,Adam
+d_053_shru_04,20220623,Adam & Jacob,3,satr,3,6,Adam
+d_053_shru_04,20220623,Adam & Jacob,3,kosc,4,12,Adam
+d_053_shru_04,20220623,Adam & Jacob,3,brte,3,17,Adam
+d_053_shru_04,20220623,Adam & Jacob,4,_litter,95,,Adam
+d_053_shru_04,20220623,Adam & Jacob,4,_bare,5,,Adam
+d_053_shru_04,20220623,Adam & Jacob,4,satr,0.5,7,Adam
+d_053_shru_04,20220623,Adam & Jacob,4,kosc,3,9,Adam
+d_053_shru_04,20220623,Adam & Jacob,4,brte,7,13,Adam
+d_053_shru_04,20220623,Adam & Jacob,4,elre,6,29,Adam
+d_053_shru_04,20220623,Adam & Jacob,999,atca,0.5,,Adam
+d_053_shru_04,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_053_shru_04,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_053_shru_04,20220623,Adam & Jacob,999,lase,0.5,,Adam
+d_053_shru_04,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_054_shru_04,20220623,Adam & Jacob,1,_litter,90,,Adam
+d_054_shru_04,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_054_shru_04,20220623,Adam & Jacob,1,satr,3,11,Adam
+d_054_shru_04,20220623,Adam & Jacob,1,elre,17,23,Adam
+d_054_shru_04,20220623,Adam & Jacob,1,kosc,1,7,Adam
+d_054_shru_04,20220623,Adam & Jacob,1,deso,1,23,Adam
+d_054_shru_04,20220623,Adam & Jacob,2,_litter,99,,Adam
+d_054_shru_04,20220623,Adam & Jacob,2,_bare,1,,Adam
+d_054_shru_04,20220623,Adam & Jacob,2,satr,8,5,Adam
+d_054_shru_04,20220623,Adam & Jacob,2,elre,7,15,Adam
+d_054_shru_04,20220623,Adam & Jacob,2,kosc,11,11,Adam
+d_054_shru_04,20220623,Adam & Jacob,3,_litter,50,,Adam
+d_054_shru_04,20220623,Adam & Jacob,3,_bare,50,,Adam
+d_054_shru_04,20220623,Adam & Jacob,3,satr,5,7,Adam
+d_054_shru_04,20220623,Adam & Jacob,3,elre,10,22,Adam
+d_054_shru_04,20220623,Adam & Jacob,3,kosc,4,16,Adam
+d_054_shru_04,20220623,Adam & Jacob,4,_litter,90,,Adam
+d_054_shru_04,20220623,Adam & Jacob,4,_bare,10,,Adam
+d_054_shru_04,20220623,Adam & Jacob,4,satr,5,7,Adam
+d_054_shru_04,20220623,Adam & Jacob,4,elre,15,18,Adam
+d_054_shru_04,20220623,Adam & Jacob,4,kosc,1,12,Adam
+d_054_shru_04,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_054_shru_04,20220623,Adam & Jacob,999,atca,0.5,,Adam
+d_054_shru_04,20220623,Adam & Jacob,999,brte,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,1,_litter,90,,Adam
+d_055_shru_04,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_055_shru_04,20220623,Adam & Jacob,1,satr,18,11,Adam
+d_055_shru_04,20220623,Adam & Jacob,1,kosc,0.5,4,Adam
+d_055_shru_04,20220623,Adam & Jacob,1,elre,4,12,Adam
+d_055_shru_04,20220623,Adam & Jacob,2,_litter,60,,Adam
+d_055_shru_04,20220623,Adam & Jacob,2,_bare,40,,Adam
+d_055_shru_04,20220623,Adam & Jacob,2,satr,4,8,Adam
+d_055_shru_04,20220623,Adam & Jacob,2,kosc,4,16,Adam
+d_055_shru_04,20220623,Adam & Jacob,2,elre,6,14,Adam
+d_055_shru_04,20220623,Adam & Jacob,3,_litter,30,,Adam
+d_055_shru_04,20220623,Adam & Jacob,3,_bare,70,,Adam
+d_055_shru_04,20220623,Adam & Jacob,3,satr,2,11,Adam
+d_055_shru_04,20220623,Adam & Jacob,3,kosc,8,13,Adam
+d_055_shru_04,20220623,Adam & Jacob,3,elre,5,19,Adam
+d_055_shru_04,20220623,Adam & Jacob,4,_litter,30,,Adam
+d_055_shru_04,20220623,Adam & Jacob,4,_bare,70,,Adam
+d_055_shru_04,20220623,Adam & Jacob,4,satr,6,15,Adam
+d_055_shru_04,20220623,Adam & Jacob,4,kosc,9,18,Adam
+d_055_shru_04,20220623,Adam & Jacob,4,elre,3,23,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,atca,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,brte,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,chbe,0.5,,Adam
+d_055_shru_04,20220623,Adam & Jacob,999,sphe,0.5,,Adam
+d_056_shru_04,20220623,Adam & Jacob,1,_litter,90,,Adam
+d_056_shru_04,20220623,Adam & Jacob,1,_bare,10,,Adam
+d_056_shru_04,20220623,Adam & Jacob,1,brte,22,21,Adam
+d_056_shru_04,20220623,Adam & Jacob,1,satr,5,12,Adam
+d_056_shru_04,20220623,Adam & Jacob,1,kosc,5,23,Adam
+d_056_shru_04,20220623,Adam & Jacob,2,_litter,99,,Adam
+d_056_shru_04,20220623,Adam & Jacob,2,_bare,1,,Adam
+d_056_shru_04,20220623,Adam & Jacob,2,brte,26,23,Adam
+d_056_shru_04,20220623,Adam & Jacob,2,satr,1,10,Adam
+d_056_shru_04,20220623,Adam & Jacob,2,kosc,5,17,Adam
+d_056_shru_04,20220623,Adam & Jacob,2,elre,5,7,Adam
+d_056_shru_04,20220623,Adam & Jacob,3,_litter,98,,Adam
+d_056_shru_04,20220623,Adam & Jacob,3,_bare,0,,Adam
+d_056_shru_04,20220623,Adam & Jacob,3,brte,29,19,Adam
+d_056_shru_04,20220623,Adam & Jacob,3,satr,2,12,Adam
+d_056_shru_04,20220623,Adam & Jacob,3,kosc,2,15,Adam
+d_056_shru_04,20220623,Adam & Jacob,3,_moss,2,,Adam
+d_056_shru_04,20220623,Adam & Jacob,4,_litter,95,,Adam
+d_056_shru_04,20220623,Adam & Jacob,4,_bare,5,,Adam
+d_056_shru_04,20220623,Adam & Jacob,4,brte,0.5,14,Adam
+d_056_shru_04,20220623,Adam & Jacob,4,satr,1,10,Adam
+d_056_shru_04,20220623,Adam & Jacob,4,kosc,4,15,Adam
+d_056_shru_04,20220623,Adam & Jacob,4,elre,10,21,Adam
+d_056_shru_04,20220623,Adam & Jacob,999,chbe,0.5,,Adam
+d_056_shru_04,20220623,Adam & Jacob,999,mesa,0.5,,Adam
+d_056_shru_04,20220623,Adam & Jacob,999,sial,0.5,,Adam
+d_056_shru_04,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_057_shru_04,20220623,Adam & Jacob,1,_litter,95,,Adam
+d_057_shru_04,20220623,Adam & Jacob,1,_bare,5,,Adam
+d_057_shru_04,20220623,Adam & Jacob,1,elre,55,26,Adam
+d_057_shru_04,20220623,Adam & Jacob,1,satr,0.5,2,Adam
+d_057_shru_04,20220623,Adam & Jacob,1,coar,1,19,Adam
+d_057_shru_04,20220623,Adam & Jacob,1,kosc,0.5,1,Adam
+d_057_shru_04,20220623,Adam & Jacob,2,_litter,5,,Adam
+d_057_shru_04,20220623,Adam & Jacob,2,_bare,95,,Adam
+d_057_shru_04,20220623,Adam & Jacob,2,elre,5,16,Adam
+d_057_shru_04,20220623,Adam & Jacob,2,satr,1,1,Adam
+d_057_shru_04,20220623,Adam & Jacob,2,coar,3,16,Adam
+d_057_shru_04,20220623,Adam & Jacob,2,kosc,1,1,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,_litter,1,,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,_bare,99,,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,elre,2,19,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,satr,0.5,2,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,coar,4,10,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,kosc,1,1,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,sial,0.5,10,Adam
+d_057_shru_04,20220623,Adam & Jacob,3,brte,0.5,5,Adam
+d_057_shru_04,20220623,Adam & Jacob,4,_litter,95,,Adam
+d_057_shru_04,20220623,Adam & Jacob,4,_bare,5,,Adam
+d_057_shru_04,20220623,Adam & Jacob,4,elre,6,22,Adam
+d_057_shru_04,20220623,Adam & Jacob,4,satr,0.5,1,Adam
+d_057_shru_04,20220623,Adam & Jacob,4,coar,0.5,8,Adam
+d_057_shru_04,20220623,Adam & Jacob,4,mesa,24,32,Adam
+d_057_shru_04,20220623,Adam & Jacob,999,hevi,0.5,,Adam
+d_057_shru_04,20220623,Adam & Jacob,999,deso,0.5,,Adam
+d_057_shru_04,20220623,Adam & Jacob,999,taof,0.5,,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,_litter,99,,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,_bare,1,,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,elre,3,31,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,taof,40,8,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,satr,4,29,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,kosc,0.5,7,Adam
+d_008_herb_01,20220622,Adam & Jacob,1,brte,1,13,Adam
+d_008_herb_01,20220622,Adam & Jacob,2,_litter,95,,Adam
+d_008_herb_01,20220622,Adam & Jacob,2,_bare,5,,Adam
+d_008_herb_01,20220622,Adam & Jacob,2,elre,3,34,Adam
+d_008_herb_01,20220622,Adam & Jacob,2,satr,5,18,Adam
+d_008_herb_01,20220622,Adam & Jacob,2,kosc,20,25,Adam
+d_008_herb_01,20220622,Adam & Jacob,2,brte,2,21,Adam
+d_008_herb_01,20220622,Adam & Jacob,3,_litter,90,,Adam
+d_008_herb_01,20220622,Adam & Jacob,3,_bare,10,,Adam
+d_008_herb_01,20220622,Adam & Jacob,3,elre,4,26,Adam
+d_008_herb_01,20220622,Adam & Jacob,3,satr,15,18,Adam
+d_008_herb_01,20220622,Adam & Jacob,3,brte,8,29,Adam
+d_008_herb_01,20220622,Adam & Jacob,3,sotr,0.5,6,Adam
+d_008_herb_01,20220622,Adam & Jacob,4,_litter,95,,Adam
+d_008_herb_01,20220622,Adam & Jacob,4,_bare,5,,Adam
+d_008_herb_01,20220622,Adam & Jacob,4,elre,2,10,Adam
+d_008_herb_01,20220622,Adam & Jacob,4,satr,2,11,Adam
+d_008_herb_01,20220622,Adam & Jacob,4,kosc,0.5,10,Adam
+d_008_herb_01,20220622,Adam & Jacob,4,navi,2,43,Adam
+d_008_herb_01,20220622,Adam & Jacob,5,_litter,100,,Adam
+d_008_herb_01,20220622,Adam & Jacob,5,elre,5,30,Adam
+d_008_herb_01,20220622,Adam & Jacob,5,taof,1,7,Adam
+d_008_herb_01,20220622,Adam & Jacob,5,satr,10,27,Adam
+d_008_herb_01,20220622,Adam & Jacob,5,brte,4,22,Adam
+d_008_herb_01,20220622,Adam & Jacob,6,_litter,100,,Adam
+d_008_herb_01,20220622,Adam & Jacob,6,satr,6,17,Adam
+d_008_herb_01,20220622,Adam & Jacob,6,kosc,20,20,Adam
+d_008_herb_01,20220622,Adam & Jacob,6,brte,6,21,Adam
+d_008_herb_01,20220622,Adam & Jacob,6,ciar,10,16,Adam
+d_008_herb_01,20220622,Adam & Jacob,7,_litter,100,,Adam
+d_008_herb_01,20220622,Adam & Jacob,7,satr,3,10,Adam
+d_008_herb_01,20220622,Adam & Jacob,7,kosc,9,31,Adam
+d_008_herb_01,20220622,Adam & Jacob,7,brte,3,23,Adam
+d_008_herb_01,20220622,Adam & Jacob,7,sotr,4,10,Adam
+d_008_herb_01,20220622,Adam & Jacob,8,_litter,100,,Adam
+d_008_herb_01,20220622,Adam & Jacob,8,satr,3,12,Adam
+d_008_herb_01,20220622,Adam & Jacob,8,brte,7,31,Adam
+d_014_herb_01,20220622,Adam & Jacob,1,_litter,100,,Adam
+d_014_herb_01,20220622,Adam & Jacob,1,upg4,65,21,Adam
+d_014_herb_01,20220622,Adam & Jacob,1,brte,3,17,Adam
+d_014_herb_01,20220622,Adam & Jacob,1,satr,2,15,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,_litter,92,,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,upg4,33,24,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,brte,7,16,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,satr,2,9,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,kosc,1,15,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,_moss,5,,Adam
+d_014_herb_01,20220622,Adam & Jacob,2,_bare,3,,Adam
+d_014_herb_01,20220622,Adam & Jacob,3,_litter,90,,Adam
+d_014_herb_01,20220622,Adam & Jacob,3,brte,4,25,Adam
+d_014_herb_01,20220622,Adam & Jacob,3,satr,3,14,Adam
+d_014_herb_01,20220622,Adam & Jacob,3,kosc,9,10,Adam
+d_014_herb_01,20220622,Adam & Jacob,3,_bare,10,,Adam
+d_014_herb_01,20220622,Adam & Jacob,3,sphe,1,25,Adam
+d_014_herb_01,20220622,Adam & Jacob,4,_litter,95,,Adam
+d_014_herb_01,20220622,Adam & Jacob,4,brte,5,27,Adam
+d_014_herb_01,20220622,Adam & Jacob,4,kosc,12,24,Adam
+d_014_herb_01,20220622,Adam & Jacob,4,_bare,5,,Adam
+d_014_herb_01,20220622,Adam & Jacob,4,bocu,7,14,Adam
+d_014_herb_01,20220622,Adam & Jacob,5,_litter,99,,Adam
+d_014_herb_01,20220622,Adam & Jacob,5,brte,9,18,Adam
+d_014_herb_01,20220622,Adam & Jacob,5,satr,3,11,Adam
+d_014_herb_01,20220622,Adam & Jacob,5,kosc,0.5,8,Adam
+d_014_herb_01,20220622,Adam & Jacob,5,_bare,1,,Adam
+d_014_herb_01,20220622,Adam & Jacob,5,bocu,25,15,Adam
+d_014_herb_01,20220622,Adam & Jacob,6,_litter,99,,Adam
+d_014_herb_01,20220622,Adam & Jacob,6,brte,30,31,Adam
+d_014_herb_01,20220622,Adam & Jacob,6,satr,3,7,Adam
+d_014_herb_01,20220622,Adam & Jacob,6,kosc,0.5,6,Adam
+d_014_herb_01,20220622,Adam & Jacob,6,_bare,1,,Adam
+d_014_herb_01,20220622,Adam & Jacob,6,sial,0.5,9,Adam
+d_014_herb_01,20220622,Adam & Jacob,7,_litter,100,,Adam
+d_014_herb_01,20220622,Adam & Jacob,7,brte,25,30,Adam
+d_014_herb_01,20220622,Adam & Jacob,7,satr,3,14,Adam
+d_014_herb_01,20220622,Adam & Jacob,7,kosc,5,13,Adam
+d_014_herb_01,20220622,Adam & Jacob,8,_litter,99,,Adam
+d_014_herb_01,20220622,Adam & Jacob,8,brte,36,21,Adam
+d_014_herb_01,20220622,Adam & Jacob,8,satr,4,15,Adam
+d_014_herb_01,20220622,Adam & Jacob,8,kosc,3,15,Adam
+d_014_herb_01,20220622,Adam & Jacob,8,_bare,1,,Adam
+d_014_herb_01,20220622,Adam & Jacob,8,bocu,2,17,Adam
+d_014_herb_01,20220622,Adam & Jacob,999,mesa,0.5,,Adam
+d_007_herb_01,20220622,Adam & Jacob,1,_litter,100,,Adam
+d_007_herb_01,20220622,Adam & Jacob,1,brte,1,13,Adam
+d_007_herb_01,20220622,Adam & Jacob,1,navi,16,45,Adam
+d_007_herb_01,20220622,Adam & Jacob,1,elre,7,27,Adam
+d_007_herb_01,20220622,Adam & Jacob,2,_litter,100,,Adam
+d_007_herb_01,20220622,Adam & Jacob,2,brte,1,45,Adam
+d_007_herb_01,20220622,Adam & Jacob,2,navi,0.5,90,Adam
+d_007_herb_01,20220622,Adam & Jacob,3,_litter,95,,Adam
+d_007_herb_01,20220622,Adam & Jacob,3,brte,1,38,Adam
+d_007_herb_01,20220622,Adam & Jacob,3,elre,7,26,Adam
+d_007_herb_01,20220622,Adam & Jacob,3,_bare,5,,Adam
+d_007_herb_01,20220622,Adam & Jacob,3,satr,1,7,Adam
+d_007_herb_01,20220622,Adam & Jacob,3,bocu,40,22,Adam
+d_007_herb_01,20220622,Adam & Jacob,4,_litter,100,,Adam
+d_007_herb_01,20220622,Adam & Jacob,4,brte,2,25,Adam
+d_007_herb_01,20220622,Adam & Jacob,4,navi,5,40,Adam
+d_007_herb_01,20220622,Adam & Jacob,4,elre,6,33,Adam
+d_007_herb_01,20220622,Adam & Jacob,4,satr,3,10,Adam
+d_007_herb_01,20220622,Adam & Jacob,4,mesa,1,16,Adam
+d_007_herb_01,20220622,Adam & Jacob,5,_litter,99,,Adam
+d_007_herb_01,20220622,Adam & Jacob,5,brte,0.5,12,Adam
+d_007_herb_01,20220622,Adam & Jacob,5,navi,3,40,Adam
+d_007_herb_01,20220622,Adam & Jacob,5,elre,35,33,Adam
+d_007_herb_01,20220622,Adam & Jacob,5,_bare,1,,Adam
+d_007_herb_01,20220622,Adam & Jacob,5,satr,0.5,8,Adam
+d_007_herb_01,20220622,Adam & Jacob,6,_litter,99,,Adam
+d_007_herb_01,20220622,Adam & Jacob,6,brte,0.5,10,Adam
+d_007_herb_01,20220622,Adam & Jacob,6,elre,30,38,Adam
+d_007_herb_01,20220622,Adam & Jacob,6,_bare,1,,Adam
+d_007_herb_01,20220622,Adam & Jacob,6,satr,0.5,5,Adam
+d_007_herb_01,20220622,Adam & Jacob,7,_litter,95,,Adam
+d_007_herb_01,20220622,Adam & Jacob,7,brte,4,6,Adam
+d_007_herb_01,20220622,Adam & Jacob,7,_bare,5,,Adam
+d_007_herb_01,20220622,Adam & Jacob,7,satr,6,11,Adam
+d_007_herb_01,20220622,Adam & Jacob,7,bocu,10,44,Adam
+d_007_herb_01,20220622,Adam & Jacob,8,_litter,90,,Adam
+d_007_herb_01,20220622,Adam & Jacob,8,_bare,10,,Adam
+d_007_herb_01,20220622,Adam & Jacob,8,satr,1,8,Adam
+d_007_herb_01,20220622,Adam & Jacob,8,elre,20,31,Adam
+d_007_herb_01,20220622,Adam & Jacob,999,trdu,0.5,,Adam
+d_006_herb_01,20220622,Adam & Jacob,1,brte,7,24,Adam
+d_006_herb_01,20220622,Adam & Jacob,1,satr,4,20,Adam
+d_006_herb_01,20220622,Adam & Jacob,1,mesa,3,26,Adam
+d_006_herb_01,20220622,Adam & Jacob,1,bocu,5,28,Adam
+d_006_herb_01,20220622,Adam & Jacob,1,_litter,100,,Adam
+d_006_herb_01,20220622,Adam & Jacob,2,brte,6,23,Adam
+d_006_herb_01,20220622,Adam & Jacob,2,satr,3,10,Adam
+d_006_herb_01,20220622,Adam & Jacob,2,elre,4,30,Adam
+d_006_herb_01,20220622,Adam & Jacob,2,_litter,98,,Adam
+d_006_herb_01,20220622,Adam & Jacob,2,_bare,2,,Adam
+d_006_herb_01,20220622,Adam & Jacob,3,brte,1,30,Adam
+d_006_herb_01,20220622,Adam & Jacob,3,satr,8,24,Adam
+d_006_herb_01,20220622,Adam & Jacob,3,elre,2,37,Adam
+d_006_herb_01,20220622,Adam & Jacob,3,_litter,85,,Adam
+d_006_herb_01,20220622,Adam & Jacob,3,_bare,15,,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,brte,2,8,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,satr,12,11,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,kosc,1,10,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,elre,3,23,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,sial,1,21,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,_litter,50,,Adam
+d_006_herb_01,20220622,Adam & Jacob,4,_bare,50,,Adam
+d_006_herb_01,20220622,Adam & Jacob,5,brte,5,20,Adam
+d_006_herb_01,20220622,Adam & Jacob,5,satr,9,28,Adam
+d_006_herb_01,20220622,Adam & Jacob,5,kosc,15,27,Adam
+d_006_herb_01,20220622,Adam & Jacob,5,elre,1,23,Adam
+d_006_herb_01,20220622,Adam & Jacob,5,_litter,97,,Adam
+d_006_herb_01,20220622,Adam & Jacob,5,_bare,3,,Adam
+d_006_herb_01,20220622,Adam & Jacob,6,brte,5,40,Adam
+d_006_herb_01,20220622,Adam & Jacob,6,satr,8,22,Adam
+d_006_herb_01,20220622,Adam & Jacob,6,kosc,23,27,Adam
+d_006_herb_01,20220622,Adam & Jacob,6,_litter,97,,Adam
+d_006_herb_01,20220622,Adam & Jacob,6,_bare,3,,Adam
+d_006_herb_01,20220622,Adam & Jacob,7,brte,2,30,Adam
+d_006_herb_01,20220622,Adam & Jacob,7,satr,6,15,Adam
+d_006_herb_01,20220622,Adam & Jacob,7,kosc,1,11,Adam
+d_006_herb_01,20220622,Adam & Jacob,7,bocu,23,33,Adam
+d_006_herb_01,20220622,Adam & Jacob,7,_litter,100,,Adam
+d_006_herb_01,20220622,Adam & Jacob,8,brte,4,35,Adam
+d_006_herb_01,20220622,Adam & Jacob,8,satr,3,24,Adam
+d_006_herb_01,20220622,Adam & Jacob,8,kosc,7,30,Adam
+d_006_herb_01,20220622,Adam & Jacob,8,mesa,3,31,Adam
+d_006_herb_01,20220622,Adam & Jacob,8,_litter,96,,Adam
+d_006_herb_01,20220622,Adam & Jacob,8,_bare,4,,Adam
+d_006_herb_01,20220622,Adam & Jacob,999,upg4,0.5,,Adam
+d_006_herb_01,20220622,Adam & Jacob,999,navi,0.5,,Adam
+d_006_herb_01,20220622,Adam & Jacob,999,ciar,0.5,,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,satr,1,12,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,brte,0.5,10,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,kosc,0.5,7,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,sphe,20,27,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,elre,5,28,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,upg4,2,14,Adam
+d_015_herb_01,20220622,Adam & Jacob,1,_litter,100,,Adam
+d_015_herb_01,20220622,Adam & Jacob,2,brte,4,18,Adam
+d_015_herb_01,20220622,Adam & Jacob,2,kosc,1,8,Adam
+d_015_herb_01,20220622,Adam & Jacob,2,upg4,7,19,Adam
+d_015_herb_01,20220622,Adam & Jacob,2,_litter,100,,Adam
+d_015_herb_01,20220622,Adam & Jacob,3,satr,5,13,Adam
+d_015_herb_01,20220622,Adam & Jacob,3,brte,3,16,Adam
+d_015_herb_01,20220622,Adam & Jacob,3,elre,4,18,Adam
+d_015_herb_01,20220622,Adam & Jacob,3,_litter,100,,Adam
+d_015_herb_01,20220622,Adam & Jacob,4,satr,4,11,Adam
+d_015_herb_01,20220622,Adam & Jacob,4,brte,4,19,Adam
+d_015_herb_01,20220622,Adam & Jacob,4,upg4,13,29,Adam
+d_015_herb_01,20220622,Adam & Jacob,4,elre,0.5,23,Adam
+d_015_herb_01,20220622,Adam & Jacob,4,_litter,97,,Adam
+d_015_herb_01,20220622,Adam & Jacob,4,_bare,3,,Adam
+d_015_herb_01,20220622,Adam & Jacob,5,satr,1,9,Adam
+d_015_herb_01,20220622,Adam & Jacob,5,brte,0.5,10,Adam
+d_015_herb_01,20220622,Adam & Jacob,5,kosc,4,10,Adam
+d_015_herb_01,20220622,Adam & Jacob,5,elre,15,29,Adam
+d_015_herb_01,20220622,Adam & Jacob,5,_litter,100,,Adam
+d_015_herb_01,20220622,Adam & Jacob,6,satr,1,12,Adam
+d_015_herb_01,20220622,Adam & Jacob,6,brte,5,18,Adam
+d_015_herb_01,20220622,Adam & Jacob,6,kosc,1,8,Adam
+d_015_herb_01,20220622,Adam & Jacob,6,elre,3,27,Adam
+d_015_herb_01,20220622,Adam & Jacob,6,bocu,30,27,Adam
+d_015_herb_01,20220622,Adam & Jacob,6,_litter,100,,Adam
+d_015_herb_01,20220622,Adam & Jacob,7,satr,6,14,Adam
+d_015_herb_01,20220622,Adam & Jacob,7,brte,3,14,Adam
+d_015_herb_01,20220622,Adam & Jacob,7,kosc,3,24,Adam
+d_015_herb_01,20220622,Adam & Jacob,7,bocu,0.5,9,Adam
+d_015_herb_01,20220622,Adam & Jacob,7,_litter,50,,Adam
+d_015_herb_01,20220622,Adam & Jacob,7,_bare,50,,Adam
+d_015_herb_01,20220622,Adam & Jacob,8,satr,0.5,8,Adam
+d_015_herb_01,20220622,Adam & Jacob,8,brte,1,17,Adam
+d_015_herb_01,20220622,Adam & Jacob,8,kosc,1,9,Adam
+d_015_herb_01,20220622,Adam & Jacob,8,sphe,2,7,Adam
+d_015_herb_01,20220622,Adam & Jacob,8,bocu,25,19,Adam
+d_015_herb_01,20220622,Adam & Jacob,8,_litter,100,,Adam
+d_015_herb_01,20220622,Adam & Jacob,999,brin,0.5,,Adam
+d_015_herb_01,20220622,Adam & Jacob,999,pola,0.5,,Adam
+d_015_herb_01,20220622,Adam & Jacob,999,sial,0.5,,Adam
+d_015_herb_01,20220622,Adam & Jacob,999,hean,0.5,,Adam
+d_015_herb_01,20220622,Adam & Jacob,999,ciar,0.5,,Adam
+d_016_herb_01,20220622,Adam & Jacob,1,taof,15,2,Adam
+d_016_herb_01,20220622,Adam & Jacob,1,satr,1,10,Adam
+d_016_herb_01,20220622,Adam & Jacob,1,brte,7,47,Adam
+d_016_herb_01,20220622,Adam & Jacob,1,kosc,1,1,Adam
+d_016_herb_01,20220622,Adam & Jacob,1,_litter,100,,Adam
+d_016_herb_01,20220622,Adam & Jacob,2,satr,7,23,Adam
+d_016_herb_01,20220622,Adam & Jacob,2,brte,3,13,Adam
+d_016_herb_01,20220622,Adam & Jacob,2,bocu,20,12,Adam
+d_016_herb_01,20220622,Adam & Jacob,2,_litter,95,,Adam
+d_016_herb_01,20220622,Adam & Jacob,2,_bare,5,,Adam
+d_016_herb_01,20220622,Adam & Jacob,3,brte,1,19,Adam
+d_016_herb_01,20220622,Adam & Jacob,3,kosc,0.5,6,Adam
+d_016_herb_01,20220622,Adam & Jacob,3,elre,5,30,Adam
+d_016_herb_01,20220622,Adam & Jacob,3,sphe,13,27,Adam
+d_016_herb_01,20220622,Adam & Jacob,3,_litter,99,,Adam
+d_016_herb_01,20220622,Adam & Jacob,3,_bare,1,,Adam
+d_016_herb_01,20220622,Adam & Jacob,4,satr,6,14,Adam
+d_016_herb_01,20220622,Adam & Jacob,4,brte,2,15,Adam
+d_016_herb_01,20220622,Adam & Jacob,4,kosc,7,19,Adam
+d_016_herb_01,20220622,Adam & Jacob,4,_litter,95,,Adam
+d_016_herb_01,20220622,Adam & Jacob,4,_bare,5,,Adam
+d_016_herb_01,20220622,Adam & Jacob,5,satr,1,5.5,Adam
+d_016_herb_01,20220622,Adam & Jacob,5,brte,7,22,Adam
+d_016_herb_01,20220622,Adam & Jacob,5,kosc,4,23,Adam
+d_016_herb_01,20220622,Adam & Jacob,5,bocu,6,18,Adam
+d_016_herb_01,20220622,Adam & Jacob,5,_litter,99,,Adam
+d_016_herb_01,20220622,Adam & Jacob,5,_bare,1,,Adam
+d_016_herb_01,20220622,Adam & Jacob,6,satr,1,11,Adam
+d_016_herb_01,20220622,Adam & Jacob,6,brte,7,17,Adam
+d_016_herb_01,20220622,Adam & Jacob,6,kosc,1,7,Adam
+d_016_herb_01,20220622,Adam & Jacob,6,bocu,25,29,Adam
+d_016_herb_01,20220622,Adam & Jacob,6,_litter,100,,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,satr,1,14,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,brte,1,14,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,kosc,1,13,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,bocu,75,28,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,chbe,0.5,1,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,_litter,95,,Adam
+d_016_herb_01,20220622,Adam & Jacob,7,_bare,5,,Adam
+d_016_herb_01,20220622,Adam & Jacob,8,satr,4,17,Adam
+d_016_herb_01,20220622,Adam & Jacob,8,brte,20,18,Adam
+d_016_herb_01,20220622,Adam & Jacob,8,elre,5,24,Adam
+d_016_herb_01,20220622,Adam & Jacob,8,_litter,98,,Adam
+d_016_herb_01,20220622,Adam & Jacob,8,_bare,2,,Adam
+d_016_herb_01,20220622,Adam & Jacob,999,sial,0.5,,Adam
+d_016_herb_01,20220622,Adam & Jacob,999,hean,0.5,,Adam
+d_016_herb_01,20220622,Adam & Jacob,999,mesa,0.5,,Adam
+d_005_herb_01,20220622,Adam & Jacob,1,brte,7,25,Adam
+d_005_herb_01,20220622,Adam & Jacob,1,kosc,10,22,Adam
+d_005_herb_01,20220622,Adam & Jacob,1,satr,3,17,Adam
+d_005_herb_01,20220622,Adam & Jacob,1,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,2,brte,20,20,Adam
+d_005_herb_01,20220622,Adam & Jacob,2,kosc,7,15,Adam
+d_005_herb_01,20220622,Adam & Jacob,2,satr,3,7,Adam
+d_005_herb_01,20220622,Adam & Jacob,2,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,3,brte,10,20,Adam
+d_005_herb_01,20220622,Adam & Jacob,3,kosc,15,9,Adam
+d_005_herb_01,20220622,Adam & Jacob,3,elre,1,20,Adam
+d_005_herb_01,20220622,Adam & Jacob,3,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,4,brte,8,20,Adam
+d_005_herb_01,20220622,Adam & Jacob,4,kosc,8,11,Adam
+d_005_herb_01,20220622,Adam & Jacob,4,satr,5,15,Adam
+d_005_herb_01,20220622,Adam & Jacob,4,bocu,12,15,Adam
+d_005_herb_01,20220622,Adam & Jacob,4,_litter,99,,Adam
+d_005_herb_01,20220622,Adam & Jacob,4,_bare,1,,Adam
+d_005_herb_01,20220622,Adam & Jacob,5,brte,5,19,Adam
+d_005_herb_01,20220622,Adam & Jacob,5,kosc,12,16,Adam
+d_005_herb_01,20220622,Adam & Jacob,5,satr,1,16,Adam
+d_005_herb_01,20220622,Adam & Jacob,5,bocu,0.5,10,Adam
+d_005_herb_01,20220622,Adam & Jacob,5,mesa,18,30,Adam
+d_005_herb_01,20220622,Adam & Jacob,5,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,6,brte,40,16,Adam
+d_005_herb_01,20220622,Adam & Jacob,6,kosc,8,22,Adam
+d_005_herb_01,20220622,Adam & Jacob,6,satr,4,10,Adam
+d_005_herb_01,20220622,Adam & Jacob,6,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,brte,27,24,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,kosc,2,15,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,satr,4,16,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,elre,0.5,10,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,bocu,3,17,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,deso,1,28,Adam
+d_005_herb_01,20220622,Adam & Jacob,7,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,8,brte,8,20,Adam
+d_005_herb_01,20220622,Adam & Jacob,8,kosc,1,9,Adam
+d_005_herb_01,20220622,Adam & Jacob,8,satr,3,15,Adam
+d_005_herb_01,20220622,Adam & Jacob,8,navi,8,34,Adam
+d_005_herb_01,20220622,Adam & Jacob,8,_litter,100,,Adam
+d_005_herb_01,20220622,Adam & Jacob,999,trdu,0.5,,Adam
+d_005_herb_01,20220622,Adam & Jacob,999,coar,0.5,,Adam
+d_005_herb_01,20220622,Adam & Jacob,999,ciar,0.5,,Adam
