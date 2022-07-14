@@ -310,7 +310,7 @@ plotBeta(m, post = postBeta, param = "Support",
 
 # species associations =========================================================
 OmegaCor = computeAssociations(m)
-supportLevel = 0.80
+supportLevel = 0.89
 
 
 hmdf_mean <- OmegaCor[[1]]$mean %>%
