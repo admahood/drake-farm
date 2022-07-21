@@ -1,0 +1,440 @@
+# data prep for drake
+library(tidyverse)
+library(sf)
+library(fields)
+library(terra)
+library(raster)
+library(topmodel) # for the twi layers
+
+# functions ====================================================================
+
+# https://stackoverflow.com/questions/58553966/calculating-twi-in-r
+upslope <- function (dem, log = TRUE, atb = FALSE, deg = 0.12, fill.sinks = TRUE) 
+{
+  if (!all.equal(xres(dem), yres(dem))) {
+    stop("Raster has differing x and y cell resolutions. Check that it is in a projected coordinate system (e.g. UTM) and use raster::projectRaster to reproject to one if not. Otherwise consider using raster::resample")
+  }
+  if (fill.sinks) {
+    capture.output(dem <- invisible(raster::setValues(dem, topmodel::sinkfill(raster::as.matrix(dem), res = xres(dem), degree = deg))))
+  }
+  topidx <- topmodel::topidx(raster::as.matrix(dem), res = xres(dem))
+  a <- raster::setValues(dem, topidx$area)
+  if (log) {
+    a <- log(a)
+  }
+  if (atb) {
+    atb <- raster::setValues(dem, topidx$atb)
+    a <- addLayer(a, atb)
+    names(a) <- c("a", "atb")
+  }
+  return(a)
+}
+
+create_layers <- function (dem, fill.sinks = TRUE, deg = 0.1) 
+{
+  layers <- stack(dem)
+  message("Building upslope areas...")
+  a.atb <- upslope(dem, atb = TRUE, fill.sinks = fill.sinks, deg = deg)
+  layers <- addLayer(layers, a.atb)
+  names(layers) <- c("filled.elevations", "upslope.area", "twi")
+  return(layers)
+}
+
+# veg data =====================================================================
+
+raw_veg <- read_csv("data/drake_veg_data_2022 - cover_2022(1).csv")
+
+surface_cover <- raw_veg %>%
+  filter(str_sub(species_code,1,1)=="_")
+
+plant_cover <- raw_veg %>%
+  filter(str_sub(species_code,1,1)!="_") %>%
+  mutate(strip_type = str_sub(plot, 7,10)) %>%
+  group_by(plot) %>%
+  mutate(n_subplots = length(unique(subplot)),
+         n_subplots = if_else(n_subplots > 6 , 8, 4))
+
+# topography data ==============================================================
+
+elevation <- terra::rast("data/dem2018.tif")
+elevation_r <- raster::raster("data/dem2018.tif", value=TRUE)
+
+twi_stack <- create_layers(elevation_r)
+
+# soil C stuff =================================================================
+
+plots_w_veg <- raw_veg %>%
+  transmute(plot = str_sub(plot,3,5)) %>%
+  pull(plot) %>%
+  unique %>%
+  as.numeric()
+
+pipeline_installation <-  c(17, 34, 51, 52, 68, 85, 86, 102, 103, 120, 136, 137,
+                            154, 171, 189)
+
+soil_c <- read_csv("data/past_data/Drake_Carbon_2001_2012.csv") %>%
+  dplyr::rename(plot = "2012Smp_No",
+                strip_type = Mgt_Strip,
+                strip_number = Strip_No,
+                carbonates_top_15cm_2012 = "12CC_0_6in",
+                total_c_top_15cm_2012 = "12C_0_6in",
+                total_n_top_15cm_2012 = "12N_0_6in",
+                organic_c_top_15cm_2012 = "12SOC_0_6",
+                carbonates_15_30cm_2012 = "12CC_6_12",
+                total_c_15_30cm_2012 = "12C_6_12in",
+                total_n_15_30cm_2012 = "12N_6_12in",
+                organic_c_15_30cm_2012 = "12SOC_6_12",
+                carbonates_top_30cm_2012 = "12CC_0_1ft",
+                total_c_top_30cm_2012 = "12C_0_1ft",
+                total_n_top_30cm_2012 = "12N_0_1ft",
+                organic_c_top_30cm_2012 = "12SOC_0_1",
+                carbonates_top_30cm_2001 = "01CC_0_1ft",
+                carbonates_30_60cm_2001 = "01CC_1_2ft",
+                carbonates_60_90cm_2001 = "01CC_2_3ft",
+                carbonates_top_90cm_2001 = "01CC_0_3ft",
+                carbonate_difference = CC_diff,
+                carbonate_n3_difference = CC_n3diff,
+                utm_e = UTME_2012,
+                utm_n = UTMN_2012,
+                elv_2001 = ELEV_2001,
+                elv_2012 = ELEV_2012,
+                elf_difference = ELEVDIFF,
+                chg_class_5 = ChgClass_5,
+                slope = SLOPE,
+                aspect = ASPECT,
+                cosign_aspect = COSASP,
+                potsolrad = POTSOLRAD,
+                curvature = CURV,
+                lnscasink = "LNSCASINK",
+                wetsink = "WETSINK",
+                lnscafill = "LNSCAFILL",
+                wetfill = "WETFILL",
+                soil_unit = "SOILUNIT",
+                soil_unit_name = "UNITNAME") %>%
+  mutate(strip_type = ifelse(strip_type == "East", "herb", "shru"),
+         seeding_year = ifelse(strip_type == "herb", 2014, 2013),
+         pipeline = ifelse(plot %in% pipeline_installation, 
+                           "pipeline", "no_pipeline")) %>%
+  filter(plot %in% plots_w_veg)
+glimpse(soil_c)
+
+
+# sentek soil temps ============================================================
+sentek <- readxl::read_xlsx(
+  "data/past_data/sentek probe temperature 2002-2017.xlsx",
+  skip=1)
+
+soil_temp_summary <- sentek %>%
+  pivot_longer(cols = names(.)[2:ncol(.)],
+               names_to = "probe_depth",
+               values_to = "soil_temp_c") %>%
+  mutate(probe = str_sub(probe_depth, 1,2),
+         depth = str_sub(probe_depth, 4,7)) %>%
+  filter(depth == "30cm",
+         `Date/Time` > as.Date("2013-01-01"),
+         `Date/Time` < as.Date("2014-12-01")) %>%
+  mutate(year = lubridate::year(`Date/Time`),
+         month = lubridate::month(`Date/Time`)) 
+
+soil_temp_13 <- soil_temp_summary %>%
+  filter(year == 2013) %>%
+  mutate(month_group = case_when(month < 5 ~ "pre_seed",
+                                 month == 5 ~ "month_of_seeding",
+                                 month >5 & month <= 8 ~ "jja_post_seed",
+                                 month > 8 ~ "somd_post_seed"))%>%
+  group_by(year, month_group, probe) %>%
+  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE),
+            min_30cm_soil_temp_c = min(soil_temp_c, na.rm=TRUE)) %>%
+  ungroup()
+summary(soil_temp_13); glimpse(soil_temp_13);soil_temp_13
+
+soil_temp_14 <- soil_temp_summary %>%
+  filter(year == 2014) %>%
+  mutate(month_group = case_when(month < 5 ~ "pre_seed",
+                                 month == 5 ~ "month_of_seeding",
+                                 month > 5 & month <= 8 ~ "jja_post_seed",
+                                 month > 8 ~ "somd_post_seed"))%>%
+  group_by(year, month_group, probe) %>%
+  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE),
+            min_30cm_soil_temp_c = min(soil_temp_c, na.rm=TRUE)) %>%
+  ungroup()
+summary(soil_temp_14); glimpse(soil_temp_14);soil_temp_14
+
+
+terrain0 <- terra::terrain(elevation, v = c("aspect", "slope", "TPI"))
+terrain <- c(terrain0, rast(twi_stack$twi))
+
+sentek_locations <- st_read(
+  "data/past_data/Sentek probe locations/sentek_probes.shp") %>%
+  bind_cols(terra::extract(terrain, vect(.))) %>%
+  mutate(fa = abs(180 - abs(aspect - 225)))
+
+sentek_13 <- sentek_locations %>%
+  left_join(soil_temp_13 %>%
+              dplyr::select(probe, mean_30cm_soil_temp_c, month_group),
+            by=c("Probe"="probe"))%>%
+  mutate(year = 2013)
+
+sentek_14<- sentek_locations %>%
+  left_join(soil_temp_14 %>%
+              dplyr::select(probe, mean_30cm_soil_temp_c, month_group),
+            by=c("Probe"="probe"))%>%
+  mutate(year = 2014)
+
+sentek_summaries <- bind_rows(sentek_13, sentek_14)
+
+# consider 3dep, or other 1m dem options
+
+elv_df<-c(terrain, elevation)%>%
+  as.data.frame(xy=TRUE)%>%
+  mutate(fa = abs(180 - abs(aspect - 225)))
+lat <- elv_df$y
+lon <- elv_df$x
+elev <- elv_df[,4:8]
+xps <-cbind(lon, lat)
+
+counter <- 1
+result <- list()
+spmods <- list()
+for(month_grp in (unique(sentek_13$month_group))){
+  for(sample_year in c(2013:2014)){
+    
+    # data prep for spatial process model
+    x = st_coordinates(sentek_locations)[,c(1,2)]
+    z = dplyr::select(sentek_locations, slope, TPI, twi, groundEL_1, fa) %>%
+      st_set_geometry(NULL)
+    y = sentek_summaries %>%
+      filter(year == sample_year, month_group == month_grp) %>%
+      pull(mean_30cm_soil_temp_c)
+    
+    print(paste(month_grp, sample_year))
+    spmods[[counter]] <- fields::spatialProcess(x=x, y=y, Z=z, 
+                                    profileLambda = TRUE, 
+                                    profileARange = TRUE)
+    
+    print(summary(spmods[[counter]]))
+    
+    ## Predict using the spatial process model fitted
+    yp = predict(spmods[[counter]],
+                 x=xps,Z=elev)
+    
+    # convert to a raster
+    spmod_rast <- raster::rasterFromXYZ(data.frame(lon=lon, lat=lat,
+                                                   prediction = yp),
+                                        crs = raster::crs(elevation)) %>%
+      rast()
+    names(spmod_rast) <- paste0(month_grp, "_", sample_year)
+    result[[counter]] <- spmod_rast
+    counter <- counter +1
+}}
+
+# model diagnostics
+
+for(i in 1:length(spmods)){
+  set.panel(2,2);plot(spmods[[i]]);set.panel(1,1)
+}
+
+# soil temp visualizations =====================================================
+  
+terra::rast(result)[[c(1,2)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+    geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+    scale_fill_viridis(option="B") +
+    facet_wrap(~month_grp,ncol = 1)+
+    coord_equal()
+
+terra::rast(result)[[c(3,4)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+terra::rast(result)[[c(5,6)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+terra::rast(result)[[c(7,8)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+# soil moisture ================================================================
+
+es_drake_n <- readxl::read_xlsx(
+  "data/past_data/ESDrakeN_2002_2017_daily.xlsx") %>%
+  filter(`Date Time` > as.Date("2013-01-01"),
+         `Date Time` < as.Date("2015-01-01")) %>%
+  pivot_longer(cols = names(.)[2:ncol(.)], 
+               names_to = "variable", 
+               values_to = "value") %>%
+  mutate(probe = str_sub(variable,2,3),
+         measure = str_split(variable, "\\]", simplify = T)[,2],
+         depth = str_split(str_split(variable, "\\]",
+                                     simplify = T)[,1],
+                           "_", 2, simplify = T)[,2]) %>%
+  filter(measure != "Raw", depth == "30cm", value > -9999); es_drake_n
+
+es_drake_s <- readxl::read_xlsx(
+  "data/past_data/ESDrakeS_2002_2017_daily.xlsx") %>%
+  filter(`Date Time` > as.Date("2013-01-01"),
+         `Date Time` < as.Date("2015-01-01")) %>%
+  pivot_longer(cols = names(.)[2:ncol(.)], 
+               names_to = "variable", 
+               values_to = "value") %>%
+  mutate(probe = str_sub(variable,2,3),
+         measure = str_split(variable, "\\]", simplify = T)[,2],
+         depth = str_split(str_split(variable, "\\]",
+                                     simplify = T)[,1],
+                           "_", 2, simplify = T)[,2]) %>%
+  filter(measure != "Raw", depth == "30cm", value > -9999); es_drake_s
+
+soil_moisture_summaries <- bind_rows(es_drake_n, es_drake_s) %>%
+  mutate(year = lubridate::year(`Date Time`),
+         month = lubridate::month(`Date Time`),
+         month_group = case_when(month < 5 ~ "pre_seed",
+                                 month == 5 ~ "month_of_seeding",
+                                 month > 5 & month <= 8 ~ "jja_post_seed",
+                                 month > 8 ~ "somd_post_seed")) %>%
+  group_by(year, month_group, probe)%>%
+    summarise(mean_30cm_soil_moisture = mean(value, na.rm=TRUE)) %>%
+    ungroup()
+
+sm_sentek <- sentek_locations %>%
+  left_join(soil_moisture_summaries, by = c("Probe" = "probe")) %>%
+  na.omit()
+
+
+
+counter <- 1
+result_sm <- list()
+spmods_sm <- list()
+for(month_grp in (unique(sm_sentek$month_group))){
+  for(sample_year in c(2013:2014)){
+    d <- filter(sm_sentek, year == sample_year, month_grp == month_group)
+    # data prep for spatial process model
+    x = st_coordinates(d)[,c(1,2)]
+    z = dplyr::select(d, slope, TPI, twi, groundEL_1, fa) %>%
+      st_set_geometry(NULL)
+    y = sm_sentek %>%
+      filter(year == sample_year, 
+             month_group == month_grp) %>%
+      pull(mean_30cm_soil_moisture)
+    
+    print(paste(month_grp, sample_year))
+    spmods_sm[[counter]] <- fields::spatialProcess(x=x, y=y, Z=z, 
+                                                profileLambda = TRUE, 
+                                                profileARange = TRUE)
+    
+    print(summary(spmods_sm[[counter]]))
+    
+    ## Predict using the spatial process model fitted
+    yp = predict(spmods_sm[[counter]],
+                 x=xps,Z=elev)
+    
+    # convert to a raster
+    spmod_rast_sm <- raster::rasterFromXYZ(data.frame(lon=lon,lat=lat,  
+                                                   prediction = yp),
+                                        crs = raster::crs(elevation)) %>%
+      terra::rast()
+    names(spmod_rast_sm) <- paste0(month_grp, "_", sample_year)
+    result_sm[[counter]] <- spmod_rast_sm
+    counter <- counter +1
+  }}
+
+# soil moisture visualizations =================================================
+
+terra::rast(result_sm)[[c(1,2)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+terra::rast(result_sm)[[c(3,4)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+terra::rast(result_sm)[[c(5,6)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+terra::rast(result_sm)[[c(7,8)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)], 
+               values_to = "temp_c", 
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+
+# getting sm and st all together ===============================================
+soil_temp_rasts_13 <- terra::rast(result)[[c(1,3,5,7)]]
+names(soil_temp_rasts_13) <- names(soil_temp_rasts_13) %>% str_replace_all("_2013", "_temp_c")
+soil_temp_rasts_14 <- terra::rast(result)[[c(2,4,6,8)]]
+names(soil_temp_rasts_14) <- names(soil_temp_rasts_14) %>% str_replace_all("_2014", "_temp_c")
+
+soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5,7)]]
+names(soil_moist_rasts_13) <- names(soil_moist_rasts_13) %>% str_replace_all("_2013", "_moisture_pct")
+soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6,8)]]
+names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>% str_replace_all("_2014", "_moisture_pct")
+
+veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>%
+  mutate(cell = terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)[,6])
+
+shrub_plots <- soil_c %>% filter(strip_type == "shru") %>% pull(plot)
+herb_plots <- soil_c %>% filter(strip_type == "herb") %>% pull(plot)
+
+# plot(soil_moist_rasts_13[[1]]); plot(veg_plot_locations, add=T)
+xdata <- bind_rows(
+  terra::extract(c(soil_temp_rasts_13,soil_moist_rasts_13), 
+                 vect(veg_plot_locations %>% filter(X2012Flag %in% shrub_plots)), cells=TRUE) %>%
+    left_join(veg_plot_locations, by="cell")
+  ,
+  terra::extract(c(soil_temp_rasts_14,soil_moist_rasts_14), 
+                 vect(veg_plot_locations %>% filter(X2012Flag %in% herb_plots)), cells=TRUE) %>%
+    left_join(veg_plot_locations, by="cell")
+  ) %>%
+  dplyr::select(-ID, -X2001Flag, plot = X2012Flag, -cell, -UTME, -UTMN, -n, -dem2018, -geom) %>%
+  left_join(soil_c)
