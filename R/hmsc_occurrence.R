@@ -58,6 +58,8 @@ prevalence<- colSums(Y) %>%
   arrange(desc(prevalence))
 
 # getting site data from plant cover df
+
+
 XData<-left_join(
   plant_cover %>%
     mutate(plot_sub = str_c(plot, "_", subplot)) %>%
@@ -77,9 +79,23 @@ XData<-left_join(
   ) %>%
   arrange(plot_sub) %>%
   column_to_rownames("plot_sub") %>%
-  mutate_if(is.character, as.factor)
+  mutate(plot_raw = str_sub(plot, 3,5) %>% as.numeric) %>%
+  left_join(xdata %>% 
+              dplyr::rename(plot_raw = plot),
+            by = c("plot_raw", "strip_type")) %>%
+mutate_if(is.character, as.factor) 
+  
 
-XFormula <- ~ strip_type + litter + bare + moss
+
+  
+XFormula <- ~ strip_type + litter + bare + moss  + slope +
+  jja_post_seed_temp_c + month_of_seeding_temp_c+      
+pre_seed_temp_c + somd_post_seed_temp_c +
+jja_post_seed_moisture_pct + month_of_seeding_moisture_pct +
+pre_seed_moisture_pct + somd_post_seed_moisture_pct  +
+carbonates_top_15cm_2012     +
+total_c_top_15cm_2012+total_n_top_15cm_2012+
+organic_c_top_15cm_2012+carbonates_15_30cm_2012 
 
 
 traits <- data.frame(species_code = colnames(Y)) %>%
@@ -90,8 +106,7 @@ traits <- data.frame(species_code = colnames(Y)) %>%
 
 t_formula <- ~height
 
-studyDesign <- data.frame(strip_number = as.factor(XData$strip_number),
-                          plot = as.factor(XData$plot))
+studyDesign <- data.frame(plot = as.factor(XData$plot))
 rL <- HmscRandomLevel(units = levels(studyDesign$plot))
 
 # The models ===================================================================
@@ -120,9 +135,8 @@ if (test.run){
   transient = ceiling(thin*samples*.5)
   hmsc_file <- "data/hmsc/hmsc_probit_subplot.Rda"
 }
+
 t0 <- Sys.time()
-
-
 dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
   m = sampleMcmc(mod, thin = thin,
