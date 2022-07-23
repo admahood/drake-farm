@@ -434,7 +434,7 @@ xdata <- bind_rows(
   ,
   terra::extract(c(soil_temp_rasts_14,soil_moist_rasts_14), 
                  vect(veg_plot_locations %>% filter(X2012Flag %in% herb_plots)), cells=TRUE) %>%
-    left_join(veg_plot_locations, by="cell")
-  ) %>%
+    left_join(veg_plot_locations, by="cell")) %>%
+  mutate(twi = terra::extract(rast(twi_stack$twi), vect( st_as_sf(.)))[,2]) %>%
   dplyr::select(-ID, -X2001Flag, plot = X2012Flag, -cell, -UTME, -UTMN, -n, -dem2018, -geom) %>%
   left_join(soil_c)

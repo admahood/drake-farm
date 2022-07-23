@@ -88,14 +88,13 @@ mutate_if(is.character, as.factor)
 
 
   
-XFormula <- ~ strip_type + litter + bare + moss  + slope +
+XFormula <- ~ bare + slope +
   jja_post_seed_temp_c + month_of_seeding_temp_c+      
-pre_seed_temp_c + somd_post_seed_temp_c +
+pre_seed_temp_c + twi +
 jja_post_seed_moisture_pct + month_of_seeding_moisture_pct +
 pre_seed_moisture_pct + somd_post_seed_moisture_pct  +
 carbonates_top_15cm_2012     +
-total_c_top_15cm_2012+total_n_top_15cm_2012+
-organic_c_top_15cm_2012+carbonates_15_30cm_2012 
+total_c_top_15cm_2012+total_n_top_15cm_2012+carbonates_15_30cm_2012 
 
 
 traits <- data.frame(species_code = colnames(Y)) %>%
@@ -112,8 +111,6 @@ rL <- HmscRandomLevel(units = levels(studyDesign$plot))
 # The models ===================================================================
 
 mod = Hmsc(Y = Y, XData = XData, XFormula = XFormula, distr="probit",
-           TrData = traits,
-           TrFormula = t_formula,
            studyDesign = studyDesign,
            ranLevels = list("plot" = rL))
 
@@ -128,8 +125,7 @@ if (test.run){
   transient = ceiling(thin*samples*.5)
   hmsc_file <- "data/hmsc/hmsc_probit_subplot_test.Rda"
 }else{
-  # with a spatial random effect, evaluates in --- 2 hours
-  # looks like a compute-optimized aws instance is called for, very little ram usage
+
   thin = 100
   samples = 1000
   transient = ceiling(thin*samples*.5)
@@ -263,7 +259,7 @@ vp <- left_join(vp_df, vp_order) %>%
   theme_classic() +
   ylab("Species") +
   xlab("Proportion of Variance Explained") +
-  scale_fill_brewer(palette = "Dark2")+
+  # scale_fill_brewer(palette = "Dark2")+
   theme(legend.position = "right",
         legend.text = element_markdown(),
         legend.title = element_blank(),
@@ -313,8 +309,8 @@ p_beta<-supported %>%
         plot.title = element_text(hjust = 1, face = "bold")) +
   ggtitle("Environmental Filters")
 
-ggsave(paste0("figs/betas_binomial_subplot.png"), 
-       bg="white", width=6, height=8)
+ggsave(p_beta,filename= paste0("figs/betas_binomial_subplot.png"), 
+       bg="white", width=10, height=8)
 
 
 
