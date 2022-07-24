@@ -89,15 +89,16 @@ mutate_if(is.character, as.factor) %>%
   mutate(fa = abs(180 - abs(aspect - 225)))
   
 XFormula <- ~ bare + 
-  slope + #strip_type +
-  fa +
+  #slope + #strip_type +
+  #fa +
   jja_post_seed_temp_c +
   month_of_seeding_temp_c+      
   pre_seed_temp_c + 
-  twi +
+  #twi +
   jja_post_seed_moisture_pct + 
   month_of_seeding_moisture_pct +
   pre_seed_moisture_pct +
+  somd_post_seed_temp_c  +
   somd_post_seed_moisture_pct  +
   carbonates_top_15cm_2012     +
   total_c_top_15cm_2012+
@@ -234,7 +235,7 @@ vp_df <- VP$vals%>%
 
 vp_summary <- vp_df %>%
   group_by(variable) %>%
-  summarise(value = mean(value)) %>%
+  summarise(value_pct = mean(value) * 100) %>%
   ungroup() 
 
 
@@ -248,7 +249,6 @@ vp_summary <- vp_df %>%
 #   dplyr::select(Species, Species_f, origin) %>%
 #   rbind(vp_order_n)# %>%
 #   #left_join(mf_df)
-
 
 
 vp_order <- vp_df %>%
