@@ -1,4 +1,6 @@
 # Hmsc analysis
+source("R/drake_data_prep.R")
+
 library(tidyverse)
 library(Hmsc)
 require(snow)
@@ -83,19 +85,23 @@ XData<-left_join(
   left_join(xdata %>% 
               dplyr::rename(plot_raw = plot),
             by = c("plot_raw", "strip_type")) %>%
-mutate_if(is.character, as.factor) 
+mutate_if(is.character, as.factor) %>%
+  mutate(fa = abs(180 - abs(aspect - 225)))
   
-
-
-  
-XFormula <- ~ bare + slope +
-  jja_post_seed_temp_c + month_of_seeding_temp_c+      
-pre_seed_temp_c + twi +
-jja_post_seed_moisture_pct + month_of_seeding_moisture_pct +
-pre_seed_moisture_pct + somd_post_seed_moisture_pct  +
-carbonates_top_15cm_2012     +
-total_c_top_15cm_2012+total_n_top_15cm_2012+carbonates_15_30cm_2012 
-
+XFormula <- ~ bare + 
+  slope + #strip_type +
+  fa +
+  jja_post_seed_temp_c +
+  month_of_seeding_temp_c+      
+  pre_seed_temp_c + 
+  twi +
+  jja_post_seed_moisture_pct + 
+  month_of_seeding_moisture_pct +
+  pre_seed_moisture_pct +
+  somd_post_seed_moisture_pct  +
+  carbonates_top_15cm_2012     +
+  total_c_top_15cm_2012+
+  total_n_top_15cm_2012 
 
 traits <- data.frame(species_code = colnames(Y)) %>%
   left_join(heights) %>%
@@ -167,6 +173,7 @@ psrf.beta <- gelman.diag(mpost$Beta, multivariate=FALSE)$psrf%>%
   as_tibble() %>% 
   dplyr::rename(value = `Point est.`) %>%
   dplyr::mutate(variable = "Gelman Diagnostic")
+
 
 
 
@@ -245,17 +252,14 @@ vp_summary <- vp_df %>%
 
 
 vp_order <- vp_df %>%
-  filter(variable == "strip_type") %>%
+  filter(variable == "twi") %>%
   arrange(value) %>%
   mutate(Species_f = factor(Species, levels = .$Species)) %>%
   dplyr::select(Species, Species_f) 
 
 vp <- left_join(vp_df, vp_order) %>% 
-  # mutate(variable = factor(variable, c("Random: plot","woody_C",
-  #                                      "totalherb_raw", "slope","elevation",  "fa","peci_sub_cv"
-  # )))%>%
   ggplot(aes(x=value,y=Species_f, fill = variable)) +
-  geom_bar(stat="identity")+
+  geom_bar(stat="identity", color="black")+
   theme_classic() +
   ylab("Species") +
   xlab("Proportion of Variance Explained") +
@@ -269,7 +273,7 @@ vp <- left_join(vp_df, vp_order) %>%
 
 
 ggsave(vp, filename=paste0("figs/variance_partitioning.png"),
-       height = 11.5, width = 9)
+       height = 11.5, width = 12)
 
 # Environmental filters ==================================================
 
@@ -298,7 +302,7 @@ p_beta<-supported %>%
   mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
   ggplot(aes(x=env_var,y=reorder(Species_f,Species), fill = Mean, color = sign)) +
   geom_tile(lwd=.5) +
-  theme_classic()+
+  theme_pubclean()+
   scale_fill_steps2() +
   scale_color_manual(values = c(("red"), ("blue"))) +
   guides(color = "none")+
