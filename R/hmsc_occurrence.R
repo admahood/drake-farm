@@ -102,10 +102,8 @@ XFormula <- ~ bare +
   pre_seed_ma_moisture_pct + 
   pre_seed_jas_moisture_pct +
   pre_seed_ond_moisture_pct +
-  post_seed_son_moisture_pct +
   twi +
-  carbonates_top_15cm_2012     +
-  total_c_top_15cm_2012+
+  soil_unit_name +
   total_n_top_15cm_2012 
 
 traits <- data.frame(species_code = colnames(Y)) %>%
