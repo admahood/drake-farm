@@ -85,21 +85,25 @@ XData<-left_join(
   left_join(xdata %>% 
               dplyr::rename(plot_raw = plot),
             by = c("plot_raw", "strip_type")) %>%
-mutate_if(is.character, as.factor) %>%
+  mutate_if(is.character, as.factor) %>%
   mutate(fa = abs(180 - abs(aspect - 225)))
   
 XFormula <- ~ bare + 
-  #slope + #strip_type +
-  #fa +
-  jja_post_seed_temp_c +
-  month_of_seeding_temp_c+      
-  pre_seed_temp_c + 
-  #twi +
-  jja_post_seed_moisture_pct + 
-  month_of_seeding_moisture_pct +
-  pre_seed_moisture_pct +
-  somd_post_seed_temp_c  +
-  somd_post_seed_moisture_pct  +
+  slope + #strip_type +
+  fa +
+  post_seed_jja_temp_c +
+  seed_month_temp_c+      
+  pre_seed_ma_temp_c + 
+  pre_seed_jas_temp_c +
+  pre_seed_ond_temp_c +
+  post_seed_son_temp_c +
+  post_seed_jja_moisture_pct +
+  seed_month_moisture_pct +      
+  pre_seed_ma_moisture_pct + 
+  pre_seed_jas_moisture_pct +
+  pre_seed_ond_moisture_pct +
+  post_seed_son_moisture_pct +
+  twi +
   carbonates_top_15cm_2012     +
   total_c_top_15cm_2012+
   total_n_top_15cm_2012 
@@ -190,7 +194,7 @@ diag_all<-bind_rows(ess.beta, psrf.beta) %>%
 
 
 
-ggsave(diag_all,filename = paste0("figs/gelman_ess.pdf"), 
+ggsave(diag_all,filename = paste0("figs/gelman_ess.png"), 
        width = 5.5, height=3.5, bg="white")
 MF$TjurR2%>% mean(na.rm=T)
 # explanatory power
@@ -252,7 +256,7 @@ vp_summary <- vp_df %>%
 
 
 vp_order <- vp_df %>%
-  filter(variable == "twi") %>%
+  filter(variable == "bare") %>%
   arrange(value) %>%
   mutate(Species_f = factor(Species, levels = .$Species)) %>%
   dplyr::select(Species, Species_f) 
