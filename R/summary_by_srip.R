@@ -1,0 +1,1 @@
+# summary stats on each strip for everything
