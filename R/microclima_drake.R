@@ -7,6 +7,8 @@ library(NicheMapR)
 
 drake_dem <- raster("data/dem2018.tif")
 
+# mam ==========================================================================
+
 mam13<-microclima::runauto(r = drake_dem,
                     dstart = "01/03/2013",
                     dfinish = "31/05/2013",
@@ -21,8 +23,6 @@ mam14<-microclima::runauto(r = drake_dem,
                            l = 1, 
                            x = 1)
 
-# 1.4 GB -- not sustainable to save the whole thing, only takes 20-ish minutes to create
-# save(mam13, mam14, file = "data/microclima_mam.Rda")
 
 lst <- list()
 lst[[1]] <- mam14$tmax
@@ -36,9 +36,12 @@ lst[[6]] <- mam13$tmean
 stk <- lapply(lst,terra::rast) %>% terra::rast()
 names(stk) <- c("mam_14_tmax","mam_14_tmin","mam_14_tmean",
                 "mam_13_tmax","mam_13_tmin","mam_13_tmean")
-save(stk, file = "data/microclima_mam.Rda")
+terra::writeRaster(stk, "data/microclima_mam.tif")
 
-# winter temps
+rm(mam13, mam14)
+gc()
+
+# winter temps =================================================================
 
 jf13<-microclima::runauto(r = drake_dem,
                            dstart = "01/01/2013",
@@ -69,10 +72,11 @@ lst[[6]] <- jf14$tmean
 stk <- lapply(lst,terra::rast) %>% terra::rast()
 names(stk) <- c("jf_13_tmax","jf_13_tmin","jf_13_tmean",
                 "jf_14_tmax","jf_14_tmin","jf_14_tmean")
-save(stk, file = "data/microclima_jf.Rda")
+terra::writeRaster(stk, "data/microclima_jf.tif")
 
+rm(jf13, jf14);gc()
 
-# antecedent fall temps
+# antecedent fall temps ========================================================
 
 son12<-microclima::runauto(r = drake_dem,
                           dstart = "01/09/2012",
@@ -103,7 +107,9 @@ lst[[6]] <- son13$tmean
 stk <- lapply(lst,terra::rast) %>% terra::rast()
 names(stk) <- c("son_12_tmax","son_12_tmin","son_12_tmean",
                 "son_13_tmax","son_13_tmin","son_13_tmean")
-save(stk, file = "data/microclima_son_pre.Rda")
+terra::writeRaster(stk, "data/microclima_son_pre.tif")
+
+rm(son13, son12);gc()
 
 # spei?
 

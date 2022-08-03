@@ -9,9 +9,10 @@ library(ggthemes)
 library(ggtext)
 
 # import diversity data ========================================================
+# veg data at https://docs.google.com/spreadsheets/d/1sYD0lucZ0X81ebDllucSBeCB2rOWE2v6lzRCvGlLLkI/edit?usp=sharing
 
 raw <- read_csv("data/drake_veg_data_2022 - cover_2022(1).csv")
-
+sp_list <- read_csv("data/drake_veg_data_2022 - species_list.csv")
 
 surface_cover <- raw %>%
   filter(str_sub(species_code,1,1)=="_") %>%
