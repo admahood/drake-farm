@@ -12,7 +12,9 @@ library(ggtext)
 # veg data at https://docs.google.com/spreadsheets/d/1sYD0lucZ0X81ebDllucSBeCB2rOWE2v6lzRCvGlLLkI/edit?usp=sharing
 
 raw <- read_csv("data/drake_veg_data_2022 - cover_2022(1).csv")
-sp_list <- read_csv("data/drake_veg_data_2022 - species_list.csv")
+sp_list <- read_csv("data/drake_veg_data_2022 - species_list.csv") %>%
+  dplyr::select(species_code = code, introduced, perennial, woody, annual, graminoid,
+                rhizomatous, pp = photosynthetic_pathway)
 
 surface_cover <- raw %>%
   filter(str_sub(species_code,1,1)=="_") %>%
@@ -36,7 +38,9 @@ heights <- plant_cover %>%
   group_by(species_code) %>%
   summarise(height = mean(height_cm, na.rm=TRUE)) %>%
   ungroup() %>%
-  na.omit()
+  na.omit() %>%
+  left_join(sp_list) %>%
+  mutate_if(is.character, as.factor)
 
 # Hmsc-specific data wrangling =================================================
 
@@ -93,16 +97,13 @@ XFormula <- ~ bare +
   slope + #strip_type +
   fa +
   post_seed_jja_temp_c +
-  seed_month_temp_c+      
-  pre_seed_ma_temp_c + 
-  pre_seed_jas_temp_c +
-  pre_seed_ond_temp_c +
   post_seed_son_temp_c +
-  post_seed_jja_moisture_pct +
-  seed_month_moisture_pct +      
-  pre_seed_ma_moisture_pct + 
-  pre_seed_jas_moisture_pct +
-  pre_seed_ond_moisture_pct +
+  pre_seed_jf_temp_c +
+  pre_seed_mam_temp_c +
+  pre_seed_son_temp_c+
+  jf_pre_air_temp_c_tmean +
+  mam_pre_air_temp_c_tmean +
+  son_pre_air_temp_c_tmean +
   twi +
   soil_unit_name +
   total_n_top_15cm_2012 
@@ -113,7 +114,14 @@ traits <- data.frame(species_code = colnames(Y)) %>%
   na.omit()
 
 
-t_formula <- ~height
+t_formula <- ~ height + 
+  introduced +
+  perennial +
+  woody +
+  annual +
+  graminoid +
+  rhizomatous +
+  pp
 
 studyDesign <- data.frame(plot = as.factor(XData$plot))
 rL <- HmscRandomLevel(units = levels(studyDesign$plot))
@@ -122,12 +130,14 @@ rL <- HmscRandomLevel(units = levels(studyDesign$plot))
 
 mod = Hmsc(Y = Y, XData = XData, XFormula = XFormula, distr="probit",
            studyDesign = studyDesign,
+           TrData = traits,
+           TrFormula = t_formula,
            ranLevels = list("plot" = rL))
 
 
 
 nChains = 4
-test.run = FALSE
+test.run = TRUE
 if (test.run){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -282,16 +292,30 @@ ggsave(vp, filename=paste0("figs/variance_partitioning.png"),
 
 postBeta <- getPostEstimate(m, parName = "Beta")
 
+covNamesNumbers <- c(TRUE, TRUE)
+covNames = character(m$nc)
+for (i in 1:m$nc) {
+  sep = ""
+  if (covNamesNumbers[1]) {
+    covNames[i] = paste(covNames[i], m$covNames[i], sep = sep)
+    sep = " "
+  }
+  if (covNamesNumbers[2]) {
+    covNames[i] = paste(covNames[i], sprintf("(C%d)", i), sep = sep)
+  }
+}
+covNames
+
 means <- postBeta$mean %>%
   as_tibble() %>%
   rowid_to_column("env_var") %>%
-  mutate(env_var = c("intercept",VP$groupnames)) %>%
+  mutate(env_var = c(covNames)) %>%
   pivot_longer(cols=names(.)[2:ncol(.)], names_to = "Species", values_to = "Mean")
 
 supported <- postBeta$support %>% 
   as_tibble() %>%
   rowid_to_column("env_var") %>%
-  mutate(env_var = c("intercept",VP$groupnames)) %>%
+  mutate(env_var = covNames) %>%
   pivot_longer(cols=names(.)[2:ncol(.)], 
                names_to = "Species", 
                values_to = "Support") %>%
@@ -324,6 +348,63 @@ ggsave(p_beta,filename= paste0("figs/betas_binomial_subplot.png"),
 
 plotBeta(m, post = postBeta, param = "Support",
          supportLevel = 0.95, split=.4, spNamesNumbers = c(T,F))
+
+# traits =======================================================================
+trNames = character(m$nt)
+trNamesNumbers = c(T,T)
+for (i in 1:m$nt) {
+  sep = ""
+  if (trNamesNumbers[1]) {
+    trNames[i] = paste(trNames[i], m$trNames[i], sep = sep)
+    sep = " "
+  }
+  if (trNamesNumbers[2]) {
+    trNames[i] = paste(trNames[i], sprintf("(T%d)", i), 
+                       sep = sep)
+  }
+}
+
+postGamma = getPostEstimate(m, parName="Gamma")
+plotGamma(m, post=postGamma, param="Support", supportLevel = 0.89, 
+          covNamesNumbers = c(T,F), trNamesNumbers = c(T,F), colorLevels = 3)
+
+
+means_gamma <- postGamma$mean %>%
+  as_tibble() %>%
+  rowid_to_column("env_var") %>%
+  mutate(env_var = c(covNames)) %>%
+  pivot_longer(cols=names(.)[2:ncol(.)], names_to = "Trait", values_to = "Mean")
+
+lut_gamma <- trNames
+names(lut_gamma) <- unique(means_gamma$Trait)
+
+supported_gamma <- postGamma$support %>% 
+  as_tibble() %>%
+  rowid_to_column("env_var") %>%
+  mutate(env_var = covNames) %>%
+  pivot_longer(cols=names(.)[2:ncol(.)], 
+               names_to = "Trait", 
+               values_to = "Support") %>%
+  filter(Support >0.89|Support<0.11,
+         env_var != "intercept") %>%
+  left_join(means_gamma, by = c("env_var", "Trait"))%>%
+  mutate(sign = ifelse(Mean>0, "+", "-"),
+         Trait = lut_gamma[Trait])
+
+p_gamma<-supported_gamma %>%
+  mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
+  ggplot(aes(x=env_var,y=(Trait), fill = Mean, color = sign)) +
+  geom_tile(lwd=.5) +
+  theme_pubclean()+
+  scale_fill_steps2() +
+  scale_color_manual(values = c(("red"), ("blue"))) +
+  guides(color = "none")+
+  theme(axis.text.x = element_text(angle=45, vjust=1,hjust = 1),
+        axis.title = element_blank(),
+        legend.position = "left",
+        plot.background = element_rect(color="black"),
+        plot.title = element_text(hjust = 1, face = "bold")) +
+  ggtitle("Environmental Filters")
 
 # species associations =========================================================
 OmegaCor = computeAssociations(m)

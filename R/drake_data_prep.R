@@ -482,6 +482,20 @@ soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6,8,10)]]
 names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
   str_replace_all("_2014", "_moisture_pct")
 
+mc_files <- Sys.glob("data/microclima*.tif")
+air_temp_jf <- terra::rast(mc_files[1])
+air_temp_mam <- terra::rast(mc_files[2])
+air_temp_son_pre <- terra::rast(mc_files[3])
+
+air_temp_rasts_13 <- c(air_temp_jf$jf_13_tmean, air_temp_mam$mam_13_tmean, air_temp_son_pre$son_12_tmean)
+names(air_temp_rasts_13) <- names(air_temp_rasts_13) %>%
+  str_replace_all("_13", "_pre_air_temp_c")%>%
+  str_replace_all("_12", "_pre_air_temp_c")
+air_temp_rasts_14 <- c(air_temp_jf$jf_14_tmean, air_temp_mam$mam_14_tmean, air_temp_son_pre$son_13_tmean)
+names(air_temp_rasts_14) <- names(air_temp_rasts_14) %>%
+  str_replace_all("_14", "_pre_air_temp_c")%>%
+  str_replace_all("_13", "_pre_air_temp_c")
+
 veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>%
   mutate(cell = terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)[,6])
 
@@ -491,12 +505,16 @@ herb_plots <- soil_c %>% filter(strip_type == "herb") %>% pull(plot)
 shrub_clm<- veg_plot_locations %>%
               filter(X2012Flag %in% shrub_plots) %>%
   mutate(terra::extract(c(soil_temp_rasts_13,soil_moist_rasts_13), 
-               vect(.))) %>%
+               vect(.)),
+         terra::extract(c(air_temp_rasts_13), 
+                        vect(.))) %>%
   dplyr::select(-ID)
 
 herb_clm<- veg_plot_locations %>%
   filter(X2012Flag %in% herb_plots) %>%
   mutate(terra::extract(c(soil_temp_rasts_14,soil_moist_rasts_14), 
+                        vect(.)),
+         terra::extract(c(air_temp_rasts_14), 
                         vect(.))) %>%
   dplyr::select(-ID)
 
