@@ -13,6 +13,8 @@ https://docs.google.com/spreadsheets/d/1awV8ANasMfRad5vQhI9-M8T7ct_cxpDPNqSnr4oK
 
 ![](figs/initial_veg_look.png)
 
+![](figs/temp_compare.png)
+
 ![](figs/plants_facet.png)
 
 ![](figs/big_facet.png)
