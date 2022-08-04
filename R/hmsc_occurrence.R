@@ -137,7 +137,7 @@ mod = Hmsc(Y = Y, XData = XData, XFormula = XFormula, distr="probit",
 
 
 nChains = 4
-test.run = TRUE
+test.run = FALSE
 if (test.run){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -406,6 +406,8 @@ p_gamma<-supported_gamma %>%
         plot.title = element_text(hjust = 1, face = "bold")) +
   ggtitle("Environmental Filters")
 
+ggsave(p_gamma,filename= paste0("figs/gammas_binomial_subplot.png"), 
+       bg="white", width=10, height=8)
 # species associations =========================================================
 OmegaCor = computeAssociations(m)
 supportLevel = 0.89
