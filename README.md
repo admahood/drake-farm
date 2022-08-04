@@ -25,4 +25,6 @@ https://docs.google.com/spreadsheets/d/1awV8ANasMfRad5vQhI9-M8T7ct_cxpDPNqSnr4oK
 
 ![](figs/betas_binomial_subplot.png)
 
+![](figs/gammas_binomial_subplot.png)
+
 ![](figs/species_associations.png)
