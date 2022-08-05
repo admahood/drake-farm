@@ -36,7 +36,7 @@ plant_cover <- raw %>%
 
 heights <- plant_cover %>%
   group_by(species_code) %>%
-  summarise(height = mean(height_cm, na.rm=TRUE)) %>%
+  summarise(height = median(height_cm, na.rm=TRUE)) %>%
   ungroup() %>%
   na.omit() %>%
   left_join(sp_list) %>%
@@ -45,7 +45,7 @@ heights <- plant_cover %>%
 # Hmsc-specific data wrangling =================================================
 
 # prepping raw cover data
-dv<-plant_cover %>%
+dv<- plant_cover %>%
   filter(subplot < 9) %>%
   mutate(plot_sub = str_c(plot, "_", subplot)) %>%
   dplyr::select(species_code, cover_pct, plot_sub) %>%
@@ -96,17 +96,18 @@ XData<-left_join(
 XFormula <- ~ bare + 
   slope + #strip_type +
   fa +
-  post_seed_jja_temp_c +
-  post_seed_son_temp_c +
-  pre_seed_jf_temp_c +
-  pre_seed_mam_temp_c +
-  pre_seed_son_temp_c+
-  jf_pre_air_temp_c_tmean +
-  mam_pre_air_temp_c_tmean +
-  son_pre_air_temp_c_tmean +
+  post_jja_soil_temp_c + 
+  post_son_soil_temp_c + 
+  pre_jf_soil_temp_c +
+  pre_mam_soil_temp_c + 
+  pre_son_soil_temp_c + 
+  jf_pre_air_temp_c + 
+  mam_pre_air_temp_c + 
+  son_pre_air_temp_c +
   twi +
-  soil_unit_name +
-  total_n_top_15cm_2012 
+  soil_texture +
+  total_n_top_15cm_2012 +
+  total_n_15_30cm_2012
 
 traits <- data.frame(species_code = colnames(Y)) %>%
   left_join(heights) %>%

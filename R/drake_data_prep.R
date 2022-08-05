@@ -470,17 +470,19 @@ terra::rast(result_sm)[[c(7,8)]] %>%
 # getting sm and st all together ===============================================
 soil_temp_rasts_13 <- terra::rast(result)[[c(1,3,5,7,9)]]
 names(soil_temp_rasts_13) <- names(soil_temp_rasts_13) %>%
-  str_replace_all("_2013", "_temp_c")
+  str_replace_all("_2013", "_soil_temp_c") %>%
+  str_remove_all("seed_")
 soil_temp_rasts_14 <- terra::rast(result)[[c(2,4,6,8,10)]]
 names(soil_temp_rasts_14) <- names(soil_temp_rasts_14) %>%
-  str_replace_all("_2014", "_temp_c")
+  str_replace_all("_2014", "_soil_temp_c") %>%
+  str_remove_all("seed_")
 
 soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5,7,9)]]
 names(soil_moist_rasts_13) <- names(soil_moist_rasts_13) %>%
-  str_replace_all("_2013", "_moisture_pct")
+  str_replace_all("_2013", "_soil_moisture_pct")
 soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6,8,10)]]
 names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
-  str_replace_all("_2014", "_moisture_pct")
+  str_replace_all("_2014", "_soil_moisture_pct")
 
 mc_files <- Sys.glob("data/microclima*.tif")
 air_temp_jf <- terra::rast(mc_files[1])
@@ -489,12 +491,12 @@ air_temp_son_pre <- terra::rast(mc_files[3])
 
 air_temp_rasts_13 <- c(air_temp_jf$jf_13_tmean, air_temp_mam$mam_13_tmean, air_temp_son_pre$son_12_tmean)
 names(air_temp_rasts_13) <- names(air_temp_rasts_13) %>%
-  str_replace_all("_13", "_pre_air_temp_c")%>%
-  str_replace_all("_12", "_pre_air_temp_c")
+  str_replace_all("_13_tmean", "_pre_air_temp_c")%>%
+  str_replace_all("_12_tmean", "_pre_air_temp_c")
 air_temp_rasts_14 <- c(air_temp_jf$jf_14_tmean, air_temp_mam$mam_14_tmean, air_temp_son_pre$son_13_tmean)
 names(air_temp_rasts_14) <- names(air_temp_rasts_14) %>%
-  str_replace_all("_14", "_pre_air_temp_c")%>%
-  str_replace_all("_13", "_pre_air_temp_c")
+  str_replace_all("_14_tmean", "_pre_air_temp_c")%>%
+  str_replace_all("_13_tmean", "_pre_air_temp_c")
 
 veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>%
   mutate(cell = terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)[,6])
@@ -526,5 +528,10 @@ xdata <- bind_rows(shrub_clm, herb_clm) %>%
   dplyr::select(-ID, -X2001Flag, plot = X2012Flag,
                 -cell, -UTME, -UTMN, -n, -dem2018, ) %>%
   st_set_geometry(NULL) %>%
-  left_join(soil_c)
+  left_join(soil_c) %>%
+  mutate(soil_texture = str_remove_all(soil_unit_name, 
+                                       " [:digit:] to [:digit:] percent slope") %>%
+           str_remove_all("Kim ") %>%
+           str_remove_all("Colby ") %>%
+           str_remove_all("Wagonwheel "))
 
