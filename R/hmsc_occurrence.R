@@ -249,39 +249,41 @@ vp_df <- VP$vals%>%
 vp_summary <- vp_df %>%
   group_by(variable) %>%
   summarise(value_pct = mean(value) * 100) %>%
-  ungroup() 
-
-
-
-# 
-# vp_order <- vp_df %>% filter(variable == "Random: sample") %>%
-#   filter(origin=="I") %>%
-#   left_join(prevalence) %>%
-#   arrange(prevalence, origin) %>%
-#   mutate(Species_f = factor(Species, levels = .$Species)) %>%
-#   dplyr::select(Species, Species_f, origin) %>%
-#   rbind(vp_order_n)# %>%
-#   #left_join(mf_df)
-
+  ungroup() %>%
+  mutate(variable_pct = paste0(variable, " (", round(value_pct), "%)")) %>%
+  dplyr::select(-value_pct)
 
 vp_order <- vp_df %>%
   filter(variable == "bare") %>%
-  arrange(value) %>%
+  left_join(sp_list, by = c("Species" = "species_code"))%>%
+  left_join(prevalence) %>%
+  arrange(introduced, prevalence) %>%
   mutate(Species_f = factor(Species, levels = .$Species)) %>%
-  dplyr::select(Species, Species_f) 
+  dplyr::select(Species, Species_f, introduced) 
+
+# setting up the introduced line & text
+iline_position <- vp_order$introduced[vp_order$introduced=="no"] %>% length()
+
+txt <- data.frame(label = c("Native", "Introduced"),
+                  x = c(1.02,1.02), y = c(iline_position - 5, iline_position + 5))
 
 vp <- left_join(vp_df, vp_order) %>% 
-  ggplot(aes(x=value,y=Species_f, fill = variable)) +
-  geom_bar(stat="identity", color="black")+
+  left_join(vp_summary) %>%
+  ggplot(aes(x=value,y=Species_f)) +
+  geom_bar(stat="identity", color="black", aes(fill = variable_pct))+
   theme_classic() +
+  scale_fill_discrete(name = "Variable\n (Avg Variance Explained)") +
+  geom_hline(yintercept = iline_position + .5) +
+  geom_text(data = txt, aes(label = label, x=x,y=y), angle=90, fontface="bold") +
   ylab("Species") +
   xlab("Proportion of Variance Explained") +
-  # scale_fill_brewer(palette = "Dark2")+
   theme(legend.position = "right",
         legend.text = element_markdown(),
-        legend.title = element_blank(),
+        # legend.title = element_blank(),
         # legend.justification = c(1,0),
         legend.background = element_rect(color="black")) +
+  scale_x_continuous(expand = c(0,0.01))+
+  scale_y_discrete(expand = c(0,0))+
   ggtitle("Variance Partitioning")
 
 
@@ -292,7 +294,7 @@ ggsave(vp, filename=paste0("figs/variance_partitioning.png"),
 
 postBeta <- getPostEstimate(m, parName = "Beta")
 
-covNamesNumbers <- c(TRUE, TRUE)
+covNamesNumbers <- c(TRUE, FALSE)
 covNames = character(m$nc)
 for (i in 1:m$nc) {
   sep = ""
@@ -327,18 +329,23 @@ supported <- postBeta$support %>%
 
 p_beta<-supported %>%
   mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
-  ggplot(aes(x=env_var,y=reorder(Species_f,Species), fill = Mean, color = sign)) +
-  geom_tile(lwd=.5) +
+  filter(env_var != "(Intercept)") %>%
+  ggplot(aes(x=env_var,y=reorder(Species_f,Species))) +
+  geom_tile(lwd=.5, aes(fill = Mean, color = sign)) +
   theme_pubclean()+
   scale_fill_steps2() +
+  geom_hline(data = txt, yintercept = iline_position + .5) +
+  geom_text(data = txt, aes(label = label, x=c(13.8,13.8),y=y), angle=90, fontface="bold") +
   scale_color_manual(values = c(("red"), ("blue"))) +
   guides(color = "none")+
+  scale_x_discrete(expand = c(0,1)) +
   theme(axis.text.x = element_text(angle=45, vjust=1,hjust = 1),
-        axis.title = element_blank(),
-        legend.position = "left",
+        # axis.title = element_blank(),
+        legend.position = "right",
         plot.background = element_rect(color="black"),
         plot.title = element_text(hjust = 1, face = "bold")) +
-  ggtitle("Environmental Filters")
+  xlab("Environmental Filters")+
+  ylab("Species")
 
 ggsave(p_beta,filename= paste0("figs/betas_binomial_subplot.png"), 
        bg="white", width=10, height=8)
@@ -351,7 +358,7 @@ plotBeta(m, post = postBeta, param = "Support",
 
 # traits =======================================================================
 trNames = character(m$nt)
-trNamesNumbers = c(T,T)
+trNamesNumbers = c(T,F)
 for (i in 1:m$nt) {
   sep = ""
   if (trNamesNumbers[1]) {
@@ -363,6 +370,9 @@ for (i in 1:m$nt) {
                        sep = sep)
   }
 }
+
+trNames <- str_remove_all(trNames, "yes") %>%
+  str_remove("pp")
 
 postGamma = getPostEstimate(m, parName="Gamma")
 plotGamma(m, post=postGamma, param="Support", supportLevel = 0.89, 
@@ -386,10 +396,11 @@ supported_gamma <- postGamma$support %>%
                names_to = "Trait", 
                values_to = "Support") %>%
   filter(Support >0.89|Support<0.11,
-         env_var != "intercept") %>%
+         env_var != "(Iintercept)") %>%
   left_join(means_gamma, by = c("env_var", "Trait"))%>%
   mutate(sign = ifelse(Mean>0, "+", "-"),
-         Trait = lut_gamma[Trait])
+         Trait = lut_gamma[Trait])%>%
+  filter(Trait != "(Intercept)")
 
 p_gamma<-supported_gamma %>%
   mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
@@ -400,11 +411,12 @@ p_gamma<-supported_gamma %>%
   scale_color_manual(values = c(("red"), ("blue"))) +
   guides(color = "none")+
   theme(axis.text.x = element_text(angle=45, vjust=1,hjust = 1),
-        axis.title = element_blank(),
-        legend.position = "left",
+        # axis.title = element_blank(),
+        legend.position = "right",
         plot.background = element_rect(color="black"),
         plot.title = element_text(hjust = 1, face = "bold")) +
-  ggtitle("Environmental Filters")
+  xlab("Environmental Filters") +
+  ylab("Traits")
 
 ggsave(p_gamma,filename= paste0("figs/gammas_binomial_subplot.png"), 
        bg="white", width=10, height=8)
