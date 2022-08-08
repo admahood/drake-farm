@@ -97,9 +97,8 @@ XFormula <- ~ bare +
   slope + #strip_type +
   fa +
   post_jja_soil_temp_c + 
-  post_son_soil_temp_c + 
   pre_jf_soil_temp_c +
-  pre_mam_soil_temp_c + 
+  pre_ma_soil_temp_c + 
   pre_son_soil_temp_c + 
   jf_pre_air_temp_c + 
   mam_pre_air_temp_c + 
@@ -147,7 +146,7 @@ if (test.run){
   hmsc_file <- "data/hmsc/hmsc_probit_subplot_test.Rda"
 }else{
 
-  thin = 100
+  thin = 200
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- "data/hmsc/hmsc_probit_subplot.Rda"

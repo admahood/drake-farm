@@ -148,7 +148,7 @@ t_antecedent_13 <-  soil_temp_summary %>%
 soil_temp_13 <- soil_temp_summary %>%
   filter(year == 2013) %>%
   mutate(month_group = case_when(month < 3 ~ "pre_seed_jf",
-                                 month <= 5 & month > 3 ~ "pre_seed_mam",
+                                 month < 5 & month > 3 ~ "pre_seed_ma",
                                  month >5 & month <= 8 ~ "post_seed_jja",
                                  month > 8 & month < 12 ~ "post_seed_son"))%>%
   group_by(year, month_group, probe) %>%
@@ -169,7 +169,7 @@ t_antecedent_14 <-  soil_temp_summary %>%
 soil_temp_14 <- soil_temp_summary %>%
   filter(year == 2014) %>%
   mutate(month_group = case_when(month < 3 ~ "pre_seed_jf",
-                                 month <= 5 & month > 3 ~ "pre_seed_mam",
+                                 month < 5 & month > 3 ~ "pre_seed_ma",
                                  month > 5 & month <= 8 ~ "post_seed_jja",
                                  month > 8 & month < 12 ~ "post_seed_son"))%>%
   group_by(year, month_group, probe) %>%
@@ -371,7 +371,7 @@ soil_moisture_summaries <- bind_rows(es_drake_n, es_drake_s) %>%
   mutate(year = lubridate::year(`Date Time`),
          month = lubridate::month(`Date Time`),
          month_group = case_when(month < 3 ~ "pre_seed_jf",
-                                 month < 6 & month > 3 ~ "pre_seed_mam",
+                                 month < 5 & month > 3 ~ "pre_seed_ma",
                                  month > 5 & month <= 8 ~ "post_seed_jja",
                                  month > 8 & month < 12 ~ "post_seed_son"))%>%
   group_by(year, month_group, probe)%>%
