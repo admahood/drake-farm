@@ -29,7 +29,7 @@ Poaceae,Sporobolus,heterolepis,sphe,sporo?,no,yes,no,no,no,yes,no,c4,
 Poaceae,Perennial_grass,iris-like_leaves,upg4,UPG4,no,yes,no,no,no,yes,no,c4,
 Poaceae,Bromus,tectorum,brte,,yes,no,no,no,yes,yes,no,c3,
 Poaceae,Nassella,viridula,navi,,no,yes,no,no,no,yes,no,c4,
-Poaceae,Elymus,repens,elre,upg1; upg3,yes,yes,no,no,no,yes,no,c3,
+Poaceae,Elymus,repens,elre,upg1; upg3; pasm; elre,no,yes,no,no,no,yes,yes,c3,
 Poaceae,Secale,cereale,sece,,yes,no,no,no,yes,yes,no,c3,"sometimes referred to as ""wheat"" on data sheets"
 Poaceae,Bouteloua,gracilis,bogr,,no,yes,no,no,no,yes,no,c4,
 Poaceae,Bromus,inermis,brin,,yes,yes,no,no,no,yes,yes,c3,
