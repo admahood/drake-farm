@@ -250,7 +250,7 @@ vp_summary <- vp_df %>%
   group_by(variable) %>%
   summarise(value_pct = mean(value) * 100) %>%
   ungroup() %>%
-  mutate(variable_pct = paste0(variable, " (", round(value_pct), "%)")) %>%
+  mutate(variable_pct = paste0(variable, " (", round(value_pct,1), "%)")) %>%
   dplyr::select(-value_pct)
 
 vp_order <- vp_df %>%
