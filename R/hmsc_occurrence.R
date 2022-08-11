@@ -323,10 +323,12 @@ supported <- postBeta$support %>%
                names_to = "Species", 
                values_to = "Support") %>%
   filter(Support >0.89|Support<0.11,
-         env_var != "intercept") %>%
+         env_var != "(Intercept)") %>%
   left_join(means, by = c("env_var", "Species"))%>%
   mutate(sign = ifelse(Mean>0, "+", "-"))%>%
   left_join(vp_order)#
+
+y_position <- length(unique(supported$env_var)) + .8
 
 p_beta<-supported %>%
   mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
@@ -336,7 +338,7 @@ p_beta<-supported %>%
   theme_pubclean()+
   scale_fill_steps2() +
   geom_hline(data = txt, yintercept = iline_position + .5) +
-  geom_text(data = txt, aes(label = label, x=c(13.8,13.8),y=y), angle=90, fontface="bold") +
+  geom_text(data = txt, aes(label = label, x=c(y_position,y_position),y=y), angle=90, fontface="bold") +
   scale_color_manual(values = c(("red"), ("blue"))) +
   guides(color = "none")+
   scale_x_discrete(expand = c(0,1)) +
