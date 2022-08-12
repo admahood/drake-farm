@@ -99,7 +99,6 @@ XFormula <- ~ bare +
   strip_type +
   pre_seed_ma_soil_moisture_pct+
   fa +
-  post_seed_son_soil_moisture_pct+
   post_jja_soil_temp_c + 
   pre_jf_soil_temp_c +
   pre_ma_soil_temp_c + 
@@ -261,7 +260,7 @@ vp_order <- vp_df %>%
   filter(variable == "bare") %>%
   left_join(sp_list, by = c("Species" = "species_code"))%>%
   left_join(prevalence) %>%
-  arrange(introduced, prevalence) %>%
+  arrange(introduced, graminoid, prevalence) %>%
   mutate(Species_f = factor(Species, levels = .$Species)) %>%
   dplyr::select(Species, Species_f, introduced) 
 
