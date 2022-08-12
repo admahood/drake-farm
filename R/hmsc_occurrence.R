@@ -95,18 +95,20 @@ XData<-left_join(
   mutate(fa = abs(180 - abs(aspect - 225)))
   
 XFormula <- ~ bare + 
-  # slope + 
+  slope +
   strip_type +
+  pre_seed_ma_soil_moisture_pct+
   fa +
+  post_seed_son_soil_moisture_pct+
   post_jja_soil_temp_c + 
   pre_jf_soil_temp_c +
   pre_ma_soil_temp_c + 
   pre_son_soil_temp_c + 
-  # jf_pre_air_temp_c + 
+  jf_pre_air_temp_c +
   mam_pre_air_temp_c + 
   son_pre_air_temp_c +
-  # twi +
-  # soil_texture +
+  twi +
+  soil_texture +
   total_n_top_15cm_2012 +
   total_n_15_30cm_2012
 

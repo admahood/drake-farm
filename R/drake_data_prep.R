@@ -249,9 +249,9 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
 
 # model diagnostics
 
-for(i in 1:length(spmods)){
-  set.panel(2,2);plot(spmods[[i]]);set.panel(1,1)
-}
+# for(i in 1:length(spmods)){
+#   set.panel(2,2);plot(spmods[[i]]);set.panel(1,1)
+# }
 
 # soil temp visualizations =====================================================
   
