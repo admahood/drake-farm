@@ -14,7 +14,7 @@ library(ggtext)
 
 raw <- read_csv("data/drake_veg_data_2022 - cover_2022(1).csv")
 sp_list <- read_csv("data/drake_veg_data_2022 - species_list.csv") %>%
-  dplyr::select(species_code = code, introduced, perennial, woody, annual, graminoid,
+  dplyr::select(species_code = code,group, introduced, perennial, woody, graminoid,
                 rhizomatous, pp = photosynthetic_pathway)
 
 surface_cover <- raw %>%
@@ -33,24 +33,23 @@ plant_cover <- raw %>%
   ungroup()
 
 
-# creating a trait table for height =============================================
 
-heights <- plant_cover %>%
-  group_by(species_code) %>%
-  summarise(height = median(height_cm, na.rm=TRUE)) %>%
-  ungroup() %>%
-  na.omit() %>%
-  left_join(sp_list) %>%
-  mutate_if(is.character, as.factor)
 
 # Hmsc-specific data wrangling =================================================
+
+groups <- read_csv("data/drake_veg_data_2022 - species_list.csv") %>%
+  dplyr::select(species_code = code, group)
 
 # prepping raw cover data
 dv<- plant_cover %>%
   filter(subplot < 9) %>%
   mutate(plot_sub = str_c(plot, "_", subplot)) %>%
   dplyr::select(species_code, cover_pct, plot_sub) %>%
-  pivot_wider(names_from = species_code, values_from = cover_pct, values_fill = 0) %>%
+  dplyr::left_join(groups) %>%
+  group_by(plot_sub, group) %>%
+  summarise(cover_pct = sum(cover_pct)) %>%
+  ungroup() %>%
+  pivot_wider(names_from = group, values_from = cover_pct, values_fill = 0) %>%
   arrange(plot_sub) %>%
   tibble::column_to_rownames("plot_sub")
 
@@ -97,7 +96,9 @@ XData<-left_join(
 XFormula <- ~ bare + 
   slope +
   strip_type +
-  pre_seed_ma_soil_moisture_pct+
+  pre_jf_60cm_sm_pct + 
+  pre_ma_60cm_sm_pct + 
+  pre_son_60cm_sm_pct +
   fa +
   post_jja_soil_temp_c + 
   pre_jf_soil_temp_c +
@@ -111,9 +112,24 @@ XFormula <- ~ bare +
   total_n_top_15cm_2012 +
   total_n_15_30cm_2012
 
-traits <- data.frame(species_code = colnames(Y)) %>%
+# creating a trait table for height 
+
+heights <- plant_cover %>%
+  left_join(groups) %>%
+  group_by(group) %>%
+  summarise(height = median(height_cm, na.rm=TRUE)) %>%
+  ungroup() %>%
+  na.omit() %>%
+  left_join(sp_list) %>%
+  mutate_if(is.character, as.factor) %>%
+  dplyr::select(-species_code) %>%
+  group_by(group) %>%
+  summarise_all(first) %>%
+  ungroup()
+
+traits <- data.frame(group = colnames(Y)) %>%
   left_join(heights) %>%
-  tibble::column_to_rownames("species_code") %>%
+  tibble::column_to_rownames("group") %>%
   na.omit()
 
 
@@ -121,7 +137,6 @@ t_formula <- ~ height +
   introduced +
   perennial +
   woody +
-  annual +
   graminoid +
   rhizomatous +
   pp

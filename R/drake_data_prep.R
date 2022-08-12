@@ -312,7 +312,7 @@ a_es_drake_n <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", depth == "30cm", value > -9999); a_es_drake_n
+  filter(measure != "Raw", value > -9999); a_es_drake_n
 
 a_es_drake_s <- readxl::read_xlsx(
   "data/past_data/ESDrakeS_2002_2017_daily.xlsx") %>%
@@ -326,16 +326,16 @@ a_es_drake_s <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", depth == "30cm", value > -9999); a_es_drake_s
+  filter(measure != "Raw", value > -9999); a_es_drake_s
 
 
 antecedent_soil_moisture_summaries <- bind_rows(a_es_drake_n, a_es_drake_s) %>%
   mutate(year = lubridate::year(`Date Time`),
          month = lubridate::month(`Date Time`),
-         month_group = case_when(month > 8 & month < 12 ~ "pre_seed_son"),
+         month_group = case_when(month > 8 & month < 12 ~ "pre_son"),
          year = year +1)%>%
-  group_by(year, month_group, probe)%>%
-  summarise(mean_30cm_soil_moisture = mean(value, na.rm=TRUE)) %>%
+  group_by(year, month_group, probe, depth)%>%
+  summarise(mean_soil_moisture = mean(value, na.rm=TRUE)) %>%
   ungroup()
 
 es_drake_n <- readxl::read_xlsx(
@@ -350,7 +350,7 @@ es_drake_n <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", depth == "30cm", value > -9999); es_drake_n
+  filter(measure != "Raw", value > -9999); es_drake_n
 
 es_drake_s <- readxl::read_xlsx(
   "data/past_data/ESDrakeS_2002_2017_daily.xlsx") %>%
@@ -364,24 +364,25 @@ es_drake_s <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", depth == "30cm", value > -9999); es_drake_s
+  filter(measure != "Raw", value > -9999); es_drake_s
 
 
 soil_moisture_summaries <- bind_rows(es_drake_n, es_drake_s) %>%
   mutate(year = lubridate::year(`Date Time`),
          month = lubridate::month(`Date Time`),
-         month_group = case_when(month < 3 ~ "pre_seed_jf",
-                                 month < 5 & month > 3 ~ "pre_seed_ma",
-                                 month > 5 & month <= 8 ~ "post_seed_jja",
-                                 month > 8 & month < 12 ~ "post_seed_son"))%>%
-  group_by(year, month_group, probe)%>%
-    summarise(mean_30cm_soil_moisture = mean(value, na.rm=TRUE)) %>%
+         month_group = case_when(month < 3 ~ "pre_jf",
+                                 month < 5 & month > 3 ~ "pre_ma"))%>%
+  group_by(year, month_group, probe, depth)%>%
+    summarise(mean_soil_moisture = mean(value, na.rm=TRUE)) %>%
     ungroup() %>%
   bind_rows(antecedent_soil_moisture_summaries)
 
+dpth <- "60cm"
+
 sm_sentek <- sentek_locations %>%
   left_join(soil_moisture_summaries, by = c("Probe" = "probe")) %>%
-  na.omit()
+  na.omit() %>%
+  filter(depth == dpth)
 
 
 
@@ -398,7 +399,7 @@ for(month_grp in (unique(sm_sentek$month_group))){
     y = sm_sentek %>%
       filter(year == sample_year, 
              month_group == month_grp) %>%
-      pull(mean_30cm_soil_moisture)
+      pull(mean_soil_moisture)
     
     print(paste(month_grp, sample_year))
     spmods_sm[[counter]] <- fields::spatialProcess(x=x, y=y, Z=z, 
@@ -456,16 +457,16 @@ terra::rast(result_sm)[[c(5,6)]] %>%
   facet_wrap(~month_grp,ncol = 1)+
   coord_equal()
 
-terra::rast(result_sm)[[c(7,8)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
+# terra::rast(result_sm)[[c(7,8)]] %>%
+#   as.data.frame(xy=TRUE) %>%
+#   pivot_longer(cols = names(.)[3:length(.)], 
+#                values_to = "temp_c", 
+#                names_to = "month_grp") %>%
+#   ggplot() +
+#   geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+#   scale_fill_viridis(option="B") +
+#   facet_wrap(~month_grp,ncol = 1)+
+#   coord_equal()
 
 # getting sm and st all together ===============================================
 soil_temp_rasts_13 <- terra::rast(result)[[c(1,3,5,7,9)]]
@@ -477,12 +478,12 @@ names(soil_temp_rasts_14) <- names(soil_temp_rasts_14) %>%
   str_replace_all("_2014", "_soil_temp_c") %>%
   str_remove_all("seed_")
 
-soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5,7,9)]]
+soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5)]]
 names(soil_moist_rasts_13) <- names(soil_moist_rasts_13) %>%
-  str_replace_all("_2013", "_soil_moisture_pct")
-soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6,8,10)]]
+  str_replace_all("_2013", paste0("_", dpth,"_sm_pct"))
+soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6)]]
 names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
-  str_replace_all("_2014", "_soil_moisture_pct")
+  str_replace_all("_2014",paste0("_", dpth,"_sm_pct"))
 
 mc_files <- Sys.glob("data/microclima*.tif")
 air_temp_jf <- terra::rast(mc_files[1])
@@ -499,7 +500,8 @@ names(air_temp_rasts_14) <- names(air_temp_rasts_14) %>%
   str_replace_all("_13_tmean", "_pre_air_temp_c")
 
 veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>%
-  mutate(cell = terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)[,6])
+  mutate(terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)) %>%
+  dplyr::select(cell)
 
 shrub_plots <- soil_c %>% filter(strip_type == "shru") %>% pull(plot)
 herb_plots <- soil_c %>% filter(strip_type == "herb") %>% pull(plot)
