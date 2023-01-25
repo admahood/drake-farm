@@ -8,7 +8,8 @@ library(ggpubr)
 library(ggcorrplot)
 library(ggthemes)
 library(ggtext)
-
+# rareness vs dominance?
+# talk about persistence after establishment
 # import diversity data ========================================================
 # veg data at https://docs.google.com/spreadsheets/d/1sYD0lucZ0X81ebDllucSBeCB2rOWE2v6lzRCvGlLLkI/edit?usp=sharing
 
@@ -91,26 +92,34 @@ XData<-left_join(
               dplyr::rename(plot_raw = plot),
             by = c("plot_raw", "strip_type")) %>%
   mutate_if(is.character, as.factor) %>%
-  mutate(fa = abs(180 - abs(aspect - 225)))
+  mutate(fa = abs(180 - abs(aspect - 225)),
+         strip_number = as.factor(strip_number.x))
   
-XFormula <- ~ bare + 
-  slope +
-  strip_type +
-  pre_jf_60cm_sm_pct + 
-  pre_ma_60cm_sm_pct + 
-  pre_son_60cm_sm_pct +
+XFormula_pre <- ~ 
+  soil_moisture_pre_jf_30cm + 
+  soil_moisture_pre_jf_60cm + 
+  soil_moisture_pre_ma_30cm + 
+  soil_moisture_pre_ma_60cm + 
+  soil_moisture_pre_son_30cm + 
+  soil_moisture_pre_son_60cm +
+  soil_temp_pre_jf + 
+  soil_temp_pre_ma + 
+  soil_temp_pre_son + 
+  air_temp_jf_pre + 
+  air_temp_mam_pre + 
+  air_temp_son_pre + 
+  # march_spei06 +
+  # march_spei12 +
+  # march_spei24+
   fa +
-  post_jja_soil_temp_c + 
-  pre_jf_soil_temp_c +
-  pre_ma_soil_temp_c + 
-  pre_son_soil_temp_c + 
-  jf_pre_air_temp_c +
-  mam_pre_air_temp_c + 
-  son_pre_air_temp_c +
   twi +
   soil_texture +
-  total_n_top_15cm_2012 +
-  total_n_15_30cm_2012
+  bare + 
+  slope +
+  strip_type +
+  total_n_top_15cm_2012 
+
+# maybe do one with only spei+topo
 
 # creating a trait table for height 
 
@@ -141,347 +150,79 @@ t_formula <- ~ height +
   rhizomatous +
   pp
 
-studyDesign <- data.frame(plot = as.factor(XData$plot))
-rL <- HmscRandomLevel(units = levels(studyDesign$plot))
+studyDesign <- data.frame(plot = as.factor(XData$plot),
+                          strip_number = as.factor(XData$strip_number))
+rLpl <- HmscRandomLevel(units = studyDesign$plot)
+rLsn <- HmscRandomLevel(units = studyDesign$strip_number)
 
 # The models ===================================================================
 
-mod = Hmsc(Y = Y, XData = XData, XFormula = XFormula, distr="probit",
+mod = Hmsc(Y = Y, 
+           XData = XData, 
+           XFormula = XFormula_pre,
+           distr="probit",
            studyDesign = studyDesign,
            TrData = traits,
            TrFormula = t_formula,
-           ranLevels = list("plot" = rL))
+           ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
 
-
+day <- format(Sys.time(), "%b_%d")
 
 nChains = 4
-test.run = FALSE
-if (test.run){
+run_type = "rolls_royce"
+run_type = "mid"
+if (run_type == "test"){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
   samples = 100
   transient = ceiling(thin*samples*.5)
   hmsc_file <- "data/hmsc/hmsc_probit_subplot_test.Rda"
-}else{
 
-  thin = 100
+}
+if (run_type == "mid"){
+  thin = 10
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- "data/hmsc/hmsc_probit_subplot.Rda"
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_mid_",day,".Rda")
 }
+if (run_type == "rolls_royce"){
+  
+  thin = 200
+  samples = 1000
+  transient = ceiling(thin*samples*.5)
+  hmsc_file <- "data/hmsc/hmsc_probit_subplot_rr.Rda"
+}
+
+
 
 t0 <- Sys.time()
 dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
-  m = sampleMcmc(mod, thin = thin,
+  m = sampleMcmc(mod, 
+                 thin = thin,
                  samples = samples,
                  transient = transient,
-                 adaptNf = rep(ceiling(0.4*samples*thin),1),
+                 useSocket = FALSE,
                  nChains = nChains,
                  nParallel = nChains)
   print(Sys.time()-t0)
   save(m, file=hmsc_file)
 }else{load(hmsc_file)}
 
-# getting the posteriors =======================================================
+# plotting =======================================================
+source("R/hmsc_plotting_functions.R")
+library(RColorBrewer)
+ggplot_convergence(m,omega = T, gamma=T)
+ggplot_fit(m, which="named")
 
-mpost <- convertToCodaObject(m)
-preds = computePredictedValues(m)
-MF = evaluateModelFit(hM=m, predY=preds)
-VP <- computeVariancePartitioning(m)
+vp_cols <- c(brewer.pal(12, "Set3"),
+             brewer.pal(9, "Set1"),
+             "black", "white","burlywood4")
 
-# model convergence, diagnostics ===============================================
-
-# psrf.V = gelman.diag(mpost$V,multivariate=FALSE)$psrf%>%
-#   as_tibble() %>% dplyr::rename(psrf_v = `Point est.`)
-# 
-# ess.v <- effectiveSize(mpost$V)%>%
-#   as_tibble() %>% dplyr::rename(ess_v = value)
-
-ess.beta <- effectiveSize(mpost$Beta) %>%
-  as_tibble() %>% 
-  dplyr::mutate(variable = "Effective Sample Size")
-psrf.beta <- gelman.diag(mpost$Beta, multivariate=FALSE)$psrf%>%
-  as_tibble() %>% 
-  dplyr::rename(value = `Point est.`) %>%
-  dplyr::mutate(variable = "Gelman Diagnostic")
-
-
-
-
-diag_all<-bind_rows(ess.beta, psrf.beta) %>%
-  ggplot(aes(x=value)) +
-  geom_histogram() +
-  theme_classic() +
-  facet_wrap(~variable, scales="free") +
-  ggtitle("Convergence Diagnostics")+
-  theme(plot.background = element_rect( color ="black"),
-        axis.title.x = element_blank(),
-        plot.title = element_text(hjust = 1, face = "bold"))
-
-
-
-ggsave(diag_all,filename = paste0("figs/gelman_ess.png"), 
-       width = 5.5, height=3.5, bg="white")
-MF$TjurR2%>% mean(na.rm=T)
-# explanatory power
-
-ggarrange(
-  ggplot(as.data.frame(MF),aes(x=(RMSE))) + geom_histogram(),
-  ggplot(as.data.frame(MF),aes(x=(TjurR2))) + geom_histogram(),
-  ggplot(as.data.frame(MF),aes(x=(AUC))) + geom_histogram())
-
-# plot the variance partitioning ===============================================
-
-mf_df <- data.frame(Species = colnames(m$Y),
-                    R2 = MF$TjurR2,
-                    AUC = MF$AUC,
-                    RMSE = MF$RMSE) %>%
-  left_join(prevalence)
-mean(mf_df%>% filter(prevalence>7) %>% pull(R2), na.rm=T)
-ggplot(mf_df, aes(x=prevalence, y=R2)) +
-  geom_point()
-
-sbquants <- summary(mpost$Beta)$quantiles %>%
-  as_tibble(rownames = "variable") %>% 
-  mutate(sign = `2.5%` * `97.5%`) %>%
-  filter(sign>0) %>%
-  separate(variable,
-           into = c("variable", "species"),
-           sep = ",") %>%
-  mutate(variable = str_sub(variable, 3,nchar(variable)-5),
-         species = str_sub(species, 2,nchar(species)-6) %>% trimws) %>%
-  filter(variable!= "(Intercept)") %>%
-  dplyr::select(variable,species,`2.5%`,`50%`,`97.5%`) %>%
-  arrange(variable)
-
-
-vp_df <- VP$vals%>%
-  as_tibble(rownames = "variable") %>%
-  pivot_longer(cols=names(.)[2:ncol(.)], 
-               names_to = "Species", 
-               values_to = "value") %>%
-  left_join(prevalence) %>%
-  na.omit()
-
-vp_summary <- vp_df %>%
-  group_by(variable) %>%
-  summarise(value_pct = mean(value) * 100) %>%
-  ungroup() %>%
-  mutate(variable_pct = paste0(variable, " (", round(value_pct,1), "%)")) %>%
-  dplyr::select(-value_pct)
-
-vp_order <- vp_df %>%
-  filter(variable == "bare") %>%
-  left_join(sp_list, by = c("Species" = "species_code"))%>%
-  left_join(prevalence) %>%
-  arrange(introduced, graminoid, prevalence) %>%
-  mutate(Species_f = factor(Species, levels = .$Species)) %>%
-  dplyr::select(Species, Species_f, introduced) 
-
-# setting up the introduced line & text
-iline_position <- vp_order$introduced[vp_order$introduced=="no"] %>% length()
-
-txt <- data.frame(label = c("Native", "Introduced"),
-                  x = c(1.02,1.02), y = c(iline_position - 5, iline_position + 5))
-
-vp <- left_join(vp_df, vp_order) %>% 
-  left_join(vp_summary) %>%
-  ggplot(aes(x=value,y=Species_f)) +
-  geom_bar(stat="identity", color="black", aes(fill = variable_pct))+
-  theme_classic() +
-  scale_fill_discrete(name = "Variable\n (Avg Variance Explained)") +
-  geom_hline(yintercept = iline_position + .5) +
-  geom_text(data = txt, aes(label = label, x=x,y=y), angle=90, fontface="bold") +
-  ylab("Species") +
-  xlab("Proportion of Variance Explained") +
-  theme(legend.position = "right",
-        legend.text = element_markdown(),
-        # legend.title = element_blank(),
-        # legend.justification = c(1,0),
-        legend.background = element_rect(color="black")) +
-  scale_x_continuous(expand = c(0,0.01))+
-  scale_y_discrete(expand = c(0,0))+
-  ggtitle("Variance Partitioning")
-
-
-ggsave(vp, filename=paste0("figs/variance_partitioning.png"),
-       height = 11.5, width = 12)
-
-# Environmental filters ==================================================
-
-postBeta <- getPostEstimate(m, parName = "Beta")
-
-covNamesNumbers <- c(TRUE, FALSE)
-covNames = character(m$nc)
-for (i in 1:m$nc) {
-  sep = ""
-  if (covNamesNumbers[1]) {
-    covNames[i] = paste(covNames[i], m$covNames[i], sep = sep)
-    sep = " "
-  }
-  if (covNamesNumbers[2]) {
-    covNames[i] = paste(covNames[i], sprintf("(C%d)", i), sep = sep)
-  }
-}
-covNames
-
-means <- postBeta$mean %>%
-  as_tibble() %>%
-  rowid_to_column("env_var") %>%
-  mutate(env_var = c(covNames)) %>%
-  pivot_longer(cols=names(.)[2:ncol(.)], names_to = "Species", values_to = "Mean")
-
-supported <- postBeta$support %>% 
-  as_tibble() %>%
-  rowid_to_column("env_var") %>%
-  mutate(env_var = covNames) %>%
-  pivot_longer(cols=names(.)[2:ncol(.)], 
-               names_to = "Species", 
-               values_to = "Support") %>%
-  filter(Support >0.89|Support<0.11,
-         env_var != "(Intercept)") %>%
-  left_join(means, by = c("env_var", "Species"))%>%
-  mutate(sign = ifelse(Mean>0, "+", "-"))%>%
-  left_join(vp_order)#
-
-y_position <- length(unique(supported$env_var)) + .8
-
-p_beta<-supported %>%
-  mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
-  filter(env_var != "(Intercept)") %>%
-  ggplot(aes(x=env_var,y=reorder(Species_f,Species))) +
-  geom_tile(lwd=.5, aes(fill = Mean, color = sign)) +
-  theme_pubclean()+
-  scale_fill_steps2() +
-  geom_hline(data = txt, yintercept = iline_position + .5) +
-  geom_text(data = txt, aes(label = label, x=c(y_position,y_position),y=y), angle=90, fontface="bold") +
-  scale_color_manual(values = c(("red"), ("blue"))) +
-  guides(color = "none")+
-  scale_x_discrete(expand = c(0,1)) +
-  theme(axis.text.x = element_text(angle=45, vjust=1,hjust = 1),
-        # axis.title = element_blank(),
-        legend.position = "right",
-        plot.background = element_rect(color="black"),
-        plot.title = element_text(hjust = 1, face = "bold")) +
-  xlab("Environmental Filters")+
-  ylab("Species")
-
-ggsave(p_beta,filename= paste0("figs/betas_binomial_subplot.png"), 
-       bg="white", width=10, height=8)
-
-
-
-
-plotBeta(m, post = postBeta, param = "Support",
-         supportLevel = 0.95, split=.4, spNamesNumbers = c(T,F))
-
-# traits =======================================================================
-trNames = character(m$nt)
-trNamesNumbers = c(T,F)
-for (i in 1:m$nt) {
-  sep = ""
-  if (trNamesNumbers[1]) {
-    trNames[i] = paste(trNames[i], m$trNames[i], sep = sep)
-    sep = " "
-  }
-  if (trNamesNumbers[2]) {
-    trNames[i] = paste(trNames[i], sprintf("(T%d)", i), 
-                       sep = sep)
-  }
-}
-
-trNames <- str_remove_all(trNames, "yes") %>%
-  str_remove("pp")
-
-postGamma = getPostEstimate(m, parName="Gamma")
-plotGamma(m, post=postGamma, param="Support", supportLevel = 0.89, 
-          covNamesNumbers = c(T,F), trNamesNumbers = c(T,F), colorLevels = 3)
-
-
-means_gamma <- postGamma$mean %>%
-  as_tibble() %>%
-  rowid_to_column("env_var") %>%
-  mutate(env_var = c(covNames)) %>%
-  pivot_longer(cols=names(.)[2:ncol(.)], names_to = "Trait", values_to = "Mean")
-
-lut_gamma <- trNames
-names(lut_gamma) <- unique(means_gamma$Trait)
-
-supported_gamma <- postGamma$support %>% 
-  as_tibble() %>%
-  rowid_to_column("env_var") %>%
-  mutate(env_var = covNames) %>%
-  pivot_longer(cols=names(.)[2:ncol(.)], 
-               names_to = "Trait", 
-               values_to = "Support") %>%
-  filter(Support >0.89|Support<0.11,
-         env_var != "(Iintercept)") %>%
-  left_join(means_gamma, by = c("env_var", "Trait"))%>%
-  mutate(sign = ifelse(Mean>0, "+", "-"),
-         Trait = lut_gamma[Trait])%>%
-  filter(Trait != "(Intercept)")
-
-p_gamma<-supported_gamma %>%
-  mutate(env_var = replace(env_var, env_var == "fa", "aspect")) %>%
-  ggplot(aes(x=env_var,y=(Trait), fill = Mean, color = sign)) +
-  geom_tile(lwd=.5) +
-  theme_pubclean()+
-  scale_fill_steps2() +
-  scale_color_manual(values = c(("red"), ("blue"))) +
-  guides(color = "none")+
-  theme(axis.text.x = element_text(angle=45, vjust=1,hjust = 1),
-        # axis.title = element_blank(),
-        legend.position = "right",
-        plot.background = element_rect(color="black"),
-        plot.title = element_text(hjust = 1, face = "bold")) +
-  xlab("Environmental Filters") +
-  ylab("Traits")
-
-ggsave(p_gamma,filename= paste0("figs/gammas_binomial_subplot.png"), 
-       bg="white", width=10, height=8)
-# species associations =========================================================
-OmegaCor = computeAssociations(m)
-supportLevel = 0.89
-
-
-hmdf_mean <- OmegaCor[[1]]$mean %>%
-  as.matrix
-hmdf_support <- OmegaCor[[1]]$support %>%
-  as.matrix
-
-# avg association strengths
-OmegaCor[[1]]$mean %>%
-  abs() %>%
-  rowSums() %>%
-  as_tibble(rownames = "Species") %>%
-  arrange(desc(value)) %>%
-  left_join(prevalence) %>%
-  filter(prevalence>10) %>%
-  print(n=20) %>%
-  write_csv("figs/residual_correlation_abs.csv")
-
-
-# switch colors around
-pmat <-OmegaCor[[1]]$support
-pmat[pmat < (1- supportLevel)] <- 0.99
-
-pcor1<- ggcorrplot::ggcorrplot(hmdf_mean,type = "lower",
-                               hc.order = TRUE,hc.method = "single",
-                               colors = c("red", "white", "blue"),
-                               p.mat = pmat,
-                               pch = 20,
-                               sig.level = supportLevel,
-                               title = "Species Associations") +
-  theme(plot.background = element_rect(color="black"),
-        legend.position = c(0,1),
-        legend.justification = c(0,1),
-        legend.background = element_rect(color="black"),
-        plot.title = element_text(hjust = 1, face = "bold"))
-
-ggsave(pcor1,
-       filename=paste0("figs/species_associations.png"),
-       bg="white", width=10, height = 10)
+ggplot_vp(m, cols = vp_cols)
+ggplot_beta(m, grouping_var = "introduced")
+ggplot_gamma(m)
+ggplot_omega(m)
 
 
 # big multipanel ==================

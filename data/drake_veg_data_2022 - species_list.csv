@@ -1,42 +1,42 @@
-family,genus,species,code,group,alias(i),introduced,perennial,woody,biennial,annual,graminoid,rhizomatous,photosynthetic_pathway,notes
-Asteraceae,Gutierrezia,sarothrae,gusa,gusa,,no,yes,yes,no,no,no,no,c4,"not in any plots sampled in june 2022, observed near power lines at south edge"
-Asteraceae,Ericameria,nauseosa,erna,erna,,no,yes,yes,no,no,no,no,c4,
-Asteraceae,Heterotheca,villosa,hevi,hevi,,no,yes,no,no,no,no,no,c3,
-Asteraceae,Helianthus,annuus,hean,hean,,no,no,no,no,yes,no,no,c3,
-Asteraceae,Stephanomeria,pauciflora,stpa,n_forbs,,no,yes,no,no,no,no,no,c4,
-Asteraceae,cf Aster,d_081_herb_05,assp,assp,,no,no,no,no,yes,no,no,c3,found in a few plots on 6/23 and 6/24
-Asteraceae,Antennaria,not_in_plot,ansp,ansp,,no,yes,no,no,no,no,yes,c4,did not occur in june 2022 plots
-Asteraceae,Artemisia,arbuscula,arar,arar,,no,yes,yes,no,no,no,no,c4,did not occur in june 2022 plots
-Chenopodiaceae,Atriplex,canescens,atca,atca,,no,yes,yes,no,no,no,no,c4,
-Chenopodiaceae,Chenopodium,berlandieri,chbe,n_forbs,,no,no,no,no,yes,no,no,c4,
-Malvaceae,Sphaerelcea,coccinea,spco,spco,,no,yes,no,no,no,no,no,c4,
-Papaveraceae,Argemone,cf hispida,arhi,arhi,,no,no,no,yes,no,no,no,c3,did not occur in june 2022 plots - need to go back and key
-Poaceae,Bouteloua,curtipendula,bocu,bocu,UPG2,no,yes,no,no,no,yes,no,c4,
-Poaceae,Sporobolus,heterolepis,sphe,sphe,sporo?,no,yes,no,no,no,yes,no,c4,
-Poaceae,Perennial_grass,iris-like_leaves,upg4,upg4,UPG4,no,yes,no,no,no,yes,no,c4,
-Poaceae,Nassella,viridula,navi,navi,,no,yes,no,no,no,yes,no,c4,
-Poaceae,Pascopyrum,smithii,elre,pasm,upg1; upg3; pasm; elre,no,yes,no,no,no,yes,yes,c3,
-Poaceae,Bouteloua,gracilis,bogr,bogr,,no,yes,no,no,no,yes,no,c4,
-Poaceae,Elymus,elymoides,elel,elel,,no,yes,no,no,no,yes,no,c3,
-Solanaceae,Solanum,triflorum,sotr,n_forbs,,no,no,no,no,yes,no,no,c3,
-unknown,Perennial_forb,d_012_herb_01,upf_12,upf_12,upf_12,no,yes,no,no,no,no,no,c3,"linear, alternate leaves, 1-2 mm wide. Stout but not woody stems that die back like medicago sativa. caespitose, not rhizomatous"
-unknown,Rhizomatous_perennial_forb,d_141_herb_09,upfr,n_forbs,,no,yes,no,no,no,no,yes,c3,"5merous flowers, drooping, 5 sepals fused halfway up. 5 petals green at time of observation, but undeveloped still. 5 stamens, 6-angled stem, lvs: ovate, dark green, alternate, leafy stipules, acute, margins more or less entire, wavy"
-Asteraceae,Podospermum,laciniatum,pola,i_lactucae,,yes,no,no,no,no,no,no,c3,
-Asteraceae,Taraxacum,officinale,taof,i_lactucae,,yes,no,no,no,yes,no,no,c3,
-Asteraceae,Tragopogon ,dubious,trdu,i_lactucae,,yes,no,no,no,yes,no,no,c3,
-Asteraceae,Cirsium,arvense,ciar,ciar,,yes,yes,no,no,no,no,yes,c3,
-Asteraceae,Onopordium,acanthium,onac,onac,,yes,no,no,yes,no,no,no,c3,did not occur in june 2022 plots
-Asteraceae,Lactuca,serriola,lase,lase,,yes,no,no,no,yes,no,no,c3,
-Brassicaceae,Sisymbrium,altissimum,sial,ia_brass,,yes,no,no,no,yes,no,no,c3,
-Brassicaceae,Descurainia,sophia,deso,ia_brass,,yes,no,no,no,yes,no,no,c3,
-Chenopodiaceae,Salsola,tragus,satr,satr,,yes,no,no,no,yes,no,no,c4,
-Chenopodiaceae,Kochia,scoparia,kosc,kosc,,yes,no,no,no,yes,no,no,c3,
-Convolvulaceae,Convolvulus,arvensis,coar,coar,,yes,yes,no,no,no,no,no,c3,
-Fabaceae,Medicago,sativa,mesa,mesa,,yes,yes,no,no,no,no,no,c3,
-Fabaceae,Melilotus,officinale,meof,meof,,yes,no,no,no,yes,no,no,c3,
-Poaceae,Bromus,tectorum,brte,ia_bromus,,yes,no,no,no,yes,yes,no,c3,
-Poaceae,Secale,cereale,sece,sece,,yes,no,no,no,yes,yes,no,c3,"sometimes referred to as ""wheat"" on data sheets"
-Poaceae,Bromus,inermis,brin,brin,,yes,yes,no,no,no,yes,yes,c3,
-Poaceae,Bromus,secalinus,brse,ia_bromus,,yes,no,no,no,yes,yes,no,c3,
-Poaceae,Agropyron,cristatum,agcr,agcr,,yes,yes,no,no,no,yes,no,c3,did not occur in june 2022 plots
-Zygophyllaceae,Tribulus,terrestris,trte,trte,,yes,no,no,no,yes,no,no,c3,
+family,genus,species,code,group,grp_name,crp,alias(i),introduced,perennial,woody,biennial,annual,graminoid,rhizomatous,photosynthetic_pathway,notes
+Asteraceae,Gutierrezia,sarothrae,gusa,gusa,Gutierrezia sarothrae,no,,no,yes,yes,no,no,no,no,c4,"not in any plots sampled in june 2022, observed near power lines at south edge"
+Asteraceae,Ericameria,nauseosa,erna,erna,Ericameria nauseosa,no,,no,yes,yes,no,no,no,no,c4,
+Asteraceae,Heterotheca,villosa,hevi,hevi,Heterotheca villosa,no,,no,yes,no,no,no,no,no,c3,
+Asteraceae,Helianthus,annuus,hean,hean,Helianthus annuus,no,,no,no,no,no,yes,no,no,c3,
+Asteraceae,Stephanomeria,pauciflora,stpa,n_forbs,Native Forbs,no,,no,yes,no,no,no,no,no,c4,
+Asteraceae,cf Aster,d_081_herb_05,assp,n_forbs,Native Forbs,no,,no,no,no,no,yes,no,no,c3,found in a few plots on 6/23 and 6/24
+Asteraceae,Antennaria,sp.,ansp,ansp,Antennaria sp,no,,no,yes,no,no,no,no,yes,c4,did not occur in june 2022 plots
+Asteraceae,Artemisia,arbuscula,arar,arar,Artemisia arbuscula,no,,no,yes,yes,no,no,no,no,c4,did not occur in june 2022 plots
+Chenopodiaceae,Atriplex,canescens,atca,atca,Atriplex canescens,yes,,no,yes,yes,no,no,no,no,c4,
+Chenopodiaceae,Chenopodium,berlandieri,chbe,n_forbs,Native Forbs,no,,no,no,no,no,yes,no,no,c4,
+Malvaceae,Sphaerelcea,coccinea,spco,spco,Sphaerelcea coccinea,no,,no,yes,no,no,no,no,no,c4,
+Papaveraceae,Argemone,cf hispida,arhi,arhi,Argemone cf hispida,no,,no,no,no,yes,no,no,no,c3,did not occur in june 2022 plots - need to go back and key
+Poaceae,Bouteloua,curtipendula,bocu,bocu,Bouteloua curtipendula,yes,UPG2,no,yes,no,no,no,yes,no,c4,
+Poaceae,Panicum,virgatum,sphe,pavi,Panicum virgatum,yes,sporo?,no,yes,no,no,no,yes,no,c4,
+Poaceae,Schizachyrium ,scoparium,upg4,scsc,Schizachyrium  scoparium,yes,UPG4,no,yes,no,no,no,yes,no,c4,
+Poaceae,Nassella,viridula,navi,navi,Nassella viridula,yes,,no,yes,no,no,no,yes,no,c4,
+Poaceae,Pascopyrum,smithii,elre,pasm,Pascopyrum smithii,yes,upg1; upg3; pasm; elre,no,yes,no,no,no,yes,yes,c3,
+Poaceae,Bouteloua,gracilis,bogr,bogr,Bouteloua gracilis,yes,,no,yes,no,no,no,yes,no,c4,
+Poaceae,Elymus,elymoides,elel,elel,Elymus elymoides,no,,no,yes,no,no,no,yes,no,c3,
+Solanaceae,Solanum,triflorum,sotr,n_forbs,Native Forbs,no,,no,no,no,no,yes,no,no,c3,
+unknown,Perennial_forb,d_012_herb_01,upf_12,n_forbs,Native Forbs,no,upf_12,no,yes,no,no,no,no,no,c3,"linear, alternate leaves, 1-2 mm wide. Stout but not woody stems that die back like medicago sativa. caespitose, not rhizomatous"
+unknown,Rhizomatous_perennial_forb,d_141_herb_09,upfr,n_forbs,Native Forbs,no,,no,yes,no,no,no,no,yes,c3,"5merous flowers, drooping, 5 sepals fused halfway up. 5 petals green at time of observation, but undeveloped still. 5 stamens, 6-angled stem, lvs: ovate, dark green, alternate, leafy stipules, acute, margins more or less entire, wavy"
+Asteraceae,Podospermum,laciniatum,pola,i_lactucae,Introduced Lactucae,no,,yes,no,no,no,no,no,no,c3,
+Asteraceae,Taraxacum,officinale,taof,i_lactucae,Introduced Lactucae,no,,yes,no,no,no,yes,no,no,c3,
+Asteraceae,Tragopogon ,dubious,trdu,i_lactucae,Introduced Lactucae,no,,yes,no,no,no,yes,no,no,c3,
+Asteraceae,Cirsium,arvense,ciar,ciar,Cirsium arvense,no,,yes,yes,no,no,no,no,yes,c3,
+Asteraceae,Onopordium,acanthium,onac,onac,Onopordium acanthium,no,,yes,no,no,yes,no,no,no,c3,did not occur in june 2022 plots
+Asteraceae,Lactuca,serriola,lase,lase,Lactuca serriola,no,,yes,no,no,no,yes,no,no,c3,
+Brassicaceae,Sisymbrium,altissimum,sial,ia_brass,Introduced Brassicaceae,no,,yes,no,no,no,yes,no,no,c3,
+Brassicaceae,Descurainia,sophia,deso,ia_brass,Introduced Brassicaceae,no,,yes,no,no,no,yes,no,no,c3,
+Chenopodiaceae,Salsola,tragus,satr,satr,Salsola tragus,no,,yes,no,no,no,yes,no,no,c4,
+Chenopodiaceae,Kochia,scoparia,kosc,kosc,Kochia scoparia,no,,yes,no,no,no,yes,no,no,c3,
+Convolvulaceae,Convolvulus,arvensis,coar,coar,Convolvulus arvensis,no,,yes,yes,no,no,no,no,no,c3,
+Fabaceae,Medicago,sativa,mesa,mesa,Medicago sativa,yes,,yes,yes,no,no,no,no,no,c3,
+Fabaceae,Melilotus,officinale,meof,meof,Melilotus officinale,no,,yes,no,no,no,yes,no,no,c3,
+Poaceae,Bromus,tectorum,brte,ia_bromus,Introduced Annual Bromus,no,,yes,no,no,no,yes,yes,no,c3,
+Poaceae,Secale,cereale,sece,sece,Secale cereale,no,,yes,no,no,no,yes,yes,no,c3,"sometimes referred to as ""wheat"" on data sheets"
+Poaceae,Bromus,inermis,brin,brin,Bromus inermis,no,,yes,yes,no,no,no,yes,yes,c3,
+Poaceae,Bromus,secalinus,brse,ia_bromus,Introduced Annual Bromus,no,,yes,no,no,no,yes,yes,no,c3,
+Poaceae,Agropyron,cristatum,agcr,agcr,Agropyron cristatum,no,,yes,yes,no,no,no,yes,no,c3,did not occur in june 2022 plots
+Zygophyllaceae,Tribulus,terrestris,trte,trte,Tribulus terrestris,no,,yes,no,no,no,yes,no,no,c3,

@@ -5,7 +5,7 @@ library(fields)
 library(terra)
 library(raster)
 library(topmodel) # for the twi layers
-
+viz<-FALSE
 # functions ====================================================================
 
 # https://stackoverflow.com/questions/58553966/calculating-twi-in-r
@@ -15,7 +15,10 @@ upslope <- function (dem, log = TRUE, atb = FALSE, deg = 0.12, fill.sinks = TRUE
     stop("Raster has differing x and y cell resolutions. Check that it is in a projected coordinate system (e.g. UTM) and use raster::projectRaster to reproject to one if not. Otherwise consider using raster::resample")
   }
   if (fill.sinks) {
-    capture.output(dem <- invisible(raster::setValues(dem, topmodel::sinkfill(raster::as.matrix(dem), res = xres(dem), degree = deg))))
+    capture.output(dem <- invisible(raster::setValues(dem, 
+                                                      topmodel::sinkfill(raster::as.matrix(dem), 
+                                                                         res = xres(dem), 
+                                                                         degree = deg))))
   }
   topidx <- topmodel::topidx(raster::as.matrix(dem), res = xres(dem))
   a <- raster::setValues(dem, topidx$area)
@@ -254,8 +257,8 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
 # }
 
 # soil temp visualizations =====================================================
-  
-terra::rast(result)[[c(1,2)]] %>%
+if(viz)
+{terra::rast(result)[[c(1,2)]] %>%
   as.data.frame(xy=TRUE) %>%
   pivot_longer(cols = names(.)[3:length(.)], 
                values_to = "temp_c", 
@@ -297,7 +300,7 @@ terra::rast(result)[[c(7,8)]] %>%
   geom_raster(aes(x=x, y=y, fill=temp_c)) + 
   scale_fill_viridis(option="B") +
   facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
+  coord_equal()}
 
 # soil moisture ================================================================
 a_es_drake_n <- readxl::read_xlsx(
@@ -371,42 +374,47 @@ soil_moisture_summaries <- bind_rows(es_drake_n, es_drake_s) %>%
   mutate(year = lubridate::year(`Date Time`),
          month = lubridate::month(`Date Time`),
          month_group = case_when(month < 3 ~ "pre_jf",
-                                 month < 5 & month > 3 ~ "pre_ma"))%>%
+                                 month < 5 & month > 3 ~ "pre_ma",
+                                 month > 5 & month < 9 ~ "post_jja",
+                                 month > 8 & month <12 ~ "post_son"))%>%
   group_by(year, month_group, probe, depth)%>%
     summarise(mean_soil_moisture = mean(value, na.rm=TRUE)) %>%
     ungroup() %>%
   bind_rows(antecedent_soil_moisture_summaries)
 
-dpth <- "60cm"
+dpth <- c("30cm", "60cm")
 
 sm_sentek <- sentek_locations %>%
   left_join(soil_moisture_summaries, by = c("Probe" = "probe")) %>%
-  na.omit() %>%
-  filter(depth == dpth)
-
-
+  na.omit() # %>%
+  # filter(depth == dpth)
 
 counter <- 1
 result_sm <- list()
 spmods_sm <- list()
 for(month_grp in (unique(sm_sentek$month_group))){
   for(sample_year in c(2013:2014)){
-    d <- filter(sm_sentek, year == sample_year, month_grp == month_group)
+    for(dpt in dpth){
+    d <- filter(sm_sentek, 
+                year == sample_year, 
+                month_grp == month_group,
+                depth == dpt)
     # data prep for spatial process model
     x = st_coordinates(d)[,c(1,2)]
     z = dplyr::select(d, slope, TPI, twi, groundEL_1, fa) %>%
       st_set_geometry(NULL)
     y = sm_sentek %>%
       filter(year == sample_year, 
-             month_group == month_grp) %>%
+             month_group == month_grp,
+             depth == dpt) %>%
       pull(mean_soil_moisture)
     
-    print(paste(month_grp, sample_year))
+    print(paste(month_grp, sample_year,dpt))
     spmods_sm[[counter]] <- fields::spatialProcess(x=x, y=y, Z=z, 
                                                 profileLambda = TRUE, 
                                                 profileARange = TRUE)
     
-    print(summary(spmods_sm[[counter]]))
+    # print(summary(spmods_sm[[counter]]))
     
     ## Predict using the spatial process model fitted
     yp = predict(spmods_sm[[counter]],
@@ -417,13 +425,13 @@ for(month_grp in (unique(sm_sentek$month_group))){
                                                    prediction = yp),
                                         crs = raster::crs(elevation)) %>%
       terra::rast()
-    names(spmod_rast_sm) <- paste0(month_grp, "_", sample_year)
+    names(spmod_rast_sm) <- paste0(month_grp, "_", dpt, "_", sample_year)
     result_sm[[counter]] <- spmod_rast_sm
     counter <- counter +1
-  }}
+  }}}
 
 # soil moisture visualizations =================================================
-
+if(viz){
 terra::rast(result_sm)[[c(1,2)]] %>%
   as.data.frame(xy=TRUE) %>%
   pivot_longer(cols = names(.)[3:length(.)], 
@@ -457,33 +465,113 @@ terra::rast(result_sm)[[c(5,6)]] %>%
   facet_wrap(~month_grp,ncol = 1)+
   coord_equal()
 
-# terra::rast(result_sm)[[c(7,8)]] %>%
-#   as.data.frame(xy=TRUE) %>%
-#   pivot_longer(cols = names(.)[3:length(.)], 
-#                values_to = "temp_c", 
-#                names_to = "month_grp") %>%
-#   ggplot() +
-#   geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-#   scale_fill_viridis(option="B") +
-#   facet_wrap(~month_grp,ncol = 1)+
-#   coord_equal()
+terra::rast(result_sm)[[c(7,8)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)],
+               values_to = "temp_c",
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) +
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()
+terra::rast(result_sm)[[c(9,10)]] %>%
+  as.data.frame(xy=TRUE) %>%
+  pivot_longer(cols = names(.)[3:length(.)],
+               values_to = "temp_c",
+               names_to = "month_grp") %>%
+  ggplot() +
+  geom_raster(aes(x=x, y=y, fill=temp_c)) +
+  scale_fill_viridis(option="B") +
+  facet_wrap(~month_grp,ncol = 1)+
+  coord_equal()}
+
+# spei ===================================================
+drake_precip_df <- read_csv("/home/a/projects/drake-farm/data/past_data/ages_input/drake58hru/data/reg_precip.csv",
+                            skip = 21) %>%
+  dplyr::select(2:60) %>%
+  pivot_longer(cols = names(.)[2:length(.)],
+               names_to = "sensor", values_to = "precip") %>%
+  mutate(date = as.Date(time, "%d.%m.%Y"),
+         ym = str_sub(time, 4,10)) %>%
+  dplyr::select(-time) %>%
+  group_by(date, ym) %>%
+  summarise(mean_precip = mean(precip)) %>%
+  ungroup() %>%
+  group_by(ym) %>%
+  summarise(sum_precip = sum(mean_precip)) %>%
+  ungroup() %>%
+  mutate(year = str_sub(ym, 4, 7) %>% as.numeric(),
+         month = str_sub(ym, 1,2) %>% as.numeric()) %>%
+  arrange(year,month)
+
+drake_tmean_df <- read_csv("/home/a/projects/drake-farm/data/past_data/ages_input/drake58hru/data/reg_tmean.csv",
+                           skip=13) %>%
+  dplyr::select(2:60) %>%
+  pivot_longer(cols = names(.)[2:length(.)],
+               names_to = "sensor", values_to = "temp") %>%
+  mutate(date = as.Date(time, "%d.%m.%Y"),
+         ym = str_sub(time, 4,10)) %>%
+  group_by(ym) %>%
+  summarise(mean_temp = mean(temp)) %>%
+  ungroup() %>%
+  mutate(year = str_sub(ym, 4, 7) %>% as.numeric(),
+         month = str_sub(ym, 1,2) %>% as.numeric()) %>%
+  arrange(year,month); drake_tmean_df
+
+drake_tmean <- drake_tmean_df %>%
+  pull(mean_temp);drake_tmean
+
+pet <- SPEI::thornthwaite(Tave = drake_tmean,lat = 40.605054) %>%
+  as.vector()
+precip <- pull(drake_precip_df, sum_precip)
+
+balance <- precip - pet
+
+spei06 <- SPEI::spei(balance, scale = 6)
+spei12 <- SPEI::spei(balance, scale = 12)
+spei24 <- SPEI::spei(balance, scale = 24)
+
+fulldf <- drake_tmean_df %>%
+  mutate(date = as.Date(paste0(ym, ".01"), "%m.%Y.%d"),
+         precip = precip,
+         pet = pet,
+         spei06 = spei06$fitted %>% as.vector(),
+         spei12 = spei12$fitted %>% as.vector(),
+         spei24 = spei24$fitted %>% as.vector())
+
+spei_13 <- fulldf %>%
+  filter(ym == "03.2013") %>%
+  dplyr::select(spei06, spei12, spei24)
+
+spei_14 <- fulldf %>%
+  filter(ym == "03.2014") %>%
+  dplyr::select(spei06, spei12, spei24)
+
+
 
 # getting sm and st all together ===============================================
 soil_temp_rasts_13 <- terra::rast(result)[[c(1,3,5,7,9)]]
 names(soil_temp_rasts_13) <- names(soil_temp_rasts_13) %>%
-  str_replace_all("_2013", "_soil_temp_c") %>%
-  str_remove_all("seed_")
+  str_replace_all("post_seed", "soil_temp_post") %>%
+  str_replace_all("pre_seed", "soil_temp_pre") %>%
+  str_remove_all("_2013")
 soil_temp_rasts_14 <- terra::rast(result)[[c(2,4,6,8,10)]]
 names(soil_temp_rasts_14) <- names(soil_temp_rasts_14) %>%
-  str_replace_all("_2014", "_soil_temp_c") %>%
-  str_remove_all("seed_")
+  str_replace_all("post_seed", "soil_temp_post") %>%
+  str_replace_all("pre_seed", "soil_temp_pre") %>%
+  str_remove_all("_2014")
 
-soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5)]]
+soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,2,5,6,9,10,13,14,17,18)]]
 names(soil_moist_rasts_13) <- names(soil_moist_rasts_13) %>%
-  str_replace_all("_2013", paste0("_", dpth,"_sm_pct"))
-soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6)]]
+  str_remove_all("_2013") %>%
+  str_replace_all("pre", "soil_moisture_pre") %>%
+  str_replace_all("post", "soil_moisture_post")
+soil_moist_rasts_14 <- terra::rast(result_sm)[[c(3,4,7,8,11,12,15,16,19,20)]]
 names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
-  str_replace_all("_2014",paste0("_", dpth,"_sm_pct"))
+  str_remove_all("_2014") %>%
+  str_replace_all("pre", "soil_moisture_pre") %>%
+  str_replace_all("post", "soil_moisture_post")
 
 mc_files <- Sys.glob("data/microclima*.tif")
 air_temp_jf <- terra::rast(mc_files[1])
@@ -492,16 +580,18 @@ air_temp_son_pre <- terra::rast(mc_files[3])
 
 air_temp_rasts_13 <- c(air_temp_jf$jf_13_tmean, air_temp_mam$mam_13_tmean, air_temp_son_pre$son_12_tmean)
 names(air_temp_rasts_13) <- names(air_temp_rasts_13) %>%
-  str_replace_all("_13_tmean", "_pre_air_temp_c")%>%
-  str_replace_all("_12_tmean", "_pre_air_temp_c")
+  str_replace_all("_13_tmean", "_pre")%>%
+  str_replace_all("_12_tmean", "_pre") %>%
+  str_c("air_temp_",.)
 air_temp_rasts_14 <- c(air_temp_jf$jf_14_tmean, air_temp_mam$mam_14_tmean, air_temp_son_pre$son_13_tmean)
-names(air_temp_rasts_14) <- names(air_temp_rasts_14) %>%
-  str_replace_all("_14_tmean", "_pre_air_temp_c")%>%
-  str_replace_all("_13_tmean", "_pre_air_temp_c")
+names(air_temp_rasts_14) <- names(air_temp_rasts_14)  %>%
+  str_replace_all("_14_tmean", "_pre")%>%
+  str_replace_all("_13_tmean", "_pre") %>%
+  str_c("air_temp_",.)
 
-veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>%
-  mutate(terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)) %>%
-  dplyr::select(cell)
+veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>% 
+  mutate(terra::extract(soil_moist_rasts_13, vect(.), cells=TRUE)) #%>%
+ # dplyr::select(cell)
 
 shrub_plots <- soil_c %>% filter(strip_type == "shru") %>% pull(plot)
 herb_plots <- soil_c %>% filter(strip_type == "herb") %>% pull(plot)
@@ -512,7 +602,10 @@ shrub_clm<- veg_plot_locations %>%
                vect(.)),
          terra::extract(c(air_temp_rasts_13), 
                         vect(.))) %>%
-  dplyr::select(-ID)
+  dplyr::select(-ID) %>%
+  mutate(march_spei06 = pull(spei_13, spei06),
+         march_spei12 = pull(spei_13, spei12),
+         march_spei24 = pull(spei_13, spei24))
 
 herb_clm<- veg_plot_locations %>%
   filter(X2012Flag %in% herb_plots) %>%
@@ -520,7 +613,10 @@ herb_clm<- veg_plot_locations %>%
                         vect(.)),
          terra::extract(c(air_temp_rasts_14), 
                         vect(.))) %>%
-  dplyr::select(-ID)
+  dplyr::select(-ID) %>%
+  mutate(march_spei06 = pull(spei_14, spei06),
+         march_spei12 = pull(spei_14, spei12),
+         march_spei24 = pull(spei_14, spei24))
 
 # mutate(twi = terra::extract(rast(twi_stack$twi), vect( st_as_sf(.)))[,2]) %>%
 
@@ -535,5 +631,5 @@ xdata <- bind_rows(shrub_clm, herb_clm) %>%
                                        " [:digit:] to [:digit:] percent slope") %>%
            str_remove_all("Kim ") %>%
            str_remove_all("Colby ") %>%
-           str_remove_all("Wagonwheel "))
+           str_remove_all("Wagonwheel ")) 
 

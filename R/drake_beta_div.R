@@ -1,5 +1,9 @@
 # drake beta diversity
-
+# check native div vs non-native div
+# predicting seeding success based on pre-treamtnet climate
+# what variables will be the best to use for pre-treatment climate
+# landscape factors that will drive cRP treatment success -
+# splitting the strips
 # Hmsc analysis
 source("R/drake_data_prep.R")
 
@@ -45,7 +49,16 @@ dv<- plant_cover %>%
               values_from = cover_pct, 
               values_fill = 0) %>%
   arrange(plot) %>%
-  tibble::column_to_rownames("plot")
+  tibble::column_to_rownames("plot") 
+
+vegan::diversity(dv,"invsimpson") %>%
+  as_tibble(rownames = "plot") %>%
+  dplyr::rename(shannon = value) %>%
+  mutate(plot = str_sub(plot,3,5) %>% as.numeric()) %>%
+  left_join(xdata) %>%
+  ggplot(aes(x=strip_type, y=shannon)) +
+  geom_boxplot()
+    
 
 pa <- dv
 pa[pa>0] <- 1

@@ -7,6 +7,8 @@ library(geomtextpath)
 library(vroom)
 ?SPEI::spei()
 
+# maybe two separate models for strip types
+
 # workaround, just downloaded the global modeled stuff... ======================
 spei<- bind_rows(read_delim("data/spei_database/spei06.csv",delim = ";") %>% mutate(scale = "06_month"),
                  read_delim("data/spei_database/spei12.csv",delim = ";") %>% mutate(scale = "12_month"),
@@ -174,3 +176,9 @@ p_agis_spei <- ggplot(fulldf %>% filter(year>2011, year < 2016) %>%
   ggtitle("SPEI from drake AGIS inputs");p_agis_spei
 
 ggsave(p_agis_spei, filename="figs/spei_from_agis_input.png", width=7.5, height =5)  
+
+p_regression <- ggplot(fulldf %>% filter(year>2011, year < 2016) %>%
+                         pivot_longer(cols = c("spei06", "spei12", "spei24"),
+                                      names_to = "scale", values_to = "spei"),
+                       aes(x=spei, y=mean_temp, color = scale)) +
+  geom_point()
