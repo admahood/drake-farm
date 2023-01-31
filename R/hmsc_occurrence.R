@@ -263,7 +263,7 @@ ggplot_vp(mspei, cols = vp_cols)
 ggplot_gamma(m)
 ggplot_gamma(mspei)
 
-ggplot_omega(mspei)
+ggplot_omega(m)
 
 
 # big multipanel ==================
