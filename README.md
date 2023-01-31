@@ -21,10 +21,10 @@ https://docs.google.com/spreadsheets/d/1awV8ANasMfRad5vQhI9-M8T7ct_cxpDPNqSnr4oK
 
 ![](figs/gelman_ess.png)
 
-![](figs/variance_partitioning.png)
+![](figs/vp.png)
 
-![](figs/betas.png)
+![](figs/beta.png)
 
-![](figs/gammas_binomial_subplot.png)
+![](figs/gamma.png)
 
-![](figs/species_associations.png)
+![](figs/omega.png)
