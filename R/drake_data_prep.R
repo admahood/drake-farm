@@ -487,7 +487,7 @@ terra::rast(result_sm)[[c(9,10)]] %>%
   coord_equal()}
 
 # spei ===================================================
-drake_precip_df <- read_csv("/home/a/projects/drake-farm/data/past_data/ages_input/drake58hru/data/reg_precip.csv",
+drake_precip_df <- read_csv("data/past_data/ages_input/drake58hru/data/reg_precip.csv",
                             skip = 21) %>%
   dplyr::select(2:60) %>%
   pivot_longer(cols = names(.)[2:length(.)],
@@ -505,7 +505,7 @@ drake_precip_df <- read_csv("/home/a/projects/drake-farm/data/past_data/ages_inp
          month = str_sub(ym, 1,2) %>% as.numeric()) %>%
   arrange(year,month)
 
-drake_tmean_df <- read_csv("/home/a/projects/drake-farm/data/past_data/ages_input/drake58hru/data/reg_tmean.csv",
+drake_tmean_df <- read_csv("data/past_data/ages_input/drake58hru/data/reg_tmean.csv",
                            skip=13) %>%
   dplyr::select(2:60) %>%
   pivot_longer(cols = names(.)[2:length(.)],
@@ -544,10 +544,17 @@ spei_13 <- fulldf %>%
   filter(ym == "03.2013") %>%
   dplyr::select(spei06, spei12, spei24)
 
+spei_13j <- fulldf %>%
+  filter(ym == "06.2013") %>%
+  dplyr::select(spei06, spei12, spei24)
+
 spei_14 <- fulldf %>%
   filter(ym == "03.2014") %>%
   dplyr::select(spei06, spei12, spei24)
 
+spei_14j <- fulldf %>%
+  filter(ym == "06.2014") %>%
+  dplyr::select(spei06, spei12, spei24)
 
 
 # getting sm and st all together ===============================================
@@ -605,7 +612,10 @@ shrub_clm<- veg_plot_locations %>%
   dplyr::select(-ID) %>%
   mutate(march_spei06 = pull(spei_13, spei06),
          march_spei12 = pull(spei_13, spei12),
-         march_spei24 = pull(spei_13, spei24))
+         march_spei24 = pull(spei_13, spei24),
+         june_spei06 = pull(spei_13j, spei06),
+         june_spei12 = pull(spei_13j, spei12),
+         june_spei24 = pull(spei_13j, spei24))
 
 herb_clm<- veg_plot_locations %>%
   filter(X2012Flag %in% herb_plots) %>%
@@ -616,7 +626,10 @@ herb_clm<- veg_plot_locations %>%
   dplyr::select(-ID) %>%
   mutate(march_spei06 = pull(spei_14, spei06),
          march_spei12 = pull(spei_14, spei12),
-         march_spei24 = pull(spei_14, spei24))
+         march_spei24 = pull(spei_14, spei24),
+         june_spei06 = pull(spei_14j, spei06),
+         june_spei12 = pull(spei_14j, spei12),
+         june_spei24 = pull(spei_14j, spei24))
 
 # mutate(twi = terra::extract(rast(twi_stack$twi), vect( st_as_sf(.)))[,2]) %>%
 
