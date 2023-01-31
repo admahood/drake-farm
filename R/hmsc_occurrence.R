@@ -241,11 +241,15 @@ if(!file.exists(hmsc_file)){
 
 # plotting =======================================================
 source("R/hmsc_plotting_functions.R")
+load("data/hmsc/hmsc_probit_subplot_rrJan_27.Rda")
 library(RColorBrewer)
-ggplot_convergence(m,omega = T, gamma=T)
+ggplot_convergence(m,omega = T, gamma=T) %>%
+  ggsave(plot=.,filename = "figs/convergence.png", width=5, height=5)
 ggplot_convergence(mspei,omega = T, gamma=T)
 
-ggplot_fit(m, which="named")
+ggplot_fit(m, which="named")%>%
+  ggsave(plot=.,filename = "figs/r2.png", width=5, height=5)
+  
 ggplot_fit(mspei, which="named")
 
 vp_cols <- c(brewer.pal(12, "Set3"),
@@ -263,8 +267,8 @@ ggplot_vp(mspei, cols = vp_cols)
 ggplot_gamma(m)
 ggplot_gamma(mspei)
 
-ggplot_omega(m)
-
+ggplot_omega(m, hc_method = "centroid", dots=F)%>%
+  ggsave(filename = "figs/omega.png", plot=., width=15, height=15, bg="white")
 
 # big multipanel ==================
 
