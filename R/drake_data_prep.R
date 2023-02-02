@@ -209,7 +209,8 @@ sentek_summaries <- bind_rows(sentek_13, sentek_14)
 
 elv_df<-c(terrain, elevation)%>%
   as.data.frame(xy=TRUE)%>%
-  mutate(fa = abs(180 - abs(aspect - 225)))
+  mutate(fa = abs(180 - abs(aspect - 225))) %>%
+  na.omit()
 lat <- elv_df$y
 lon <- elv_df$x
 elev <- elv_df[,4:8]
@@ -218,6 +219,7 @@ xps <-cbind(lon, lat)
 counter <- 1
 result <- list()
 spmods <- list()
+library(ggpubr)
 for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
   for(sample_year in c(2013:2014)){
     
@@ -234,8 +236,7 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
                                     profileLambda = TRUE, 
                                     profileARange = TRUE)
     
-    print(summary(spmods[[counter]]))
-    
+    # print(summary(spmods[[counter]]))
     ## Predict using the spatial process model fitted
     yp = predict(spmods[[counter]],
                  x=xps,Z=elev)
@@ -247,6 +248,34 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
       rast()
     names(spmod_rast) <- paste0(month_grp, "_", sample_year)
     result[[counter]] <- spmod_rast
+
+    p<- ggarrange(
+      spmod_rast %>%
+      as.data.frame(xy=TRUE) %>%
+        pivot_longer(cols = names(.)[3:length(.)], 
+                     values_to = "temp_c", 
+                     names_to = "month_grp") %>%
+        ggplot() +
+        geom_raster(aes(x=x, y=y, fill=temp_c)) + 
+        scale_fill_viridis(option="B") +
+        facet_wrap(~month_grp,ncol = 1)+
+        geom_sf(data = sentek_locations %>%
+                  mutate(sentek_t = y), aes(color=sentek_t)) +
+        coord_sf(),
+    ggarrange(
+      ggplot(as.data.frame(y), aes(x=y)) +
+        geom_histogram()+
+        ggtitle("ST Input", month_grp),
+      ggplot(as_tibble(spmod_rast) %>% dplyr::select(x=1), aes(x=x)) +
+        geom_histogram()+
+        ggtitle("ST predictions",month_grp),
+    nrow=2, ncol=1)
+    ,nrow=1, ncol=2, widths = c(4,1)
+    )
+    ggsave(filename = paste0("figs/surfaces/",
+                             paste0(month_grp, "_", 
+                                    sample_year, "_st.png")),
+           plot= p, width=10, height=5, bg="white")
     counter <- counter +1
 }}
 
@@ -256,53 +285,23 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
 #   set.panel(2,2);plot(spmods[[i]]);set.panel(1,1)
 # }
 
-# soil temp visualizations =====================================================
-if(viz)
-{terra::rast(result)[[c(1,2)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-    geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-    scale_fill_viridis(option="B") +
-    facet_wrap(~month_grp,ncol = 1)+
-    coord_equal()
-
-terra::rast(result)[[c(3,4)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
-
-terra::rast(result)[[c(5,6)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
-
-terra::rast(result)[[c(7,8)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()}
-
 # soil moisture ================================================================
+a_es_drake_e <- readxl::read_xlsx(
+  "data/past_data/E.wc.hr.2002-18_Nezat.xlsx",col_types=c("date",rep("numeric",16))) %>%
+  filter(timestamp > as.Date("2012-01-01"),
+         timestamp < as.Date("2014-01-01")) %>%
+  dplyr::select(-numericdate) %>%
+  pivot_longer(cols = names(.)[2:ncol(.)], 
+               names_to = "variable", 
+               values_to = "value") %>%
+  mutate(probe = str_sub(variable,1,2),
+         depth = str_sub(variable,4,6) %>% str_c("cm")) %>%
+  dplyr::select(-variable) %>%
+  filter(value > -9999); a_es_drake_e
+
+# ggplot(a_es_drake_e, aes(x=value)) +
+#   geom_histogram()
+
 a_es_drake_n <- readxl::read_xlsx(
   "data/past_data/ESDrakeN_2002_2017_daily.xlsx") %>%
   filter(`Date Time` > as.Date("2012-01-01"),
@@ -315,7 +314,9 @@ a_es_drake_n <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", value > -9999); a_es_drake_n
+  filter(measure != "Raw", value > -9999)%>%
+  dplyr::select(-variable, -measure) %>%
+  dplyr::rename(timestamp = 1); a_es_drake_n
 
 a_es_drake_s <- readxl::read_xlsx(
   "data/past_data/ESDrakeS_2002_2017_daily.xlsx") %>%
@@ -329,22 +330,41 @@ a_es_drake_s <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", value > -9999); a_es_drake_s
+  filter(measure != "Raw", value > -9999) %>%
+  dplyr::select(-variable, -measure) %>%
+  dplyr::rename(timestamp = 1); a_es_drake_s
 
 
-antecedent_soil_moisture_summaries <- bind_rows(a_es_drake_n, a_es_drake_s) %>%
-  mutate(year = lubridate::year(`Date Time`),
-         month = lubridate::month(`Date Time`),
+antecedent_soil_moisture_summaries <- bind_rows(a_es_drake_n, 
+                                                a_es_drake_s,
+                                                a_es_drake_e) %>%
+  mutate(year = lubridate::year(timestamp),
+         month = lubridate::month(timestamp),
          month_group = case_when(month > 8 & month < 12 ~ "pre_son"),
          year = year +1)%>%
   group_by(year, month_group, probe, depth)%>%
-  summarise(mean_soil_moisture = mean(value, na.rm=TRUE)) %>%
+  summarise(mean_soil_moisture = median(value, na.rm=TRUE)) %>%
   ungroup()
+
+es_drake_e <- readxl::read_xlsx(
+  "data/past_data/E.wc.hr.2002-18_Nezat.xlsx",
+  col_types=c("date",rep("numeric",16))) %>%
+  filter(timestamp > as.Date("2013-01-01"),
+         timestamp < as.Date("2015-01-01"))  %>%
+  dplyr::select(-numericdate) %>%
+  pivot_longer(cols = names(.)[2:ncol(.)], 
+               names_to = "variable", 
+               values_to = "value") %>%
+  mutate(probe = str_sub(variable,1,2),
+         depth = str_sub(variable,4,6) %>% str_c("cm")) %>%
+  dplyr::select(-variable) %>%
+  filter(value > -9999); es_drake_e
 
 es_drake_n <- readxl::read_xlsx(
   "data/past_data/ESDrakeN_2002_2017_daily.xlsx") %>%
-  filter(`Date Time` > as.Date("2013-01-01"),
-         `Date Time` < as.Date("2015-01-01")) %>%
+  dplyr::rename(timestamp=1) %>%
+  filter(timestamp > as.Date("2013-01-01"),
+         timestamp < as.Date("2015-01-01")) %>%
   pivot_longer(cols = names(.)[2:ncol(.)], 
                names_to = "variable", 
                values_to = "value") %>%
@@ -353,12 +373,14 @@ es_drake_n <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", value > -9999); es_drake_n
+  filter(measure != "Raw", value > -9999) %>%
+  dplyr::select(-variable, -measure); es_drake_n
 
 es_drake_s <- readxl::read_xlsx(
   "data/past_data/ESDrakeS_2002_2017_daily.xlsx") %>%
-  filter(`Date Time` > as.Date("2013-01-01"),
-         `Date Time` < as.Date("2015-01-01")) %>%
+  dplyr::rename(timestamp=1) %>%
+  filter(timestamp > as.Date("2013-01-01"),
+         timestamp < as.Date("2015-01-01")) %>%
   pivot_longer(cols = names(.)[2:ncol(.)], 
                names_to = "variable", 
                values_to = "value") %>%
@@ -367,27 +389,37 @@ es_drake_s <- readxl::read_xlsx(
          depth = str_split(str_split(variable, "\\]",
                                      simplify = T)[,1],
                            "_", 2, simplify = T)[,2]) %>%
-  filter(measure != "Raw", value > -9999); es_drake_s
+  filter(measure != "Raw", value > -9999) %>%
+  dplyr::select(-variable, -measure); es_drake_s
 
 
-soil_moisture_summaries <- bind_rows(es_drake_n, es_drake_s) %>%
-  mutate(year = lubridate::year(`Date Time`),
-         month = lubridate::month(`Date Time`),
+soil_moisture_summaries <- bind_rows(es_drake_n, 
+                                     es_drake_s,
+                                     es_drake_e) %>%
+  mutate(year = lubridate::year(timestamp),
+         month = lubridate::month(timestamp),
          month_group = case_when(month < 3 ~ "pre_jf",
                                  month < 5 & month > 3 ~ "pre_ma",
                                  month > 5 & month < 9 ~ "post_jja",
                                  month > 8 & month <12 ~ "post_son"))%>%
   group_by(year, month_group, probe, depth)%>%
-    summarise(mean_soil_moisture = mean(value, na.rm=TRUE)) %>%
+    summarise(mean_soil_moisture = median(value, na.rm=TRUE)) %>%
     ungroup() %>%
   bind_rows(antecedent_soil_moisture_summaries)
 
-dpth <- c("30cm", "60cm")
+dpth <- c("30cm")
 
 sm_sentek <- sentek_locations %>%
   left_join(soil_moisture_summaries, by = c("Probe" = "probe")) %>%
-  na.omit() # %>%
-  # filter(depth == dpth)
+  na.omit() %>%
+  filter(depth == dpth)
+
+# ggplot(sentek_locations) +
+#   geom_text(aes(label=Probe,x=UTME,y=UTMN))
+
+sm_sentek %>%
+  group_by(Probe) %>%
+  summarise(n=n())
 
 counter <- 1
 result_sm <- list()
@@ -401,7 +433,7 @@ for(month_grp in (unique(sm_sentek$month_group))){
                 depth == dpt)
     # data prep for spatial process model
     x = st_coordinates(d)[,c(1,2)]
-    z = dplyr::select(d, slope, TPI, twi, groundEL_1, fa) %>%
+    z = dplyr::select(d,  slope, TPI, twi, groundEL_1, fa) %>%
       st_set_geometry(NULL)
     y = sm_sentek %>%
       filter(year == sample_year, 
@@ -410,11 +442,11 @@ for(month_grp in (unique(sm_sentek$month_group))){
       pull(mean_soil_moisture)
     
     print(paste(month_grp, sample_year,dpt))
-    spmods_sm[[counter]] <- fields::spatialProcess(x=x, y=y, Z=z, 
-                                                profileLambda = TRUE, 
+    spmods_sm[[counter]] <- fields::spatialProcess(x=x, y=y, Z=z,
+                                                   gridN = 10,
+                                                   profileGridN = 25,
+                                                profileLambda = TRUE,
                                                 profileARange = TRUE)
-    
-    # print(summary(spmods_sm[[counter]]))
     
     ## Predict using the spatial process model fitted
     yp = predict(spmods_sm[[counter]],
@@ -425,66 +457,58 @@ for(month_grp in (unique(sm_sentek$month_group))){
                                                    prediction = yp),
                                         crs = raster::crs(elevation)) %>%
       terra::rast()
-    names(spmod_rast_sm) <- paste0(month_grp, "_", dpt, "_", sample_year)
+    
+    names(spmod_rast_sm) <- paste0(month_grp, "_",
+                                   dpt, "_", sample_year)
     result_sm[[counter]] <- spmod_rast_sm
+    
+    p<- ggarrange(
+      ggarrange(
+        spmod_rast_sm %>%
+        as.data.frame(xy=TRUE) %>%
+        pivot_longer(cols = names(.)[3:length(.)], 
+                     values_to = "soil_moisture_pct", 
+                     names_to = "month_grp") %>%
+        ggplot() +
+        geom_raster(aes(x=x, y=y, fill=soil_moisture_pct)) + 
+        scale_fill_viridis(option="A") +
+        facet_wrap(~month_grp,ncol = 1)+
+        geom_sf(data = d %>%
+                  mutate(sentek_m = y), aes(color=sentek_m)) +
+        coord_sf()+
+          theme_void(),
+        spmod_rast_sm %>%
+          as.data.frame(xy=TRUE) %>%
+          pivot_longer(cols = names(.)[3:length(.)], 
+                       values_to = "soil_moisture_pct", 
+                       names_to = "month_grp") %>%
+          ggplot() +
+          geom_raster(aes(x=x, y=y, fill=soil_moisture_pct)) + 
+          scale_fill_stepsn(breaks = c(-10,0,10,40,50,1000),
+                            colors = c("red", "white", "white",
+                                       "grey", "grey", "black"))+
+          facet_wrap(~month_grp,ncol = 1)+
+          geom_sf(data = d %>%
+                    mutate(sentek_m = y), aes(color=sentek_m)) +
+          coord_sf() +
+          theme_void(), nrow=2, ncol=1),
+      ggarrange(
+        ggplot(as.data.frame(y), aes(x=y)) +
+          geom_histogram()+
+          ggtitle("SM Input", month_grp),
+        ggplot(as_tibble(spmod_rast_sm) %>% dplyr::select(xx=1), aes(x=xx)) +
+          geom_histogram()+
+          ggtitle("SM predictions",month_grp),
+        nrow=2, ncol=1)
+      ,nrow=1, ncol=2, widths = c(4,1)
+    )
+    ggsave(filename = paste0("figs/surfaces/sm/",
+                             paste0(month_grp, "_", 
+                                    sample_year, "_sm.png")),
+           plot= p, width=15, height=10, bg="white")
+    
     counter <- counter +1
   }}}
-
-# soil moisture visualizations =================================================
-if(viz){
-terra::rast(result_sm)[[c(1,2)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
-
-terra::rast(result_sm)[[c(3,4)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
-
-terra::rast(result_sm)[[c(5,6)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)], 
-               values_to = "temp_c", 
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) + 
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
-
-terra::rast(result_sm)[[c(7,8)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)],
-               values_to = "temp_c",
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) +
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()
-terra::rast(result_sm)[[c(9,10)]] %>%
-  as.data.frame(xy=TRUE) %>%
-  pivot_longer(cols = names(.)[3:length(.)],
-               values_to = "temp_c",
-               names_to = "month_grp") %>%
-  ggplot() +
-  geom_raster(aes(x=x, y=y, fill=temp_c)) +
-  scale_fill_viridis(option="B") +
-  facet_wrap(~month_grp,ncol = 1)+
-  coord_equal()}
 
 # spei ===================================================
 drake_precip_df <- read_csv("data/past_data/ages_input/drake58hru/data/reg_precip.csv",
