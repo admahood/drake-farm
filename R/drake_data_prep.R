@@ -6,6 +6,7 @@ library(terra)
 library(raster)
 library(topmodel) # for the twi layers
 viz<-FALSE
+set.seed(331)
 # functions ====================================================================
 
 # https://stackoverflow.com/questions/58553966/calculating-twi-in-r
@@ -285,7 +286,7 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
 #   set.panel(2,2);plot(spmods[[i]]);set.panel(1,1)
 # }
 
-# soil moisture ================================================================
+# sentek soil moisture ================================================================
 a_es_drake_e <- readxl::read_xlsx(
   "data/past_data/E.wc.hr.2002-18_Nezat.xlsx",col_types=c("date",rep("numeric",16))) %>%
   filter(timestamp > as.Date("2012-01-01"),
