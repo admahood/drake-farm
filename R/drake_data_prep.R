@@ -594,12 +594,12 @@ names(soil_temp_rasts_14) <- names(soil_temp_rasts_14) %>%
   str_replace_all("pre_seed", "soil_temp_pre") %>%
   str_remove_all("_2014")
 
-soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,2,5,6,9,10,13,14,17,18)]]
+soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5,7,9)]]
 names(soil_moist_rasts_13) <- names(soil_moist_rasts_13) %>%
   str_remove_all("_2013") %>%
   str_replace_all("pre", "soil_moisture_pre") %>%
   str_replace_all("post", "soil_moisture_post")
-soil_moist_rasts_14 <- terra::rast(result_sm)[[c(3,4,7,8,11,12,15,16,19,20)]]
+soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6,8,10)]]
 names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
   str_remove_all("_2014") %>%
   str_replace_all("pre", "soil_moisture_pre") %>%

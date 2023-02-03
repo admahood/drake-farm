@@ -105,7 +105,7 @@ XFormula_pre <- ~
   air_temp_jf_pre + 
   air_temp_mam_pre + 
   air_temp_son_pre + 
-  twi +
+  # twi +
   soil_texture +
   bare + 
   strip_type +
@@ -172,15 +172,15 @@ mod = Hmsc(Y = Y,
            TrData = traits,
            TrFormula = t_formula,
            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
-
-mod_spei = Hmsc(Y = Y, 
-           XData = XData, 
-           XFormula = XFormula_spei,
-           distr="probit",
-           studyDesign = studyDesign,
-           TrData = traits,
-           TrFormula = t_formula,
-           ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
+# 
+# mod_spei = Hmsc(Y = Y, 
+#            XData = XData, 
+#            XFormula = XFormula_spei,
+#            distr="probit",
+#            studyDesign = studyDesign,
+#            TrData = traits,
+#            TrFormula = t_formula,
+#            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
 
 day <- format(Sys.time(), "%b_%d")
 
@@ -203,7 +203,7 @@ if (run_type == "mid"){
 }
 if (run_type == "rolls_royce"){
   
-  thin = 500
+  thin = 200
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_spei",day,".Rda")
@@ -211,16 +211,23 @@ if (run_type == "rolls_royce"){
 
 
 
-t0 <- Sys.time()
+t0 <- Sys.time();print(t0)
 dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
+  ttest0 <- Sys.time()
+  mtest <- sampleMcmc(mod, samples = 100, verbose=F)
+  ttest1 <- Sys.time()
+  t_per_iter<-(ttest1 - ttest0)/100
+  estimated_time <- t_per_iter * (transient*3)
+  print(paste((as.numeric(estimated_time)/60)/60, "hours estimated"))
+  
   m = sampleMcmc(mod, 
                  thin = thin,
                  samples = samples,
                  transient = transient,
                  # useSocket = FALSE,
                  nChains = nChains,
-                 nParallel = nChains)
+                 nParallel = 8)
   print(Sys.time()-t0)
   save(m, file=hmsc_file)
 }else{load(hmsc_file)}
