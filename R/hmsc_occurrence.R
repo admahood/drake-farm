@@ -257,8 +257,6 @@ ggplot_convergence(mspei,omega = T, gamma=T)
 ggplot_fit(m, which="named")%>%
   ggsave(plot=.,filename = "figs/r2.png", width=5, height=5)
   
-ggplot_fit(mspei, which="named")
-
 vp_cols <- c(brewer.pal(12, "Set3"),
              brewer.pal(9, "Set1"),
              "black", "white","burlywood4")
