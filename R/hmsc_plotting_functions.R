@@ -182,8 +182,8 @@ ggplot_vp <- function(Hm, title = "Variance Explained",
     geom_bar(stat="identity", color = "black")+
     theme_classic() +
     scale_fill_discrete(name = "Variable\n (Avg Variance Explained)") +
-    geom_hline(yintercept = table(vp_order$origin)[1]+.5) +
-    geom_hline(yintercept = nrow(vp_order)+.5) +
+    # geom_hline(yintercept = table(vp_order$origin)[1]+.5) +
+    # geom_hline(yintercept = nrow(vp_order)+.5) +
     annotate("text", x = 1.2, y=1, label="Introduced", angle=90, vjust="bottom",
              hjust="left", size=8)+
     annotate("text", x = 1.2, y=nrow(vp_order), label="Native", angle=90, vjust="top",
