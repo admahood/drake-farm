@@ -97,26 +97,33 @@ XData<-left_join(
   
 XFormula_pre <- ~ 
   soil_moisture_pre_jf_30cm + 
-  soil_moisture_pre_jf_60cm + 
   soil_moisture_pre_ma_30cm + 
-  soil_moisture_pre_ma_60cm + 
   soil_moisture_pre_son_30cm + 
-  soil_moisture_pre_son_60cm +
   soil_temp_pre_jf + 
   soil_temp_pre_ma + 
   soil_temp_pre_son + 
   air_temp_jf_pre + 
   air_temp_mam_pre + 
   air_temp_son_pre + 
-  # march_spei06 +
+  # twi +
+  soil_texture +
+  bare + 
+  strip_type +
+  total_n_top_15cm_2012 
+
+XFormula_spei <- ~ 
+  march_spei06 +
   # march_spei12 +
-  # march_spei24+
+  march_spei24 +
+  june_spei06 +
+  # june_spei12 +
+  june_spei24 +
   fa +
   twi +
   soil_texture +
   bare + 
   slope +
-  strip_type +
+  strip_type+
   total_n_top_15cm_2012 
 
 # maybe do one with only spei+topo
@@ -165,6 +172,15 @@ mod = Hmsc(Y = Y,
            TrData = traits,
            TrFormula = t_formula,
            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
+# 
+# mod_spei = Hmsc(Y = Y, 
+#            XData = XData, 
+#            XFormula = XFormula_spei,
+#            distr="probit",
+#            studyDesign = studyDesign,
+#            TrData = traits,
+#            TrFormula = t_formula,
+#            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
 
 day <- format(Sys.time(), "%b_%d")
 
@@ -183,47 +199,81 @@ if (run_type == "mid"){
   thin = 10
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_mid_",day,".Rda")
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_mid_spei",day,".Rda")
 }
 if (run_type == "rolls_royce"){
   
   thin = 200
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- "data/hmsc/hmsc_probit_subplot_rr.Rda"
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_spei",day,".Rda")
 }
 
 
 
-t0 <- Sys.time()
+t0 <- Sys.time();print(t0)
 dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
+  ttest0 <- Sys.time()
+  mtest <- sampleMcmc(mod, samples = 100, verbose=F)
+  ttest1 <- Sys.time()
+  t_per_iter<-(ttest1 - ttest0)/100
+  estimated_time <- t_per_iter * (transient*3)
+  print(paste((as.numeric(estimated_time)/60)/60, "hours estimated"))
+  
   m = sampleMcmc(mod, 
                  thin = thin,
                  samples = samples,
                  transient = transient,
-                 useSocket = FALSE,
+                 # useSocket = FALSE,
                  nChains = nChains,
-                 nParallel = nChains)
+                 nParallel = 8)
   print(Sys.time()-t0)
   save(m, file=hmsc_file)
 }else{load(hmsc_file)}
 
+t0 <- Sys.time()
+dir.create("data/hmsc")
+if(!file.exists(hmsc_file)){
+  mspei = sampleMcmc(mod_spei, 
+                 thin = thin,
+                 samples = samples,
+                 transient = transient,
+                 # useSocket = FALSE,
+                 nChains = nChains,
+                 nParallel = nChains)
+  print(Sys.time()-t0)
+  save(mspei, file=hmsc_file)
+}else{load(hmsc_file)}
+
 # plotting =======================================================
 source("R/hmsc_plotting_functions.R")
+load("data/hmsc/hmsc_probit_subplot_rrJan_27.Rda")
 library(RColorBrewer)
-ggplot_convergence(m,omega = T, gamma=T)
-ggplot_fit(m, which="named")
+ggplot_convergence(m,omega = T, gamma=T) %>%
+  ggsave(plot=.,filename = "figs/convergence.png", width=5, height=5)
+ggplot_convergence(mspei,omega = T, gamma=T)
 
+ggplot_fit(m, which="named")%>%
+  ggsave(plot=.,filename = "figs/r2.png", width=5, height=5)
+  
 vp_cols <- c(brewer.pal(12, "Set3"),
              brewer.pal(9, "Set1"),
              "black", "white","burlywood4")
 
-ggplot_vp(m, cols = vp_cols)
-ggplot_beta(m, grouping_var = "introduced")
+ggplot_vp(m, cols = vp_cols) %>%
+  ggsave(filename = "figs/vp.png", plot=., width=10, height=10, bg="white")
+ggplot_vp(mspei, cols = vp_cols) %>%
+  ggsave(filename = "figs/vp_spei.png", plot=., width=10, height=10, bg="white")
+ggplot_beta(m, grouping_var = "introduced")%>%
+  ggsave(filename = "figs/beta.png", plot=., width=10, height=10, bg="white")
+ggplot_beta(mspei, grouping_var = "introduced")
+ggplot_vp(mspei, cols = vp_cols)
 ggplot_gamma(m)
-ggplot_omega(m)
+ggplot_gamma(mspei)
 
+ggplot_omega(m, hc_method = "centroid", dots=F)%>%
+  ggsave(filename = "figs/omega.png", plot=., width=15, height=15, bg="white")
 
 # big multipanel ==================
 
@@ -293,3 +343,62 @@ grazing_native <- pred_df_grazing  %>%
         legend.title = element_blank())
 
 ggsave(grazing_native, filename = "figs/gradient_peci_cover_subplot.png", width = 20, height = 15)
+
+
+
+# ggmcmc
+mc <- convertToCodaObject(m)
+sbeta<-ggs(mc$Beta)
+sgamma <- ggs(mc$Gamma)
+sv <- ggs(mc$V)
+
+
+ggs_caterpillar(sv)
+
+ggs_caterpillar(sgamma)
+ggs_crosscorrelation(sgamma)%>%
+  ggsave(filename = "figs/ccg.png", plot=., 
+         width=20, height=20, bg="white")
+
+ggs_crosscorrelation(sv %>%
+                       filter(str_sub(Parameter, 1, 22) == 
+                                "V[soil_moisture_pre_jf"))%>%
+  ggsave(filename = "figs/ccv.png", plot=., 
+         width=10, height=10, bg="white")
+
+sbeta_x<-sbeta%>%
+  separate(col = "Parameter", into = c("var","xx1", "sp","xx2"),sep = " ",
+           remove = F, convert=T,extra = "drop", fill = "warn") %>%
+  dplyr::select(-xx1,-xx2)
+
+sbeta_sm <- filter(sbeta, str_sub(Parameter, 1, 9) == "B[soil_mo" )
+
+ggs_caterpillar(sbeta_x %>%
+                  filter(var == "B[soil_moisture_pre_jf_30cm")) %>%
+  ggsave(filename = "figs/caterpillar_smjf.png", plot=., 
+         width=7, height=5, bg="white")
+
+ggs_crosscorrelation(sbeta_x %>%
+                  filter(sp == "kosc")) %>%
+  ggsave(filename = "figs/cc_kosc.png", plot=., 
+         width=7, height=5, bg="white")
+
+ggs_caterpillar(sbeta_x %>%
+                  filter(sp == "pasm")) %>%
+  ggsave(filename = "figs/caterpillar_pasm.png", plot=., 
+         width=7, height=5, bg="white")
+
+
+prh<-ggs_Rhat(sbeta)
+
+prh %>%
+  ggsave(filename = "figs/rhat.png", plot=., 
+         width=7, height=35, bg="white")
+ggsave(filename = "figs/rhat_gamma.png", plot=ggs_Rhat(sgamma), 
+       width=7, height=15, bg="white")
+ggsave(filename = "figs/rhat_v.png", plot=ggs_Rhat(sv), 
+       width=7, height=25, bg="white")
+ggs_crosscorrelation(sbeta_sm) %>%
+  ggsave(filename = "figs/cc.png", plot=., 
+         width=20, height=40, bg="white")
+
