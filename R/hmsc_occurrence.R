@@ -106,25 +106,12 @@ XFormula_pre <- ~
   air_temp_mam_pre + 
   air_temp_son_pre + 
   # twi +
-  soil_texture +
+  # soil_texture +
   bare + 
   strip_type +
-  total_n_top_15cm_2012 
+  total_n_top_15cm_2012
 
-XFormula_spei <- ~ 
-  march_spei06 +
-  # march_spei12 +
-  march_spei24 +
-  june_spei06 +
-  # june_spei12 +
-  june_spei24 +
-  fa +
-  twi +
-  soil_texture +
-  bare + 
-  slope +
-  strip_type+
-  total_n_top_15cm_2012 
+
 
 # maybe do one with only spei+topo
 
@@ -172,21 +159,12 @@ mod = Hmsc(Y = Y,
            TrData = traits,
            TrFormula = t_formula,
            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
-# 
-# mod_spei = Hmsc(Y = Y, 
-#            XData = XData, 
-#            XFormula = XFormula_spei,
-#            distr="probit",
-#            studyDesign = studyDesign,
-#            TrData = traits,
-#            TrFormula = t_formula,
-#            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
 
 day <- format(Sys.time(), "%b_%d")
 
 nChains = 4
-run_type = "rolls_royce"
-run_type = "mid"
+run_type = "rr"
+# run_type = "mid"
 if (run_type == "test"){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -199,16 +177,22 @@ if (run_type == "mid"){
   thin = 10
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_mid_spei",day,".Rda")
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_mid_",day,".Rda")
 }
-if (run_type == "rolls_royce"){
+if (run_type == "rr"){
   
-  thin = 200
+  thin = 300
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_spei",day,".Rda")
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
 }
-
+if (run_type = "rrp"){
+  thin = 100
+  samples = 4000/nChains 
+  transient = ceiling(thin*samples*.5)
+  total_iterations <- ((thin*samples) + transient)*nChains
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rrp_",day,".Rda")
+}
 
 
 t0 <- Sys.time();print(t0)
@@ -219,7 +203,7 @@ if(!file.exists(hmsc_file)){
   ttest1 <- Sys.time()
   t_per_iter<-(ttest1 - ttest0)/100
   estimated_time <- t_per_iter * (transient*3)
-  print(paste((as.numeric(estimated_time)/60)/60, "hours estimated"))
+  print(paste(((as.numeric(estimated_time)/60)/60)*4, "hours estimated"))
   
   m = sampleMcmc(mod, 
                  thin = thin,
@@ -227,32 +211,17 @@ if(!file.exists(hmsc_file)){
                  transient = transient,
                  # useSocket = FALSE,
                  nChains = nChains,
-                 nParallel = 8)
+                 nParallel = nChains)
   print(Sys.time()-t0)
   save(m, file=hmsc_file)
 }else{load(hmsc_file)}
 
-t0 <- Sys.time()
-dir.create("data/hmsc")
-if(!file.exists(hmsc_file)){
-  mspei = sampleMcmc(mod_spei, 
-                 thin = thin,
-                 samples = samples,
-                 transient = transient,
-                 # useSocket = FALSE,
-                 nChains = nChains,
-                 nParallel = nChains)
-  print(Sys.time()-t0)
-  save(mspei, file=hmsc_file)
-}else{load(hmsc_file)}
-
 # plotting =======================================================
 source("R/hmsc_plotting_functions.R")
-load("data/hmsc/hmsc_probit_subplot_rrJan_27.Rda")
+load("data/hmsc/hmsc_probit_subplot_rr_speiFeb_03.Rda")
 library(RColorBrewer)
 ggplot_convergence(m,omega = T, gamma=T) %>%
   ggsave(plot=.,filename = "figs/convergence.png", width=5, height=5)
-ggplot_convergence(mspei,omega = T, gamma=T)
 
 ggplot_fit(m, which="named")%>%
   ggsave(plot=.,filename = "figs/r2.png", width=5, height=5)
@@ -263,12 +232,10 @@ vp_cols <- c(brewer.pal(12, "Set3"),
 
 ggplot_vp(m, cols = vp_cols) %>%
   ggsave(filename = "figs/vp.png", plot=., width=10, height=10, bg="white")
-ggplot_vp(mspei, cols = vp_cols) %>%
-  ggsave(filename = "figs/vp_spei.png", plot=., width=10, height=10, bg="white")
+
 ggplot_beta(m, grouping_var = "introduced")%>%
   ggsave(filename = "figs/beta.png", plot=., width=10, height=10, bg="white")
-ggplot_beta(mspei, grouping_var = "introduced")
-ggplot_vp(mspei, cols = vp_cols)
+
 ggplot_gamma(m)
 ggplot_gamma(mspei)
 
