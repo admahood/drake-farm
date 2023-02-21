@@ -3,6 +3,7 @@ library(tidyverse)
 library(sf)
 library(fields)
 library(terra)
+library(ggpubr)
 library(raster)
 library(topmodel) # for the twi layers
 viz<-FALSE
@@ -220,11 +221,15 @@ xps <-cbind(lon, lat)
 counter <- 1
 result <- list()
 spmods <- list()
-library(ggpubr)
 for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
   for(sample_year in c(2013:2014)){
-    
-    # data prep for spatial process model
+    fn_st <- paste0("data/sentek_tifs/soil_temp_", month_grp,"_", sample_year, ".tif")
+    if(file.exists(fn_st)) {
+      result[[counter]] <- terra::rast(fn_st)
+      counter <- counter+1
+      next
+    }
+      # data prep for spatial process model
     x = st_coordinates(sentek_locations)[,c(1,2)]
     z = dplyr::select(sentek_locations, slope, TPI, twi, groundEL_1, fa) %>%
       st_set_geometry(NULL)
@@ -249,7 +254,10 @@ for(month_grp in (unique(sentek_13$month_group) %>% na.omit())){
       rast()
     names(spmod_rast) <- paste0(month_grp, "_", sample_year)
     result[[counter]] <- spmod_rast
-
+    
+    raster::writeRaster(spmod_rast, fn_st)
+  
+    
     p<- ggarrange(
       spmod_rast %>%
       as.data.frame(xy=TRUE) %>%
@@ -428,6 +436,12 @@ spmods_sm <- list()
 for(month_grp in (unique(sm_sentek$month_group))){
   for(sample_year in c(2013:2014)){
     for(dpt in dpth){
+      fn_sm <- paste0("data/sentek_tifs/soil_moisture_", month_grp,"_", sample_year, ".tif")
+      if(file.exists(fn_sm)) {
+        result_sm[[counter]] <- terra::rast(fn_sm)
+        counter <- counter+1
+        next
+      }
     d <- filter(sm_sentek, 
                 year == sample_year, 
                 month_grp == month_group,
@@ -462,6 +476,7 @@ for(month_grp in (unique(sm_sentek$month_group))){
     names(spmod_rast_sm) <- paste0(month_grp, "_",
                                    dpt, "_", sample_year)
     result_sm[[counter]] <- spmod_rast_sm
+    raster::writeRaster(spmod_rast_sm, fn_sm)
     
     p<- ggarrange(
       ggarrange(

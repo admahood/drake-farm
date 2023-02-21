@@ -106,7 +106,7 @@ XFormula_pre <- ~
   air_temp_jf_pre + 
   air_temp_mam_pre + 
   air_temp_son_pre + 
-  # twi +
+  twi +
   # soil_texture +
   bare + 
   strip_type +
@@ -163,9 +163,10 @@ mod = Hmsc(Y = Y,
 
 day <- format(Sys.time(), "%b_%d")
 
-nChains = 36
+nChains = 4
 run_type = "rrp"
-# run_type = "mid"
+run_type = "mid"
+run_type = "oblas"
 if (run_type == "test"){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -188,6 +189,7 @@ if (run_type == "rr"){
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
 }
 if (run_type == "rrp"){
+  nChains = 4
   thin = 200
   samples = ceiling(4000/nChains) 
   transient = ceiling(thin*samples*.5)
@@ -195,32 +197,40 @@ if (run_type == "rrp"){
   iterations_per_chain <- total_iterations/nChains
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rrp_",day,".Rda")
 }
+if (run_type == "oblas"){
+  nChains = 1
+  thin = 300
+  samples = 1000
+  transient = ceiling(thin*samples*.5)
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
+}
 
 
 t0 <- Sys.time();print(t0)
 dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
+  
   ttest0 <- Sys.time()
-  mtest = sampleMcmc(mod, 
-                 thin = 1,
-                 samples = 10,
-                 transient = 0,
-                 verbose=T,
-                 # useSocket = FALSE,
-                 nChains = nChains,
-                 nParallel = nChains)
+  mtest <- sampleMcmc(mod, samples = 30, nChains = nChains, 
+                      nParallel = nChains, verbose=F)
   ttest1 <- Sys.time()
-  t_per_iter <- (ttest1-ttest0)/10
-  estimated_time <- t_per_iter*(transient*3)*2
-  print(paste(((round(as.numeric(estimated_time)/60)/60)), "days estimated"))
+  t_per_iter<-(ttest1 - ttest0)/(30)
+  print(paste(t_per_iter, "seconds per iteration"))
+  estimated_time <- t_per_iter * (transient*3)
+  print(paste((as.numeric(estimated_time)/60)/60, "hours estimated"))
+  
   
   m = sampleMcmc(mod, 
                  thin = thin,
                  samples = samples,
                  transient = transient,
-                 # useSocket = FALSE,
+                 useSocket = FALSE,
                  nChains = nChains,
                  nParallel = nChains)
+  hmsc_file <- str_replace(hmsc_file, run_type, 
+                           paste0(run_type, "_",
+                                  format(round(Sys.time()- t0)) %>% 
+                                    str_replace_all(" ", "_")))
   print(Sys.time()-t0)
   save(m, file=hmsc_file)
 }else{load(hmsc_file)}
