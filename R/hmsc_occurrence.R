@@ -94,7 +94,8 @@ XData<-left_join(
   mutate_if(is.character, as.factor) %>%
   mutate(fa = abs(180 - abs(aspect - 225)),
          strip_number = as.factor(strip_number.x))
-  
+
+# Formula(s) ===================================================================
 XFormula_pre <- ~ 
   soil_moisture_pre_jf_30cm + 
   soil_moisture_pre_ma_30cm + 
@@ -162,8 +163,8 @@ mod = Hmsc(Y = Y,
 
 day <- format(Sys.time(), "%b_%d")
 
-nChains = 4
-run_type = "rr"
+nChains = 36
+run_type = "rrp"
 # run_type = "mid"
 if (run_type == "test"){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
@@ -186,11 +187,12 @@ if (run_type == "rr"){
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
 }
-if (run_type = "rrp"){
-  thin = 100
-  samples = 4000/nChains 
+if (run_type == "rrp"){
+  thin = 200
+  samples = ceiling(4000/nChains) 
   transient = ceiling(thin*samples*.5)
   total_iterations <- ((thin*samples) + transient)*nChains
+  iterations_per_chain <- total_iterations/nChains
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rrp_",day,".Rda")
 }
 
@@ -199,11 +201,18 @@ t0 <- Sys.time();print(t0)
 dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
   ttest0 <- Sys.time()
-  mtest <- sampleMcmc(mod, samples = 100, verbose=F)
+  mtest = sampleMcmc(mod, 
+                 thin = 1,
+                 samples = 10,
+                 transient = 0,
+                 verbose=T,
+                 # useSocket = FALSE,
+                 nChains = nChains,
+                 nParallel = nChains)
   ttest1 <- Sys.time()
-  t_per_iter<-(ttest1 - ttest0)/100
-  estimated_time <- t_per_iter * (transient*3)
-  print(paste(((as.numeric(estimated_time)/60)/60)*4, "hours estimated"))
+  t_per_iter <- (ttest1-ttest0)/10
+  estimated_time <- t_per_iter*(transient*3)*2
+  print(paste(((round(as.numeric(estimated_time)/60)/60)), "days estimated"))
   
   m = sampleMcmc(mod, 
                  thin = thin,
@@ -218,7 +227,7 @@ if(!file.exists(hmsc_file)){
 
 # plotting =======================================================
 source("R/hmsc_plotting_functions.R")
-load("data/hmsc/hmsc_probit_subplot_rr_speiFeb_03.Rda")
+load("data/hmsc/hmsc_probit_subplot_rrp_Feb_14.Rda")
 library(RColorBrewer)
 ggplot_convergence(m,omega = T, gamma=T) %>%
   ggsave(plot=.,filename = "figs/convergence.png", width=5, height=5)
