@@ -199,10 +199,10 @@ if (run_type == "rrp"){
 }
 if (run_type == "oblas"){
   nChains = 1
-  thin = 300
+  thin = 500
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_oblas_",thin, "_",day,".Rda")
 }
 
 
