@@ -360,43 +360,56 @@ ggplot_beta <- function(Hm,
 
 # better beta visualization
 
-ggplot_beta2 <- function(Hm, included_variables = NA){
+ggplot_beta2_drake <- function(Hm, included_variables = NA){
   c<-convertToCodaObject(Hm) 
   mbc <- ggmcmc::ggs(c$Beta) %>%
     separate(.,
              col = "Parameter",
              into = c("var", "x1", "gen", "sp", "x2"),
              sep = " ") %>%
-    dplyr::select(-x1, -x2) %>%
-    mutate(gensp = paste(gen, sp),
+    dplyr::select(-x1, -x2,-sp) %>%
+    mutate(gensp = paste(gen),
            var = str_remove_all(var, "B\\["),
            gensp = str_remove_all(gensp, " \\(S\\d{2}\\)\\]"))%>%
     filter(var != "(Intercept)") %>%
+    group_by(var, gensp) %>%
+    mutate(value = scale(value,center = F),
+           sign = ifelse(value>0, "positive", "negative")) %>%
+    ungroup() %>%
     left_join(Hm$TrData %>% tibble::rownames_to_column("gensp"))
   
-  if(!is.na(included_variables)){
+  if(any(!is.na(included_variables))){
     mbc <- filter(mbc, var %in% included_variables)
   }
   
   vp_order <- mbc %>%
     filter(var == first(mbc$var %>% unique()),
            Iteration ==1, Chain==1) %>%
-    arrange(origin, duration, cots) %>%
+    arrange(desc(introduced), perennial, graminoid) %>%
     mutate(gensp_f = factor(gensp, levels = .$gensp)) %>%
     dplyr::select(gensp, gensp_f)
+  
+  n_native <- Hm$TrData  %>%
+    mutate(i = ifelse(introduced == "yes", 1, 0))%>%
+    pull(i) %>%
+    sum()
   
   p <- ggplot(mbc %>% left_join(vp_order), 
                           aes(x=value, y = gensp_f, 
                               fill=as.factor(Chain))) +
-    ggdist::stat_dist_interval(alpha=0.5) +
+    geom_hline(aes(yintercept= gensp, color=introduced), lwd=12) +
+    geom_hline(aes(yintercept=n_native+0.5),lwd=1) +
+    scale_color_manual(values = (c("white", "grey90")))+
+    ggdist::stat_slab(height=2, alpha = 0.95,
+                      color = "black", aes(fill = after_stat(x>0)))+
     facet_wrap(~var, scales = "free_x", nrow=1, ncol=length(unique(mbc$var))) +
     theme_classic() +
     guides(fill="none")+
     geom_vline(xintercept=0, col="black", lty=2) +
-    geom_hline(yintercept= c(12.5), col = "black") +
-    geom_hline(yintercept= c(8.5, 11.5, 21.5, 18.5), col = "grey", lty=3) +
+    ggnewscale::new_scale_fill() +
     xlab("Effect on Occurrence Probability") +
-    ylab("Species or Species Group")
+    ylab("Species or Species Group") +
+    theme(panel.spacing.x = unit(-0.5, "lines"));p
   return(p)
 }
 
