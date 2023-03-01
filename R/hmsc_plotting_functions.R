@@ -73,6 +73,55 @@ trace_plot <- function(Hm, which){
   if(which == "gamma") return(plot(co$Gamma))
   if(which == "v") return(plot(co$V))
 }
+
+ggplot_ess <- function(Hm, beta = TRUE, V=FALSE, gamma = FALSE, 
+                          omega=FALSE, title = "Model Convergence"){
+  
+  mpost <- convertToCodaObject(Hm)
+  
+  d <- effectiveSize(mpost$Beta) %>%
+        as_tibble() %>% mutate(fit_statistic = "ess", variable = "beta")
+
+  if(V) {
+    d <- d %>%
+      bind_rows(
+        effectiveSize(mpost$V) %>%
+          as_tibble() %>% mutate(fit_statistic = "ess", variable = "V"))
+      
+  }
+  
+  if(gamma) {
+    d <- d %>%
+      bind_rows(
+        effectiveSize(mpost$Gamma) %>%
+          as_tibble() %>% mutate(fit_statistic = "ess", variable = "gamma"))
+      
+  }
+  
+  if(omega){
+    sppairs = matrix(sample(x = 1:Hm$ns^2, size = 100))
+    tmp = mpost$Omega[[1]]
+    for (chain in 1:length(tmp)){
+      tmp[[chain]] = tmp[[chain]][,sppairs]
+    }
+    
+    d <- d %>%
+      bind_rows(
+        effectiveSize(tmp) %>%
+          as_tibble() %>% mutate(fit_statistic = "ess", variable = "omega"))
+  }
+  
+  vline_df <- data.frame(fit_statistic = "ess",
+                         xintercept = length(mpost$Beta)*nrow(mpost$Beta[[1]]))
+  
+  
+  ggplot(d, aes(x=value)) + 
+    geom_histogram(bins=70) + 
+    geom_vline(data = vline_df, aes(xintercept = xintercept), color="red", lty=2)+
+    facet_grid(variable~fit_statistic, scales='free') +
+    ggtitle(title)
+  
+}
 # model fit ====================================================================
 
 ggplot_fit <- function(Hm, which = "r2", sp_names = "none",

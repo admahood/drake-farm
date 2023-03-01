@@ -199,15 +199,15 @@ if (run_type == "rrp"){
 }
 if (run_type == "oblas"){
   nChains = 1
-  thin = 500
+  thin = 750
   samples = 1000
   transient = ceiling(thin*samples*.5)
-  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_oblas_",thin, "_",day,".Rda")
+  hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_oblas_",thin, "_",day,"a.Rda")
 }
 
 
 t0 <- Sys.time();print(t0)
-dir.create("data/hmsc")
+if(!dir.exists("data/hmsc")) dir.create("data/hmsc")
 if(!file.exists(hmsc_file)){
   
   ttest0 <- Sys.time()
@@ -239,6 +239,8 @@ if(!file.exists(hmsc_file)){
 source("R/hmsc_plotting_functions.R")
 load("data/hmsc/hmsc_probit_subplot_rrp_Feb_14.Rda")
 library(RColorBrewer)
+
+ggplot_ess(m, omega=T)
 ggplot_convergence(m,omega = T, gamma=T) %>%
   ggsave(plot=.,filename = "figs/convergence.png", width=5, height=5)
 
