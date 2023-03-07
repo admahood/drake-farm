@@ -360,7 +360,13 @@ ggplot_beta <- function(Hm,
 
 # better beta visualization
 
-ggplot_beta2_drake <- function(Hm, included_variables = NA){
+ggplot_beta2_drake <- function(Hm, included_variables = NA, lut_ivars = NA){
+  require(dplyr)
+  require(ggthemes)
+  require(tidyr)
+  require(ggplot2)
+  require(ggnewscale)
+  require(ggmcmc)
   c<-convertToCodaObject(Hm) 
   mbc <- ggmcmc::ggs(c$Beta) %>%
     separate(.,
@@ -372,44 +378,64 @@ ggplot_beta2_drake <- function(Hm, included_variables = NA){
            var = str_remove_all(var, "B\\["),
            gensp = str_remove_all(gensp, " \\(S\\d{2}\\)\\]"))%>%
     filter(var != "(Intercept)") %>%
-    group_by(var, gensp) %>%
+    group_by(var, gensp, Chain) %>%
     mutate(value = scale(value,center = F),
-           sign = ifelse(value>0, "positive", "negative")) %>%
+           sign = ifelse(value>0, "positive", "negative"),
+           median_value = median(value)) %>%
+    filter(value<4 & value>-4) %>%
     ungroup() %>%
-    left_join(Hm$TrData %>% tibble::rownames_to_column("gensp"))
+    left_join(Hm$TrData %>% tibble::rownames_to_column("gensp")) 
   
   if(any(!is.na(included_variables))){
     mbc <- filter(mbc, var %in% included_variables)
   }
   
+  prevalence <- Hm$Y %>%
+    as_tibble(rownames = "plot") %>%
+    pivot_longer(cols = names(.)[2:ncol(.)], names_to = "gen") %>%
+    group_by(gen) %>%
+    reframe(prevalence = sum(value)) %>%
+    ungroup()
+  
   vp_order <- mbc %>%
+    left_join(prevalence)  %>% 
     filter(var == first(mbc$var %>% unique()),
-           Iteration ==1, Chain==1) %>%
-    arrange(desc(introduced), perennial, graminoid) %>%
+           Iteration ==1, Chain==1)%>%
+    arrange(desc(introduced), desc(perennial), graminoid, prevalence) %>%
     mutate(gensp_f = factor(gensp, levels = .$gensp)) %>%
-    dplyr::select(gensp, gensp_f)
+    dplyr::select(gensp, gensp_f, gen)
   
   n_native <- Hm$TrData  %>%
     mutate(i = ifelse(introduced == "yes", 1, 0))%>%
     pull(i) %>%
     sum()
   
+  if(any(!is.na(included_variables))){
+    mbc <- mutate(mbc, var = lut_ivars[var])
+  }
   p <- ggplot(mbc %>% left_join(vp_order), 
                           aes(x=value, y = gensp_f, 
-                              fill=as.factor(Chain))) +
-    geom_hline(aes(yintercept= gensp, color=introduced), lwd=12) +
-    geom_hline(aes(yintercept=n_native+0.5),lwd=1) +
+                              group=as.factor(Chain))) +
+    geom_hline(aes(yintercept= gensp_f, color=introduced), lwd=8) +
+    geom_hline(aes(yintercept=n_native+0.5),lwd=0.7) +
     scale_color_manual(values = (c("white", "grey90")))+
-    ggdist::stat_slab(height=2, alpha = 0.95,
-                      color = "black", aes(fill = after_stat(x>0)))+
+    ggdist::stat_slab(height=2,  lwd = .5, #alpha = 0.95,
+                      color = "black", 
+                      aes(fill = after_stat(x>0),
+                          alpha = exp(abs(median_value))))+
+    # ggthemes::scale_fill_colorblind() +
     facet_wrap(~var, scales = "free_x", nrow=1, ncol=length(unique(mbc$var))) +
+    scale_alpha_continuous(range = c(0,1.25*(1/length(unique(mbc$Chain)))))+
     theme_classic() +
-    guides(fill="none")+
+    guides(fill="none", alpha="none", color = "none")+
     geom_vline(xintercept=0, col="black", lty=2) +
     ggnewscale::new_scale_fill() +
-    xlab("Effect on Occurrence Probability") +
+    xlab("Effect on Occurrence Probability (Scaled)") +
     ylab("Species or Species Group") +
-    theme(panel.spacing.x = unit(-0.5, "lines"));p
+    theme(panel.spacing.x = unit(-1, "lines"),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.text.y = element_text(size=12))#;p
   return(p)
 }
 
