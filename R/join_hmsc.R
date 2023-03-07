@@ -38,8 +38,10 @@ ivars <- c("air_temp_son_pre", "bare", "soil_moisture_pre_jf_30cm",
            "soil_moisture_pre_ma_30cm", "soil_moisture_pre_son_30cm",
            "soil_temp_pre_jf", "soil_temp_pre_ma", "soil_temp_pre_son",
            "soil_n_top_15cm_2012", "twi")
+
 lut_ivars <-c("Ta son", "Bare", "Ms jf", "Ms ma", "Ms son", "Ts jf",
                       "Ts ma", "Ts son", "Ns", "TWI")
+
 names(lut_ivars) <-  c("air_temp_son_pre", "bare", "soil_moisture_pre_jf_30cm",
                "soil_moisture_pre_ma_30cm", "soil_moisture_pre_son_30cm",
                "soil_temp_pre_jf", "soil_temp_pre_ma", "soil_temp_pre_son",
@@ -47,7 +49,7 @@ names(lut_ivars) <-  c("air_temp_son_pre", "bare", "soil_moisture_pre_jf_30cm",
 
 ggplot_beta2_drake(mj, included_variables = ivars, lut_ivars = lut_ivars)%>%
   ggsave(plot = ., filename = "figs/beta2.png", width = 10, height=5)
-ggplot_beta(mod1,grouping_var = "introduced") 
+ggplot_beta(mj,grouping_var = "introduced") 
 
 ggplot_omega(mj) %>%
   ggsave(filename = "figs/omega.png", plot=., width=7, height=7, bg="white")

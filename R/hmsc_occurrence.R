@@ -97,15 +97,15 @@ XData<-left_join(
 
 # Formula(s) ===================================================================
 XFormula_pre <- ~ 
-  soil_moisture_pre_jf_30cm + 
-  soil_moisture_pre_ma_30cm + 
+  soil_moisture_pre_jf_30cm +
+  soil_moisture_pre_ma_30cm +
   soil_moisture_pre_son_30cm + 
   soil_temp_pre_jf + 
   soil_temp_pre_ma + 
   soil_temp_pre_son + 
-  air_temp_jf_pre + 
-  air_temp_mam_pre + 
-  air_temp_son_pre + 
+  # air_temp_jf + 
+  # air_temp_mam + 
+  air_temp_son + 
   twi +
   # soil_texture +
   bare + 
@@ -131,8 +131,13 @@ heights <- plant_cover %>%
   summarise_all(first) %>%
   ungroup()
 
+df_crp <- data.frame(group = c("pasm", "navi", "bocu", "mesa", "scsc","atca", "bogr", "pavi"),
+                    seeding_intensity = c(2.0,0.8, 0.7, 0.4, 0.4, 0.3, 0.2, 0.2))
+
 traits <- data.frame(group = colnames(Y)) %>%
   left_join(heights) %>%
+  left_join(df_crp) %>%
+  replace_na(list(seeding_intensity = 0)) %>%
   tibble::column_to_rownames("group") %>%
   na.omit()
 
@@ -199,7 +204,7 @@ if (run_type == "rrp"){
 }
 if (run_type == "oblas"){
   nChains = 1
-  thin = 750
+  thin = 1000
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_oblas_",thin, "_",day,"a.Rda")

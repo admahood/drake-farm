@@ -621,19 +621,19 @@ names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
   str_replace_all("post", "soil_moisture_post")
 
 mc_files <- Sys.glob("data/microclima*.tif")
-air_temp_jf <- terra::rast(mc_files[1])
-air_temp_mam <- terra::rast(mc_files[2])
-air_temp_son_pre <- terra::rast(mc_files[3])
+air_temp_jf <- terra::rast(mc_files[str_detect(mc_files,"jf.tif")])
+air_temp_ma <- terra::rast(mc_files[str_detect(mc_files,"ma.tif")])
+air_temp_son <- terra::rast(mc_files[str_detect(mc_files,"son.tif")])
 
-air_temp_rasts_13 <- c(air_temp_jf$jf_13_tmean, air_temp_mam$mam_13_tmean, air_temp_son_pre$son_12_tmean)
+air_temp_rasts_13 <- c(air_temp_jf$jf_13_tmean, air_temp_ma$mam_13_tmean, air_temp_son$son_12_tmean)
 names(air_temp_rasts_13) <- names(air_temp_rasts_13) %>%
-  str_replace_all("_13_tmean", "_pre")%>%
-  str_replace_all("_12_tmean", "_pre") %>%
+  str_replace_all("_13_tmean", "")%>%
+  str_replace_all("_12_tmean", "") %>%
   str_c("air_temp_",.)
-air_temp_rasts_14 <- c(air_temp_jf$jf_14_tmean, air_temp_mam$mam_14_tmean, air_temp_son_pre$son_13_tmean)
+air_temp_rasts_14 <- c(air_temp_jf$jf_14_tmean, air_temp_ma$mam_14_tmean, air_temp_son$son_13_tmean)
 names(air_temp_rasts_14) <- names(air_temp_rasts_14)  %>%
-  str_replace_all("_14_tmean", "_pre")%>%
-  str_replace_all("_13_tmean", "_pre") %>%
+  str_replace_all("_14_tmean", "")%>%
+  str_replace_all("_13_tmean", "") %>%
   str_c("air_temp_",.)
 
 veg_plot_locations <- st_read("data/sampled_centroids.gpkg") %>% 
