@@ -623,7 +623,7 @@ names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
 mc_files <- Sys.glob("data/microclima*.tif")
 air_temp_jf <- terra::rast(mc_files[str_detect(mc_files,"jf.tif")])
 air_temp_ma <- terra::rast(mc_files[str_detect(mc_files,"ma.tif")])
-air_temp_son <- terra::rast(mc_files[str_detect(mc_files,"son.tif")])
+air_temp_son <- terra::rast(mc_files[str_detect(mc_files,"son_pre.tif")])
 
 air_temp_rasts_13 <- c(air_temp_jf$jf_13_tmean, air_temp_ma$mam_13_tmean, air_temp_son$son_12_tmean)
 names(air_temp_rasts_13) <- names(air_temp_rasts_13) %>%
