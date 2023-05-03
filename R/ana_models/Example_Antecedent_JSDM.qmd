@@ -1,6 +1,8 @@
 ---
 title: "Example_Antecedent_JSDM"
-format: html
+format: 
+  html: 
+    embed-resources: true
 editor: visual
 ---
 
@@ -138,7 +140,8 @@ package.list <- c("here", "tidyverse",
 ## Installing them if they aren't already on the computer
 new.packages <- package.list[!(package.list %in% 
                                  installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages)
+if(length(new.packages)) install.packages(new.packages, 
+                                          repos = "http://cran.us.r-project.org")
 
 ## And loading them
 for(i in package.list){library(i, character.only = T)}
@@ -252,7 +255,7 @@ w_s <- quants %>%
   mutate(lag = str_sub(parameter, start = 4, end = 4))
 
 ggplot(w_s, aes(x = lag, y = `50%`)) +
-  geom_hline(yintercept = 0, linetype = 2) +
+  geom_hline(yintercept = 0.33, linetype = 2) +
   geom_point(size = 2) +
   geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`),
                 width = 0.2, size = 0.75) +
