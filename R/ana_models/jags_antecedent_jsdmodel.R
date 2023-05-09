@@ -52,6 +52,11 @@ model{
       PPTTemp[i,t] <- PPT[i,t]*wB[t]
     }
 
+    #eventually - I would like to code the weights
+    #to be different per group membership, so, for example,
+    #annual forbes can respond to temperature in spring
+    #whereas perennial grasses can respond to temperature
+    # in fall
   }
 
   #Antecedent climate priors
