@@ -8,7 +8,7 @@ editor: visual
 
 ## Example antecedent JSDM with simulated data
 
-This document runs through an example of the joint species distribution model (JSDM) with antecedent climate variables. The model uses a stochastic antecedent modeling framework ([Ogle et al. 2015](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.12399)) that combines the effects of a number of time interval climate variables into one regression parameter. This regression parameter is created by weighing the time intervals in the model based on their importance.
+This document runs through an example of the joint species distribution model (JSDM) with antecedent climate variables. The model uses a stochastic antecedent modeling framework ([Ogle et al. 2015](https://onlinelibrary.wiley.com/doi/full/10.1111/ele.12399)) that combines the effects of a number of time interval climate variables into one regression parameter. This regression parameter is created by weighing the time intervals in the model based on their importance. Additionally, in this model I have made it so the effects of antecedent effects vary by species groups and these weights can vary by species group as well (e.g. annual forbs can respond positively to temperature last spring while perennial grasses can respond negatively to temperature this winter).
 
 ### The model components
 
@@ -31,9 +31,9 @@ for(k in 1:n.species){ #looping through each species k
     
     eta[k,i] <- a0[GroupID[k]] + #group-level intercept
                 #group-level effect of antecedent temparature
-                a1[GroupID[k]]*TAnt[i] + 
+                a1[GroupID[k]]*TAnt[GroupID[k],i] + 
                 #group-level effect of antecedent precip
-                a2[GroupID[k]]*PAnt[i] +
+                a2[GroupID[k]]*PAnt[GroupID[k],i] +
                 #the residual correlation presence to 
                 #the presence of all other species (the "JS"
                 #part of the model)
@@ -44,47 +44,51 @@ for(k in 1:n.species){ #looping through each species k
 
 ```
 
-Within each site, $i$, the $TAnt_i$ and $PAnt_i$ variables are made up of the pre-defined set of time intervals $t$ for which you have provided temperature $Tmax_{i,j}$ and precipitation $PPT_{i,j}$ data. These are the "stochastic antecedent" part of the model. Each of the climate variables, $v$ (here $Tmax_{i,j}$ and $PPT_{i,j}$), you provided to the model is multiplied by their importance weight, $w_{v,t}$. These importance weights sum to 1 over all the time intervals.
+Within each site, $i$, the $TAnt_i$ and $PAnt_i$ variables are made up of the pre-defined set of time intervals $t$ for which you have provided temperature $Tmax_{i,j}$ and precipitation $PPT_{i,j}$ data. These are the "stochastic antecedent" part of the model. Each of the climate variables, $v$ (here $Tmax_{i,j}$ and $PPT_{i,j}$), you provided to the model is multiplied by their importance weight, \$w\_{v,t}\$. These importance weights sum to 1 over all the time intervals. Additionally, I have split these importance weight by group, \$g\$, such that each weight for each climate variable in each time period varies by group $w_{g,v,t}$
 
 ```{r}
 #| eval: false
 
   #Antecedent climate values
+  for(g in 1:n.groups){
   for(i in 1:n.sites){
     #antecedent climate value is the sum of all the
     #weighted lagged values
-    TAnt[i] <- sum(TmaxTemp[i,])
-    PAnt[i] <- sum(PPTTemp[i,])
+    TAnt[g, i] <- sum(TmaxTemp[g, i,])
+    PAnt[g, i] <- sum(PPTTemp[g, i,])
 
     #these are where the data you input into the model
     #come in for temp and ppt - here they're multiplied
     #by the weights the model has given them for their
     #relative importance in driving the climate effect
     for(t in 1:n.lag){
-      TmaxTemp[i,t] <- Tmax[i,t]*wA[t]
-      PPTTemp[i,t] <- PPT[i,t]*wB[t]
+      TmaxTemp[g, i,t] <- Tmax[i,t]*wA[g, t]
+      PPTTemp[g, i,t] <- PPT[i,t]*wB[g, t]
     }
 
   }
+  }
 
   #Antecedent climate priors
+for(g in 1:n.groups){
   #sum of the weights for the climate lag, so we
   # can divide the total value by 1
-  sumA <- sum(deltaA[])
-  sumB <- sum(deltaB[])
+  sumA[g] <- sum(deltaA[g,])
+  sumB[g] <- sum(deltaB[g,])
 
   #Employing "delta trick" to give vector of weights dirichlet priors
   #this is doing the dirichlet in two steps
   #see Ogle et al. 2015 SAM model paper in Ecology Letters
   for(t in 1:n.lag){ #for total number of lags
    #the weigths for tmax - getting them to sum to 1
-    wA[t] <- deltaA[t]/sumA
+    wA[g,t] <- deltaA[g,t]/sumA[g]
     #the weights for ppt - summing to 1
-    wB[t] <- deltaB[t]/sumB
+    wB[g, t] <- deltaB[g, t]/sumB[g]
     #both follow relatively uninformative gamma priors
-    deltaA[t] ~ dgamma(1,1)
-    deltaB[t] ~ dgamma(1,1)
+    deltaA[g, t] ~ dgamma(1,1)
+    deltaB[g, t] ~ dgamma(1,1)
   }
+}
   
 ```
 
@@ -196,7 +200,7 @@ params <- c("lv.coef", #to get covariance
 # Run Model ---------------------------------------------------------------
 
 model <- here("R", "ana_models",
-              "jags_antecedent_jsdmodel.R")
+              "jags_antecedent_jsdmodel_group.R")
 
 mod <- jagsUI::jags(data = data_list,
                     inits = NULL,
@@ -236,7 +240,7 @@ ggplot(a_s, aes(x = group, y = `50%`)) +
   geom_hline(yintercept = 0, linetype = 2) +
   geom_point(size = 2) +
   facet_wrap(~variable) +
-  geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`), width = 0.2, size  = 0.75) +
+  geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`), width = 0.2, linewidth = 0.75) +
   labs(x = "Functional group",
        y = "Median and 95% BCI Covariate Estimate")
 
@@ -252,13 +256,16 @@ w_s <- quants %>%
   mutate(variable = case_when(str_detect(parameter, "wA") ~ "Temperature",
                               str_detect(parameter, "wB") ~ "Precipitation",
                                 TRUE ~ NA_character_)) %>%
-  mutate(lag = str_sub(parameter, start = 4, end = 4))
+  mutate(lag = str_sub(parameter, start = 6, end = 6)) %>%
+  mutate(group = str_sub(parameter, start = 4, end = 4))
 
-ggplot(w_s, aes(x = lag, y = `50%`)) +
+ggplot(w_s, aes(x = lag, y = `50%`, color = group)) +
   geom_hline(yintercept = 0.33, linetype = 2) +
-  geom_point(size = 2) +
+  geom_point(size = 2, 
+             position = position_dodge(width=0.75)) +
   geom_errorbar(aes(ymin = `2.5%`, ymax = `97.5%`),
-                width = 0.2, size = 0.75) +
+                width = 0.2, size = 0.75,
+                position = position_dodge(width=0.75)) +
   facet_wrap(~variable) +
   labs(x = "Time period",
        y = "Median and 95% BCI importance weight")
