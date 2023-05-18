@@ -44,7 +44,7 @@ for(k in 1:n.species){ #looping through each species k
 
 ```
 
-Within each site, $i$, the $TAnt_i$ and $PAnt_i$ variables are made up of the pre-defined set of time intervals $t$ for which you have provided temperature $Tmax_{i,j}$ and precipitation $PPT_{i,j}$ data. These are the "stochastic antecedent" part of the model. Each of the climate variables, $v$ (here $Tmax_{i,j}$ and $PPT_{i,j}$), you provided to the model is multiplied by their importance weight, \$w\_{v,t}\$. These importance weights sum to 1 over all the time intervals. Additionally, I have split these importance weight by group, \$g\$, such that each weight for each climate variable in each time period varies by group $w_{g,v,t}$
+Within each site, $i$, the $TAnt_i$ and $PAnt_i$ variables are made up of the pre-defined set of time intervals $t$ for which you have provided temperature $Tmax_{i,j}$ and precipitation $PPT_{i,j}$ data. These are the "stochastic antecedent" part of the model. Each of the climate variables, $v$ (here $Tmax_{i,j}$ and $PPT_{i,j}$), you provided to the model is multiplied by their importance weight, $w_{v,t}$. These importance weights sum to 1 over all the time intervals. Additionally, I have split these importance weight by group, $g$, such that each weight for each climate variable in each time period varies by group $w_{g,v,t}$
 
 ```{r}
 #| eval: false
