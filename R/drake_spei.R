@@ -16,18 +16,20 @@ spei<- bind_rows(read_delim("data/spei_database/spei06.csv",delim = ";") %>% mut
   dplyr::rename(date = `days since 1900-1-1`)
 
 p1<- spei %>%
-  filter(date > as.Date("2010-01-01")) %>%
+  filter(date > as.Date("2010-01-01"),
+         scale == "12_month") %>%
+  mutate(scale = ifelse(scale == "12_month", "12 Month SPEI", "24 Month SPEI")) %>%
 ggplot(aes(x=date, y=spei)) +
-  facet_wrap(~scale, nrow=3) +
   geom_hline(yintercept = 0, color = "black") +
-  geom_hline(yintercept = c(2,-2,1, -1), color = "grey", lty=2) +
-  geom_labelvline(xintercept = as.Date("2013-05-01"), col="red", label = "shrub", hjust=.95) +
-  geom_labelvline(xintercept = as.Date("2014-05-01"), col="red", label = "herb", hjust=0.05) +
-
+  geom_hline(yintercept = c(2,-2,1, -1), color = "grey", lty=3) +
+  geom_labelvline(xintercept = as.Date("2013-04-29"), col="grey40", label = "CRP", hjust=.95, lty=2) +
+  geom_labelvline(xintercept = as.Date("2014-05-01"), col="grey40", label = "CRP", hjust=0.05, lty=2) +
   geom_line() +
-  theme_classic()
+  xlab("Year") +
+  ylab("12 Month SPEI")+
+  theme_classic() 
   
-ggsave(plot= p1 ,filename = "figs/spei_1deg.png",  width=7, height=7, bg="white")
+ggsave(plot= p1 ,filename = "figs/spei_1deg.png",  width=7, height=4.35, bg="white")
 
 
 # adding in soil moisture ======================================================
@@ -101,14 +103,22 @@ p_cum<-ggplot(precip, aes(x=nmonth, y=cumsum, color=as.factor(year))) +
   geom_vline(xintercept = 5) +
   theme_classic()
 
-p_raw<-ggplot(precip, aes(x=nmonth, y=value, fill=as.factor(year))) +
+p_raw<-ggplot(precip, aes(x=as.factor(nmonth), y=value, fill=as.factor(year))) +
   geom_bar(stat = "identity", position="dodge") +
-  geom_vline(xintercept = 5) +
-  theme_classic()
+  theme_classic() +
+  geom_labelvline(xintercept = 4.5, col="grey40", label = "CRP", hjust=.95, lty=2) +
+  scale_color_discrete(name = "Year") +
+  xlab("Month") +
+  ylab("Precipitation (mm)") +
+  theme(legend.position = c(1,1),
+        legend.title = element_blank(),
+        legend.justification = c(1,1)) 
 
-ggarrange(p_cum, p_raw,ncol = 1, nrow=2, common.legend=TRUE) %>%
-  ggsave(plot=., filename = "figs/precip_summaries.png", height=7, width=8, bg="white")
+ggarrange(p_cum, p_raw,ncol = 1, nrow=2) %>%
+  ggsave(plot=., filename = "figs/precip_summaries.png", height=4, width=8, bg="white")
 
+ggarrange(p1, p_raw, ncol=1, nrow=2, heights = c(1,1)) %>%
+  ggsave(plot=., filename = "figs/precip_spei.png", height=4, width=7, bg="white")
 
 # getting spei from drake data =================================================
 drake_precip_df <- read_csv("/home/a/projects/drake-farm/data/past_data/ages_input/drake58hru/data/reg_precip.csv",
@@ -182,3 +192,25 @@ p_regression <- ggplot(fulldf %>% filter(year>2011, year < 2016) %>%
                                       names_to = "scale", values_to = "spei"),
                        aes(x=spei, y=mean_temp, color = scale)) +
   geom_point()
+
+
+## temp in situ ==========
+
+library(sf)
+library(ggthemes)
+cus <- st_read("data/CUS/")
+drake <- data.frame(y=40.6, x= -104.84) %>%
+  st_as_sf(coords = c("x","y"),crs = 4326)
+dmap<- ggplot(cus) + 
+  geom_sf(fill="white") +
+  geom_sf(data=drake, color="red") +
+  theme_classic() +
+  theme(panel.background = element_rect(fill=NA, color="black", linewidth=1))
+
+ggsave("figs/drake_map.png", height = 2.5, width=4.5, plot = dmap, bg="white")
+
+# map stuff
+annual_precip<- c(183,	289,	285,	334,	181,	238,	293,	456,	418,	396,
+                  247,	394,	386,	462,	276,	388,	275,	316,	210,	232)
+map <- mean(annual_precip)
+sdap <- sd(annual_precip)

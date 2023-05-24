@@ -141,7 +141,6 @@ traits <- data.frame(group = colnames(Y)) %>%
   tibble::column_to_rownames("group") %>%
   na.omit()
 
-
 t_formula <- ~ height + 
   introduced +
   perennial +
