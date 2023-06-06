@@ -68,6 +68,7 @@ p_ab <- ggplot(site_scores, aes(x=NMDS1, y=NMDS2)) +
   geom_segment(data = species,x=0,y=0, color = "grey",arrow = arrow(),
                aes(yend = NMDS2, xend = NMDS1), lwd=1)+
   geom_text_repel(data = species,size=4, aes(label = species), color = "grey40") +
+  scale_color_manual(values = c("chocolate4", "turquoise3")) +
   stat_ellipse(aes(color = CRP_year), key_glyph="rect") +
   theme_classic() +
   theme(panel.background = element_rect(fill="transparent", color = "black"),
@@ -103,7 +104,7 @@ p_oc <- ggplot(site_scores_pa, aes(x=NMDS1, y=NMDS2)) +
   geom_text_repel(data = species_pa,size=4, aes(label = species), color = "grey40") +
   stat_ellipse(aes(color = CRP_year), key_glyph="rect") +
   theme_classic() +
-  scale_color_discrete(name = "CRP\nYear")+
+  scale_color_manual(name = "CRP\nYear",values = c("chocolate4", "turquoise3")) +
   theme(panel.background = element_rect(fill="transparent", color = "black"),
         legend.position = c(0,0),
         legend.justification = c(0,0),
@@ -172,6 +173,7 @@ ggarrange(
     ggplot(aes(x=CRP_year, y=value, fill=CRP_year)) +
     geom_violin(draw_quantiles = 0.5, trim=F)+
     theme_classic() +
+    scale_fill_manual(values = c("chocolate4", "turquoise3")) +
     guides(fill="none") +
     labs(x = "CRP Application Year", y = "Native Shannon Diversity")
   ,
@@ -182,6 +184,7 @@ ggarrange(
     ggplot(aes(x=CRP_year, y=value, fill=CRP_year)) +
     geom_violin(draw_quantiles = 0.5, trim=F)+
     theme_classic() +
+    scale_fill_manual(values = c("chocolate4", "turquoise3")) +
     guides(fill="none") +
     labs(x = "CRP Application Year", y = "Native Species Richness")
   , 
@@ -197,7 +200,8 @@ ggarrange(p_ab, p_oc, labels = "auto", widths = c(1,1.09)) %>%
       ggplot(aes(x=CRP_year, y=value, fill=CRP_year)) +
       geom_violin(draw_quantiles = 0.5, trim=F)+
       theme_classic() +
-      scale_y_continuous(breaks =c(0,1,2))+
+      scale_y_continuous(breaks =c(0,1,2)) +
+      scale_fill_manual(values = c("chocolate4", "turquoise3"))+
       guides(fill="none") +
       labs(x = "CRP Application Year", y = "Native\nShannon Diversity")
     ,
@@ -208,6 +212,7 @@ ggarrange(p_ab, p_oc, labels = "auto", widths = c(1,1.09)) %>%
       ggplot(aes(x=CRP_year, y=value, fill=CRP_year)) +
       geom_violin(draw_quantiles = 0.5, trim=F)+
       theme_classic() +
+      scale_fill_manual(values = c("chocolate4", "turquoise3")) +
       guides(fill="none") +
       labs(x = "CRP Application Year", y = "Native\nSpecies Richness")
     , 

@@ -8,6 +8,7 @@ library(ggpubr)
 library(ggcorrplot)
 library(ggthemes)
 library(ggtext)
+
 # rareness vs dominance?
 # talk about persistence after establishment
 # import diversity data ========================================================
