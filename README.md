@@ -13,3 +13,4 @@ https://docs.google.com/spreadsheets/d/1awV8ANasMfRad5vQhI9-M8T7ct_cxpDPNqSnr4oK
 
 ![](figs/beta2.png)
 
+![](figs/omega.png)
