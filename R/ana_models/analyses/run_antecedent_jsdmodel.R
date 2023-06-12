@@ -64,7 +64,7 @@ params <- c("lv.coef",
 
 # Run Model ---------------------------------------------------------------
 
-model <- here("R", "ana_models",
+model <- here("R", "ana_models", "models",
               "jags_antecedent_jsdmodel_group.R")
 
 mod <- jagsUI::jags(data = data_list,
