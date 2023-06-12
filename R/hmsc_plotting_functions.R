@@ -1,5 +1,6 @@
 # hmsc_plotting functions
 library(ggmcmc)
+
 # model convergence ============================================================
 ggplot_convergence <- function(Hm, beta = TRUE, V=FALSE, gamma = FALSE, 
                              omega=FALSE, title = "Model Convergence"){
@@ -360,7 +361,7 @@ ggplot_beta <- function(Hm,
 
 # better beta visualization
 
-ggplot_beta2_drake <- function(Hm, included_variables = NA, lut_ivars = NA){
+ggplot_beta2_drake <- function(Hm, lut_gensp, included_variables = NA, lut_ivars = NA){
   require(dplyr)
   require(ggthemes)
   require(tidyr)
@@ -384,8 +385,10 @@ ggplot_beta2_drake <- function(Hm, included_variables = NA, lut_ivars = NA){
            median_value = median(value)) %>%
     filter(value<4 & value>-4) %>%
     ungroup() %>%
-    left_join(Hm$TrData %>% tibble::rownames_to_column("gensp")) 
-  
+    left_join(Hm$TrData %>% tibble::rownames_to_column("gensp"))
+  mbc <- mbc %>%
+    mutate(gensp = lut_gensp[gensp])
+    
   if(any(!is.na(included_variables))){
     mbc <- filter(mbc, var %in% included_variables)
   }
@@ -394,8 +397,15 @@ ggplot_beta2_drake <- function(Hm, included_variables = NA, lut_ivars = NA){
     as_tibble(rownames = "plot") %>%
     pivot_longer(cols = names(.)[2:ncol(.)], names_to = "gen") %>%
     group_by(gen) %>%
-    summarise(prevalence = sum(value)) %>%
+    summarise(prevalence = sum(value),
+              prev_pct = sum(value)/n()*100) %>%
+    mutate(prev_pct = ifelse(prev_pct<1, round(prev_pct,1), round(prev_pct))) %>%
     ungroup()
+  
+  mbc <- mbc %>%
+    left_join(prevalence) %>%
+    mutate(gensp = paste0(gensp, " (", prev_pct, ")")) %>%
+    mutate(gensp = str_replace_all(gensp,"0.5", ".5"))
   
   vp_order <- mbc %>%
     left_join(prevalence)  %>% 
@@ -418,21 +428,28 @@ ggplot_beta2_drake <- function(Hm, included_variables = NA, lut_ivars = NA){
                               group=as.factor(Chain))) +
     geom_hline(aes(yintercept= gensp_f, color=introduced), lwd=8) +
     geom_hline(aes(yintercept=n_native+0.5),lwd=0.7) +
+    geom_hline(aes(yintercept=n_native+2.5),lty=3) +
+    geom_hline(aes(yintercept=n_native-1.5),lty=3) +
+    geom_hline(aes(yintercept=n_native-5.5),lty=3) +
     scale_color_manual(values = (c("white", "grey90")))+
     ggdist::stat_slab(height=2,  lwd = .5, #alpha = 0.95,
                       color = "black", 
                       aes(fill = after_stat(x>0),
                           alpha = exp(abs(median_value))))+
-    # ggthemes::scale_fill_colorblind() +
     facet_wrap(~var, scales = "free_x", nrow=1, ncol=length(unique(mbc$var))) +
     scale_alpha_continuous(range = c(0,1.25*(1/length(unique(mbc$Chain)))))+
     theme_classic() +
+    # geom_text(data = data.frame(lab = c("Introduced","Native"),
+    #                             x=c(9,9),Chain = NA,
+    #                             y = c(5,15)),
+    #           aes(x=x, y =y, label = lab),angle = 90, fontface="bold", size=6, nudge_y = .5)+
     guides(fill="none", alpha="none", color = "none")+
     geom_vline(xintercept=0, col="black", lty=2) +
     ggnewscale::new_scale_fill() +
-    xlab("Effect on Occurrence Probability (Scaled)") +
-    ylab("Species or Species Group") +
+    xlab("Scaled Effect on Occurrence Probability") +
+    ylab("Species or Species Group (% Prevalence)") +
     theme(panel.spacing.x = unit(-1, "lines"),
+          # panel.grid = element_blank(),
           axis.text.x = element_blank(),
           axis.ticks.x = element_blank(),
           axis.text.y = element_text(size=12))#;p
@@ -580,6 +597,7 @@ ggplot_omega <- function(Hm,
                          support_level = 0.89, 
                          hc.method = "single",
                          hc.order = TRUE,
+                         lut_gensp,
                          axis_text_colors_x = "black",
                          axis_text_colors_y = "black",
                          title = "Residual Species Associations"){
@@ -587,7 +605,11 @@ ggplot_omega <- function(Hm,
 
   hmdf_mean <- OmegaCor[[1]]$mean %>%
     as.matrix
-
+  
+  rownames(hmdf_mean) <- lut_gensp[rownames(hmdf_mean)]
+  colnames(hmdf_mean) <- lut_gensp[colnames(hmdf_mean)]
+  
+  
   pcor1<- ggcorrplot::ggcorrplot(hmdf_mean,
                                  type = "lower",
                                  hc.order = hc.order,

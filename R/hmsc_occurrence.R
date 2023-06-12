@@ -8,6 +8,7 @@ library(ggpubr)
 library(ggcorrplot)
 library(ggthemes)
 library(ggtext)
+
 # rareness vs dominance?
 # talk about persistence after establishment
 # import diversity data ========================================================
@@ -140,7 +141,6 @@ traits <- data.frame(group = colnames(Y)) %>%
   replace_na(list(seeding_intensity = 0)) %>%
   tibble::column_to_rownames("group") %>%
   na.omit()
-
 
 t_formula <- ~ height + 
   introduced +

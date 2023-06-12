@@ -70,6 +70,55 @@ tmp <- temp_sensors %>%
   right_join(temp_data) %>%
   na.omit()
 
+temp_data %>%
+  mutate(date = as.Date(paste0(yearmonth,"01"), "%m.%Y%d")) %>%
+  group_by(date) %>%
+  summarise(tmean = mean(tmean)) %>%
+  ungroup() %>%
+  filter(date>as.Date("2012-05-01"),
+         date<as.Date("2013-06-01")) %>%
+  pull(tmean) %>%
+  mean()
+
+temp_data %>%
+  mutate(date = as.Date(paste0(yearmonth,"01"), "%m.%Y%d")) %>%
+  group_by(date) %>%
+  summarise(tmean = mean(tmean)) %>%
+  ungroup() %>%
+  filter(date>as.Date("2013-05-01"),
+         date<as.Date("2014-06-01")) %>%
+  pull(tmean) %>%
+  mean()
+
+
+
+ptemp <- left_join(tmax_data, tmin_data) %>%
+  mutate(date = as.Date(date, "%d.%m.%Y")) %>%
+  # mutate(tmean = (tmax + tmin)/2,
+  #        yearmonth = str_sub(date, 4,10)) %>%
+  # group_by(yearmonth) %>%
+  # summarise(tmean = mean(tmean)) %>%
+  # ungroup() %>%
+  # mutate(date = as.Date(paste0(yearmonth, "01"),"%m.%Y%d")) %>%
+  filter(date > as.Date("2012-04-01"),
+         date < as.Date("2015-01-01")) %>%
+  mutate(month = lubridate::month(date),
+         year = lubridate::year(date)) %>%
+  pivot_longer(cols = c(tmax, tmin)) %>%
+ggplot() +
+  geom_point(aes(x=date,y=value, color = name), alpha=0.1) +
+  geom_hline(yintercept = 30, lty=3) +
+  geom_hline(yintercept = -10, lty=3) +
+  geom_smooth(aes(x=date,y=value, color = name), se=F) +
+  geom_labelvline(xintercept = as.Date("2013-04-29"), col="grey40", label = "CRP", hjust=.95, lty=2) +
+  geom_labelvline(xintercept = as.Date("2014-05-01"), col="grey40", label = "CRP", hjust=0.05, lty=2)+
+  theme_classic() +
+  theme(legend.position =c(0,0),
+        legend.justification = c(0,0),
+        legend.background = element_rect(fill=NA),
+        legend.title = element_blank())
+
+ggsave(plot=ptemp, filename = "figs/tempsummary.png", width = 7, height=3, bg="white")
 
 
 # kriging temp

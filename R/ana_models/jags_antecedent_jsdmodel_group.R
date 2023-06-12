@@ -10,8 +10,8 @@ model{
         #occupancy dependent on covariates
         #Probit model for occupancy as opposed to logistic
         eta[k,i] <- a0[GroupID[k]] + 
-          a1[GroupID[k]]*TAnt[i] + 
-          a2[GroupID[k]]*PAnt[i] +
+          a1[GroupID[k]]*TAnt[GroupID[k],i] + 
+          a2[GroupID[k]]*PAnt[GroupID[k],i] +
           inprod(lv.coef[k,], LV[i,])
         
         
@@ -37,45 +37,43 @@ model{
   }
   
   #Antecedent climate values
+  for(g in 1:n.groups){
   for(i in 1:n.sites){
     #antecedent climate value is the sum of all the
     #weighted lagged values
-    TAnt[i] <- sum(TmaxTemp[i,])
-    PAnt[i] <- sum(PPTTemp[i,])
+    TAnt[g, i] <- sum(TmaxTemp[g,i,])
+    PAnt[g,i] <- sum(PPTTemp[g,i,])
 
     #these are where the data you input into the model
     #come in for temp and ppt - here they're multiplied
     #by the weights the model has given them for their
     #relative importance in driving the climate effect
     for(t in 1:n.lag){
-      TmaxTemp[i,t] <- Tmax[i,t]*wA[t]
-      PPTTemp[i,t] <- PPT[i,t]*wB[t]
+      TmaxTemp[g,i,t] <- Tmax[i,t]*wA[g,t]
+      PPTTemp[g,i,t] <- PPT[i,t]*wB[g,t]
     }
-
-    #eventually - I would like to code the weights
-    #to be different per group membership, so, for example,
-    #annual forbes can respond to temperature in spring
-    #whereas perennial grasses can respond to temperature
-    # in fall
   }
-
-  #Antecedent climate priors
-  #sum of the weights for the climate lag, so we
-  # can divide the total value by 1
-  sumA <- sum(deltaA[])
-  sumB <- sum(deltaB[])
+}
 
   #Employing "delta trick" to give vector of weights dirichlet priors
   #this is doing the dirichlet in two steps
   #see Ogle et al. 2015 SAM model paper in Ecology Letters
+  for(g in 1:n.groups){
+    #Antecedent climate priors
+    #sum of the weights for the climate lag, so we
+    # can divide the total value by 1
+    sumA[g] <- sum(deltaA[g,])
+    sumB[g] <- sum(deltaB[g,])
+    
   for(t in 1:n.lag){ #for total number of lags
    #the weigths for tmax - getting them to sum to 1
-    wA[t] <- deltaA[t]/sumA
+    wA[g,t] <- deltaA[g,t]/sumA[g]
     #the weights for ppt - summing to 1
-    wB[t] <- deltaB[t]/sumB
+    wB[g,t] <- deltaB[g,t]/sumB[g]
     #both follow relatively uninformative gamma priors
-    deltaA[t] ~ dgamma(1,1)
-    deltaB[t] ~ dgamma(1,1)
+    deltaA[g,t] ~ dgamma(1,1)
+    deltaB[g,t] ~ dgamma(1,1)
+  }
   }
   
   # Hyperpriors (community level)
