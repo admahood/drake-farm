@@ -71,5 +71,6 @@ model{
   sd.smant ~ dunif(0,5)
   tau.smant <- pow(sd.smant,-2)
 
+  
   }
   

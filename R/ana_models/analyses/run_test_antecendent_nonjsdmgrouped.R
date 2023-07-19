@@ -157,3 +157,4 @@ Sys.time()
 
 
 mcmcplot(mod$samples)
+ 
