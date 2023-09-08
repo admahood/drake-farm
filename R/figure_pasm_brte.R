@@ -49,6 +49,70 @@ glimpse(pc_all_sub)
 # broom.mixed::tidy(m1)
 # ggsave(plot=peff,filename = "figs/abundance_vs_brte_pa.png", width =5, height=5, bg="white")
 
+# looking at differential relationships by strip for 
+
+library(lmerTest)
+m_strp <- pc_all_sub %>%
+  mutate(brte_pa = ifelse(brte>0,1,0),
+         mgmt = str_sub(plot, 7,10)) %>% 
+  lmer(log(brte+1) ~ elre*mgmt + (1|plot), data=.);summary(m_strp)
+
+performance::check_model(m_strp)
+
+m_herb <- pc_all_sub %>%
+  mutate(brte_pa = ifelse(brte>0,1,0),
+         mgmt = str_sub(plot, 7,10)) %>% 
+  filter(mgmt == "herb") %>%
+  lmer(log(brte+1) ~ elre + (1|plot), data=.);summary(m_herb)
+
+performance::check_model(m_herb)
+
+ggplot(pc_all_sub, aes(x = elre, y=log(brte+1))) +
+  geom_point() +
+  geom_smooth()
+  
+
+
+m_shru <- pc_all_sub %>%
+  mutate(brte_pa = ifelse(brte>0,1,0),
+         mgmt = str_sub(plot, 7,10)) %>% 
+  filter(mgmt == "shru") %>%
+  lmer(log(brte+1) ~ elre + (1|plot), data=.);summary(m_shru)
+
+performance::check_model(m_shru)
+
+p1<-ggeffects::ggpredict(m_shru) %>% plot() 
+p2<-ggeffects::ggpredict(m_herb) %>% plot()
+
+ggarrange(p1$elre + ggtitle("shrub strips (lower LDMC)") + xlab("Pascopyrum") + ylab("Bromus"), 
+          p2$elre + ggtitle("herb strips (higher LDMC)") + xlab("Pascopyrum") + ylab("Bromus")) %>%
+  ggsave(plot = ., filename = "figs/stripwise_brte_pasm.png")
+
+ggplot(dsh$elre, aes(x = x, y = predicted)) +
+  stat_smooth(method = "lm",  fullrange = TRUE)
+
+m_shrub <- pc_all_sub %>%
+  mutate(brte_pa = ifelse(brte>0,1,0),
+         mgmt = str_sub(plot, 7,10)) %>% 
+  filter(mgmt == "shru") %>%
+  glmer(brte_pa ~ elre + (1|plot), data=.);summary(m_shrub)
+
+performance::check_model(m_shrub)
+
+m_herbb <- pc_all_sub %>%
+  mutate(brte_pa = ifelse(brte>0,1,0),
+         mgmt = str_sub(plot, 7,10)) %>% 
+  filter(mgmt == "herb") %>%
+  glmer(brte_pa ~ elre + (1|plot), data=.);summary(m_herbb)
+
+performance::check_model(m_herbb)
+
+ggeffects::ggpredict(m_shrub,back.transform = T) %>% plot()
+ggeffects::ggpredict(m_herbb, back.transform = T) %>% plot()
+
+
+# back to the regularly scheduled programming
+
 m1b <- pc_all_sub %>%
   mutate(brte_pa = ifelse(brte>0,1,0),
          ia_brass = sial+deso,
