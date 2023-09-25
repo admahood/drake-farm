@@ -139,50 +139,53 @@ soil_temp_summary <- sentek %>%
          `Date/Time` > as.Date("2012-01-01"),
          `Date/Time` < as.Date("2014-12-01")) %>%
   mutate(year = lubridate::year(`Date/Time`),
-         month = lubridate::month(`Date/Time`)) 
+         month = lubridate::month(`Date/Time`),
+         yearmonth = paste0(year, month))
 
 t_antecedent_13 <-  soil_temp_summary %>%
   filter(year == 2012) %>%
   mutate(month_group = case_when(month > 8 & month < 12 ~ "pre_seed_son"),
          year = 2013)%>%
+  filter(!is.na(month_group)) %>%
   group_by(year, month_group, probe) %>%
-  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE),
-            min_30cm_soil_temp_c = min(soil_temp_c, na.rm=TRUE)) %>%
+  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE)) %>%
   ungroup()
   
 soil_temp_13 <- soil_temp_summary %>%
-  filter(year == 2013) %>%
-  mutate(month_group = case_when(month < 3 ~ "pre_seed_jf",
-                                 month < 5 & month > 3 ~ "pre_seed_ma",
-                                 month >5 & month <= 8 ~ "post_seed_jja",
-                                 month > 8 & month < 12 ~ "post_seed_son"))%>%
-  group_by(year, month_group, probe) %>%
-  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE),
-            min_30cm_soil_temp_c = min(soil_temp_c, na.rm=TRUE)) %>%
+  filter(year == 2013 | yearmonth == "201212") %>%
+  mutate(month_group = case_when(month < 3 | yearmonth == "201212" ~ "pre_seed_djf",
+                                 month < 5 & month >= 3 ~ "pre_seed_ma",
+                                 month  >= 5 & month < 7 ~ "post_seed_mj",
+                                 month > 6 & month <= 9 ~ "post_seed_jas",
+                                 month > 9 & month <= 12 ~ "post_seed_ond")) %>%
+  group_by(month_group, probe) %>%
+  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE)) %>%
   ungroup() %>%
+  mutate(year=2013) %>%
   bind_rows(t_antecedent_13)
-summary(soil_temp_13); glimpse(soil_temp_13);soil_temp_13
+# summary(soil_temp_13); glimpse(soil_temp_13);soil_temp_13
 
 t_antecedent_14 <-  soil_temp_summary %>%
   filter(year == 2013) %>%
   mutate(month_group = case_when(month > 8 & month < 12 ~ "pre_seed_son"),
          year = 2014)%>%
+  filter(!is.na(month_group)) %>%
   group_by(year, month_group, probe) %>%
-  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE),
-            min_30cm_soil_temp_c = min(soil_temp_c, na.rm=TRUE)) %>%
+  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE)) %>%
   ungroup()
 soil_temp_14 <- soil_temp_summary %>%
-  filter(year == 2014) %>%
-  mutate(month_group = case_when(month < 3 ~ "pre_seed_jf",
-                                 month < 5 & month > 3 ~ "pre_seed_ma",
-                                 month > 5 & month <= 8 ~ "post_seed_jja",
-                                 month > 8 & month < 12 ~ "post_seed_son"))%>%
-  group_by(year, month_group, probe) %>%
-  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE),
-            min_30cm_soil_temp_c = min(soil_temp_c, na.rm=TRUE)) %>%
+  filter(year == 2014|yearmonth == "201312") %>%
+  mutate(month_group = case_when(month < 3 | yearmonth == "201312" ~ "pre_seed_djf",
+                                 month < 5 & month >= 3 ~ "pre_seed_ma",
+                                 month  >= 5 & month < 7 ~ "post_seed_mj",
+                                 month > 6 & month <= 9 ~ "post_seed_jas",
+                                 month > 9 & month <= 12 ~ "post_seed_ond"))%>%
+  group_by(month_group, probe) %>%
+  summarise(mean_30cm_soil_temp_c = mean(soil_temp_c, na.rm=TRUE)) %>%
   ungroup() %>%
-  bind_rows(t_antecedent_14)
-summary(soil_temp_14); glimpse(soil_temp_14);soil_temp_14
+  mutate(year = 2014) %>%
+  bind_rows(t_antecedent_14) 
+# summary(soil_temp_14); glimpse(soil_temp_14);soil_temp_14
 
 
 terrain0 <- terra::terrain(elevation, v = c("aspect", "slope", "TPI"))
@@ -358,7 +361,7 @@ antecedent_soil_moisture_summaries <- bind_rows(a_es_drake_n,
 es_drake_e <- readxl::read_xlsx(
   "data/past_data/E.wc.hr.2002-18_Nezat.xlsx",
   col_types=c("date",rep("numeric",16))) %>%
-  filter(timestamp > as.Date("2013-01-01"),
+  filter(timestamp >= as.Date("2012-12-01"),
          timestamp < as.Date("2015-01-01"))  %>%
   dplyr::select(-numericdate) %>%
   pivot_longer(cols = names(.)[2:ncol(.)], 
@@ -372,7 +375,7 @@ es_drake_e <- readxl::read_xlsx(
 es_drake_n <- readxl::read_xlsx(
   "data/past_data/ESDrakeN_2002_2017_daily.xlsx") %>%
   dplyr::rename(timestamp=1) %>%
-  filter(timestamp > as.Date("2013-01-01"),
+  filter(timestamp >= as.Date("2012-12-01"),
          timestamp < as.Date("2015-01-01")) %>%
   pivot_longer(cols = names(.)[2:ncol(.)], 
                names_to = "variable", 
@@ -388,7 +391,7 @@ es_drake_n <- readxl::read_xlsx(
 es_drake_s <- readxl::read_xlsx(
   "data/past_data/ESDrakeS_2002_2017_daily.xlsx") %>%
   dplyr::rename(timestamp=1) %>%
-  filter(timestamp > as.Date("2013-01-01"),
+  filter(timestamp >= as.Date("2012-12-01"),
          timestamp < as.Date("2015-01-01")) %>%
   pivot_longer(cols = names(.)[2:ncol(.)], 
                names_to = "variable", 
@@ -402,18 +405,41 @@ es_drake_s <- readxl::read_xlsx(
   dplyr::select(-variable, -measure); es_drake_s
 
 
-soil_moisture_summaries <- bind_rows(es_drake_n, 
+soil_moisture_summaries_13 <- bind_rows(es_drake_n, 
                                      es_drake_s,
                                      es_drake_e) %>%
+  filter(timestamp < as.Date("2014-01-01")) %>%
   mutate(year = lubridate::year(timestamp),
          month = lubridate::month(timestamp),
-         month_group = case_when(month < 3 ~ "pre_jf",
-                                 month < 5 & month > 3 ~ "pre_ma",
-                                 month > 5 & month < 9 ~ "post_jja",
-                                 month > 8 & month <12 ~ "post_son"))%>%
-  group_by(year, month_group, probe, depth)%>%
-    summarise(mean_soil_moisture = median(value, na.rm=TRUE)) %>%
-    ungroup() %>%
+         month_group = case_when(timestamp < as.Date("2013-03-01") &
+                                   timestamp >= as.Date("2012-12-01") ~ "pre_djf",
+                                 year == 2013 &  month < 5 & month > 3 ~ "pre_ma",
+                                 year == 2013 &  month > 4 & month < 7 ~ "post_mj",
+                                 year == 2013 & month > 6 & month < 10 ~ "post_jas",
+                                 year == 2013 & month > 9 & month <= 12 ~ "post_ond"))%>%
+  group_by(month_group, probe, depth) %>%
+  summarise(mean_soil_moisture = median(value, na.rm=TRUE)) %>%
+  mutate(year = 2013) %>%
+    ungroup()
+
+soil_moisture_summaries_14 <- bind_rows(es_drake_n, 
+                                       es_drake_s,
+                                       es_drake_e) %>%
+  filter(timestamp < as.Date("2015-01-01")) %>%
+  mutate(year = lubridate::year(timestamp),
+         month = lubridate::month(timestamp),
+         month_group = case_when(timestamp < as.Date("2014-03-01") &
+                                   timestamp >= as.Date("2013-12-01") ~ "pre_djf",
+                                 year == 2014 &  month < 5 & month > 3 ~ "pre_ma",
+                                 year == 2014 &  month > 4 & month < 7 ~ "post_mj",
+                                 year == 2014 & month > 6 & month < 10 ~ "post_jas",
+                                 year == 2014 & month > 9 & month <= 12 ~ "post_ond"))%>%
+  group_by(month_group, probe, depth) %>%
+  summarise(mean_soil_moisture = median(value, na.rm=TRUE)) %>%
+  mutate(year = 2014) %>%
+  ungroup()
+
+soil_moisture_summaries <- bind_rows(soil_moisture_summaries_13,soil_moisture_summaries_14)%>%
   bind_rows(antecedent_soil_moisture_summaries)
 
 dpth <- c("30cm")
@@ -598,23 +624,31 @@ spei_14j <- fulldf %>%
 
 
 # getting sm and st all together ===============================================
-soil_temp_rasts_13 <- terra::rast(result)[[c(1,3,5,7,9)]]
+tnms <- terra::rast(result) %>% names()
+tnms13<-tnms[str_detect(tnms, "2013")]
+tnms14<-tnms[str_detect(tnms, "2014")]
+
+soil_temp_rasts_13 <- terra::rast(result)[[tnms13]]
 names(soil_temp_rasts_13) <- names(soil_temp_rasts_13) %>%
   str_replace_all("post_seed", "soil_temp_post") %>%
   str_replace_all("pre_seed", "soil_temp_pre") %>%
   str_remove_all("_2013")
-soil_temp_rasts_14 <- terra::rast(result)[[c(2,4,6,8,10)]]
+soil_temp_rasts_14 <- terra::rast(result)[[tnms14]]
 names(soil_temp_rasts_14) <- names(soil_temp_rasts_14) %>%
   str_replace_all("post_seed", "soil_temp_post") %>%
   str_replace_all("pre_seed", "soil_temp_pre") %>%
   str_remove_all("_2014")
 
-soil_moist_rasts_13 <- terra::rast(result_sm)[[c(1,3,5,7,9)]]
+nms <- terra::rast(result_sm) %>% names()
+nms13<-nms[str_detect(nms, "2013")]
+nms14<-nms[str_detect(nms, "2014")]
+
+soil_moist_rasts_13 <- terra::rast(result_sm)[[nms13]]
 names(soil_moist_rasts_13) <- names(soil_moist_rasts_13) %>%
   str_remove_all("_2013") %>%
   str_replace_all("pre", "soil_moisture_pre") %>%
   str_replace_all("post", "soil_moisture_post")
-soil_moist_rasts_14 <- terra::rast(result_sm)[[c(2,4,6,8,10)]]
+soil_moist_rasts_14 <- terra::rast(result_sm)[[nms14]]
 names(soil_moist_rasts_14) <- names(soil_moist_rasts_14) %>%
   str_remove_all("_2014") %>%
   str_replace_all("pre", "soil_moisture_pre") %>%
@@ -685,4 +719,12 @@ xdata <- bind_rows(shrub_clm, herb_clm) %>%
            str_remove_all("Kim ") %>%
            str_remove_all("Colby ") %>%
            str_remove_all("Wagonwheel ")) 
+
+# write out the plots sampled in 2022
+
+# veg_plot_locations %>%
+#   filter(X2012Flag %in% c(herb_plots, shrub_plots)) %>%
+#   st_write("data/veg_plots_sampled_in_2022.gpkg")
+
+
 

@@ -98,17 +98,19 @@ XData<-left_join(
 
 # Formula(s) ===================================================================
 XFormula_pre <- ~ 
-  soil_moisture_pre_jf_30cm +
+  soil_moisture_pre_djf_30cm +
   soil_moisture_pre_ma_30cm +
   soil_moisture_pre_son_30cm + 
-  soil_temp_pre_jf + 
+  soil_moisture_post_mj_30cm +
+  soil_moisture_post_jas_30cm +
+  soil_moisture_post_ond_30cm + 
+  soil_temp_post_jas + 
+  soil_temp_post_ond + 
+  soil_temp_post_mj + 
+  soil_temp_pre_djf + 
   soil_temp_pre_ma + 
   soil_temp_pre_son + 
-  # air_temp_jf + 
-  # air_temp_mam + 
-  air_temp_son + 
   twi +
-  # soil_texture +
   bare + 
   strip_type +
   total_n_top_15cm_2012
@@ -140,7 +142,8 @@ traits <- data.frame(group = colnames(Y)) %>%
   left_join(df_crp) %>%
   replace_na(list(seeding_intensity = 0)) %>%
   tibble::column_to_rownames("group") %>%
-  na.omit()
+  na.omit() %>%
+  mutate(seeded = ifelse(seeding_intensity >0, "yes", "no"))
 
 t_formula <- ~ height + 
   introduced +
@@ -148,7 +151,8 @@ t_formula <- ~ height +
   woody +
   graminoid +
   rhizomatous +
-  pp
+  pp +
+  seeded
 
 studyDesign <- data.frame(plot = as.factor(XData$plot),
                           strip_number = as.factor(XData$strip_number))
@@ -166,12 +170,13 @@ mod = Hmsc(Y = Y,
            TrFormula = t_formula,
            ranLevels = list("plot" = rLpl, "strip_number" = rLsn))
 
-day <- format(Sys.time(), "%b_%d")
+day <- format(Sys.time(), "%b_%d_%Y")
 
 nChains = 4
-run_type = "rrp"
+run_type = "rr"
 run_type = "mid"
 run_type = "oblas"
+run_type = "test"
 if (run_type == "test"){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -188,7 +193,7 @@ if (run_type == "mid"){
 }
 if (run_type == "rr"){
   
-  thin = 300
+  thin = 800
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
@@ -242,7 +247,7 @@ if(!file.exists(hmsc_file)){
 
 # plotting =======================================================
 source("R/hmsc_plotting_functions.R")
-load("data/hmsc/hmsc_probit_subplot_rrp_Feb_14.Rda")
+# load("data/hmsc/hmsc_probit_subplot_rrp_Feb_14.Rda")
 library(RColorBrewer)
 
 ggplot_ess(m, omega=T)
@@ -259,12 +264,17 @@ vp_cols <- c(brewer.pal(12, "Set3"),
 ggplot_vp(m, cols = vp_cols) %>%
   ggsave(filename = "figs/vp.png", plot=., width=10, height=10, bg="white")
 
-ggplot_beta(m, grouping_var = "introduced")%>%
+ggplot_beta(m, grouping_var = "introduced") %>%
   ggsave(filename = "figs/beta.png", plot=., width=10, height=10, bg="white")
 
 ggplot_gamma(m)
-ggplot_gamma(mspei)
 
+lut_gensp <- c('BROM', 'BASC', 'SATR', 'PASM', 'BOCU', 'MESA', 'BRAS', 
+               'NAVI', 'LACT', 'FORB', 'CIAR', 'COAR', 'PAVI', 'SCSC', 
+               'ATCA', 'BOGR', 'BRIN', 'SECE')
+names(lut_gensp) <- colnames(m$Y)
+
+ggplot_omega(m,lut_gensp=lut_gensp,hc.method = "centroid")
 ggplot_omega(m, hc_method = "centroid", dots=F)%>%
   ggsave(filename = "figs/omega.png", plot=., width=15, height=15, bg="white")
 
