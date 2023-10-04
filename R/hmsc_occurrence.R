@@ -46,7 +46,7 @@ groups <- read_csv("data/drake_veg_data_2022 - species_list.csv") %>%
 dv<- plant_cover %>%
   filter(subplot < 9) %>%
   mutate(plot_sub = str_c(plot, "_", subplot)) %>%
-  dplyr::select(species_code, cover_pct, plot_sub) %>%
+  dplyr::select(species_code, cover_pct, plot_sub) %>% 
   dplyr::left_join(groups) %>%
   group_by(plot_sub, group) %>%
   summarise(cover_pct = sum(cover_pct)) %>%
@@ -148,7 +148,6 @@ traits <- data.frame(group = colnames(Y)) %>%
 t_formula <- ~ height + 
   introduced +
   perennial +
-  woody +
   graminoid +
   rhizomatous +
   pp +
@@ -193,7 +192,7 @@ if (run_type == "mid"){
 }
 if (run_type == "rr"){
   
-  thin = 800
+  thin = 2000
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")

@@ -45,12 +45,13 @@ occurrences <- plant_cover %>%
   filter(totalprev>0)
   
 sp_list <- read_csv("data/drake_veg_data_2022 - species_list.csv") %>%
-  dplyr::select(species_code = code,group, introduced, perennial, woody, graminoid,
+  dplyr::select(genus, species,species_code = code,group, introduced, perennial, woody, graminoid,
                 rhizomatous, pp = photosynthetic_pathway) %>%
   mutate(fg = paste0(ifelse(introduced=="yes", "I", "N"),
                      ifelse(perennial == "yes", "P", "A"),
                      ifelse(graminoid == "yes", "G", "D"))) %>%
-  dplyr::select(species_code, fg)
+  dplyr::select(genus, species, species_code, fg) %>%
+  mutate(gensp = paste(genus, species))
 
 p1 <- occurrences %>%
   left_join(sp_list)%>%
@@ -58,13 +59,21 @@ p1 <- occurrences %>%
          species_code = ifelse(species_code == "kosc", "basc", species_code),
          species_code = ifelse(species_code == "upg4", "scsc", species_code),
          species_code = ifelse(species_code == "sphe", "pavi", species_code),
+         gensp = ifelse(gensp == "cf Aster d_081_herb_05", "Symphiotricum sp.", gensp),
+         gensp = ifelse(gensp == "Rhizomatous_perennial_forb d_141_herb_09", "Unknown rhizomatous\nperennial forb.", gensp),
+         gensp = ifelse(gensp == "Perennial_forb d_012_herb_01", "Mirabilis sp.", gensp),
+         gensp = ifelse(gensp == "cf Aster d_081_herb_05", "Symphiotricum sp.", gensp),
+         gensp = ifelse(gensp == "cf Aster d_081_herb_05", "Symphiotricum sp.", gensp),
+         
          species_code = str_to_upper(species_code)) %>%
   filter(str_sub(fg, 1,1) == "N") %>%
-  ggplot(aes(x = species_code, y = prevalence, fill=strip_type)) +
+  ggplot(aes(x = prevalence, y = gensp, fill=strip_type)) +
   geom_bar(stat = 'identity', position = "dodge") +
-  facet_wrap(~fg, ncol=1, scales = "free") +
+  # facet_wrap(~fg, ncol=1, scales = "free") +
   theme_classic()+
-  scale_y_continuous(breaks = scales::breaks_pretty()) +
+  theme(axis.title = element_blank()) +
+  ggtitle("Native Species") +
+  scale_x_continuous(breaks = scales::breaks_pretty()) +
   scale_fill_manual(values = c("chocolate4", "turquoise3"), 
                     name = "CRP\nYear");p1
 
@@ -74,14 +83,18 @@ p2 <- occurrences %>%
          species_code = ifelse(species_code == "kosc", "basc", species_code),
          species_code = str_to_upper(species_code)) %>%
   filter(str_sub(fg, 1,1) == "I")%>%
-  ggplot(aes(x = species_code, y = prevalence, fill=strip_type)) +
+  ggplot(aes(x = prevalence, y = gensp, fill=strip_type)) +
   geom_bar(stat = 'identity', position = "dodge") +
-  facet_wrap(~fg, ncol=1, scales = "free") +
-  scale_y_continuous(breaks = scales::breaks_pretty()) +
+  # facet_wrap(~fg, ncol=1, scales = "free") +
+  scale_x_continuous(breaks = scales::breaks_pretty()) +
   theme_classic() +
+  theme(axis.title.y = element_blank()) +
+  xlab("Prevalence by subplot") +
+  ggtitle("Introduced Species") +
   theme(legend.position = "none")+
   scale_fill_manual(values = c("chocolate4", "turquoise3"), 
                     name = "CRP\nYear");p2
 
-ggsave(ggarrange(p2, p1, ncol=2, nrow=1), filename = "figs/figure_s2_prevalence.png",
+ggsave(ggarrange(p1, p2, ncol=1, nrow=2, labels = "auto", common.legend = TRUE,
+                 legend = "bottom"), filename = "figs/figure_s2_prevalence.png",
        width=10,height=10, bg="white")
