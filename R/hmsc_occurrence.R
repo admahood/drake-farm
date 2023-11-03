@@ -172,10 +172,10 @@ mod = Hmsc(Y = Y,
 day <- format(Sys.time(), "%b_%d_%Y")
 
 nChains = 4
-run_type = "rr"
-run_type = "mid"
-run_type = "oblas"
-run_type = "test"
+# run_type = "rr"
+# run_type = "mid"
+# run_type = "oblas"
+# run_type = "test"
 if (run_type == "test"){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 1
@@ -192,7 +192,7 @@ if (run_type == "mid"){
 }
 if (run_type == "rr"){
   
-  thin = 2000
+  thin = 4000
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
