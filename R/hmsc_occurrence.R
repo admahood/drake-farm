@@ -192,7 +192,7 @@ if (run_type == "mid"){
 }
 if (run_type == "rr"){
   
-  thin = 4000
+  thin = 5000
   samples = 1000
   transient = ceiling(thin*samples*.5)
   hmsc_file <- paste0("data/hmsc/hmsc_probit_subplot_rr_",day,".Rda")
