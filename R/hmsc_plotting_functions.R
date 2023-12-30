@@ -411,7 +411,7 @@ ggplot_beta2_drake <- function(Hm, lut_gensp, included_variables = NA, lut_ivars
     left_join(prevalence)  %>% 
     filter(var == first(mbc$var %>% unique()),
            Iteration ==1, Chain==1)%>%
-    arrange(desc(introduced), desc(perennial), graminoid, prevalence) %>%
+    arrange(desc(introduced),  graminoid, desc(perennial), prevalence) %>%
     mutate(gensp_f = factor(gensp, levels = .$gensp)) %>%
     dplyr::select(gensp, gensp_f, gen)
   
@@ -426,16 +426,16 @@ ggplot_beta2_drake <- function(Hm, lut_gensp, included_variables = NA, lut_ivars
   p <- ggplot(mbc %>% left_join(vp_order), 
                           aes(x=value, y = gensp_f, 
                               group=as.factor(Chain))) +
-    geom_hline(aes(yintercept= gensp_f, color=introduced), lwd=8) +
+    geom_hline(aes(yintercept= gensp_f, color=introduced), lwd=9) +
     geom_hline(aes(yintercept=n_native+0.5),lwd=0.7) +
     geom_hline(aes(yintercept=n_native+2.5),lty=3) +
-    geom_hline(aes(yintercept=n_native-1.5),lty=3) +
-    geom_hline(aes(yintercept=n_native-5.5),lty=3) +
+    geom_hline(aes(yintercept=n_native-2.5),lty=3)+
+    # geom_hline(aes(yintercept=n_native-5.5),lty=3) +
     scale_color_manual(values = (c("white", "grey90")))+
     ggdist::stat_slab(height=2,  lwd = .5, #alpha = 0.95,
                       color = "black", 
                       aes(fill = after_stat(x>0),
-                          alpha = exp(abs(median_value))))+
+                          alpha = exp(abs(median_value))^3))+
     facet_wrap(~var, scales = "free_x", nrow=1, ncol=length(unique(mbc$var))) +
     scale_alpha_continuous(range = c(0,1.25*(1/length(unique(mbc$Chain)))))+
     theme_classic() +
@@ -451,14 +451,16 @@ ggplot_beta2_drake <- function(Hm, lut_gensp, included_variables = NA, lut_ivars
     theme(panel.spacing.x = unit(-1, "lines"),
           # panel.grid = element_blank(),
           axis.text.x = element_blank(),
+          plot.background = element_rect(color = "black"),
           axis.ticks.x = element_blank(),
-          axis.text.y = element_text(size=12))#;p
+          axis.text.y = element_text(size=12))
   return(p)
 }
 
 # traits =======================================================================
 
-ggplot_gamma <- function(Hm, support_level = 0.89, no_intercept = TRUE, title = "Effects on Traits"){
+ggplot_gamma <- function(Hm, support_level = 0.89, no_intercept = TRUE, 
+                         title = "Effects on Traits", lut_vars = NA){
   
   covNamesNumbers <- c(TRUE, FALSE)
   covNames = character(Hm$nc)
@@ -513,13 +515,19 @@ ggplot_gamma <- function(Hm, support_level = 0.89, no_intercept = TRUE, title = 
     left_join(means_gamma, by = c("env_var", "Trait"))%>%
     mutate(sign = ifelse(Mean>0, "+", "-"),
            Trait = lut_gamma[Trait])%>%
-    filter(env_var != "(Intercept)")
+    filter(Trait != "(Intercept)",
+           Trait != "seeded",
+           env_var != "bare") %>%
+    mutate(Trait = str_to_title(Trait))
+  
+  if(any(!is.na(lut_vars))) supported_gamma <- supported_gamma |> 
+    mutate(env_var = lut_vars[env_var])
   
   p_gamma <- supported_gamma %>%
     ggplot(aes(x=env_var,y=(Trait), fill = Mean, color = sign)) +
     geom_tile(lwd=.5) +
     theme_pubclean()+
-    scale_fill_steps2() +
+    scale_fill_steps2(name = "Mean\nEffect\nSize") +
     scale_color_manual(values = c(("red"), ("blue"))) +
     guides(color = "none")+
     theme(axis.text.x = element_text(angle=45, vjust=1,hjust = 1),
