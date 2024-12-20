@@ -71,7 +71,8 @@ p1 <- occurrences %>%
   geom_bar(stat = 'identity', position = "dodge") +
   # facet_wrap(~fg, ncol=1, scales = "free") +
   theme_classic()+
-  theme(axis.title = element_blank()) +
+  theme(axis.title = element_blank(),
+        axis.text.y = element_text(face = "italic")) +
   ggtitle("Native Species") +
   scale_x_continuous(breaks = scales::breaks_pretty()) +
   scale_fill_manual(values = c("chocolate4", "turquoise3"), 
@@ -91,7 +92,8 @@ p2 <- occurrences %>%
   theme(axis.title.y = element_blank()) +
   xlab("Prevalence by subplot") +
   ggtitle("Introduced Species") +
-  theme(legend.position = "none")+
+  theme(legend.position = "none",
+        axis.text.y = element_text(face = "italic"))+
   scale_fill_manual(values = c("chocolate4", "turquoise3"), 
                     name = "CRP\nYear");p2
 

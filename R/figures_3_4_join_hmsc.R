@@ -64,8 +64,9 @@ names(lut_gensp_f) <- colnames(mj$Y)
 
 ggplot_convergence(mj, gamma=T,omega=T) %>%
   ggsave(plot=.,filename = "figs/convergence.png", width=5, height=5)
-ggplot_fit(mj, which = "named")%>%
-  ggsave(plot=.,filename = "figs/r2.png", width=5, height=5)
+pf <- ggplot_fit(mj, which = "named", sp_names = lut_gensp_f)
+ggsave(plot=pf,filename = "figs/r2.png", width=5, height=5)
+ggsave(plot=pf,filename = "figs/r2.pdf", width=5, height=5, dpi=600)
 
 vp_cols <- c(brewer.pal(12, "Set3"),
              brewer.pal(9, "Set1"),
@@ -80,6 +81,9 @@ ggplot_gamma2(mj) %>%
 ggplot_gamma(mj, lut_vars = lut_tvars, title = "Trait Associations") %>%
   ggsave(filename = "figs/gamma.png", 
          plot=., width=5, height=5, bg="white")
+ggplot_gamma(mj, lut_vars = lut_tvars, title = "Trait Associations") %>%
+  ggsave(filename = "figs/gamma.pdf", 
+         plot=., width=5, height=5, bg="white", dpi=600)
 
 
 pb1<- ggplot_beta2_drake(mj, 
@@ -89,6 +93,7 @@ pb1<- ggplot_beta2_drake(mj,
   ggtitle("Conditions Before Seeding")
 
 ggsave(plot = pb1, filename = "figs/beta2_before.png", width = 12, height=6, bg = "white")
+ggsave(plot = pb1, filename = "figs/beta2_before.pdf", width = 12, height=6, bg = "white", dpi=600)
 
 pb2 <- ggplot_beta2_drake(mj, 
                    lut_gensp = lut_gensp,
@@ -96,17 +101,18 @@ pb2 <- ggplot_beta2_drake(mj,
                    lut_ivars = lut_ivars) +
   ggtitle("Conditions After Seeding")
 ggsave(plot = pb2, filename = "figs/beta2_after.png", width = 10, height=6, bg = "white")
+ggsave(plot = pb2, filename = "figs/beta2_after.pdf",dpi=600, width = 10, height=6, bg = "white")
 
-pb3 <- ggplot_beta2_drake(mj, 
-                   lut_gensp = lut_gensp_f,
-                   included_variables = ivars_other,
-                   lut_ivars = lut_ivars) +
-  ggtitle("Other Variables")
-ggsave(plot = pb3, filename = "figs/beta2_other.png", width = 9, height=6, bg = "white")
-
-
-ggarrange(pb1, pb2, pb3, ncol = 1, nrow = 3, labels = "AUTO") %>%
-  ggsave(plot = ., filename = "figs/beta2_multipanel.png", width = 9, height=18, bg = "white")
+# pb3 <- ggplot_beta2_drake(mj, 
+#                    lut_gensp = lut_gensp_f,
+#                    included_variables = ivars_other,
+#                    lut_ivars = lut_ivars) +
+#   ggtitle("Other Variables")
+# ggsave(plot = pb3, filename = "figs/beta2_other.png", width = 9, height=6, bg = "white")
+# 
+# 
+# ggarrange(pb1, pb2, pb3, ncol = 1, nrow = 3, labels = "AUTO") %>%
+#   ggsave(plot = ., filename = "figs/beta2_multipanel.png", width = 9, height=18, bg = "white")
 
 p_omega <- ggplot_omega(mj,hc.method = "centroid", hc.order = TRUE, 
              lut_gensp=lut_gensp_f) +
@@ -118,3 +124,4 @@ p_omega <- ggplot_omega(mj,hc.method = "centroid", hc.order = TRUE,
   geom_text(label = "Group 1", x=3, y=4, size=10);p_omega
 
 ggsave(filename = "figs/omega.png", plot= p_omega, width=9, height=9, bg="white")
+ggsave(filename = "figs/omega.pdf", plot= p_omega, width=9, height=9, bg="white", dpi=600)

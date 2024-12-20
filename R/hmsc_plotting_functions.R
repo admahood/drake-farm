@@ -125,39 +125,48 @@ ggplot_ess <- function(Hm, beta = TRUE, V=FALSE, gamma = FALSE,
 }
 # model fit ====================================================================
 
-ggplot_fit <- function(Hm, which = "r2", sp_names = "none",
-                       title = "R2"){
-  mpost <- convertToCodaObject(Hm)
-  preds <- computePredictedValues(Hm)
-  MF <- evaluateModelFit(hM=Hm, predY=preds)
+gghmsc_fit <- function(Hm, which = "r2", sp_names = "none",
+                       title = "Variance Explained"){
+  requireNamespace("Hmsc")
+  requireNamespace("tibble")
+  requireNamespace("tidyr")
+  requireNamespace("ggplot2")
+  requireNamespace("ggtext")
+  requireNamespace("dplyr")
+
+  mpost <- Hmsc::convertToCodaObject(Hm)
+  preds <- Hmsc::computePredictedValues(Hm)
+  MF <- Hmsc::evaluateModelFit(hM=Hm, predY=preds)
   df <- MF %>% 
-    as_tibble() %>%
-    pivot_longer(cols = names(.)) 
+    tibble::as_tibble() %>%
+    tidyr::pivot_longer(cols = names(.)) 
   spp <- colnames(Hm$Y)
     
   if(which == "named"){
     means <- df%>%
-      filter(name == "TjurR2") %>%
-      mutate(species = spp)
-    if(sp_names != "none") means <- mutate(species = sp_names[species])
-    return(ggplot(means, aes(x=value, y=species)) +
-      geom_bar(stat = "identity") +
-      ggtitle(title) +
-      xlab("Tjur R<sup>2</sup>") +
-      theme(axis.title.x = element_markdown()))
+      dplyr::filter(name == "TjurR2") %>%
+      dplyr::mutate(species = spp)
+    if(sp_names[1] != "none") means <- dplyr::mutate(means, species = sp_names[species])
+    return(ggplot2::ggplot(means, ggplot2::aes(x=value, y=species)) +
+      ggplot2::geom_bar(stat = "identity") +
+        ggplot2::ggtitle(title) +
+        ggplot2::ylab("Species") +
+        ggplot2::xlab("Tjur R<sup>2</sup>") +
+        ggplot2::theme(axis.title.x = ggtext::element_markdown(),
+            axis.text.y = ggplot2::element_text(face = "italic")))
   }
   
   if(which == "all"){
     means <- df %>%
-      group_by(name) %>%
-      summarise(mean = mean(value)) %>%
-      ungroup()
+      dplyr::group_by(name) %>%
+      dplyr::summarise(mean = mean(value)) %>%
+      dplyr::ungroup()
     
-  return(ggplot(df) +
-    geom_histogram(aes(x=value)) +
-    facet_wrap(~name) +
-    geom_text(data = means, aes(label = paste("Avg =", round(mean, 2))), x=.75, y=4) +
-      ggtitle(title))}
+  return(ggplot2::ggplot(df) +
+           ggplot2::geom_histogram(aes(x=value)) +
+           ggplot2::facet_wrap(~name) +
+           ggplot2::geom_text(data = means, ggplot2::aes(label = paste("Avg =", round(mean, 2))), x=.75, y=4) +
+           ggplot2::ggtitle(title))}
   
   if(which == "r2"){
     means <- df%>%
@@ -168,12 +177,12 @@ ggplot_fit <- function(Hm, which = "r2", sp_names = "none",
                 min = min(value)) %>%
       ungroup()
     
-    return(ggplot(df%>% filter(name == "TjurR2") ) +
-      geom_histogram(aes(x=value),bins = 15) +
-      ggtitle(paste("Tjur R<sup>2</sup>, Avg:", round(means$mean, 2),
+    return(ggplot2::ggplot(df%>% dplyr::filter(name == "TjurR2") ) +
+             ggplot2::geom_histogram(aes(x=value),bins = 15) +
+             ggplot2::ggtitle(paste("Tjur R<sup>2</sup>, Avg:", round(means$mean, 2),
                     ", Range: ", round(means$min, 2)," - ",round(means$max, 2))) +
-        ggtitle(title) +
-      theme(plot.title = element_markdown()))
+             ggplot2::ggtitle(title) +
+             ggplot2::theme(plot.title = element_markdown()))
     }
 }
 
